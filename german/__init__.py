@@ -8,6 +8,15 @@
 #==============================================================================
 import os
 
+from german.parser import words_fromstr
+from german.sentence import is_sentence
+from german.sentence import is_sentence_closed
+from german.sentence import split_sentences
+from german.word import Mark
+from german.word import Marks
+from german.word import Words
+from german.word import split_words
+
 __version__ = '0.0.0'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
