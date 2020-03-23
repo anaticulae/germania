@@ -17,6 +17,6 @@ from german.word import Marks
 from german.word import Words
 from german.word import split_words
 
-__version__ = '0.0.0'
+__version__ = '0.1.0'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
