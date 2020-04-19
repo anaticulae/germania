@@ -38,7 +38,10 @@ LanguageResult = collections.namedtuple(
 
 
 def determine(text: str) -> LanguageResult:
-    token = german.word.split_words(text, validate_sentences=False)
+    if isinstance(text, str):
+        token = german.word.split_words(text, validate_sentences=False)
+    else:
+        token = text
     # remove signs etc.
     token = [item for item in token if isinstance(item, str)]
     ger = isgerman(token)

@@ -50,5 +50,5 @@ Spaßvögel sind wie verhext von der Illusion, ganz unter sich zu sein.
     pytest.param(SINGLE_ENG, german.Language.ENGLISH, id='single_eng'),
 ])
 def test_language(source, expected):
-    result = german.determine_language(source)
+    result = german.lang(source)
     assert result.language == expected, str(result)
