@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.2.0
+
+### Feature
+
+* add likelihood of passed language (3c1ebfa8c6b7)
+
 ## v0.1.0
 
 ### Feature
