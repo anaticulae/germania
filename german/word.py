@@ -11,6 +11,8 @@ import contextlib
 import enum
 import typing
 
+import konrad
+
 import german.sentence
 
 Words = typing.List[str]
@@ -111,7 +113,7 @@ def split_words(items: str, validate_sentences: bool = True):  # pylint:disable=
                     current = []
                 # append ), ], 3., etc.
                 result.append(special)
-    if current and items[-1] in german.sentence.SIGN:
+    if current and items[-1] in konrad.SIGN:
         result.append(''.join(current))
         current = []
     if validate_sentences:
