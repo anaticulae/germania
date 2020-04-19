@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.2.1
+
+### Fix
+
+* rename interface and extend support datatype (b7d552b0196b)
+
 ## v0.2.0
 
 ### Feature
