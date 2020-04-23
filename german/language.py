@@ -55,7 +55,6 @@ def determine(text: str) -> LanguageResult:
 
     ger = min([ger, 1.0])
     eng = min([eng, 1.0])
-    print(eng)
     if ger > eng:
         return LanguageResult(language=Language.GERMAN, probability=ger)
     if eng:
