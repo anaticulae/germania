@@ -58,7 +58,7 @@ def determine(text: str) -> LanguageResult:
     if ger > eng:
         return LanguageResult(language=Language.GERMAN, probability=ger)
     if eng:
-        return LanguageResult(language=Language.ENGLISH, probability=ger)
+        return LanguageResult(language=Language.ENGLISH, probability=eng)
     return LanguageResult(language=Language.UNKNOWN, probability=1.0)
 
 
