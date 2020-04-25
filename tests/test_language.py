@@ -41,6 +41,10 @@ Entblößung zu finden wie in den sozialen Netzwerken des Internet. Die
 Spaßvögel sind wie verhext von der Illusion, ganz unter sich zu sein.
 """
 
+FRENCH = """„Les cadres sociaux de la mémoire“ von 1925; „La mémoire
+collective“, von 1950 (postum erschienen) und „La topographie légendaire
+des Évangiles en Terre Sainte“ mémoire collective zu den Lieux de mémoire"""
+
 
 @pytest.mark.parametrize('source, expected', [
     pytest.param(MIXED, german.Language.GERMAN, id='mixed'),
@@ -48,6 +52,7 @@ Spaßvögel sind wie verhext von der Illusion, ganz unter sich zu sein.
     pytest.param(SINGLE, german.Language.GERMAN, id='single'),
     pytest.param(ENG, german.Language.ENGLISH, id='english'),
     pytest.param(SINGLE_ENG, german.Language.ENGLISH, id='single_eng'),
+    pytest.param(FRENCH, german.Language.FRENCH, id='french'),
 ])
 def test_language(source, expected):
     result = german.lang(source)

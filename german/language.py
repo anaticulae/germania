@@ -46,15 +46,23 @@ def determine(text: str) -> LanguageResult:
     token = [item for item in token if isinstance(item, str)]
     ger = isgerman(token)
     eng = isenglish(token)
+    fra = isfrench(token)
 
     ger = ger if ger >= 0.5 else 0.0
     eng = eng if eng >= 0.5 else 0.0
+    fra = fra if fra >= 0.75 else 0.0
 
+    # TODO: IMPROVE AFTER UPGRADING UTILA
     ger = utila.roundme(ger)
     eng = utila.roundme(eng)
+    fra = utila.roundme(fra)
 
     ger = min([ger, 1.0])
     eng = min([eng, 1.0])
+    fra = min([fra, 1.0])
+
+    if fra:
+        return LanguageResult(language=Language.FRENCH, probability=fra)
     if ger > eng:
         return LanguageResult(language=Language.GERMAN, probability=ger)
     if eng:
@@ -68,6 +76,8 @@ GER = {
 }
 
 ENG = {'in', 'out', 'are', 'the', 'one', 'as', 'on', 'more', 'they', 'to'}
+
+FRA = {'au', 'de', 'des', 'en', 'en', 'la', 'le', 'les'}
 
 
 def isgerman(token: list) -> float:
@@ -96,8 +106,26 @@ def isenglish(token: list) -> float:
     return result
 
 
+def isfrench(token: list) -> float:
+    result = 0.0
+    lower = [item.lower() for item in token]
+    if accent_ration(lower) >= 0.1:
+        result = result + 0.35
+    for item in lower:
+        if item in FRA:
+            result += 0.05
+    return result
+
+
 def uppercase_ratio(token):
     if not token:
         return 0.0
     upper = [item for item in token if not item.islower()]
     return len(upper) / len(token)
+
+
+def accent_ration(token):
+    if not token:
+        return 0.0
+    accents = [item for item in token if 'é' in item]
+    return len(accents) / len(token)
