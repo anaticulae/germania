@@ -51,3 +51,8 @@ def test_split():
 
     sixth = german.word.split_words(sentences[5])
     assert len(sixth) == 36, sixth
+
+
+def test_words_fromstr():
+    splitted = german.words_fromstr(EXAMPLE)
+    assert len(splitted) == 177, 'algo changed'  # Hint: Value is not correct.
