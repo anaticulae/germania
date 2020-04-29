@@ -6,6 +6,13 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
+"""german
+======
+
+The `german` package is a wrapper for external tooling which have some
+`magic` inside to determine the type of a word or split a text into
+sentences into words.
+"""
 import os
 
 from german.language import Language
