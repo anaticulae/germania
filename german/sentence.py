@@ -7,30 +7,26 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import typing
-
 import konrad
+import utila
 
-Sentences = typing.List[str]
+Sentences = utila.Strings
 
 
-def split_sentences(text: str) -> Sentences:
+def split_sentences(text: str) -> Sentences:  # pylint:disable=R1260,R0912
     """Split a regular `text` into sentence chunks.
 
     Args:
         text(str): text to split without any newlines
     Returns:
-        list of splitted sentences"""
+        list of splitted sentences
+    """
     # TODO: REPLACE WITH EXTERNAL SMART ALTERNATIVE, facebook, google or
     # something else.
+    # TODO: MAKE ROBUST AGAINST WHITE SPACE
     result = []
     current = []
-    # support multi line text
-    text = text.replace('\n', ' ')
-    tokens = text.split(' ')
-    for token in tokens:
-        if not token:
-            continue
+    for token in split_token(text):
         current.append(token)
         token = token.lower()  # make approach more robust
         lastchar = token[-1]
@@ -47,27 +43,84 @@ def split_sentences(text: str) -> Sentences:
                 # (z.B.), Phelps (2006).
                 continue
         if lastchar in konrad.SIGN:
+            if token.startswith('('):
+                # (2004b: 3) SKIP
+                # (2006).    NOSKIP
+                if token[-2] != ')':
+                    continue
+            if open_quotation_mark(current):
+                continue
             result.append(' '.join(current))
             current = []
+        if lastchar in '’”“':  # TODO: LOOK DEEPER
+            if token[-2] in konrad.SIGN:
+                # to observe.” Dennoch
+                result.append(' '.join(current))
+                current = []
     if current:
         result.append(' '.join(current))
     return result
+
+
+def open_quotation_mark(tokens):
+    # TODO: MOVE TO KONRAD PACKAGE
+    count = 0
+    # TODO: CHECK DIFFERENT DOUBLE QUOTATION MARK SIGNS
+    for token in tokens:
+        count += token.count('„')
+        count -= token.count('”')
+        count -= token.count('“')
+    return count > 0
+
+
+QUOTATION_CLOSE_SIGNS = '"”“'  # TODO: REPLACE WITH KONRAD
+
+
+def is_sentence(sentence: str, min_length: int = 4):
+    if len(sentence) < min_length:  # TODO: HOLY VALUE
+        # sentence is too short
+        return False
+    length = len(sentence)
+    dotcount = sentence.count('.')
+    percent_sentence = sentence.count('.') / length if length else 0.0
+
+    if dotcount >= 3 and percent_sentence > 0.04:  # TODO: HOLY VALUE
+        # sentence contains too much dots, maybe a toc line
+        return False
+    splitted = split_sentences(sentence)
+    if len(splitted) > 1:
+        return False
+    token = split_token(splitted[0])
+    if is_sentence_closed(token):
+        return True
+    return False
 
 
 def is_sentence_closed(token: list) -> bool:
     """Check that the last character of the last token of a sentences contains
     a sentence close sign."""
     assert token, 'empty sentence'
+    assert isinstance(token, (list, tuple)), type(token)
     last = token[-1].strip()
     last_char = last[-1]
-    return last_char in konrad.SIGN
+    if last_char in konrad.SIGN:
+        # ... hello?
+        return True
+    if len(last) < 2:
+        return False
+    before_last_char = last[-2]
+    if last_char in QUOTATION_CLOSE_SIGNS:
+        # ... hello."
+        if before_last_char in konrad.SIGN:
+            return True
+    return False
 
 
-def is_sentence(sentence: str):
-    if len(sentence) <= 5:  # TODO: HOLY VALUE
-        # sentence is too short
-        return False
-    if sentence.count('.') >= 5:  # TODO: HOLY VALUE
-        # sentence contains too much dots, maybe a toc line
-        return False
-    return len(split_sentences(sentence)) == 1 and (sentence[-1] in konrad.SIGN)
+def split_token(text: str):
+    # replace text division -
+    text = text.replace('-\n', '')
+    # support multi line text
+    text = text.replace('\n', ' ')
+    tokens = text.split(' ')
+    result = [token for token in tokens if token]
+    return result

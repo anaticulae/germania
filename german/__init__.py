@@ -21,8 +21,6 @@ from german.sentence import is_sentence
 from german.sentence import is_sentence_closed
 from german.sentence import split_sentences
 from german.text import words_fromstr
-from german.word import Mark
-from german.word import Marks
 from german.word import Words
 from german.word import split_words
 

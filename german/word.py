@@ -8,7 +8,6 @@
 # =============================================================================
 
 import contextlib
-import enum
 import typing
 
 import konrad
@@ -18,64 +17,7 @@ import german.sentence
 Words = typing.List[str]
 
 
-class Mark(enum.Enum):
-    FULLSTOP = enum.auto()  # .
-    COMMA = enum.auto()  # ,
-    COLON = enum.auto()  # :
-    SEMICOLON = enum.auto()  # ;
-    QUESTION_MARK = enum.auto()  #?
-    EXCLAMATION_MARK = enum.auto()  # !
-    AND = enum.auto()  # &
-    APOSTROPHE = enum.auto()  # '
-    QUOTATION_MARK_DOUBLE_OPEN = enum.auto()
-    QUOTATION_MARK_DOUBLE_CLOSE = enum.auto()
-    QUOTATION_MARK_SINGLE_OPEN = enum.auto()
-    QUOTATION_MARK_SINGLE_CLOSE = enum.auto()
-    HYPHEN = enum.auto()  # - short dash
-    DASH = enum.auto()  # -
-    DOTS = enum.auto()  # ...
-    BRACKET = enum.auto()  # ()
-    BRACKET_OPEN = enum.auto()  # (
-    BRACKET_CLOSE = enum.auto()  # )
-    SQUARE_BRACKET = enum.auto()  # [ ]
-    SQUARE_BRACKET_OPEN = enum.auto()  # [
-    SQUARE_BRACKET_CLOSE = enum.auto()  #  ]
-    QUOTATION_MARK = enum.auto()  # '' ""
-
-    @classmethod
-    def fromstr(cls, item: str):
-        return MATCH[item]
-
-
-Marks = typing.List[Mark]
-
-MATCH = {
-    '.': Mark.FULLSTOP,
-    ',': Mark.COMMA,
-    ':': Mark.COLON,
-    ';': Mark.SEMICOLON,
-    '?': Mark.QUESTION_MARK,
-    '!': Mark.EXCLAMATION_MARK,
-    "&": Mark.AND,
-    "„": Mark.QUOTATION_MARK_DOUBLE_OPEN,
-    "“": Mark.QUOTATION_MARK_DOUBLE_CLOSE,
-    # "„": Mark.QUOTATION_MARK_SINGLE_OPEN,
-    # "“": Mark.QUOTATION_MARK_SINGLE_CLOSE,
-    "’": Mark.APOSTROPHE,
-    "'": Mark.APOSTROPHE,
-    '-': Mark.HYPHEN,
-    '–': Mark.DASH,
-    '...': Mark.DOTS,
-    '()': Mark.BRACKET,
-    '(': Mark.BRACKET_OPEN,
-    ')': Mark.BRACKET_CLOSE,
-    '[': Mark.SQUARE_BRACKET_OPEN,
-    ']': Mark.SQUARE_BRACKET_CLOSE,
-    # '""': Mark.QUESTION_MARK,
-}
-
-
-def split_words(items: str, validate_sentences: bool = True):  # pylint:disable=R1260,R0912
+def split_words(items: str, validate_sentences: bool = True) -> Words:  # pylint:disable=R1260,R0912
     if validate_sentences and not german.sentence.is_sentence(items):
         # Ensure to parse complete sentences.
         return None
@@ -96,7 +38,7 @@ def split_words(items: str, validate_sentences: bool = True):  # pylint:disable=
             continue
         else:
             try:
-                special = MATCH[token]
+                special = konrad.matches(token)
             except KeyError:
                 # append normal text char or number
                 current.append(token)
@@ -105,7 +47,7 @@ def split_words(items: str, validate_sentences: bool = True):  # pylint:disable=
                 if dot_pattern(current, token):
                     current.append(token)
                     continue
-                if special == Mark.FULLSTOP:
+                if special == konrad.Mark.FULLSTOP:
                     if index != (len(items) - 1):
                         continue
                 if len(current) >= 2:
@@ -138,4 +80,17 @@ def isnumber(item):
     with contextlib.suppress(ValueError):
         _ = int(item)
         return True
+    return False
+
+
+def contain_quotation_marks(items) -> True:
+    for item in items:
+        if item in (
+                konrad.Mark.QUOTATION_MARK,
+                konrad.Mark.QUOTATION_MARK_DOUBLE_CLOSE,
+                konrad.Mark.QUOTATION_MARK_DOUBLE_OPEN,
+                konrad.Mark.QUOTATION_MARK_SINGLE_CLOSE,
+                konrad.Mark.QUOTATION_MARK_SINGLE_OPEN,
+        ):
+            return True
     return False
