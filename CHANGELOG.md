@@ -2,6 +2,23 @@
 
 Every noteable change is logged here.
 
+## v0.3.0
+
+### Feature
+
+* move modern text, sentence and words parser (51c05f985813)
+* add first draft to detect French (3df4a7bd292c)
+
+### Fix
+
+* fix probability of English extraction (9e81cfd7baec)
+* remove probability logging (9047817f51ab)
+
+### Documentation
+
+* add general purpose of this package (819f3a14262d)
+* remove non existing doc link (a8484ab63dcb)
+
 ## v0.2.3
 
 ## v0.2.2
