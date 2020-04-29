@@ -17,10 +17,10 @@ import os
 
 from german.language import LanguageResult
 from german.language import determine as lang
-from german.parser import words_fromstr
 from german.sentence import is_sentence
 from german.sentence import is_sentence_closed
 from german.sentence import split_sentences
+from german.text import words_fromstr
 from german.word import Mark
 from german.word import Marks
 from german.word import Words
