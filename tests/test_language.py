@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import konrad
 import pytest
 
 import german
@@ -47,12 +48,12 @@ des Évangiles en Terre Sainte“ mémoire collective zu den Lieux de mémoire""
 
 
 @pytest.mark.parametrize('source, expected', [
-    pytest.param(MIXED, german.Language.GERMAN, id='mixed'),
-    pytest.param(MORE, german.Language.GERMAN, id='more'),
-    pytest.param(SINGLE, german.Language.GERMAN, id='single'),
-    pytest.param(ENG, german.Language.ENGLISH, id='english'),
-    pytest.param(SINGLE_ENG, german.Language.ENGLISH, id='single_eng'),
-    pytest.param(FRENCH, german.Language.FRENCH, id='french'),
+    pytest.param(MIXED, konrad.Language.GERMAN, id='mixed'),
+    pytest.param(MORE, konrad.Language.GERMAN, id='more'),
+    pytest.param(SINGLE, konrad.Language.GERMAN, id='single'),
+    pytest.param(ENG, konrad.Language.ENGLISH, id='english'),
+    pytest.param(SINGLE_ENG, konrad.Language.ENGLISH, id='single_eng'),
+    pytest.param(FRENCH, konrad.Language.FRENCH, id='french'),
 ])
 def test_language(source, expected):
     result = german.lang(source)

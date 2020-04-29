@@ -17,19 +17,11 @@ approach is to set the interface and introduce complexity later.
 """
 
 import collections
-import enum
 
+import konrad
 import utila
 
 import german.word
-
-
-class Language(enum.Enum):
-    GERMAN = enum.auto()
-    ENGLISH = enum.auto()
-    FRENCH = enum.auto()
-    UNKNOWN = enum.auto()
-
 
 LanguageResult = collections.namedtuple(
     'LanguageResult',
@@ -62,12 +54,12 @@ def determine(text: str) -> LanguageResult:
     fra = min([fra, 1.0])
 
     if fra:
-        return LanguageResult(language=Language.FRENCH, probability=fra)
+        return LanguageResult(language=konrad.Language.FRENCH, probability=fra)
     if ger > eng:
-        return LanguageResult(language=Language.GERMAN, probability=ger)
+        return LanguageResult(language=konrad.Language.GERMAN, probability=ger)
     if eng:
-        return LanguageResult(language=Language.ENGLISH, probability=eng)
-    return LanguageResult(language=Language.UNKNOWN, probability=1.0)
+        return LanguageResult(language=konrad.Language.ENGLISH, probability=eng)
+    return LanguageResult(language=konrad.Language.UNKNOWN, probability=1.0)
 
 
 GER = {

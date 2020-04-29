@@ -15,7 +15,6 @@ sentences into words.
 """
 import os
 
-from german.language import Language
 from german.language import LanguageResult
 from german.language import determine as lang
 from german.parser import words_fromstr
