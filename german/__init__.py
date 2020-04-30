@@ -18,11 +18,14 @@ import os
 
 from german.language import LanguageResult
 from german.language import determine as lang
+from german.sentence import Sentences
 from german.sentence import is_sentence
 from german.sentence import is_sentence_closed
 from german.sentence import split_sentences
+from german.sentence import split_token
 from german.text import words_fromstr
 from german.word import Words
+from german.word import contain_quotation_marks
 from german.word import split_words
 
 __version__ = '0.3.0'
