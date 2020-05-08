@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.3.4
+
+### Fix
+
+* ensure to parse last word in invalid sentences (37dfe4106519)
+
 ## v0.3.3
 
 ## v0.3.2
