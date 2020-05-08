@@ -55,11 +55,11 @@ def split_words(items: str, validate_sentences: bool = True) -> Words:  # pylint
                     current = []
                 # append ), ], 3., etc.
                 result.append(special)
-    if current and items[-1] in konrad.SIGN:
-        result.append(''.join(current))
-        current = []
-    if validate_sentences:
-        assert not current, current
+    if current:
+        if items[-1] in konrad.SIGN or not validate_sentences:
+            result.append(''.join(current))
+            current = []
+    assert not current or validate_sentences, current
     return result
 
 
