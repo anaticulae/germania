@@ -125,3 +125,15 @@ def test_sentence_split_multiple_quoted_sentence():
     sentences = german.split_sentences(MULTIPLE_SENTENCE_IN_QUOTATION)
     assert len(sentences) == 5
     assert sentences[-1] == 'In dem Artikel heißt es:', sentences[-1]
+
+
+SINGLE_QUOTATION_IN_TEXT = """\
+This is a single " quotation “ '“ charachter in text. The parser brokes
+before cause expected .“ pattern but delivers token of length 1 cause
+the single char.
+"""
+
+
+def test_sentence_split_single_quotation_in_text():
+    sentences = german.split_sentences(SINGLE_QUOTATION_IN_TEXT)
+    assert len(sentences) == 3

@@ -53,7 +53,11 @@ def split_sentences(text: str) -> Sentences:  # pylint:disable=R1260,R0912
             result.append(' '.join(current))
             current = []
         if lastchar in '’”“':  # TODO: LOOK DEEPER
-            if token[-2] in konrad.SIGN:
+            if len(token) == 1:
+                # example: this is " a nice char
+                # perseve index error of following sign check.
+                pass
+            elif token[-2] in konrad.SIGN:
                 # to observe.” Dennoch
                 result.append(' '.join(current))
                 current = []
