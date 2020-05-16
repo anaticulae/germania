@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.3.5
+
+### Fix
+
+* fix index error when single quotation character occurs (d1671d4d28bd)
+
 ## v0.3.4
 
 ### Fix
