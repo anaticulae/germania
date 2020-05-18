@@ -7,6 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-utila==1.21.1
+utila==1.22.0
 
-konrad==0.2.7
+konrad==0.2.8
