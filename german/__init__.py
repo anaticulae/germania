@@ -18,7 +18,6 @@ import os
 
 from german.language import LanguageResult
 from german.language import determine as lang
-from german.links import links
 from german.sentence import Sentences
 from german.sentence import is_sentence
 from german.sentence import is_sentence_closed
