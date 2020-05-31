@@ -120,11 +120,12 @@ def is_sentence_closed(token: list) -> bool:
     return False
 
 
-def split_token(text: str):
+def split_token(text: str, normalize: bool = True):
     # replace text division -
     text = text.replace('-\n', '')
     # support multi line text
     text = text.replace('\n', ' ')
     tokens = text.split(' ')
-    result = [token for token in tokens if token]
+    if normalize:
+        result = [token for token in tokens if token]
     return result
