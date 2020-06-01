@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.3.16
+
+### Feature
+
+* add option to split_token (ab853947b6f5)
+
 ## v0.3.15
 
 ## v0.3.14
