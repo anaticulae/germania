@@ -101,7 +101,7 @@ def isenglish(token: list) -> float:
 def isfrench(token: list) -> float:
     result = 0.0
     lower = [item.lower() for item in token]
-    if accent_ration(lower) >= 0.1:
+    if accent_ratio(lower) >= 0.1:
         result = result + 0.35
     for item in lower:
         if item in FRA:
@@ -116,7 +116,7 @@ def uppercase_ratio(token):
     return len(upper) / len(token)
 
 
-def accent_ration(token):
+def accent_ratio(token):
     if not token:
         return 0.0
     accents = [item for item in token if 'é' in item]
