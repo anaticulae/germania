@@ -127,5 +127,5 @@ def split_token(text: str, normalize: bool = True):
     text = text.replace('\n', ' ')
     tokens = text.split(' ')
     if normalize:
-        result = [token for token in tokens if token]
-    return result
+        tokens = [token for token in tokens if token]
+    return tokens
