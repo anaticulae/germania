@@ -17,7 +17,11 @@ import german.sentence
 Words = typing.List[str]
 
 
-def split_words(items: str, validate_sentences: bool = True) -> Words:  # pylint:disable=R1260,R0912
+def split_words(  # pylint:disable=R1260,R0912
+        items: str,
+        validate_sentences: bool = True,
+        lang: konrad.Language = None,
+) -> Words:
     if validate_sentences and not german.sentence.is_sentence(items):
         # Ensure to parse complete sentences.
         return None
@@ -38,7 +42,7 @@ def split_words(items: str, validate_sentences: bool = True) -> Words:  # pylint
             continue
         else:
             try:
-                special = konrad.matches(token)
+                special = konrad.matches(token, lang=lang)
             except KeyError:
                 # append normal text char or number
                 current.append(token)
