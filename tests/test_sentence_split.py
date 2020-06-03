@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import konrad
+
 import german
 
 EXAMPLE = """\
@@ -234,3 +236,9 @@ Effizienz.“16
 def test_split_sentence_quotation_highnumber():
     splitted = german.split_sentences(VALID_SENTENCE)
     assert len(splitted) == 1
+
+
+def test_split_word_quotation_highnumber():
+    splitted = german.split_words(VALID_SENTENCE)
+    assert splitted[0] == konrad.Mark.QUOTATION_MARK_DOUBLE_OPEN
+    assert splitted[-1] == '16'

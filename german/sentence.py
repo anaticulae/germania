@@ -103,12 +103,17 @@ def is_sentence(sentence: str, min_length: int = 4):
     if len(splitted) > 1:
         return False
     token = split_token(splitted[0])
+    print(token)
+    print(is_sentence_closed(token))
     if is_sentence_closed(token):
         return True
     return False
 
 
-def is_sentence_closed(token: list) -> bool:
+CLOSE_SIGNS = '.?!'
+
+
+def is_sentence_closed(token: list) -> bool:  # pylint:disable=R0911
     """Check that the last character of the last token of a sentences contains
     a sentence close sign."""
     assert token, 'empty sentence'
@@ -125,6 +130,22 @@ def is_sentence_closed(token: list) -> bool:
         # ... hello."
         if before_last_char in konrad.SIGN:
             return True
+    if len(token) > 3:
+        before_last = token[-2]
+        third_last = token[-3]
+        # HACK AND INCOMPLETE
+        # greater than three cause a sentence needs some words
+        # DOTTED, QUOTED
+        # 'Effizienz.', '“'
+        # TODO: SIMPLIFY THIS, USE PERMUTATION AND TOKEN CLASSES
+        if last in QUOTATION_CLOSE_SIGNS and before_last[-1] in CLOSE_SIGNS:
+            return True
+        if before_last in QUOTATION_CLOSE_SIGNS and last[-1] in CLOSE_SIGNS:
+            return True
+        if last.isnumeric() and before_last in QUOTATION_CLOSE_SIGNS and third_last[-1] in CLOSE_SIGNS: # yapf:disable
+            return True
+        # DOTTED, QUOTED, NUMBER
+        # 'Effizienz.', '“', '16'
     return False
 
 
