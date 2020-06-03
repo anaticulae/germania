@@ -12,6 +12,8 @@ import utila
 
 Sentences = utila.Strings
 
+SHORTCUTS = {'bspw.'}.union(konrad.ABBREVIATION_LOWER)
+
 
 def split_sentences(text: str) -> Sentences:  # pylint:disable=R1260,R0912
     """Split a regular `text` into sentence chunks.
@@ -34,7 +36,7 @@ def split_sentences(text: str) -> Sentences:  # pylint:disable=R1260,R0912
             if len(token) == 2:
                 # W. G.
                 continue
-            if token in konrad.ABBREVIATION_LOWER:
+            if token in SHORTCUTS:
                 continue
             if token[:-1].isnumeric():
                 # 1.; 13.
@@ -48,8 +50,9 @@ def split_sentences(text: str) -> Sentences:  # pylint:disable=R1260,R0912
                 # (2006).    NOSKIP
                 if token[-2] != ')':
                     continue
-            if open_quotation_mark(current):
-                continue
+            # if open_quotation_mark(current):
+            # TODO: ENABLE LATER?
+            #     continue
             result.append(' '.join(current))
             current = []
         if lastchar in '’”“':  # TODO: LOOK DEEPER
@@ -128,4 +131,21 @@ def split_token(text: str, normalize: bool = True):
     tokens = text.split(' ')
     if normalize:
         tokens = [token for token in tokens if token]
+    tokens = [split_special_chars(item) for item in tokens]
+    tokens = utila.flatten(tokens)
     return tokens
+
+
+SPECIAL = ['„', '“', '‘', '‚']
+
+
+def split_special_chars(token):
+    """\
+    >>> split_special_chars('„‚privat‘')
+    ['„', '‚', 'privat', '‘']
+    """
+    for special in SPECIAL:
+        splitted = token.split(special)
+        token = f' {special} '.join(splitted)
+    splitted = token.split()
+    return splitted

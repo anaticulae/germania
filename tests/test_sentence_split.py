@@ -122,8 +122,8 @@ Artikel heißt es:
 
 def test_sentence_split_multiple_quoted_sentence():
     sentences = german.split_sentences(MULTIPLE_SENTENCE_IN_QUOTATION)
-    assert len(sentences) == 5
-    assert sentences[-1] == 'In dem Artikel heißt es:', sentences[-1]
+    assert len(sentences) == 6
+    assert sentences[-1] == '“ In dem Artikel heißt es:', sentences[-1]
 
 
 SINGLE_QUOTATION_IN_TEXT = """\
@@ -190,3 +190,33 @@ zehn Zukunftsprojekten im Rahmen der Hightech-Strategie.
 def test_split_sentence_with_number():
     splitted = german.split_sentences(NUMBER_IN_TEXT)
     assert len(splitted) == 1
+
+
+VERY_LONG = """\
+Im Hinblick auf die weiterführenden Kapitel dieser Arbeit erscheint
+diese Definition als zielführend, da zum einen betriebswirtschaftliche
+Aspekte berücksichtigt werden und zum anderen die technische Ausrichtung
+erkennbar ist: „Der Begriff Industrie 4.0 steht für die vierte
+industrielle Revolution, eine neue Stufe der Organisation und Steuerung
+der gesamten Wertschöpfungskette über den Lebenszyklus von Produkten.
+Dieser Zyklus orientiert sich an den zunehmend individualisierten
+Kundenwünschen und erstreckt sich von der Idee, dem Auftrag über die
+Entwicklung und Fertigung, die Auslieferung eines Produkts an den
+Endkunden bis hin zum Recycling, einschließlich der damit verbundenen
+Dienstleistungen. Basis ist die Verfügbarkeit aller relevanten
+Informationen in Echtzeit durch Vernetzung aller an der Wertschöpfung
+beteiligten Instanzen sowie die Fähigkeit, aus den Daten den zu jedem
+Zeitpunkt optimalen Wertschöpfungsfluss abzuleiten. Durch die Verbindung
+von Menschen, Objekten und Systemen entstehen dynamische,
+echtzeitoptimierte und selbst organisierende, unternehmensübergreifende
+Wertschöpfungsnetzwerke, die sich nach unterschiedlichen Kriterien wie
+bspw. Kosten, Verfügbarkeit und Ressourcenverbrauch optimieren
+lassen.“27 Ein zentrales Merkmal der dargestellten Definition ist somit
+die Optimierung der Wertschöpfungskette hin zu
+unternehmensübergreifenden Wertschöpfungsnetzwerken.
+"""
+
+
+def test_split_sentence_with_long_citation():
+    splitted = german.split_sentences(VERY_LONG)
+    assert len(splitted) == 6
