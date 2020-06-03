@@ -2,6 +2,18 @@
 
 Every noteable change is logged here.
 
+## v0.4.0
+
+### Feature
+
+* add quotation parser (07eeedb40b14)
+* extend text parser (be632112adb9)
+* make word splitter language dependent (7b184133dda4)
+
+### Fix
+
+* no `result` value if using normalize=false (d42516291fc2)
+
 ## v0.3.16
 
 ### Feature
