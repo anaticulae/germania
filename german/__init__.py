@@ -18,6 +18,8 @@ import os
 
 from german.language import LanguageResult
 from german.language import determine as lang
+from german.quotation import extract_quotes
+from german.quotation import raw_quotation
 from german.sentence import Sentences
 from german.sentence import is_sentence
 from german.sentence import is_sentence_closed
