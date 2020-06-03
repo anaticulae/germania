@@ -7,8 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import german.sentence
-import german.word
+import german
 
 EXAMPLE = """\
 Viele Philosophen und Psychologen ließen sich von der Beziehung zwischen
@@ -30,26 +29,26 @@ Sternberg-Aufgabe (Sternberg, 1966)."""
 
 
 def test_split():
-    sentences = german.sentence.split_sentences(EXAMPLE)
+    sentences = german.split_sentences(EXAMPLE)
     assert len(sentences) == 6
     # splitted = german.word.split(EXAMPLE)
 
-    first = german.word.split_words(sentences[0])
+    first = german.split_words(sentences[0])
     assert len(first) == 14 + 1, first  # 14 words plus one dot
 
-    second = german.word.split_words(sentences[1])
+    second = german.split_words(sentences[1])
     assert len(second) == 35, second
 
-    third = german.word.split_words(sentences[2])
+    third = german.split_words(sentences[2])
     assert len(third) == 30, third
 
-    fourth = german.word.split_words(sentences[3])
+    fourth = german.split_words(sentences[3])
     assert len(fourth) == 28, fourth
 
-    fifth = german.word.split_words(sentences[4])
+    fifth = german.split_words(sentences[4])
     assert len(fifth) == 33, fifth
 
-    sixth = german.word.split_words(sentences[5])
+    sixth = german.split_words(sentences[5])
     assert len(sixth) == 36, sixth
 
 
