@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.4.1
+
+### Feature
+
+* merge quotation close tag and number to sentence before (3c82a994346a)
+
 ## v0.4.0
 
 ### Feature
