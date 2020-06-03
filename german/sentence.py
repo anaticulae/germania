@@ -19,7 +19,7 @@ def split_sentences(text: str) -> Sentences:  # pylint:disable=R1260,R0912
     """Split a regular `text` into sentence chunks.
 
     Args:
-        text(str): text to split without any newlines
+        text(str): text to split containing no newlines
     Returns:
         list of splitted sentences
     """
@@ -32,6 +32,11 @@ def split_sentences(text: str) -> Sentences:  # pylint:disable=R1260,R0912
         current.append(token)
         token = token.lower()  # make approach more robust
         lastchar = token[-1]
+        if (token == '“' or token.isnumeric()) and len(current) == 1 and result:
+            # merge close quotation and or number to sentence before
+            result[-1] = result[-1] + token
+            current.clear()
+            continue
         if lastchar == '.':
             if len(token) == 2:
                 # W. G.

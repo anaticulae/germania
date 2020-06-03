@@ -123,7 +123,7 @@ Artikel heißt es:
 def test_sentence_split_multiple_quoted_sentence():
     sentences = german.split_sentences(MULTIPLE_SENTENCE_IN_QUOTATION)
     assert len(sentences) == 6
-    assert sentences[-1] == '“ In dem Artikel heißt es:', sentences[-1]
+    assert sentences[-1] == 'In dem Artikel heißt es:', sentences[-1]
 
 
 SINGLE_QUOTATION_IN_TEXT = """\
@@ -220,3 +220,17 @@ unternehmensübergreifenden Wertschöpfungsnetzwerken.
 def test_split_sentence_with_long_citation():
     splitted = german.split_sentences(VERY_LONG)
     assert len(splitted) == 6
+
+
+VALID_SENTENCE = """\
+„Unter dem Begriff Digitalisierung verstehen wir die Transformation von
+Geschäftsmodellen mit Hilfe von Informations- und
+Kommunikationstechnologien zur Reduktion von Schnittstellen, zur
+funktionsübergreifenden Vernetzung und zur Erhöhung der Effektivität und
+Effizienz.“16
+"""
+
+
+def test_split_sentence_quotation_highnumber():
+    splitted = german.split_sentences(VALID_SENTENCE)
+    assert len(splitted) == 1
