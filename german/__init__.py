@@ -18,6 +18,8 @@ import os
 
 from german.language import LanguageResult
 from german.language import determine as lang
+from german.language import iseng
+from german.language import isger
 from german.quotation import extract_quotes
 from german.quotation import raw_quotation
 from german.sentence import Sentences

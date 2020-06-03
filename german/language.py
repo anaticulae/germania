@@ -67,7 +67,13 @@ GER = {
     'es', 'er', 'sie', 'siehe', 'bzw.'
 }
 
-ENG = {'in', 'out', 'are', 'the', 'one', 'as', 'on', 'more', 'they', 'to'}
+ENGLISH = """\
+a and are as at be but by for i if in into is it more my near no not of
+on one or our out own such that the their then there these they this to
+was will with you your
+"""
+
+ENG = {item for item in ENGLISH.split() if item}
 
 FRA = {'au', 'de', 'des', 'en', 'en', 'la', 'le', 'les'}
 
@@ -121,3 +127,22 @@ def accent_ratio(token):
         return 0.0
     accents = [item for item in token if 'é' in item]
     return len(accents) / len(token)
+
+
+def iseng(tokens):
+    """\
+    >>> iseng('Ich bin Helmut')
+    False
+
+    iseng('i like fish')
+    True
+    """
+    return determine(tokens).language == konrad.Language.ENGLISH
+
+
+def isger(tokens):
+    """\
+    >>> isger('Kartoffelsalat')
+    True
+    """
+    return determine(tokens).language == konrad.Language.GERMAN
