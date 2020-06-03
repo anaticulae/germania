@@ -179,3 +179,14 @@ def test_split_paragraph_with_quotation_mixed():
     last = ('Dennoch soll im Folgenden der Versuch einer '
             'Definition vorgenommen werden.')
     assert splitted[-1] == last, splitted
+
+
+NUMBER_IN_TEXT = """\
+Aus diesen Zielen abgeleitet, resultierte Industrie 4.0 als eines von
+zehn Zukunftsprojekten im Rahmen der Hightech-Strategie.
+"""
+
+
+def test_split_sentence_with_number():
+    splitted = german.split_sentences(NUMBER_IN_TEXT)
+    assert len(splitted) == 1
