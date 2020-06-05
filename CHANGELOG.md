@@ -2,6 +2,15 @@
 
 Every noteable change is logged here.
 
+## v0.5.0
+
+### Feature
+
+* add method to validate pattern (ff6dac9a20fb)
+* add very simple approach to detect type of word (8b9d2d5a324e)
+* add language quick check methods (3d9e251dcc2b)
+* extend sentence end checker (34a9d6e4658f)
+
 ## v0.4.1
 
 ### Feature
