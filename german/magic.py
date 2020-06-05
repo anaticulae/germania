@@ -10,6 +10,7 @@
 import enum
 import os
 
+import konrad
 import utila
 
 
@@ -17,6 +18,7 @@ class WordType(enum.Enum):
     NAME = enum.auto()
     PRESS = enum.auto()
     YEAR = enum.auto()
+    MARK = enum.auto()
     UNDEFINED = enum.auto()
 
 
@@ -25,7 +27,12 @@ def wordtype(item: str) -> WordType:
     >>> wordtype('1995').name
     'YEAR'
     """
-    item = item.strip()
+    try:
+        item = item.strip()
+    except AttributeError:
+        if isinstance(item, konrad.Mark):
+            return WordType.MARK
+        return WordType.UNDEFINED
     item = item.lower()
     if isname(item):
         return WordType.NAME

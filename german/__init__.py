@@ -22,6 +22,7 @@ from german.language import iseng
 from german.language import isger
 from german.magic import WordType
 from german.magic import wordtype
+from german.pattern import matched
 from german.quotation import extract_quotes
 from german.quotation import raw_quotation
 from german.sentence import Sentences
