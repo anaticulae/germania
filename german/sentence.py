@@ -103,8 +103,6 @@ def is_sentence(sentence: str, min_length: int = 4):
     if len(splitted) > 1:
         return False
     token = split_token(splitted[0])
-    print(token)
-    print(is_sentence_closed(token))
     if is_sentence_closed(token):
         return True
     return False
