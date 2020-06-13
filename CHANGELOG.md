@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.6.0
+
+### Feature
+
+* move pattern to parse hyper links (4639f08557af)
+* move dates and page numbers code from section project (37944be089fd)
+
 ## v0.5.4
 
 ## v0.5.3
