@@ -25,6 +25,7 @@ from german.magic import wordtype
 from german.pattern import matched
 from german.pattern.date import dates
 from german.pattern.date import years
+from german.pattern.href import hyperlink
 from german.pattern.pagination import pagenumbers
 from german.quotation import extract_quotes
 from german.quotation import raw_quotation
