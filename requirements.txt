@@ -9,4 +9,4 @@
 
 utila==1.25.1
 
-konrad==0.2.19
+konrad==0.2.20
