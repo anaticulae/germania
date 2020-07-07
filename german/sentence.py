@@ -113,7 +113,11 @@ CLOSE_SIGNS = '.?!'
 
 def is_sentence_closed(token: list) -> bool:  # pylint:disable=R0911
     """Check that the last character of the last token of a sentences contains
-    a sentence close sign."""
+    a sentence close sign.
+
+    >>> is_sentence_closed(['Effektivität', 'und', 'Effizienz.', '“'])
+    True
+    """
     assert token, 'empty sentence'
     assert isinstance(token, (list, tuple)), type(token)
     last = token[-1].strip()
@@ -121,13 +125,17 @@ def is_sentence_closed(token: list) -> bool:  # pylint:disable=R0911
     if last_char in konrad.SIGN:
         # ... hello?
         return True
-    if len(last) < 2:
-        return False
-    before_last_char = last[-2]
-    if last_char in QUOTATION_CLOSE_SIGNS:
-        # ... hello."
-        if before_last_char in konrad.SIGN:
-            return True
+    if len(last) == 1:
+        # 'Effizienz.', '“'
+        if last not in QUOTATION_CLOSE_SIGNS:
+            # TODO: CHECK ALL QUOTATION SIGNS?
+            return False
+    else:
+        before_last_char = last[-2]
+        if last_char in QUOTATION_CLOSE_SIGNS:
+            # ... hello."
+            if before_last_char in konrad.SIGN:
+                return True
     if len(token) > 3:
         before_last = token[-2]
         third_last = token[-3]
