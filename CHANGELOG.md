@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.7.0
+
+### Feature
+
+* extend sentence closed validator (f6a6f7364ede)
+
 ## v0.6.9
 
 ## v0.6.8
