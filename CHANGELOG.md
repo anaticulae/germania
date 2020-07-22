@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.8.0
+
+### Feature
+
+* add method mails to parse list of emails (69cdd1223aa3)
+
 ## v0.7.1
 
 ## v0.7.0
