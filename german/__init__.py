@@ -40,6 +40,6 @@ from german.word import Words
 from german.word import contain_quotation_marks
 from german.word import split_words
 
-__version__ = '0.8.4'
+__version__ = '0.8.5'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
