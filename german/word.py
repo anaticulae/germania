@@ -7,10 +7,10 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import contextlib
 import typing
 
 import konrad
+import utila
 
 import german.sentence
 
@@ -33,7 +33,7 @@ def split_words(  # pylint:disable=R1260,R0912
     current = []
     for index, token in enumerate(items):
         if token == ' ':
-            if len(current) == 1 and not isnumber(current[0]):
+            if len(current) == 1 and not utila.isnumber(current[0]):
                 continue
             elif len(current) < 2:
                 continue
@@ -73,16 +73,9 @@ def dot_pattern(current, token):
         if current[0] not in (')', ']'):
             return True
     if len(current) == 3 and token == '.' and current[1] == '.':
-        if isnumber(current[0]) and isnumber(current[2]):
+        if utila.isnumber(current[0]) and utila.isnumber(current[2]):
             # 3.2
             return False
-        return True
-    return False
-
-
-def isnumber(item):
-    with contextlib.suppress(ValueError):
-        _ = int(item)
         return True
     return False
 
