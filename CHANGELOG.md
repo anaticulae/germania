@@ -2,6 +2,14 @@
 
 Every noteable change is logged here.
 
+## v0.9.0
+
+### Feature
+
+* add authors to extract list of authors (8dfc93770b12)
+* add hyphen as possible page range separator (2da41473205d)
+* add method to determine if token is a headline (54f559f4f60f)
+
 ## v0.8.6
 
 ## v0.8.5
