@@ -25,6 +25,7 @@ from german.language import isger
 from german.magic import WordType
 from german.magic import wordtype
 from german.pattern import matched
+from german.pattern.author import authors
 from german.pattern.date import dates
 from german.pattern.date import years
 from german.pattern.href import hyperlink
