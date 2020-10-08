@@ -14,14 +14,14 @@ import re
 def pagenumbers(raw: str):
     """Extract single pages and page ranges out of `raw` text.
 
-    >>> pagenumbers('S. 13-50 S.30 S. 1-5 S.319-350, Seite 20-30., page 500 p.4')
+    >>> pagenumbers('S. 13-50 S.30 S. 1-5 S.319-350, Seite 20–30., page 500 p.4')
     [(1, 5), (4, 4), (13, 50), (20, 30), (30, 30), (319, 350), (500, 500)]
     """
     result = []
     pattern = r"""(S|S\.|Seite|p|p\.|page)
                 [ ]{0,4}
                 (
-                    (?P<pstart>\d{1,4})[ ]{0,2}\-[ ]{0,2}(?P<pend>\d{1,4})|
+                    (?P<pstart>\d{1,4})[ ]{0,2}(-|–)[ ]{0,2}(?P<pend>\d{1,4})|
                     (?P<page>\d{1,4})
                 )
                """
