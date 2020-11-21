@@ -18,12 +18,14 @@ def hyperlink(raw: str):
     'http://student.unifr.ch/Referenzrahmen2001.pdf'
     >>> hyperlink('This is a link:https://www.youtube.com/watch?v=RXbcAYxuZxw')[0]
     'https://www.youtube.com/watch?v=RXbcAYxuZxw'
-    >>> hyperlink('Text.http://google.de')[0]
-    'http://google.de'
+    >>> hyperlink('Text.http://google.de?goto=home&admin=1')[0]
+    'http://google.de?goto=home&admin=1'
+    >>> hyperlink('Gemeinde Neunkirchen 31818\nwww.statistik.at/blickgem/fa1/g31818.pdf (03.12.2017)')[0]
+    'www.statistik.at/blickgem/fa1/g31818.pdf'
     """
     raw = raw.replace('\n', '')
     pattern = r"""
-    (http|https|www)[:]//[\w\d\./\-\?\=]+
+    (http://|https://|www)[\w\d\./\-\?\=\&]+
     """
     result = []
     for item in re.finditer(pattern, raw, flags=re.VERBOSE):
