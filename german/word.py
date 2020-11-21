@@ -32,7 +32,7 @@ def split_words(  # pylint:disable=R1260,R0912
     result = []
     current = []
     for index, token in enumerate(items):
-        if token == ' ':
+        if token == ' ':  # nosec
             if len(current) == 1 and not utila.isnumber(current[0]):
                 continue
             elif len(current) < 2:
@@ -72,7 +72,7 @@ def dot_pattern(current, token):
     if len(current) == 1:
         if current[0] not in (')', ']'):
             return True
-    if len(current) == 3 and token == '.' and current[1] == '.':
+    if len(current) == 3 and token == '.' and current[1] == '.':  # nosec
         if utila.isnumber(current[0]) and utila.isnumber(current[2]):
             # 3.2
             return False
