@@ -2,6 +2,17 @@
 
 Every noteable change is logged here.
 
+## v0.10.0
+
+### Feature
+
+* do not end sentence on roman number (53949f88fd0f)
+* add position flag and detect more special chars as link (89b234499b1f)
+
+### Fix
+
+* extend hyperlink parser (b6113d19c427)
+
 ## v0.9.2
 
 ## v0.9.1
