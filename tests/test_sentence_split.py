@@ -242,3 +242,20 @@ def test_split_word_quotation_highnumber():
     splitted = german.split_words(VALID_SENTENCE)
     assert splitted[0] == konrad.Mark.QUOTATION_MARK_DOUBLE_OPEN
     assert splitted[-1] == '16'
+
+
+ROMAN_NUMBERS = """\
+Im Jahre 872 soll nach Schweickhadt, Ritter von Sickingen, die heutige
+Pfarrkirche erbaut worden sein, hierfür gibt es aber weder Beweise durch
+Inschriften noch durch schriftliche Quellen, 1036 wurde die Siedlung
+durch König Konrad II. zum Markt erhoben, 1136 wurde das Münzrecht
+verliehen und 1139 von Papst Innozenz II. bestätigt. Die erste
+urkundliche Erwähnung geht auf das Jahr 1094 zurück wo Neunkirchen als
+„Niuwenchirgun“, als „Neue Kirche“, bezeichnet wird (vgl. BOUS (1933),
+S. 3 ff). Hier spricht Helm?
+"""
+
+
+def test_split_roman_numbers():
+    splitted = german.split_sentences(ROMAN_NUMBERS)
+    assert len(splitted) == 3

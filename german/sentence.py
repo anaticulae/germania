@@ -44,6 +44,8 @@ def split_sentences(text: str) -> Sentences:  # pylint:disable=R1260,R0912
                 continue
             if token in SHORTCUTS:
                 continue
+            if utila.isroman(token[:-1]):
+                continue
             if token[:-1].isnumeric():
                 # 1.; 13.
                 continue
