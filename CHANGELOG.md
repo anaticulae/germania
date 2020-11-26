@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.11.1
+
+### Fix
+
+* support single number (2330f7d31315)
+
 ## v0.11.0
 
 ### Feature
