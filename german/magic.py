@@ -60,8 +60,6 @@ def wordtypes(item: str) -> WordTypes:
             return {item}
         return {WordType.UNDEFINED}
     result = {item}
-    if isinstance(item, konrad.Mark):
-        return {WordType.MARK}
     if utila.isnumber(item):
         result.add(WordType.NUMBER)
     if isyear(item):
