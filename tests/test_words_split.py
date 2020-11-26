@@ -65,3 +65,18 @@ def test_words_simple_split():
     assert len(fourth) == 22
     assert len(fifth) == 27
     assert len(sixth) == 39
+
+
+SINGLE_NUMBER = """\
+Besuchsfrequenz Neunkirchen gesamt Betrachtet man die Besuchsfrequenz
+für gesamt Neunkirchen so zeigen sich nur geringste Unterschiede im
+Prozentbereich bei den beiden Geschlechtern (siehe Abb. 5 und 6) –
+insgesamt gesehen wird Neunkirchen somit von Männern wie Frauen in
+äußerst ähnlicher Häufigkeit besucht.
+"""
+
+
+def test_parse_single_number():
+    splitted = german.split_words(SINGLE_NUMBER)
+    assert '5' in splitted
+    assert '6' in splitted

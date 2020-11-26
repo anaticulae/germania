@@ -42,7 +42,7 @@ def test_split():
     assert len(second) == 35, second
 
     third = german.split_words(sentences[2])
-    assert len(third) == 30, third
+    assert len(third) == 31, third
 
     fourth = german.split_words(sentences[3])
     assert len(fourth) == 28, fourth
@@ -56,7 +56,7 @@ def test_split():
 
 def test_words_fromstr():
     splitted = german.words_fromstr(EXAMPLE)
-    assert len(splitted) == 177, 'algo changed'  # Hint: Value is not correct.
+    assert len(splitted) == 178, 'algo changed'  # Hint: Value is not correct.
 
 
 MERGE_DIVISION = """\

@@ -26,15 +26,19 @@ def split_words(  # pylint:disable=R1260,R0912
         # Ensure to parse complete sentences.
         return None
     items = items.replace('\n', ' ')
-
     items = items.replace(' z. B. ', ' z.B. ')
-
     result = []
     current = []
     for index, token in enumerate(items):
         if token == ' ':  # nosec
-            if len(current) == 1 and not utila.isnumber(current[0]):
-                continue
+            if len(current) == 1:
+                if utila.isnumber(current[0]):
+                    # number and space '5 '
+                    result.append(current[0])
+                    current = []
+                    continue
+                else:
+                    continue
             elif len(current) < 2:
                 continue
             result.append(''.join(current))
