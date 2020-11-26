@@ -51,7 +51,14 @@ def split_words(  # pylint:disable=R1260,R0912
                 if dot_pattern(current, token):
                     current.append(token)
                     continue
-                if special == konrad.Mark.FULLSTOP:
+                if number_bracket_pattern(current, token):
+                    result.append(''.join(current))
+                    result.append(special)
+                    current = []
+                    # current.append(token)
+                    continue
+                if dotable_shortcut_pattern(current, token):
+                    current.append(token)  # TODO: REPLACE WITH SINGLE DOT
                     if index != (len(items) - 1):
                         continue
                 if len(current) >= 2:
@@ -68,8 +75,15 @@ def split_words(  # pylint:disable=R1260,R0912
 
 
 def dot_pattern(current, token):
+    """\
+    >>> dot_pattern(['1'], ')')
+    False
+    """
     # W.D.
     if len(current) == 1:
+        if current[0].isnumeric():
+            # 1)
+            return False
         if current[0] not in (')', ']'):
             return True
     if len(current) == 3 and token == '.' and current[1] == '.':  # nosec
@@ -78,6 +92,26 @@ def dot_pattern(current, token):
             return False
         return True
     return False
+
+
+def number_bracket_pattern(current, token) -> bool:
+    """\
+    >>> number_bracket_pattern(['1', '2', '3'], ')')
+    True
+    """
+    current = ''.join(current).lower()
+    if not current.isnumeric():
+        return False
+    if token in '])}':
+        return True
+    return False
+
+
+def dotable_shortcut_pattern(current, token) -> bool:
+    if token != '.':
+        return False
+    current = ''.join(current).lower() + token
+    return current in konrad.ABBREVIATION_LOWER
 
 
 def contain_quotation_marks(items) -> True:
