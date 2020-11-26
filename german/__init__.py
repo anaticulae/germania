@@ -23,7 +23,9 @@ from german.language import determine as lang
 from german.language import iseng
 from german.language import isger
 from german.magic import WordType
+from german.magic import WordTypes
 from german.magic import wordtype
+from german.magic import wordtypes
 from german.pattern import matched
 from german.pattern.author import authors
 from german.pattern.date import dates

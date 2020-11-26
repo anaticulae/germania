@@ -9,17 +9,22 @@
 
 import enum
 import os
+import typing
 
 import konrad
 import utila
 
 
 class WordType(enum.Enum):
+    MARK = enum.auto()
     NAME = enum.auto()
+    NUMBER = enum.auto()
     PRESS = enum.auto()
     YEAR = enum.auto()
-    MARK = enum.auto()
     UNDEFINED = enum.auto()
+
+
+WordTypes = typing.List[WordType]
 
 
 def wordtype(item: str) -> WordType:
@@ -41,6 +46,31 @@ def wordtype(item: str) -> WordType:
     if isyear(item):
         return WordType.YEAR
     return WordType.UNDEFINED
+
+
+def wordtypes(item: str) -> WordTypes:
+    """\
+    >>> wordtypes('1996')
+    {<WordType.NUMBER: 3>, <WordType.YEAR: 5>, '1996'}
+    """
+    try:
+        item = item.lower()
+    except AttributeError:
+        if isinstance(item, konrad.Mark):
+            return {item}
+        return {WordType.UNDEFINED}
+    result = {item}
+    if isinstance(item, konrad.Mark):
+        return {WordType.MARK}
+    if utila.isnumber(item):
+        result.add(WordType.NUMBER)
+    if isyear(item):
+        result.add(WordType.YEAR)
+    if isname(item):
+        result.add(WordType.NAME)
+    if ispress(item):
+        result.add(WordType.PRESS)
+    return result
 
 
 def isyear(item: str) -> bool:
