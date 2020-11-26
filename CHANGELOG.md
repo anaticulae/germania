@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.11.2
+
+### Fix
+
+* improve numbers parser (91a0d5724a37)
+
 ## v0.11.1
 
 ### Fix
