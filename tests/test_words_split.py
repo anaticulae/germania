@@ -17,6 +17,23 @@ Handelsroute von Wien über den Semmering via Graz nach Triest gelegen
 wurde die Stadt von je her von Handel und Verkehr geprägt (siehe Abb. 1).
 """
 
+SIMPLE = """\
+Abbildungen 18 und 19 zeigen die Art der Anreise in der Innenstadt nach
+Geschlechtern differenziert. Die Unterschiede erweisen sich bei den
+Anteilen des KFZ und der Fußläufigkeit als relativ hoch, öffentlicher
+Verkehr und Fahrrad sind auf einem ähnlichen Niveau.
+
+Abb. 20 und 21 zeigen die Art der Anreise im Panoramapark nach
+Geschlechtern differenziert. Der Anteil der KFZ-Benutzer ist annähernd
+gleich, die Anteile bei Fahrrad und Fußgänger jedoch sind komplementär
+zu einander. So ist der hohe KFZ-Anteil ein Zeichen dafür, dass die
+Erreichbarkeit mit dem Auto sehr gut ist und auch große
+Gratisstellplätze vorhanden sind. Der hohe Anteil an Fahrradfahrern bei
+den Männern wiederum zeugt von der guten Anbindung an das (weiter
+wachsende) Radwegenetz, der hohe Fußgängerwert bei den Frauen kann als
+eine Folge der guten innerstädtischen Lage verstanden werden.
+"""
+
 
 def test_words_split():
     splitted = german.split_words(SENTENCE)
@@ -32,3 +49,19 @@ def test_words_split():
     ]
     current = splitted[-8:]
     assert current == expected
+
+
+def test_words_simple_split():
+    first, second, third, fourth, fifth, sixth = german.split_sentences(SIMPLE)  # pylint:disable=W0632
+    first = german.split_words(first)
+    second = german.split_words(second)
+    third = german.split_words(third)
+    fourth = german.split_words(fourth)
+    fifth = german.split_words(fifth)
+    sixth = german.split_words(sixth)
+    assert len(first) == 16
+    assert len(second) == 26
+    assert len(third) == 15
+    assert len(fourth) == 22
+    assert len(fifth) == 27
+    assert len(sixth) == 39
