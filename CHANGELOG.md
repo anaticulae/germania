@@ -2,6 +2,14 @@
 
 Every noteable change is logged here.
 
+## v0.11.0
+
+### Feature
+
+* add method to match sequences in text (8242eef64d7c)
+* add method to extract multiple token types (acd6acfd928a)
+* extend words splitter (8f0bb57200de)
+
 ## v0.10.0
 
 ### Feature
