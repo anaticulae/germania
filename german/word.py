@@ -68,6 +68,12 @@ def split_words(  # pylint:disable=R1260,R0912
                 if len(current) >= 2:
                     result.append(''.join(current))
                     current = []
+                if len(current) == 1 and utila.isnumber(current[0]):
+                    # Number SpecialChar 4. 2,
+                    result.append(current[0])
+                    result.append(special)
+                    current = []
+                    continue
                 # append ), ], 3., etc.
                 result.append(special)
     if current:
@@ -75,7 +81,31 @@ def split_words(  # pylint:disable=R1260,R0912
             result.append(''.join(current))
             current = []
     assert not current or validate_sentences, current
+    result = merge_numbers(result, items)
     return result
+
+
+def merge_numbers(result, source) -> list:
+    """\
+    >>> merge_numbers(['Ich', '134', konrad.Mark.FULLSTOP, '456', 'kg'], 'Ich 134.456 kg')
+    ['Ich', '134.456', 'kg']
+    """
+    if len(result) <= 2:
+        return result
+    merged = result[:2]
+    for item in result[2:]:
+        if not utila.isnumber(item):
+            merged.append(item)
+            continue
+        if merged[-1] == konrad.Mark.FULLSTOP and utila.isnumber(merged[-2]):
+            together = f'{merged[-2]}.{item}'
+            if together not in source:
+                merged.append(item)
+            else:
+                merged = merged[:-2] + [together]
+        else:
+            merged.append(item)
+    return merged
 
 
 def dot_pattern(current, token):

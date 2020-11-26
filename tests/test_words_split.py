@@ -80,3 +80,23 @@ def test_parse_single_number():
     splitted = german.split_words(SINGLE_NUMBER)
     assert '5' in splitted
     assert '6' in splitted
+
+
+FOUR_DOT_ZERO = """\
+„Digitalisierung und Industrie 4.0 im Mittelstand – Gestaltungsmöglich
+- keiten der digitalen Infrastruktur entlang der Wertschöpfungskette”.
+"""
+
+
+def test_parse_four_dot_zero():
+    splitted = german.split_words(FOUR_DOT_ZERO)
+    assert '4.0' in splitted
+
+
+FLOAT_NUMBER = 'Ich hätte gerne 134.456 kg Mett. Dazu etwas Schinken bitte.'
+
+
+def test_parse_float_number():
+    first = german.split_sentences(FLOAT_NUMBER)[0]
+    splitted = german.split_words(first)
+    assert '134.456' in splitted
