@@ -12,7 +12,7 @@ import typing
 import konrad
 import utila
 
-import german.sentence
+import german
 
 Words = typing.List[str]
 
@@ -22,7 +22,7 @@ def split_words(  # pylint:disable=R1260,R0912
         validate_sentences: bool = True,
         lang: konrad.Language = None,
 ) -> Words:
-    if validate_sentences and not german.sentence.is_sentence(items):
+    if validate_sentences and not german.is_sentence(items):
         # Ensure to parse complete sentences.
         return None
     items = items.replace('\n', ' ')

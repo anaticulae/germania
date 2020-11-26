@@ -12,12 +12,12 @@ import contextlib
 import konrad
 import konrad.mark
 
-import german.word
+import german
 
 
 def extract_quotes(items: str, lang=konrad.GERMAN) -> list:  # pylint:disable=W0613
     assert isinstance(items, str), type(items)
-    tokens = german.word.split_words(items, validate_sentences=False)
+    tokens = german.split_words(items, validate_sentences=False)
     result = []
 
     doubled = parse_quotation(tokens)

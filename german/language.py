@@ -21,7 +21,7 @@ import collections
 import konrad
 import utila
 
-import german.word
+import german
 
 LanguageResult = collections.namedtuple(
     'LanguageResult',
@@ -31,7 +31,7 @@ LanguageResult = collections.namedtuple(
 
 def determine(text: str) -> LanguageResult:
     if isinstance(text, str):
-        token = german.word.split_words(text, validate_sentences=False)
+        token = german.split_words(text, validate_sentences=False)
     else:
         token = text
     # remove signs etc.

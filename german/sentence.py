@@ -98,7 +98,6 @@ def is_sentence(sentence: str, min_length: int = 4):
     length = len(sentence)
     dotcount = sentence.count('.')
     percent_sentence = sentence.count('.') / length if length else 0.0
-
     if dotcount >= 3 and percent_sentence > 0.04:  # TODO: HOLY VALUE
         # sentence contains too much dots, maybe a toc line
         return False
