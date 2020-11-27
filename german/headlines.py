@@ -29,6 +29,8 @@ def isheadline(token: str) -> bool:
     True
     >>> isheadline('    erklärung ')
     True
+    >>> isheadline('Vorteile einer Steuererklärung')
+    False
     """
     token = token.strip()
     token = token.title()
