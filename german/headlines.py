@@ -8,12 +8,12 @@
 # =============================================================================
 
 HEADLINES = {
-    'Einleitung',
     'Anhang',
     'Anhangsverzeichnis',
     'Bibliografie',
     'Eidesstattliche Erklärung',
     'Eidesstattliche Versicherung',
+    'Einleitung',
     'Erklärung',
     'Internetquellen',
     'Literaturverzeichnis',
