@@ -9,6 +9,7 @@
 
 import enum
 import os
+import re
 import typing
 
 import konrad
@@ -21,13 +22,14 @@ class WordType(enum.Enum):
     NUMBER = enum.auto()
     PRESS = enum.auto()
     YEAR = enum.auto()
+    REFERENCE = enum.auto()
     UNDEFINED = enum.auto()
 
 
 WordTypes = typing.List[WordType]
 
 
-def wordtype(item: str) -> WordType:
+def wordtype(item: str) -> WordType:  # pylint:disable=R0911
     """\
     >>> wordtype('1995').name
     'YEAR'
@@ -39,6 +41,8 @@ def wordtype(item: str) -> WordType:
             return WordType.MARK
         return WordType.UNDEFINED
     item = item.lower()
+    if isreference(item):
+        return WordType.REFERENCE
     if isname(item):
         return WordType.NAME
     if ispress(item):
@@ -62,6 +66,8 @@ def wordtypes(item: str) -> WordTypes:
     result = {item}
     if utila.isnumber(item):
         result.add(WordType.NUMBER)
+    if isreference(item):
+        result.add(WordType.REFERENCE)
     if isyear(item):
         result.add(WordType.YEAR)
     if isname(item):
@@ -69,6 +75,26 @@ def wordtypes(item: str) -> WordTypes:
     if ispress(item):
         result.add(WordType.PRESS)
     return result
+
+
+REFERENCE = re.compile(r'(\d+\.?)+')
+
+
+def isreference(item: str) -> bool:
+    """\
+    >>> isreference('3.2.1.')
+    True
+    >>> isreference('1.')
+    True
+    >>> isreference('5.1')
+    True
+    >>> isreference('1')
+    False
+    """
+    item = str(item)
+    if item.isnumeric():
+        return False
+    return REFERENCE.match(item) is not None
 
 
 def isyear(item: str) -> bool:
