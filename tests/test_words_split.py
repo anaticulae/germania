@@ -100,3 +100,16 @@ def test_parse_float_number():
     first = german.split_sentences(FLOAT_NUMBER)[0]
     splitted = german.split_words(first)
     assert '134.456' in splitted
+
+
+POINT_3_DOT_2_DOT = """\
+Als Erhebungsmethode wurde die persönliche Befragung vor Ort mit Hilfe
+eines standardisierten Fragebogens (siehe Punkt 3.2.: Fragebogen, Abb. 3
+und Abb. 4) an folgenden Wochentagen ausgewählt: Dienstag, Freitag,
+Samstag im Zeitraum von Mai bis Juli 2017.
+"""
+
+
+def test_parse_3dot_2dot():
+    sentences = german.split_sentences(POINT_3_DOT_2_DOT)
+    assert len(sentences) == 2

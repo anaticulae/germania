@@ -74,7 +74,37 @@ def split_sentences(text: str) -> Sentences:  # pylint:disable=R1260,R0912
                 current = []
     if current:
         result.append(' '.join(current))
+    result = merge_unbalanced(result)
     return result
+
+
+def merge_unbalanced(sentences: list) -> list:
+    if not sentences:
+        return sentences
+    result = [sentences[0]]
+    for before, sentence in enumerate(sentences[1:]):
+        if not isunbalanced(sentence):
+            result.append(sentence)
+            continue
+        if isunbalanced(sentences[before]):
+            result.append(result.pop() + ' ' + sentence)
+        else:
+            result.append(sentence)
+    return result
+
+
+def isunbalanced(sentence) -> bool:
+    """\
+    >>> isunbalanced('I am ( unbalanced')
+    True
+    >>> isunbalanced('I am not ( unbalanced )')
+    False
+    """
+    pair = (('(', ')'), ('[', ']'))
+    for start, close in pair:
+        if sentence.count(start) != sentence.count(close):
+            return True
+    return False
 
 
 def open_quotation_mark(tokens):
