@@ -2,6 +2,14 @@
 
 Every noteable change is logged here.
 
+## v0.11.3
+
+### Feature
+
+* merge references together (69465a77bf43)
+* add reference type detector (528c9df8be1f)
+* merge unbalanced sentences together (79e715db10ee)
+
 ## v0.11.2
 
 ### Fix
