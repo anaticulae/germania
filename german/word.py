@@ -47,6 +47,7 @@ def split_words(
             current = []
     assert not current or validate_sentences, current
     result = merge_numbers(result, items)
+    result = merge_reference(result, items)
     return result
 
 
@@ -107,6 +108,32 @@ def merge_numbers(result, source) -> list:
                 merged.append(item)
             else:
                 merged = merged[:-2] + [together]
+        else:
+            merged.append(item)
+    return merged
+
+
+def merge_reference(result, source) -> list:
+    """\
+    >>> merge_reference(['Punkt', '3.2', konrad.Mark.FULLSTOP, 'Helm'], 'Punkt 3.2. Helm')
+    ['Punkt', '3.2.', 'Helm']
+    """
+    if len(result) <= 1:
+        return result
+    merged = result[:1]
+    for item in result[1:]:
+        if item != konrad.Mark.FULLSTOP and not utila.isnumber(item):
+            merged.append(item)
+            continue
+        if not german.isreference(merged[-1]):
+            merged.append(item)
+            continue
+        if item == konrad.Mark.FULLSTOP:
+            together = f'{merged[-1]}.'
+        else:
+            together = f'{merged[-1]}{item}'
+        if together in source:
+            merged[-1] = together
         else:
             merged.append(item)
     return merged

@@ -105,11 +105,16 @@ def test_parse_float_number():
 POINT_3_DOT_2_DOT = """\
 Als Erhebungsmethode wurde die persönliche Befragung vor Ort mit Hilfe
 eines standardisierten Fragebogens (siehe Punkt 3.2.: Fragebogen, Abb. 3
-und Abb. 4) an folgenden Wochentagen ausgewählt: Dienstag, Freitag,
-Samstag im Zeitraum von Mai bis Juli 2017.
+und Abb. 4) Punkt 6.4.1.3 an folgenden Wochentagen ausgewählt: Dienstag,
+Freitag, Samstag im Zeitraum von Mai bis Juli 2017.
 """
 
 
 def test_parse_3dot_2dot():
     sentences = german.split_sentences(POINT_3_DOT_2_DOT)
     assert len(sentences) == 2
+
+    first_words = german.split_words(sentences[0])
+    assert '3.2.' in first_words
+    print(first_words)
+    assert '6.4.1.3' in first_words
