@@ -29,18 +29,18 @@ def split_words(
     items = items.replace(' z. B. ', ' z.B. ')
     result = []
     current = []
-    for index, token in enumerate(items):
-        if token == ' ':  # nosec
+    for index, char in enumerate(items):
+        if char == ' ':
             handle_whitespace(result, current)
             continue
         else:
             try:
-                special = konrad.matches(token, lang=lang)
+                special = konrad.matches(char, lang=lang)
             except KeyError:
                 # append normal text char or number
-                current.append(token)
+                current.append(char)
             else:
-                handle_token(result, items, current, index, token, special)
+                handle_token(result, items, current, index, char, special)
     if current:
         if items[-1] in konrad.SIGN or not validate_sentences:
             result.append(''.join(current))
@@ -112,7 +112,7 @@ def merge_numbers(result, source) -> list:
     return merged
 
 
-def dot_pattern(current, token) -> bool:
+def dot_pattern(current, char) -> bool:
     """\
     >>> dot_pattern(['1'], ')')
     False
@@ -124,7 +124,7 @@ def dot_pattern(current, token) -> bool:
             return False
         if current[0] not in (')', ']'):
             return True
-    if len(current) == 3 and token == '.' and current[1] == '.':  # nosec
+    if len(current) == 3 and char == '.' and current[1] == '.':
         if utila.isnumber(current[0]) and utila.isnumber(current[2]):
             # 3.2
             return False
@@ -132,7 +132,7 @@ def dot_pattern(current, token) -> bool:
     return False
 
 
-def number_bracket_pattern(current, token) -> bool:
+def number_bracket_pattern(current, char) -> bool:
     """\
     >>> number_bracket_pattern(['1', '2', '3'], ')')
     True
@@ -140,15 +140,15 @@ def number_bracket_pattern(current, token) -> bool:
     current = ''.join(current).lower()
     if not current.isnumeric():
         return False
-    if token in '])}':
+    if char in '])}':
         return True
     return False
 
 
-def dotable_shortcut_pattern(current, token) -> bool:
-    if token != '.':
+def dotable_shortcut_pattern(current, char) -> bool:
+    if char != '.':
         return False
-    current = ''.join(current).lower() + token
+    current = ''.join(current).lower() + char
     return current in konrad.ABBREVIATION_LOWER
 
 
