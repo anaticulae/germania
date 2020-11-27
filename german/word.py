@@ -17,7 +17,7 @@ import german
 Words = typing.List[str]
 
 
-def split_words(  # pylint:disable=R1260,R0912
+def split_words(
         items: str,
         validate_sentences: bool = True,
         lang: konrad.Language = None,
@@ -31,18 +31,7 @@ def split_words(  # pylint:disable=R1260,R0912
     current = []
     for index, token in enumerate(items):
         if token == ' ':  # nosec
-            if len(current) == 1:
-                if utila.isnumber(current[0]):
-                    # number and space '5 '
-                    result.append(current[0])
-                    current = []
-                    continue
-                else:
-                    continue
-            elif len(current) < 2:
-                continue
-            result.append(''.join(current))
-            current = []
+            handle_whitespace(result, current)
             continue
         else:
             try:
@@ -51,31 +40,7 @@ def split_words(  # pylint:disable=R1260,R0912
                 # append normal text char or number
                 current.append(token)
             else:
-                # evaluate sentence sign
-                if dot_pattern(current, token):
-                    current.append(token)
-                    continue
-                if number_bracket_pattern(current, token):
-                    result.append(''.join(current))
-                    result.append(special)
-                    current = []
-                    # current.append(token)
-                    continue
-                if dotable_shortcut_pattern(current, token):
-                    current.append(token)  # TODO: REPLACE WITH SINGLE DOT
-                    if index != (len(items) - 1):
-                        continue
-                if len(current) >= 2:
-                    result.append(''.join(current))
-                    current = []
-                if len(current) == 1 and utila.isnumber(current[0]):
-                    # Number SpecialChar 4. 2,
-                    result.append(current[0])
-                    result.append(special)
-                    current = []
-                    continue
-                # append ), ], 3., etc.
-                result.append(special)
+                handle_token(result, items, current, index, token, special)
     if current:
         if items[-1] in konrad.SIGN or not validate_sentences:
             result.append(''.join(current))
@@ -83,6 +48,45 @@ def split_words(  # pylint:disable=R1260,R0912
     assert not current or validate_sentences, current
     result = merge_numbers(result, items)
     return result
+
+
+def handle_whitespace(result, current):
+    if len(current) == 1:
+        if utila.isnumber(current[0]):
+            # number and space '5 '
+            result.append(current[0])
+            current.clear()
+    elif len(current) >= 2:
+        result.append(''.join(current))
+        current.clear()
+
+
+def handle_token(result, items, current, index, token, special):
+    # evaluate sentence sign
+    if dot_pattern(current, token):
+        current.append(token)
+        return
+    if number_bracket_pattern(current, token):
+        result.append(''.join(current))
+        result.append(special)
+        current.clear()
+        # current.append(token)
+        return
+    if dotable_shortcut_pattern(current, token):
+        current.append(token)  # TODO: REPLACE WITH SINGLE DOT
+        if index != (len(items) - 1):
+            return
+    if len(current) >= 2:
+        result.append(''.join(current))
+        current.clear()
+    if len(current) == 1 and utila.isnumber(current[0]):
+        # Number SpecialChar 4. 2,
+        result.append(current[0])
+        result.append(special)
+        current.clear()
+        return
+    # append ), ], 3., etc.
+    result.append(special)
 
 
 def merge_numbers(result, source) -> list:
@@ -108,7 +112,7 @@ def merge_numbers(result, source) -> list:
     return merged
 
 
-def dot_pattern(current, token):
+def dot_pattern(current, token) -> bool:
     """\
     >>> dot_pattern(['1'], ')')
     False
