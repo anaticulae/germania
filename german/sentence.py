@@ -29,7 +29,6 @@ def split_sentences(text: str) -> Sentences:  # pylint:disable=R1260,R0912
     result = []
     current = []
     for word in split_token(text):
-        print(word)
         current.append(word)
         word = word.lower()  # make approach more robust
         lastchar = word[-1]
