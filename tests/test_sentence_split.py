@@ -259,3 +259,20 @@ S. 3 ff). Hier spricht Helm?
 def test_split_roman_numbers():
     splitted = german.split_sentences(ROMAN_NUMBERS)
     assert len(splitted) == 3
+
+
+TABLE = """\
+In beiden Durchgängen war der SAM-Arousal-Wert nach dem neutralen
+Versuchsblock geringer als in den Furcht- respektive E kel-Blöcken (s.
+Tab. 3). Zwischensubjekteffekte (Geschlecht, Versuchsleiter, Sequenz,
+Durchgang) ergaben keine signifikanten Unterschiede, weder einzeln noch
+in Interaktionen (p>,05).
+Tab. 3: Mittelwerte und Standardabweichungen für die Arousal-Werte des
+SAM im Vergleich zwischen den drei emotionalen Qualitäten (Neutral,
+Furcht und Ekel).
+"""
+
+
+def test_split_table_reference():
+    splitted = german.split_sentences(TABLE)
+    assert len(splitted) == 4
