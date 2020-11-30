@@ -12,7 +12,7 @@ import utila
 
 Sentences = utila.Strings
 
-SHORTCUTS = {'bspw.', 'tab.'}.union(konrad.ABBREVIATION_LOWER)
+SHORTCUTS = konrad.ABBREVIATION_LOWER
 
 
 def split_sentences(text: str) -> Sentences:  # pylint:disable=R1260,R0912
