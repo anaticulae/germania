@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.11.4
+
+### Feature
+
+* add and validate table shortcut splitting (9699477a3a59)
+
 ## v0.11.3
 
 ### Feature
