@@ -28,35 +28,36 @@ def split_sentences(text: str) -> Sentences:  # pylint:disable=R1260,R0912
     # TODO: MAKE ROBUST AGAINST WHITE SPACE
     result = []
     current = []
-    for token in split_token(text):
-        current.append(token)
-        token = token.lower()  # make approach more robust
-        lastchar = token[-1]
-        if (token == '“' or token.isnumeric()):  # nosec
+    for word in split_token(text):
+        print(word)
+        current.append(word)
+        word = word.lower()  # make approach more robust
+        lastchar = word[-1]
+        if (word == '“' or word.isnumeric()):
             if len(current) == 1 and result:
                 # merge close quotation and or number to sentence before
-                result[-1] = result[-1] + token
+                result[-1] = result[-1] + word
                 current.clear()
                 continue
         if lastchar == '.':
-            if len(token) == 2:
+            if len(word) == 2:
                 # W. G.
                 continue
-            if token in SHORTCUTS:
+            if word in SHORTCUTS:
                 continue
-            if utila.isroman(token[:-1]):
+            if utila.isroman(word[:-1]):
                 continue
-            if token[:-1].isnumeric():
+            if word[:-1].isnumeric():
                 # 1.; 13.
                 continue
-            if token.startswith('(') and not token.endswith(').'):
+            if word.startswith('(') and not word.endswith(').'):
                 # (z.B.), Phelps (2006).
                 continue
         if lastchar in konrad.SIGN:
-            if token.startswith('('):
+            if word.startswith('('):
                 # (2004b: 3) SKIP
                 # (2006).    NOSKIP
-                if token[-2] != ')':
+                if word[-2] != ')':
                     continue
             # if open_quotation_mark(current):
             # TODO: ENABLE LATER?
@@ -64,11 +65,11 @@ def split_sentences(text: str) -> Sentences:  # pylint:disable=R1260,R0912
             result.append(' '.join(current))
             current = []
         if lastchar in '’”“':  # TODO: LOOK DEEPER
-            if len(token) == 1:
+            if len(word) == 1:
                 # example: this is " a nice char
                 # perseve index error of following sign check.
                 pass
-            elif token[-2] in konrad.SIGN:
+            elif word[-2] in konrad.SIGN:
                 # to observe.” Dennoch
                 result.append(' '.join(current))
                 current = []
