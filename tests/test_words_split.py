@@ -116,5 +116,4 @@ def test_parse_3dot_2dot():
 
     first_words = german.split_words(sentences[0])
     assert '3.2.' in first_words
-    print(first_words)
     assert '6.4.1.3' in first_words
