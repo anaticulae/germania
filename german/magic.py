@@ -8,6 +8,7 @@
 # =============================================================================
 
 import enum
+import functools
 import os
 import re
 import typing
@@ -29,6 +30,7 @@ class WordType(enum.Enum):
 WordTypes = typing.List[WordType]
 
 
+@functools.lru_cache(maxsize=4096)
 def wordtype(item: str) -> WordType:  # pylint:disable=R0911
     """\
     >>> wordtype('1995').name
@@ -52,6 +54,7 @@ def wordtype(item: str) -> WordType:  # pylint:disable=R0911
     return WordType.UNDEFINED
 
 
+@functools.lru_cache(maxsize=4096)
 def wordtypes(item: str) -> WordTypes:
     """\
     >>> wordtypes('1996')
