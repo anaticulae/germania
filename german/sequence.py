@@ -53,6 +53,9 @@ def searches(
         lowercase: bool = True,
         tokens_complex: bool = True,
 ) -> list:
+    # prepare here to avoid preparing for every tokens
+    if isinstance(sentence, str):
+        sentence = german.split_words(sentence, validate_sentences=False)
     result = []
     for tokens in tokenslist:
         matches = search(tokens, sentence, lowercase, tokens_complex)
