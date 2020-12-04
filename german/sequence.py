@@ -8,6 +8,7 @@
 # =============================================================================
 
 import contextlib
+import operator
 import typing
 
 import utila
@@ -42,8 +43,8 @@ def search(
         if not _match(tokens, selected, tokens_complex):
             continue
         result.append((start, start + tokens_length))
-    # improve result
-    result = utila.make_unique(result)
+    # Sort findings and remove smaller patterns inside bigger ones
+    result = simplify(result)
     return result
 
 
@@ -82,3 +83,22 @@ def _match(chunk: list, expected: list, token_complex) -> bool:
             if item not in item_expected:
                 return False
     return True
+
+
+def simplify(items: list) -> list:
+    """\
+    >>> simplify([(15, 20), (15, 25), (14, 15), (1, 3)])
+    [(1, 3), (14, 15), (15, 20), (15, 25)]
+    >>> simplify([(5, 8), (3, 9)])
+    [(3, 9)]
+    """
+    if not items:
+        return []
+    items = sorted(items, key=operator.itemgetter(0, 1))
+    result = [items[0]]
+    for item in items[1:]:
+        start, end = result[-1]
+        if start <= item[0] <= item[1] <= end:
+            continue
+        result.append(item)
+    return result
