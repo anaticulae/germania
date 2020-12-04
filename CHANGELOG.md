@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.12.0
+
+### Feature
+
+* reduce overlapping findings (792ea2aaaca2)
+* use cache to improve word type determination (2c2a7dece6d7)
+
 ## v0.11.5
 
 ## v0.11.4
