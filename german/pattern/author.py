@@ -7,25 +7,102 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import re
 
-import utila
-
-
-def authors(raw: str) -> list:
+def authors(raw: str):
     """\
-    >>> authors('PEREIRA, M.G., VOLCHAN, E., SOUZA, G. G. DE, OLIVEIRA, L.,'
-    ... 'CAMPAGNOLI, R. R., PINHEIRO, W. M., & PESSOA, L. ')
-    ['PEREIRA, M.G.', 'VOLCHAN, E.', 'SOUZA, G. G. DE', 'OLIVEIRA, L.', 'CAMPAGNOLI, R. R.', 'PINHEIRO, W. M.', 'PESSOA, L.']
+    >>> authors('Becker, W.; Ulrich, P.; Botzkowski, T.; Eurich, S.')
+    [['Becker', 'W.'], ['Ulrich', 'P.'], ['Botzkowski', 'T.'], ['Eurich', 'S.']]
+    >>> authors('AASLID, R. - BRUBAKK, AO.')
+    [['AASLID', 'R.'], ['BRUBAKK', 'AO.']]
+    >>> authors('Beirness, D. and Vogel-Sprott, M.')
+    [['Beirness', 'D.'], ['Vogel-Sprott', 'M.']]
+    >>> authors('KUNCZIK, Michael/ZIPFEL, Astrid')
+    [['KUNCZIK', 'Michael'], ['ZIPFEL', 'Astrid']]
+    >>> authors('BOBEK H., FESL M.')
+    [['BOBEK', 'H.'], ['FESL', 'M.']]
     """
-    pattern = r"""
-        [a-zA-Z]{4,}\,
-        [ ]{0,2}
-        ([a-zA-Z]\.[ ]{0,2}){1,3}
-        [ ]{0,2}
-        (DE)?
+    free = freeand(raw)
+    semicolon = simple(raw)
+    hyphen = simple(raw, extern='-', intern=',')
+    slash = simple(raw, extern='/', intern=',')
+    comma = simple(raw, extern=',', intern=' ')
+
+    result = [free, semicolon, hyphen, slash, comma]
+    balanced = [balance(item) for item in result]
+    max_balance = maxindex(balanced)
+    return result[max_balance]
+
+
+def simple(raw: str, extern: str = ';', intern: str = ','):
+    """\
+    >>> simple('Becker, W.; Ulrich, P.')
+    [['Becker', 'W.'], ['Ulrich', 'P.']]
     """
     result = []
-    for item in re.finditer(pattern, raw, re.VERBOSE):
-        result.append(utila.extract_match(item).strip())
+    for item in raw.split(extern):
+        result.append([it.strip() for it in item.split(intern) if it.strip()])
     return result
+
+
+def freeand(raw: str):
+    """\
+    >>> freeand('Beirness, D. & Vogel-Sprott, M.')
+    [['Beirness', 'D.'], ['Vogel-Sprott', 'M.']]
+    """
+    extracted = []
+    try:
+        # TODO: SOLVE `AND` PROBLEM ON OTHER PLACE?
+        left, right = raw.split(' and ') if ' and ' in raw else raw.split('&')
+        extracted.extend(left.split(','))
+        extracted.extend(right.split(','))
+    except ValueError:
+        extracted.extend(raw.split(','))
+    if not extracted:
+        return None
+    result = [[extracted[0]]]
+    for item in extracted[1:]:
+        item = item.strip()
+        if not item:
+            continue
+        if len(result[-1]) == 1:
+            result[-1].append(item)
+        else:
+            result.append([item])
+    return result
+
+
+def balance(parsed_authors):
+    if not parsed_authors:
+        return None
+    common = [valid_author(author) for author in parsed_authors]
+    valid = len([item for item in common if item])
+    ratio = valid / len(common)
+    return ratio, len(common)
+
+
+def valid_author(author):
+    if len(author) != 2:
+        return False
+    for item in author:
+        if ';' in item:
+            return False
+        if ',' in item:
+            return False
+        if '/' in item:
+            return False
+    return True
+
+
+def maxindex(items):
+    if not items:
+        return None
+    current = 0
+    for index, (value, count) in enumerate(items[1:], start=1):
+        best = items[current][0]
+        if value > best:
+            current = index
+        elif value == best:
+            # equal values, use count as tie braker
+            if count > items[current][1]:
+                current = index
+    return current
