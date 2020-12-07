@@ -24,7 +24,10 @@ from german.language import iseng
 from german.language import isger
 from german.magic import WordType
 from german.magic import WordTypes
+from german.magic import isperson
+from german.magic import ispress
 from german.magic import isreference
+from german.magic import isyear
 from german.magic import wordtype
 from german.magic import wordtypes
 from german.pattern import matched
