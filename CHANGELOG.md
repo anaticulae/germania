@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.13.0
+
+### Feature
+
+* extend names list (9527bb3c705c)
+* add method to parse and decide if item is author (adc2c5f6c53d)
+* use extended author from detector package (62a1484c864d)
+* extend public API (f1ae79d5cc9d)
+* clarify method name (aeb3679a0aaa)
+
 ## v0.12.1
 
 ## v0.12.0
