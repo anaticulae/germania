@@ -25,10 +25,9 @@ Norm DIN 55350-11 2008. Begriffe zum Qualitätsmanagement
 
 Norm ISO 11898 2003. Road vehicles - Controller area network(CAN)
 
-
 """.split('\n\n')
 
-EXPECTED = [german.WordType.NAME, konrad.Mark.COLON, german.WordType.YEAR]
+EXPECTED = [german.WordType.PERSON, konrad.Mark.COLON, german.WordType.YEAR]
 
 
 def test_pattern_matched():

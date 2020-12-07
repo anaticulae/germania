@@ -19,7 +19,7 @@ import utila
 
 class WordType(enum.Enum):
     MARK = enum.auto()
-    NAME = enum.auto()
+    PERSON = enum.auto()
     NUMBER = enum.auto()
     PRESS = enum.auto()
     YEAR = enum.auto()
@@ -45,8 +45,8 @@ def wordtype(item: str) -> WordType:  # pylint:disable=R0911
     item = item.lower()
     if isreference(item):
         return WordType.REFERENCE
-    if isname(item):
-        return WordType.NAME
+    if isperson(item):
+        return WordType.PERSON
     if ispress(item):
         return WordType.PRESS
     if isyear(item):
@@ -73,8 +73,8 @@ def wordtypes(item: str) -> WordTypes:
         result.add(WordType.REFERENCE)
     if isyear(item):
         result.add(WordType.YEAR)
-    if isname(item):
-        result.add(WordType.NAME)
+    if isperson(item):
+        result.add(WordType.PERSON)
     if ispress(item):
         result.add(WordType.PRESS)
     return result
@@ -112,9 +112,9 @@ def isyear(item: str) -> bool:
     return 1900 <= item <= 2030
 
 
-def isname(item) -> bool:
+def isperson(item) -> bool:
     """\
-    >>> isname('Olsen')
+    >>> isperson('Olsen')
     True
     """
     return item.lower() in NAMES
