@@ -7,6 +7,11 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import iamraw
+import utila
+
+import german
+
 
 def authors(raw: str):
     """\
@@ -31,6 +36,13 @@ def authors(raw: str):
     balanced = [balance(item) for item in result]
     max_balance = maxindex(balanced)
     return result[max_balance]
+
+
+def authors_decide(parsed: list) -> iamraw.Persons:
+    result = []
+    for author in parsed:
+        result.append(judge(author))
+    return result
 
 
 def simple(raw: str, extern: str = ';', intern: str = ','):
@@ -68,6 +80,23 @@ def freeand(raw: str):
             result[-1].append(item)
         else:
             result.append([item])
+    return result
+
+
+def judge(parsed: list):
+    if len(parsed) == 1:
+        return iamraw.NoPerson(raw=parsed[0])  # pylint:disable=E1101
+    raw = ' '.join(parsed)
+    person = any([german.isperson(name) for name in parsed])
+    if not person:
+        return iamraw.NoPerson(raw=raw)  # pylint:disable=E1101
+    name = utila.longest(parsed)
+    firstname = ' '.join([item for item in parsed if item != name])
+    result = iamraw.Person(
+        name=name,
+        firstname=firstname,
+        raw=raw,
+    )
     return result
 
 

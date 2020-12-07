@@ -33,6 +33,7 @@ from german.magic import wordtype
 from german.magic import wordtypes
 from german.pattern import matched
 from german.pattern.author import authors
+from german.pattern.author import authors_decide
 from german.pattern.date import dates
 from german.pattern.date import years
 from german.pattern.href import hyperlink

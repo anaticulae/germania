@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import iamraw
+
 import german
 
 
@@ -20,3 +22,10 @@ def test_comma_and():
            '& PESSOA, L. ')
     parsed = german.authors(raw)
     assert len(parsed) == 7
+
+
+def test_authors_decide():
+    raw = 'BOBEK H., FESL M.'
+    authors = german.authors(raw)
+    decided = german.authors_decide(authors)
+    assert all(isinstance(item, iamraw.Person) for item in decided)
