@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.13.2
+
+### Feature
+
+* add option to compare word type instead of word type and content (58124e3f6b9b)
+
 ## v0.13.1
 
 ### Feature
