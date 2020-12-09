@@ -167,7 +167,7 @@ def dot_pattern(current, char) -> bool:
         if current[0].isnumeric():
             # 1) # TODO: VERIFY THIS COMMENT
             return False
-        if current[0] not in (')', ']'):
+        if current[0] not in ')]':
             return True
     if len(current) == 3 and char == '.' and current[1] == '.':
         if utila.isnumber(current[0]) and utila.isnumber(current[2]):
