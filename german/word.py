@@ -165,7 +165,7 @@ def dot_pattern(current, char) -> bool:
     # W.D.
     if len(current) == 1:
         if current[0].isnumeric():
-            # 1)
+            # 1) # TODO: VERIFY THIS COMMENT
             return False
         if current[0] not in (')', ']'):
             return True
