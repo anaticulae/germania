@@ -34,3 +34,11 @@ def flatten(lists, append: bool = False) -> list:
 
 
 utila.flatten = flatten
+
+
+def notempty(items):
+    """Remove None, [] and '' out of `items`."""
+    return [item for item in items if item]
+
+
+utila.notempty = notempty
