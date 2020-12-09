@@ -17,6 +17,7 @@ sentences into words.
 import os
 
 import german.__iamraw__
+import german.__utils__
 from german.headlines import HEADLINES
 from german.headlines import isheadline
 from german.language import LanguageResult
