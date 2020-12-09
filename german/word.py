@@ -195,14 +195,20 @@ def dotable_shortcut_pattern(current, char) -> bool:
     return current in konrad.ABBREVIATION_LOWER
 
 
-def contain_quotation_marks(items) -> True:
-    for item in items:
-        if item in (
-                konrad.Mark.QUOTATION_MARK,
-                konrad.Mark.QUOTATION_MARK_DOUBLE_CLOSE,
-                konrad.Mark.QUOTATION_MARK_DOUBLE_OPEN,
-                konrad.Mark.QUOTATION_MARK_SINGLE_CLOSE,
-                konrad.Mark.QUOTATION_MARK_SINGLE_OPEN,
-        ):
-            return True
-    return False
+MARKS = (
+    konrad.Mark.QUOTATION_MARK,
+    konrad.Mark.QUOTATION_MARK_DOUBLE_CLOSE,
+    konrad.Mark.QUOTATION_MARK_DOUBLE_OPEN,
+    konrad.Mark.QUOTATION_MARK_SINGLE_CLOSE,
+    konrad.Mark.QUOTATION_MARK_SINGLE_OPEN,
+)
+
+
+def contain_quotation_marks(items) -> bool:
+    """\
+    >>> contain_quotation_marks(['Helm', 'Schelm', 1334, konrad.Mark.QUOTATION_MARK])
+    True
+    >>> contain_quotation_marks((123, 'Helm'))
+    False
+    """
+    return any(item in MARKS for item in items)
