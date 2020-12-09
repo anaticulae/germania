@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.13.1
+
+### Feature
+
+* split word number connections (30e6d7150bba)
+
 ## v0.13.0
 
 ### Feature
