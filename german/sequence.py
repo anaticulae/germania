@@ -19,9 +19,10 @@ import german
 def search(
         tokens: list,
         sentence: list,
+        *,
         lowercase: bool = True,
         tokens_complex: bool = True,
-        comparecontent: bool = True,
+        compare_content: bool = True,
 ) -> list:
     # prepare data
     if isinstance(tokens, str):
@@ -41,7 +42,12 @@ def search(
     result = []
     for start in range(len(sentence) - len(tokens) + 1):
         selected = sentence[start:start + tokens_length]
-        if not _match(tokens, selected, tokens_complex, comparecontent):
+        if not _match(
+                tokens,
+                selected,
+                tokens_complex=tokens_complex,
+                compare_content=compare_content,
+        ):
             continue
         result.append((start, start + tokens_length))
     # Sort findings and remove smaller patterns inside bigger ones
@@ -52,9 +58,10 @@ def search(
 def searches(
         tokenslist: list,
         sentence: list,
+        *,
         lowercase: bool = True,
         tokens_complex: bool = True,
-        comparecontent: bool = True,
+        compare_content: bool = True,
 ) -> list:
     # prepare here to avoid preparing for every tokens
     if isinstance(sentence, str):
@@ -64,9 +71,9 @@ def searches(
         matches = search(
             tokens,
             sentence,
-            lowercase,
-            tokens_complex,
-            comparecontent,
+            lowercase=lowercase,
+            tokens_complex=tokens_complex,
+            compare_content=compare_content,
         )
         if matches:
             result.extend(matches)
@@ -84,17 +91,18 @@ def lower(item: typing.Any) -> typing.Any:
 def _match(
         chunk: list,
         expected: list,
-        token_complex,
-        comparecontent: bool,
+        *,
+        tokens_complex,
+        compare_content: bool,
 ) -> bool:
     assert len(chunk) == len(expected)
     for item, item_expected in zip(chunk, expected):
-        if token_complex:
+        if tokens_complex:
             if item & item_expected:
                 # matching items in `item` and `item_expected`. Check next
                 # item.
                 continue
-            if comparecontent:
+            if compare_content:
                 # str-content is not equal, stop matching sequence
                 return False
             # content is not equal, but we only check that data type

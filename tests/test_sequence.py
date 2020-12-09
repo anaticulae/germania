@@ -32,7 +32,7 @@ def test_sequence_match_double_pattern():
     assert searched == collected
 
 
-def test_sequence_match_simple_pattern_tokenscomplex():
+def test_sequence_match_simple_pattern_tokens_complex():
     expected = [
         '(siehe Abb. 1000)',
     ]
@@ -58,6 +58,6 @@ def test_search_braket_sequence():
         '[RNB12, S. 62ff]',
     )
     sentence = 'Zum Arbeitsschutzproblm [EB03].'
-    searched = german.searches(pattern, sentence, comparecontent=False)
+    searched = german.searches(pattern, sentence, compare_content=False)
     expected = [(2, 6)]
     assert expected == searched
