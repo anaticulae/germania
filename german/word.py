@@ -159,6 +159,8 @@ def dot_pattern(current, char) -> bool:
     """\
     >>> dot_pattern(['1'], ')')
     False
+    >>> dot_pattern(['3', '.', '2'], '.')
+    False
     """
     # W.D.
     if len(current) == 1:
