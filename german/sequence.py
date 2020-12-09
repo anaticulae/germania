@@ -21,6 +21,7 @@ def search(
         sentence: list,
         lowercase: bool = True,
         tokens_complex: bool = True,
+        comparecontent: bool = True,
 ) -> list:
     # prepare data
     if isinstance(tokens, str):
@@ -40,7 +41,7 @@ def search(
     result = []
     for start in range(len(sentence) - len(tokens) + 1):
         selected = sentence[start:start + tokens_length]
-        if not _match(tokens, selected, tokens_complex):
+        if not _match(tokens, selected, tokens_complex, comparecontent):
             continue
         result.append((start, start + tokens_length))
     # Sort findings and remove smaller patterns inside bigger ones
@@ -53,13 +54,20 @@ def searches(
         sentence: list,
         lowercase: bool = True,
         tokens_complex: bool = True,
+        comparecontent: bool = True,
 ) -> list:
     # prepare here to avoid preparing for every tokens
     if isinstance(sentence, str):
         sentence = german.split_words(sentence, validate_sentences=False)
     result = []
     for tokens in tokenslist:
-        matches = search(tokens, sentence, lowercase, tokens_complex)
+        matches = search(
+            tokens,
+            sentence,
+            lowercase,
+            tokens_complex,
+            comparecontent,
+        )
         if matches:
             result.extend(matches)
     # TODO: SORT RESULT?
@@ -73,12 +81,31 @@ def lower(item: typing.Any) -> typing.Any:
     return item
 
 
-def _match(chunk: list, expected: list, token_complex) -> bool:
+def _match(
+        chunk: list,
+        expected: list,
+        token_complex,
+        comparecontent: bool,
+) -> bool:
     assert len(chunk) == len(expected)
     for item, item_expected in zip(chunk, expected):
         if token_complex:
-            if not item & item_expected:
+            if item & item_expected:
+                # matching items in `item` and `item_expected`. Check next
+                # item.
+                continue
+            if comparecontent:
+                # str-content is not equal, stop matching sequence
                 return False
+            # content is not equal, but we only check that data type
+            # matches
+            item_str = any(isinstance(it, str) for it in item)
+            if not item_str:
+                return False
+            item_expected_str = any(isinstance(it, str) for it in item_expected)
+            if not item_expected_str:
+                return False
+            continue
         else:
             if item not in item_expected:
                 return False

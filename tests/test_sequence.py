@@ -47,3 +47,17 @@ def test_sequence_match_simple_pattern_not_complex():
     ]
     searched = german.searches(expected, SENTENCE, tokens_complex=False)
     assert not searched
+
+
+def test_search_braket_sequence():
+    pattern = (
+        '[Ka14]',
+        '[Mag13]',
+        '[Hof11, S. 314f]',
+        '[Hof11, S. 309-311]',
+        '[RNB12, S. 62ff]',
+    )
+    sentence = 'Zum Arbeitsschutzproblm [EB03].'
+    searched = german.searches(pattern, sentence, comparecontent=False)
+    expected = [(2, 6)]
+    assert expected == searched
