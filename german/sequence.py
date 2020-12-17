@@ -82,6 +82,11 @@ def searches(
     return result
 
 
+def init(text: str) -> set:
+    """Prepare sentence search data."""
+    return {item.lower() for item in text.splitlines() if item}
+
+
 def lower(item: typing.Any) -> typing.Any:
     with contextlib.suppress(AttributeError):
         return item.lower()

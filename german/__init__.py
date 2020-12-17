@@ -47,6 +47,7 @@ from german.sentence import is_sentence
 from german.sentence import is_sentence_closed
 from german.sentence import split_sentences
 from german.sentence import split_token
+from german.sequence import init
 from german.sequence import search
 from german.sequence import searches
 from german.text import words_fromstr
