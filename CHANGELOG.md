@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.13.4
+
+### Feature
+
+* add sentence prepare method (62a9e2306d30)
+
 ## v0.13.3
 
 ## v0.13.2
