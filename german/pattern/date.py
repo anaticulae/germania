@@ -16,7 +16,7 @@ import utila
 def years(raw: str, min_=1950, max_=2020):
     """Extract sorted list of years out of `raw` text.
 
-    >>> years('1999, Helm is born in 1987. Mud exists since 1800. 2050 20000 2020')
+    >>> years('1999, Helm was born in 1987. Mud exists since 1800. 2050 20000 2020')
     [1987, 1999, 2020]
     """
     result = []
