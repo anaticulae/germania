@@ -93,7 +93,7 @@ def merge_unbalanced(sentences: list) -> list:
     return result
 
 
-def isunbalanced(sentence) -> bool:
+def isunbalanced(sentence: str) -> bool:
     """\
     >>> isunbalanced('I am ( unbalanced')
     True
@@ -107,7 +107,7 @@ def isunbalanced(sentence) -> bool:
     return False
 
 
-def open_quotation_mark(tokens):
+def open_quotation_mark(tokens: list) -> int:
     # TODO: MOVE TO KONRAD PACKAGE
     count = 0
     # TODO: CHECK DIFFERENT DOUBLE QUOTATION MARK SIGNS
@@ -121,7 +121,7 @@ def open_quotation_mark(tokens):
 QUOTATION_CLOSE_SIGNS = '"”“'  # TODO: REPLACE WITH KONRAD
 
 
-def is_sentence(sentence: str, min_length: int = 4):
+def is_sentence(sentence: str, min_length: int = 4) -> bool:
     if len(sentence) < min_length:  # TODO: HOLY VALUE
         # sentence is too short
         return False

@@ -115,21 +115,21 @@ def isfrench(token: list) -> float:
     return result
 
 
-def uppercase_ratio(token):
+def uppercase_ratio(token: list) -> float:
     if not token:
         return 0.0
     upper = [item for item in token if not item.islower()]
     return len(upper) / len(token)
 
 
-def accent_ratio(token):
+def accent_ratio(token: list) -> float:
     if not token:
         return 0.0
     accents = [item for item in token if 'é' in item]
     return len(accents) / len(token)
 
 
-def iseng(tokens):
+def iseng(tokens: str) -> bool:
     """\
     >>> iseng('Ich bin Helmut')
     False
@@ -140,7 +140,7 @@ def iseng(tokens):
     return determine(tokens).language == konrad.Language.ENGLISH
 
 
-def isger(tokens):
+def isger(tokens: str) -> bool:
     """\
     >>> isger('Kartoffelsalat')
     True
