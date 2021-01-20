@@ -25,7 +25,10 @@ def authors(raw: str):
     [['KUNCZIK', 'Michael'], ['ZIPFEL', 'Astrid']]
     >>> authors('BOBEK H., FESL M.')
     [['BOBEK', 'H.'], ['FESL', 'M.']]
+    >>> authors('HÖFER, Judith')
+    [['HÖFER', 'Judith']]
     """
+    raw = raw.strip()
     free = freeand(raw)
     semicolon = simple(raw)
     hyphen = simple(raw, extern='-', intern=',')
@@ -90,14 +93,22 @@ def judge(parsed: list):
     person = any([german.isperson(name) for name in parsed])
     if not person:
         return iamraw.NoPerson(raw=raw)  # pylint:disable=E1101
-    name = utila.longest(parsed)
-    firstname = ' '.join([item for item in parsed if item != name])
+    name, firstname = decide_name(parsed)
     result = iamraw.Person(
         name=name,
         firstname=firstname,
         raw=raw,
     )
     return result
+
+
+def decide_name(names: list) -> tuple:
+    # TODO: NOT VERY SMART
+    name = names[0]
+    if '.' in name:
+        name = utila.longest(names)
+    firstname = ' '.join([item for item in names if item != name])
+    return name, firstname
 
 
 def balance(parsed_authors):
