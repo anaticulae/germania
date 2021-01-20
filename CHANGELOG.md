@@ -2,6 +2,18 @@
 
 Every noteable change is logged here.
 
+## v0.13.5
+
+### Feature
+
+* improve author name first name selector (a914cd3b593a)
+* extend names dict (39c87425042c)
+
+### Documentation
+
+* extend interface documentation (0e2ac7c1025e)
+* Happy New Year! (1257cdc22067)
+
 ## v0.13.4
 
 ### Feature
