@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.13.6
+
+### Feature
+
+* names, names, names (5e7650bf890b)
+
 ## v0.13.5
 
 ### Feature
