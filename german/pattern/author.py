@@ -27,6 +27,10 @@ def authors(raw: str):
     [['BOBEK', 'H.'], ['FESL', 'M.']]
     >>> authors('HÖFER, Judith')
     [['HÖFER', 'Judith']]
+    >>> authors('PEREIRA, M.G., VOLCHAN, E., SOUZA, G. G. DE, OLIVEIRA, L., '
+    ... 'CAMPAGNOLI, R. R., PINHEIRO, W. M., & PESSOA, L. ')
+    [['PEREIRA', 'M.G.'], ['VOLCHAN', 'E.'], ['SOUZA', 'G. G. DE'], ['OLIVEIRA', 'L.'], \
+['CAMPAGNOLI', 'R. R.'], ['PINHEIRO', 'W. M.'], ['PESSOA', 'L.']]
     """
     raw = raw.strip()
     free = freeand(raw)
