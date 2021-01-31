@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.13.8
+
+### Fix
+
+* harden author extractor (f464ca7787ce)
+
 ## v0.13.7
 
 ### Feature
