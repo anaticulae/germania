@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import re
+
 import iamraw
 import utila
 
@@ -94,8 +96,7 @@ def judge(parsed: list):
     if len(parsed) == 1:
         return iamraw.NoPerson(raw=parsed[0])  # pylint:disable=E1101
     raw = ' '.join(parsed)
-    person = any([german.isperson(name) for name in parsed])
-    if not person:
+    if not person_simple(parsed):
         return iamraw.NoPerson(raw=raw)  # pylint:disable=E1101
     name, firstname = decide_name(parsed)
     result = iamraw.Person(
@@ -104,6 +105,25 @@ def judge(parsed: list):
         raw=raw,
     )
     return result
+
+
+VALID_NAME = re.compile(r'(\w\.|\w{4,})')
+
+
+def person_simple(parsed: list, max_names: int = 4) -> bool:
+    """\
+    >>> person_simple('K. Fahrendholz'.split())
+    True
+    >>> person_simple('Boil C. G.'.split())
+    True
+    """
+    if len(parsed) > max_names:
+        return False
+    if any([german.isperson(name) for name in parsed]):
+        return True
+    if all(VALID_NAME.match(item) for item in parsed):
+        return True
+    return False
 
 
 def decide_name(names: list) -> tuple:
