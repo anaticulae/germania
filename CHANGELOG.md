@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.13.7
+
+### Feature
+
+* add simple rule to judge persons (b15f3d50f471)
+
 ## v0.13.6
 
 ### Feature
