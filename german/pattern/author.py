@@ -33,6 +33,8 @@ def authors(raw: str):
     ... 'CAMPAGNOLI, R. R., PINHEIRO, W. M., & PESSOA, L. ')
     [['PEREIRA', 'M.G.'], ['VOLCHAN', 'E.'], ['SOUZA', 'G. G. DE'], ['OLIVEIRA', 'L.'], \
 ['CAMPAGNOLI', 'R. R.'], ['PINHEIRO', 'W. M.'], ['PESSOA', 'L.']]
+    >>> authors('M. Baccar,')
+    [['M.', 'Baccar']]
     """
     raw = raw.strip()
     free = freeand(raw)
@@ -44,7 +46,10 @@ def authors(raw: str):
     result = [free, semicolon, hyphen, slash, comma]
     balanced = [balance(item) for item in result]
     max_balance = maxindex(balanced)
-    return result[max_balance]
+    best = result[max_balance]
+    # skip empty items as a result of empty `,` see: 'M. Baccar,'
+    best = [item for item in best if item]
+    return best
 
 
 def authors_decide(parsed: list) -> iamraw.Persons:
@@ -116,13 +121,16 @@ def person_simple(parsed: list, max_names: int = 4) -> bool:
     True
     >>> person_simple('Boil C. G.'.split())
     True
+    >>> person_simple('OHMEDA MEDIZINTECHNIK'.split())
+    False
     """
     if len(parsed) > max_names:
         return False
     if any([german.isperson(name) for name in parsed]):
         return True
     if all(VALID_NAME.match(item) for item in parsed):
-        return True
+        # ensure that author contains `.` to fit in short `X. Name` pattern
+        return '.' in ' '.join(parsed)
     return False
 
 
