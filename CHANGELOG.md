@@ -2,6 +2,15 @@
 
 Every noteable change is logged here.
 
+## v0.13.9
+
+### Feature
+
+* improve press and names check (8643b30cfa2a)
+* extend press list (bf060a4b64f4)
+* extend magic names (e0c9bd076dd6)
+* add Arabic pattern (798bbc2c8e6c)
+
 ## v0.13.8
 
 ### Fix
