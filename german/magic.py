@@ -116,9 +116,16 @@ def isperson(item) -> bool:
     """\
     >>> isperson('Olsen')
     True
+    >>> isperson('Ibn Helmut')
+    True
+    >>> isperson('EL-Wateria')
+    True
     """
     item = item.strip()
     if item.lower() in NAMES:
+        return True
+    arabic = r'(ibn|el)([ ]|\-?)\w{4,}'
+    if re.match(arabic, item, re.I):
         return True
     return False
 
