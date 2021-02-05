@@ -112,7 +112,7 @@ def isyear(item: str) -> bool:
     return 1900 <= item <= 2030
 
 
-def isperson(item) -> bool:
+def isperson(item: str) -> bool:
     """\
     >>> isperson('Olsen')
     True
@@ -130,7 +130,7 @@ def isperson(item) -> bool:
     return False
 
 
-def ispress(press) -> bool:
+def ispress(press: str) -> bool:
     """\
     >>> ispress('Springer')
     True
