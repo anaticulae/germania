@@ -121,8 +121,8 @@ def isperson(item) -> bool:
     >>> isperson('EL-Wateria')
     True
     """
-    item = item.strip()
-    if item.lower() in NAMES:
+    item = item.strip().lower()
+    if item in NAMES:
         return True
     arabic = r'(ibn|el)([ ]|\-?)\w{4,}'
     if re.match(arabic, item, re.I):
@@ -130,12 +130,19 @@ def isperson(item) -> bool:
     return False
 
 
-def ispress(item) -> bool:
+def ispress(press) -> bool:
     """\
     >>> ispress('Springer')
     True
+    >>> ispress('De Gruyter')
+    True
     """
-    return item.lower() in PRESS
+    press = press.strip().lower()
+    if press in PRESS:
+        return True
+    if any((item for item in PRESS if item in press)):
+        return True
+    return False
 
 
 def load_dict(path) -> set:
