@@ -117,7 +117,10 @@ def isperson(item) -> bool:
     >>> isperson('Olsen')
     True
     """
-    return item.lower() in NAMES
+    item = item.strip()
+    if item.lower() in NAMES:
+        return True
+    return False
 
 
 def ispress(item) -> bool:
