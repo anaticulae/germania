@@ -147,9 +147,7 @@ def ispress(press: str) -> bool:
 
 def load_dict(path) -> set:
     assert os.path.exists(path), str(path)
-
     loaded = utila.file_read(path).splitlines()
-
     result = set(item.lower() for item in loaded)
     return result
 
