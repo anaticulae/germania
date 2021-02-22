@@ -14,6 +14,7 @@ import re
 import typing
 
 import konrad
+import nltk_data.lookup
 import utila
 
 import german_data
@@ -114,6 +115,9 @@ def isyear(item: str) -> bool:
     return 1900 <= item <= 2030
 
 
+NAMES = german_data.NAMES | nltk_data.lookup.NAME_MALE | nltk_data.lookup.NAME_FEMALE
+
+
 def isperson(item: str) -> bool:
     """\
     >>> isperson('Olsen')
@@ -124,7 +128,7 @@ def isperson(item: str) -> bool:
     True
     """
     item = item.strip().lower()
-    if item in german_data.NAMES:
+    if item in NAMES:
         return True
     arabic = r'(ibn|el)([ ]|\-?)\w{4,}'
     if re.match(arabic, item, re.I):
