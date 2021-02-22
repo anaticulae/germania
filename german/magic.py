@@ -126,6 +126,8 @@ def isperson(item: str) -> bool:
     True
     >>> isperson('EL-Wateria')
     True
+    >>> isperson('Archibald') # nltk data
+    True
     """
     item = item.strip().lower()
     if item in NAMES:
