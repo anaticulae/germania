@@ -16,6 +16,8 @@ import typing
 import konrad
 import utila
 
+import german_data
+
 
 class WordType(enum.Enum):
     MARK = enum.auto()
@@ -122,7 +124,7 @@ def isperson(item: str) -> bool:
     True
     """
     item = item.strip().lower()
-    if item in NAMES:
+    if item in german_data.NAMES:
         return True
     arabic = r'(ibn|el)([ ]|\-?)\w{4,}'
     if re.match(arabic, item, re.I):
@@ -138,9 +140,9 @@ def ispress(press: str) -> bool:
     True
     """
     press = press.strip().lower()
-    if press in PRESS:
+    if press in german_data.PRESS:
         return True
-    if any((item for item in PRESS if item in press)):
+    if any((item for item in german_data.PRESS if item in press)):
         return True
     return False
 
@@ -150,7 +152,3 @@ def load_dict(path) -> set:
     loaded = utila.file_read(path).splitlines()
     result = set(item.lower() for item in loaded)
     return result
-
-
-NAMES = load_dict(os.path.join(os.path.split(__file__)[0], 'names.dict'))
-PRESS = load_dict(os.path.join(os.path.split(__file__)[0], 'press.dict'))

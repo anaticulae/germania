@@ -1,1 +1,1 @@
-include german/*.dict
+include german_data/*.dict
