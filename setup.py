@@ -54,5 +54,6 @@ if __name__ == "__main__":
             'german',
             'german.pattern',
             'german_data',
+            'science_text',
         ],
     )
