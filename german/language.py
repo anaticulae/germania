@@ -17,11 +17,10 @@ approach is to set the interface and introduce complexity later.
 """
 
 import collections
+import contextlib
 
 import konrad
-import utila
-
-import german
+import nltk.classify.textcat
 
 LanguageResult = collections.namedtuple(
     'LanguageResult',
@@ -30,103 +29,23 @@ LanguageResult = collections.namedtuple(
 
 
 def determine(text: str) -> LanguageResult:
-    if isinstance(text, str):
-        token = german.word_tokenize(text, validate_sentences=False)
-    else:
-        token = text
-    # remove signs etc.
-    token = [item for item in token if isinstance(item, str)]
-    ger = isgerman(token)
-    eng = isenglish(token)
-    fra = isfrench(token)
-
-    ger = ger if ger >= 0.5 else 0.0
-    eng = eng if eng >= 0.5 else 0.0
-    fra = fra if fra >= 0.75 else 0.0
-
-    # TODO: IMPROVE AFTER UPGRADING UTILA
-    ger = utila.roundme(ger)
-    eng = utila.roundme(eng)
-    fra = utila.roundme(fra)
-
-    ger = min([ger, 1.0])
-    eng = min([eng, 1.0])
-    fra = min([fra, 1.0])
-
-    if fra:
-        return LanguageResult(language=konrad.Language.FRENCH, probability=fra)
-    if ger > eng:
-        return LanguageResult(language=konrad.Language.GERMAN, probability=ger)
-    if eng:
-        return LanguageResult(language=konrad.Language.ENGLISH, probability=eng)
-    return LanguageResult(language=konrad.Language.UNKNOWN, probability=1.0)
+    cat = nltk.classify.textcat.TextCat()
+    detected = cat.guess_language(text)
+    language = konrad.Language.UNKNOWN
+    with contextlib.suppress(KeyError):
+        language = MAPPING[detected]
+    return LanguageResult(language=language, probability=1.0)
 
 
-GER = {
-    'der', 'die', 'das', 'man', 'sich', 'immer', 'wieder', 'viel', 'wenig',
-    'es', 'er', 'sie', 'siehe', 'bzw.'
-}
+def isfre(tokens: str) -> bool:
+    """\
+    >>> isfre('Ich bin Helmut')
+    False
 
-ENGLISH = """\
-a and are as at be but by for i if in into is it more my near no not of
-on one or our out own such that the their then there these they this to
-was will with you your
-"""
-
-ENG = {item for item in ENGLISH.split() if item}
-
-FRA = {'au', 'de', 'des', 'en', 'en', 'la', 'le', 'les'}
-
-
-def isgerman(token: list) -> float:
-    result = 0.0
-    if uppercase_ratio(token) >= 0.20:
-        result += 0.5
-    lower = [item.lower() for item in token]
-    for item in lower:
-        if item in GER:
-            result += 0.05
-    return result
-
-
-def isenglish(token: list) -> float:
-    result = 0.0
-    if 0.20 <= uppercase_ratio(token) < 0.8:
-        # more than 0.8 is may a title?
-        result -= 0.3
-    else:
-        # at lot of lower case :)
-        result += 0.25
-    lower = [item.lower() for item in token]
-    for item in lower:
-        if item in ENG:
-            result += 0.05
-    return result
-
-
-def isfrench(token: list) -> float:
-    result = 0.0
-    lower = [item.lower() for item in token]
-    if accent_ratio(lower) >= 0.1:
-        result = result + 0.35
-    for item in lower:
-        if item in FRA:
-            result += 0.05
-    return result
-
-
-def uppercase_ratio(token: list) -> float:
-    if not token:
-        return 0.0
-    upper = [item for item in token if not item.islower()]
-    return len(upper) / len(token)
-
-
-def accent_ratio(token: list) -> float:
-    if not token:
-        return 0.0
-    accents = [item for item in token if 'é' in item]
-    return len(accents) / len(token)
+    iseng('Bonjour monsieur.')
+    True
+    """
+    return determine(tokens).language == konrad.Language.FRENCH
 
 
 def iseng(tokens: str) -> bool:
@@ -146,3 +65,11 @@ def isger(tokens: str) -> bool:
     True
     """
     return determine(tokens).language == konrad.Language.GERMAN
+
+
+MAPPING = {
+    'deu': konrad.Language.GERMAN,
+    'eng': konrad.Language.ENGLISH,
+    # 'es': konrad.Language.SPANISH,
+    'fra': konrad.Language.FRENCH,
+}

@@ -21,6 +21,7 @@ from german.headlines import isheadline
 from german.language import LanguageResult
 from german.language import determine as lang
 from german.language import iseng
+from german.language import isfre
 from german.language import isger
 from german.magic import WordType
 from german.magic import WordTypes
