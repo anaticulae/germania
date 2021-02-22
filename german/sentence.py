@@ -15,7 +15,7 @@ Sentences = utila.Strings
 SHORTCUTS = konrad.ABBREVIATION_LOWER
 
 
-def split_sentences(text: str) -> Sentences:  # pylint:disable=R1260,R0912
+def sentence_tokenize(text: str) -> Sentences:  # pylint:disable=R1260,R0912
     """Split a regular `text` into sentence chunks.
 
     Args:
@@ -131,7 +131,7 @@ def is_sentence(sentence: str, min_length: int = 4) -> bool:
     if dotcount >= 3 and percent_sentence > 0.04:  # TODO: HOLY VALUE
         # sentence contains too much dots, maybe a toc line
         return False
-    splitted = split_sentences(sentence)
+    splitted = sentence_tokenize(sentence)
     if len(splitted) > 1:
         return False
     token = split_token(splitted[0])

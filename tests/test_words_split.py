@@ -36,7 +36,7 @@ eine Folge der guten innerstädtischen Lage verstanden werden.
 
 
 def test_words_split():
-    splitted = german.split_words(SENTENCE)
+    splitted = german.word_tokenize(SENTENCE)
     expected = [
         'Verkehr',
         'geprägt',
@@ -52,13 +52,14 @@ def test_words_split():
 
 
 def test_words_simple_split():
-    first, second, third, fourth, fifth, sixth = german.split_sentences(SIMPLE)  # pylint:disable=W0632
-    first = german.split_words(first)
-    second = german.split_words(second)
-    third = german.split_words(third)
-    fourth = german.split_words(fourth)
-    fifth = german.split_words(fifth)
-    sixth = german.split_words(sixth)
+    first, second, third, fourth, fifth, sixth = german.sentence_tokenize(
+        SIMPLE)  # pylint:disable=W0632
+    first = german.word_tokenize(first)
+    second = german.word_tokenize(second)
+    third = german.word_tokenize(third)
+    fourth = german.word_tokenize(fourth)
+    fifth = german.word_tokenize(fifth)
+    sixth = german.word_tokenize(sixth)
     assert len(first) == 16
     assert len(second) == 26
     assert len(third) == 15
@@ -77,7 +78,7 @@ insgesamt gesehen wird Neunkirchen somit von Männern wie Frauen in
 
 
 def test_parse_single_number():
-    splitted = german.split_words(SINGLE_NUMBER)
+    splitted = german.word_tokenize(SINGLE_NUMBER)
     assert '5' in splitted
     assert '6' in splitted
 
@@ -89,7 +90,7 @@ FOUR_DOT_ZERO = """\
 
 
 def test_parse_four_dot_zero():
-    splitted = german.split_words(FOUR_DOT_ZERO)
+    splitted = german.word_tokenize(FOUR_DOT_ZERO)
     assert '4.0' in splitted
 
 
@@ -97,8 +98,8 @@ FLOAT_NUMBER = 'Ich hätte gerne 134.456 kg Mett. Dazu etwas Schinken bitte.'
 
 
 def test_parse_float_number():
-    first = german.split_sentences(FLOAT_NUMBER)[0]
-    splitted = german.split_words(first)
+    first = german.sentence_tokenize(FLOAT_NUMBER)[0]
+    splitted = german.word_tokenize(first)
     assert '134.456' in splitted
 
 
@@ -111,10 +112,10 @@ Freitag, Samstag im Zeitraum von Mai bis Juli 2017.
 
 
 def test_parse_3dot_2dot():
-    sentences = german.split_sentences(POINT_3_DOT_2_DOT)
+    sentences = german.sentence_tokenize(POINT_3_DOT_2_DOT)
     assert len(sentences) == 2
 
-    first_words = german.split_words(sentences[0])
+    first_words = german.word_tokenize(sentences[0])
     assert '3.2.' in first_words
     assert '6.4.1.3' in first_words
 
@@ -126,7 +127,7 @@ Abgas- und Geräuschemissionen und dem Schwingungskomfort [RNB12, S. 62ff].
 
 
 def test_parse_numbers_in_text():
-    numbers = german.split_words(SPLIT_NUMBERS)
+    numbers = german.word_tokenize(SPLIT_NUMBERS)
     assert 'RNB' in numbers
     assert '62' in numbers
     assert 'ff' in numbers

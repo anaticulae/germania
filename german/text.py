@@ -13,8 +13,8 @@ import german.word
 
 def words_fromstr(text: str) -> german.word.Words:
     result = []
-    for sentence_ in german.sentence.split_sentences(text):
-        for word_ in german.word.split_words(
+    for sentence_ in german.sentence.sentence_tokenize(text):
+        for word_ in german.word.word_tokenize(
                 sentence_,
                 validate_sentences=False,
         ):

@@ -14,7 +14,7 @@ def matched(content: str, pattern: list) -> bool:
     """Split `content` and check to match `pattern`. Pattern is defined
     `german.WordType` and or `konrad.Mark`."""
     # TODO: VERY SIMPLE
-    tokens = german.split_words(content, validate_sentences=False)
+    tokens = german.word_tokenize(content, validate_sentences=False)
 
     pattern = list(pattern)
     for token in tokens:

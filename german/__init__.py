@@ -43,7 +43,7 @@ from german.quotation import raw_quotation
 from german.sentence import Sentences
 from german.sentence import is_sentence
 from german.sentence import is_sentence_closed
-from german.sentence import split_sentences
+from german.sentence import sentence_tokenize
 from german.sentence import split_token
 from german.sequence import init
 from german.sequence import search
@@ -51,7 +51,10 @@ from german.sequence import searches
 from german.text import words_fromstr
 from german.word import Words
 from german.word import contain_quotation_marks
-from german.word import split_words
+from german.word import word_tokenize
+
+split_words = word_tokenize  # pylint:disable=C0103
+split_sentences = sentence_tokenize  # pylint:disable=C0103
 
 __version__ = '0.13.9'
 

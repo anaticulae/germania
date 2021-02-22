@@ -31,26 +31,26 @@ Sternberg-Aufgabe (Sternberg, 1966)."""
 
 
 def test_split():
-    sentences = german.split_sentences(EXAMPLE)
+    sentences = german.sentence_tokenize(EXAMPLE)
     assert len(sentences) == 6
     # splitted = german.word.split(EXAMPLE)
 
-    first = german.split_words(sentences[0])
+    first = german.word_tokenize(sentences[0])
     assert len(first) == 14 + 1, first  # 14 words plus one dot
 
-    second = german.split_words(sentences[1])
+    second = german.word_tokenize(sentences[1])
     assert len(second) == 35, second
 
-    third = german.split_words(sentences[2])
+    third = german.word_tokenize(sentences[2])
     assert len(third) == 31, third
 
-    fourth = german.split_words(sentences[3])
+    fourth = german.word_tokenize(sentences[3])
     assert len(fourth) == 28, fourth
 
-    fifth = german.split_words(sentences[4])
+    fifth = german.word_tokenize(sentences[4])
     assert len(fifth) == 33, fifth
 
-    sixth = german.split_words(sentences[5])
+    sixth = german.word_tokenize(sentences[5])
     assert len(sixth) == 36, sixth
 
 
@@ -73,7 +73,7 @@ bung im Original).
 
 
 def test_sentence_merge_with_textbreak():
-    sentences = german.split_sentences(MERGE_DIVISION)
+    sentences = german.sentence_tokenize(MERGE_DIVISION)
     assert len(sentences) == 3
     assert 'Herausforderer' in sentences[1]
     assert 'systematisch' in sentences[1]
@@ -92,7 +92,7 @@ von Nutzern selbst verfasst bzw. verändert werden.
 
 
 def test_sentence_split_abrreviation_and_bracket():
-    sentences = german.split_sentences(LINE_ENDING)
+    sentences = german.sentence_tokenize(LINE_ENDING)
     assert len(sentences) == 5
 
 
@@ -109,7 +109,7 @@ Stärke heranwachsen.
 
 
 def test_sentence_split_short():
-    sentences = german.split_sentences(SHORT_SENTENCE)
+    sentences = german.sentence_tokenize(SHORT_SENTENCE)
     assert len(sentences) == 4
 
 
@@ -123,7 +123,7 @@ Artikel heißt es:
 
 
 def test_sentence_split_multiple_quoted_sentence():
-    sentences = german.split_sentences(MULTIPLE_SENTENCE_IN_QUOTATION)
+    sentences = german.sentence_tokenize(MULTIPLE_SENTENCE_IN_QUOTATION)
     assert len(sentences) == 6
     assert sentences[-1] == 'In dem Artikel heißt es:', sentences[-1]
 
@@ -136,7 +136,7 @@ the single char.
 
 
 def test_sentence_split_single_quotation_in_text():
-    sentences = german.split_sentences(SINGLE_QUOTATION_IN_TEXT)
+    sentences = german.sentence_tokenize(SINGLE_QUOTATION_IN_TEXT)
     assert len(sentences) == 3
 
 
@@ -166,17 +166,17 @@ Individuums.
 
 
 def test_validate_count_of_double_quotation():
-    splitted = german.split_sentences(REQUIRE_SINGLE_INSIDE)
+    splitted = german.sentence_tokenize(REQUIRE_SINGLE_INSIDE)
     assert len(splitted) == 5
 
 
 def test_split_paragraph_with_quotation():
-    splitted = german.split_sentences(STANDARD)
+    splitted = german.sentence_tokenize(STANDARD)
     assert len(splitted) == 2
 
 
 def test_split_paragraph_with_quotation_mixed():
-    splitted = german.split_sentences(MIXED)
+    splitted = german.sentence_tokenize(MIXED)
     assert len(splitted) == 4
     last = ('Dennoch soll im Folgenden der Versuch einer '
             'Definition vorgenommen werden.')
@@ -190,7 +190,7 @@ zehn Zukunftsprojekten im Rahmen der Hightech-Strategie.
 
 
 def test_split_sentence_with_number():
-    splitted = german.split_sentences(NUMBER_IN_TEXT)
+    splitted = german.sentence_tokenize(NUMBER_IN_TEXT)
     assert len(splitted) == 1
 
 
@@ -220,7 +220,7 @@ unternehmensübergreifenden Wertschöpfungsnetzwerken.
 
 
 def test_split_sentence_with_long_citation():
-    splitted = german.split_sentences(VERY_LONG)
+    splitted = german.sentence_tokenize(VERY_LONG)
     assert len(splitted) == 6
 
 
@@ -234,12 +234,12 @@ Effizienz.“16
 
 
 def test_split_sentence_quotation_highnumber():
-    splitted = german.split_sentences(VALID_SENTENCE)
+    splitted = german.sentence_tokenize(VALID_SENTENCE)
     assert len(splitted) == 1
 
 
 def test_split_word_quotation_highnumber():
-    splitted = german.split_words(VALID_SENTENCE)
+    splitted = german.word_tokenize(VALID_SENTENCE)
     assert splitted[0] == konrad.Mark.QUOTATION_MARK_DOUBLE_OPEN
     assert splitted[-1] == '16'
 
@@ -257,7 +257,7 @@ S. 3 ff). Hier spricht Helm?
 
 
 def test_split_roman_numbers():
-    splitted = german.split_sentences(ROMAN_NUMBERS)
+    splitted = german.sentence_tokenize(ROMAN_NUMBERS)
     assert len(splitted) == 3
 
 
@@ -274,5 +274,5 @@ Furcht und Ekel).
 
 
 def test_split_table_reference():
-    splitted = german.split_sentences(TABLE)
+    splitted = german.sentence_tokenize(TABLE)
     assert len(splitted) == 4

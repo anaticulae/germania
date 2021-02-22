@@ -12,7 +12,7 @@ import konrad
 import german
 import tests.test_words_split
 
-SENTENCE = german.split_sentences(tests.test_words_split.SENTENCE)[0]
+SENTENCE = german.sentence_tokenize(tests.test_words_split.SENTENCE)[0]
 
 
 def test_sequence_match_double_pattern():

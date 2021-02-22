@@ -31,7 +31,7 @@ LanguageResult = collections.namedtuple(
 
 def determine(text: str) -> LanguageResult:
     if isinstance(text, str):
-        token = german.split_words(text, validate_sentences=False)
+        token = german.word_tokenize(text, validate_sentences=False)
     else:
         token = text
     # remove signs etc.

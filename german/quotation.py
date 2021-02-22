@@ -17,7 +17,7 @@ import german
 
 def extract_quotes(items: str, lang=konrad.GERMAN) -> list:  # pylint:disable=W0613
     assert isinstance(items, str), type(items)
-    tokens = german.split_words(items, validate_sentences=False)
+    tokens = german.word_tokenize(items, validate_sentences=False)
     result = []
 
     doubled = parse_quotation(tokens)

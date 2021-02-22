@@ -18,7 +18,7 @@ import german
 Words = typing.List[str]
 
 
-def split_words(
+def word_tokenize(
         items: str,
         validate_sentences: bool = True,
         lang: konrad.Language = None,

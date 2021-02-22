@@ -12,7 +12,7 @@ import tests.test_sentence_split
 
 
 def test_quotation_extract():
-    first, second = german.split_sentences(tests.test_sentence_split.STANDARD)  # pylint:disable=W0632
+    first, second = german.sentence_tokenize(tests.test_sentence_split.STANDARD)  # pylint:disable=W0632
     expected = [
         (0, 3),
         (9, 14),
@@ -28,19 +28,19 @@ def test_quotation_extract():
 
 
 def test_quotation_raw():
-    first, second = german.split_sentences(tests.test_sentence_split.STANDARD)  # pylint:disable=W0632
+    first, second = german.sentence_tokenize(tests.test_sentence_split.STANDARD)  # pylint:disable=W0632
     expected = [
         (0, 3),
         (9, 14),
     ]
-    splitted = german.split_words(first)
+    splitted = german.word_tokenize(first)
     raw = german.raw_quotation(splitted, expected)
     assert len(raw) == 2
 
     expected = [
         (4, 7),
     ]
-    splitted = german.split_words(second)
+    splitted = german.word_tokenize(second)
     raw = german.raw_quotation(splitted, expected)
     assert len(raw) == 1
 
@@ -67,7 +67,7 @@ def test_parse_long_quote():
     expected = [(29, 64)]
     assert extracted == expected
 
-    splitted = german.split_words(QUOTE_IN_TEXT, validate_sentences=False)
+    splitted = german.word_tokenize(QUOTE_IN_TEXT, validate_sentences=False)
 
     raw = german.raw_quotation(splitted, extracted)
     assert len(raw) == 1

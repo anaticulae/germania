@@ -26,9 +26,9 @@ def search(
 ) -> list:
     # prepare data
     if isinstance(tokens, str):
-        tokens = german.split_words(tokens, validate_sentences=False)
+        tokens = german.word_tokenize(tokens, validate_sentences=False)
     if isinstance(sentence, str):
-        sentence = german.split_words(sentence, validate_sentences=False)
+        sentence = german.word_tokenize(sentence, validate_sentences=False)
     tokens_length = len(tokens)
     if tokens_length > len(sentence):
         return []
@@ -65,7 +65,7 @@ def searches(
 ) -> list:
     # prepare here to avoid preparing for every tokens
     if isinstance(sentence, str):
-        sentence = german.split_words(sentence, validate_sentences=False)
+        sentence = german.word_tokenize(sentence, validate_sentences=False)
     result = []
     for tokens in tokenslist:
         matches = search(
