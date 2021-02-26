@@ -16,6 +16,8 @@ sentences into words.
 
 import os
 
+import nltk_data
+
 from german.headlines import HEADLINES
 from german.headlines import isheadline
 from german.language import LanguageResult
