@@ -10,6 +10,7 @@
 import os
 import pickle
 
+import hugedata
 import nltk.tokenize.punkt
 import utila
 
@@ -20,7 +21,11 @@ import science_text
 def train(src: str, dest: str):
     utila.log(f'load corpus: {src}')
 
-    text = utila.file_read(src)
+    if isinstance(src, list):
+        content = [utila.file_read(item) for item in src]
+        text = utila.NEWLINE.join(content)
+    else:
+        text = utila.file_read(src)
     # Make a new Tokenizer
     tokenizer = nltk.tokenize.punkt.PunktSentenceTokenizer(train_text=text)
 
@@ -29,10 +34,16 @@ def train(src: str, dest: str):
     utila.file_replace_binary(dest, dumped)
 
 
+SOURCES = [
+    hugedata.LIT_MASTER072,
+    hugedata.LIT_MASTER075,
+    hugedata.LIT_MASTER083,
+    hugedata.LIT_MASTER089,
+]
+
 if __name__ == "__main__":
-    source = os.path.join(science_text.ROOT, 'science_text/data/science.plain')
     tmp = utila.tmpfile(science_text.ROOT)
-    train(source, tmp)
+    train(SOURCES, tmp)
 
     dumped = utila.file_read_binary(tmp)
     root = nltk_data.ROOT
