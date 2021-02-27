@@ -12,9 +12,9 @@ import pickle
 
 import hugedata
 import nltk.tokenize.punkt
+import nltk_data
 import utila
 
-import nltk_data
 import science_text
 
 
