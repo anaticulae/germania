@@ -10,6 +10,8 @@
 
 import os
 import pickle
+import re
+import sys
 
 import hugedata
 import nltk.tokenize.punkt
@@ -17,9 +19,10 @@ import nltk_data
 import utila
 
 import science_text
+import science_text.config
 
 
-def train(src: str, dest: str):
+def train(src: str, dest: str, verbose: bool = False):
     utila.log(f'load corpus: {src}')
 
     if isinstance(src, list):
@@ -28,7 +31,14 @@ def train(src: str, dest: str):
     else:
         text = utila.file_read(src)
     # Make a new Tokenizer
-    tokenizer = nltk.tokenize.punkt.PunktSentenceTokenizer(train_text=text)
+    lang_vars = science_text.config.SPunktLanguageVars()
+    trainer = nltk.tokenize.punkt.PunktTrainer(lang_vars=lang_vars)
+    trainer.train(text, verbose=verbose)
+
+    tokenizer = nltk.tokenize.punkt.PunktSentenceTokenizer(
+        train_text=trainer.get_params(),
+        lang_vars=lang_vars,
+    )
 
     utila.log(f'dump tokenizer: {dest}')
     dumped = pickle.dumps(tokenizer)
@@ -44,8 +54,10 @@ SOURCES = [
 ]
 
 if __name__ == "__main__":
+    verbose = 'verbose' in sys.argv
+
     tmp = utila.tmpfile(science_text.ROOT)
-    train(SOURCES, tmp)
+    train(SOURCES, tmp, verbose=verbose)
 
     dumped = utila.file_read_binary(tmp)
     root = nltk_data.ROOT
