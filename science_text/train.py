@@ -39,6 +39,7 @@ SOURCES = [
     hugedata.LIT_MASTER075,
     hugedata.LIT_MASTER083,
     hugedata.LIT_MASTER089,
+    hugedata.UTILS_ABBREVIATION,
 ]
 
 if __name__ == "__main__":
