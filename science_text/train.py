@@ -10,7 +10,6 @@
 
 import os
 import pickle
-import re
 import sys
 
 import hugedata
@@ -22,13 +21,19 @@ import science_text.config
 
 
 def train(src: str, dest: str, verbose: bool = False):
-    utila.log(f'load corpus: {src}')
+    if isinstance(src, str):
+        utila.log(f'load corpus: {src}')
+    else:
+        for item in src:
+            utila.log(f'load corpus: {item}')
 
     if isinstance(src, list):
         content = [utila.file_read(item) for item in src]
         text = utila.NEWLINE.join(content)
     else:
         text = utila.file_read(src)
+
+    utila.log('train tokenizer')
     # Make a new Tokenizer
     lang_vars = science_text.config.SPunktLanguageVars()
     trainer = nltk.tokenize.punkt.PunktTrainer(lang_vars=lang_vars)
