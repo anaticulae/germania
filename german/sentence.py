@@ -22,6 +22,9 @@ def sentence_tokenize(text: str) -> Sentences:  # pylint:disable=R1260,R0912
         text(str): text to split containing no newlines
     Returns:
         list of splitted sentences
+
+    >>> sentence_tokenize('Dies ist der 1. Satz. Dies ist ein zweiter Satz!')
+    ['Dies ist der 1. Satz.', 'Dies ist ein zweiter Satz!']
     """
     # TODO: REPLACE WITH EXTERNAL SMART ALTERNATIVE, facebook, google or
     # something else.
