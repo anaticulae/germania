@@ -49,13 +49,7 @@ def train(src: str, dest: str, verbose: bool = False):
     utila.file_replace_binary(dest, dumped)
 
 
-SOURCES = [
-    hugedata.LIT_MASTER072,
-    hugedata.LIT_MASTER075,
-    hugedata.LIT_MASTER083,
-    hugedata.LIT_MASTER089,
-    hugedata.UTILS_ABBREVIATION,
-]
+SOURCES = hugedata.RESOURCES
 
 if __name__ == "__main__":
     verbose = 'verbose' in sys.argv
