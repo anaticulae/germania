@@ -9,11 +9,7 @@
 """Language Probability
 ====================
 
-This module is a very primitive approach to determine the language in
-what a sentence or text is written in.
-
-We replace this approach later with a more suiteable one. The main
-approach is to set the interface and introduce complexity later.
+Use nltk to determine language where sentence is written in.
 """
 
 import collections
