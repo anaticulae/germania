@@ -29,6 +29,8 @@ def sentence_tokenize(text: str) -> Sentences:  # pylint:disable=R1260,R0912
     # TODO: REPLACE WITH EXTERNAL SMART ALTERNATIVE, facebook, google or
     # something else.
     # TODO: MAKE ROBUST AGAINST WHITE SPACE
+    # prepare input data
+    text = text.replace('-\n', '').replace('\n', ' ')
     result = []
     current = []
     for word in split_token(text):
