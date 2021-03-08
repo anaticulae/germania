@@ -15,10 +15,9 @@ import sys
 
 import hugedata
 import nltk.tokenize.punkt
-import nltk_data
 import utila
 
-import science_text
+import german_data
 import science_text.config
 
 
@@ -56,16 +55,18 @@ SOURCES = [
 if __name__ == "__main__":
     verbose = 'verbose' in sys.argv
 
-    tmp = utila.tmpfile(science_text.ROOT)
+    tmp = utila.tmpfile(german_data.ROOT)
     train(SOURCES, tmp, verbose=verbose)
 
     dumped = utila.file_read_binary(tmp)
-    root = nltk_data.ROOT
+    root = os.path.join(german_data.ROOT, 'german_data')
     dests = [
         os.path.join(root, 'nltk_data/tokenizers/punkt/science.pickle'),
         os.path.join(root, 'nltk_data/tokenizers/punkt/PY3/science.pickle'),
     ]
     for dest in dests:
+        parent, _ = os.path.split(dest)
+        os.makedirs(parent, exist_ok=True)
         utila.log(dest)
         utila.file_replace_binary(dest, dumped)
     utila.log('done')

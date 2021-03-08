@@ -8,3 +8,4 @@
 #==============================================================================
 
 include german_data/*.dict
+graft german_data/nltk_data
