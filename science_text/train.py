@@ -9,7 +9,7 @@
 # =============================================================================
 
 import os
-import pickle
+import pickle  # nosec
 import sys
 
 import hugedata
@@ -51,7 +51,8 @@ def train(src: str, dest: str, verbose: bool = False):
 
 SOURCES = hugedata.RESOURCES
 
-if __name__ == "__main__":
+
+def setup():
     verbose = 'verbose' in sys.argv
 
     tmp = utila.tmpfile(german_data.ROOT)
@@ -69,3 +70,7 @@ if __name__ == "__main__":
         utila.log(dest)
         utila.file_replace_binary(dest, dumped)
     utila.log('done')
+
+
+if __name__ == "__main__":
+    setup()
