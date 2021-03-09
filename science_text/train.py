@@ -13,6 +13,7 @@ import pickle  # nosec
 import sys
 
 import hugedata
+import konrad
 import nltk.tokenize.punkt
 import utila
 
@@ -43,6 +44,12 @@ def train(src: str, dest: str, verbose: bool = False):
     trained = trainer.get_params()
     assert len(trained.abbrev_types) >= 20, len(trained.abbrev_types)
     assert len(trained.ortho_context) >= 20, len(trained.ortho_context)
+
+    # add predefined abbreviations
+    # remove last dot
+    abbr = {item[0:-1] for item in konrad.ABBREVIATION_LOWER}
+    utila.debug(f'add predefined abbreviation:{abbr-trained.abbrev_types}')
+    trained.abbrev_types = trained.abbrev_types | abbr
 
     tokenizer = nltk.tokenize.punkt.PunktSentenceTokenizer(
         train_text=trainer.get_params(),
