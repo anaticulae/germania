@@ -2,6 +2,35 @@
 
 Every noteable change is logged here.
 
+## v1.0.0
+
+### Feature
+
+* enable quotation signs to sentence parser (ea19db44ebda)
+* use science punkt tokeniser (0d6b38453cbe)
+* add additional verbose flag (1c57755602dc)
+* log number of training data (40a544681eed)
+* prepare input text to improve parsing result (300aedf293bd)
+* use improved test data (3ad2fb6c1aa0)
+* add verbose logging to science text trainer (55442fe5eafd)
+* add option to modify punkt regex (461104d36a2b)
+* make train runnable by console (f83e04e04113)
+* use more training data (23e8cce335d2)
+* train science with hugedata (ea5dcf7baa76)
+* add word tagger interface (03d15e57b61b)
+* use crubadan approach to determine language (8145eb26d5eb)
+* add science train package to improve train tokeniser (c90411c76420)
+* use nltk data name table to improve name lookup (7aa2f231ad92)
+
+### Fix
+
+* move science parser to german_data (ba6dd67e8bd7)
+
+### Documentation
+
+* replace outdated module documentation (9c49f2bddd7c)
+* improve interface documentation (8c737905d492)
+
 ## v0.13.9
 
 ### Feature
