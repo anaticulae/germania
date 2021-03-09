@@ -40,6 +40,10 @@ def train(src: str, dest: str, verbose: bool = False):
     trainer = nltk.tokenize.punkt.PunktTrainer(lang_vars=lang_vars)
     trainer.train(text, verbose=verbose)
 
+    trained = trainer.get_params()
+    assert len(trained.abbrev_types) >= 20, len(trained.abbrev_types)
+    assert len(trained.ortho_context) >= 20, len(trained.ortho_context)
+
     tokenizer = nltk.tokenize.punkt.PunktSentenceTokenizer(
         train_text=trainer.get_params(),
         lang_vars=lang_vars,
