@@ -13,12 +13,15 @@ import nltk.tokenize.punkt
 
 
 class SPunktLanguageVars(nltk.tokenize.punkt.PunktLanguageVars):
+    """Modifkation:
+        - Quotation signs and merge them to sentence before
+        - Merge citation number to sentence before: 'lassen.“27 Jetzt geht es'
+    """
 
-    _re_word_start = r"[^\(\"\`“{\[:;&\#\*@}\)]\-,]"
+    _re_non_word_chars = r"(?:[?!)\";}\]\*:@\'\({\[”“„])"
 
-    _re_non_word_chars = r"(?:[?!)\";“}\]\*:@\'\({\[])"
-
+    # \d to align citing numbers for example: lassen.“27 Jetzt geht es
     re_boundary_realignment = re.compile(
-        r'["\')}\]“]+?(?:\s+|(?=--)|$)',
+        r'["\')}\]“”\d]+?(?:\s+|(?=--)|$)',
         re.MULTILINE,
     )
