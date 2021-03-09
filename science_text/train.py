@@ -34,6 +34,7 @@ def train(src: str, dest: str, verbose: bool = False):
         text = utila.file_read(src)
 
     utila.log('train tokenizer')
+    utila.log(f'use {len(text.splitlines())} lines')
     # Make a new Tokenizer
     lang_vars = science_text.config.SPunktLanguageVars()
     trainer = nltk.tokenize.punkt.PunktTrainer(lang_vars=lang_vars)
