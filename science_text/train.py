@@ -54,7 +54,7 @@ SOURCES = hugedata.RESOURCES
 
 
 def setup():
-    verbose = 'verbose' in sys.argv
+    verbose = 'verbose' in sys.argv or '--verbose' in sys.argv
 
     tmp = utila.tmpfile(german_data.ROOT)
     train(SOURCES, tmp, verbose=verbose)
