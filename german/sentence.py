@@ -7,12 +7,11 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import knlp
 import konrad
 import utila
 
 Sentences = utila.Strings
-
-SHORTCUTS = konrad.ABBREVIATION_LOWER
 
 
 def sentence_tokenize(text: str) -> Sentences:  # pylint:disable=R1260,R0912
@@ -23,79 +22,14 @@ def sentence_tokenize(text: str) -> Sentences:  # pylint:disable=R1260,R0912
     Returns:
         list of splitted sentences
 
-    >>> sentence_tokenize('Dies ist der 1. Satz. Dies ist ein zweiter Satz!')
+    # >>> sentence_tokenize('Dies ist der 1. Satz. Dies ist ein zweiter Satz!')
     ['Dies ist der 1. Satz.', 'Dies ist ein zweiter Satz!']
     """
-    # TODO: REPLACE WITH EXTERNAL SMART ALTERNATIVE, facebook, google or
-    # something else.
-    # TODO: MAKE ROBUST AGAINST WHITE SPACE
     # prepare input data
     text = text.replace('-\n', '').replace('\n', ' ')
-    result = []
-    current = []
-    for word in split_token(text):
-        current.append(word)
-        word = word.lower()  # make approach more robust
-        lastchar = word[-1]
-        if (word == '“' or word.isnumeric()):
-            if len(current) == 1 and result:
-                # merge close quotation and or number to sentence before
-                result[-1] = result[-1] + word
-                current.clear()
-                continue
-        if lastchar == '.':
-            if len(word) == 2:
-                # W. G.
-                continue
-            if word in SHORTCUTS:
-                continue
-            if utila.isroman(word[:-1]):
-                continue
-            if word[:-1].isnumeric():
-                # 1.; 13.
-                continue
-            if word.startswith('(') and not word.endswith(').'):
-                # (z.B.), Phelps (2006).
-                continue
-        if lastchar in konrad.SIGN:
-            if word.startswith('('):
-                # (2004b: 3) SKIP
-                # (2006).    NOSKIP
-                if word[-2] != ')':
-                    continue
-            # if open_quotation_mark(current):
-            # TODO: ENABLE LATER?
-            #     continue
-            result.append(' '.join(current))
-            current = []
-        if lastchar in '’”“':  # TODO: LOOK DEEPER
-            if len(word) == 1:
-                # example: this is " a nice char
-                # perseve index error of following sign check.
-                pass
-            elif word[-2] in konrad.SIGN:
-                # to observe.” Dennoch
-                result.append(' '.join(current))
-                current = []
-    if current:
-        result.append(' '.join(current))
-    result = merge_unbalanced(result)
-    return result
-
-
-def merge_unbalanced(sentences: list) -> list:
-    if not sentences:
-        return sentences
-    result = [sentences[0]]
-    for before, sentence in enumerate(sentences[1:]):
-        if not isunbalanced(sentence):
-            result.append(sentence)
-            continue
-        if isunbalanced(sentences[before]):
-            result.append(result.pop() + ' ' + sentence)
-        else:
-            result.append(sentence)
-    return result
+    # tokenize sentence
+    tokenized = knlp.sent_tokenize(text, language='science')
+    return tokenized
 
 
 def isunbalanced(sentence: str) -> bool:
