@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import re
+
 import knlp
 import konrad
 import utila
@@ -14,19 +16,37 @@ import utila
 Sentences = utila.Strings
 
 
-def sentence_tokenize(text: str) -> Sentences:  # pylint:disable=R1260,R0912
-    """Split a regular `text` into sentence chunks.
+def sentence_tokenize(
+        text: str,
+        *,
+        merge_divis: bool = True,
+        normalize_newline: bool = True,
+        normalize_spaces: bool = False,
+) -> Sentences:  # pylint:disable=R1260,R0912
+    r"""Split a regular `text` into sentence chunks.
 
     Args:
         text(str): text to split containing no newlines
+        merge_divis(bool): merge lines with divis together
+        normalize_newline(bool): replace newline with space single space
+        normalize_spaces(bool): replace multiple spaces with single one
     Returns:
         list of splitted sentences
 
     # >>> sentence_tokenize('Dies ist der 1. Satz. Dies ist ein zweiter Satz!')
     ['Dies ist der 1. Satz.', 'Dies ist ein zweiter Satz!']
+    >>> sentence_tokenize('Dieser Satz ent-\nhält eine Trennung.', merge_divis=True)
+    ['Dieser Satz enthält eine Trennung.']
+    >>> sentence_tokenize('Das  sind   eindeutig zu   viele Trennungen.', normalize_spaces=True)
+    ['Das sind eindeutig zu viele Trennungen.']
     """
     # prepare input data
-    text = text.replace('-\n', '').replace('\n', ' ')
+    if merge_divis:
+        text = text.replace('-\n', '')
+    if normalize_newline:
+        text = text.replace('\n', ' ')
+    if normalize_spaces:
+        text = re.sub(r'\s+', ' ', text)
     # tokenize sentence
     tokenized = knlp.sent_tokenize(text, language='science')
     return tokenized
