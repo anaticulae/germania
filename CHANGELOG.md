@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.1.0
+
+### Feature
+
+* add option to normalize sentence input (fdb28b7e6492)
+* add predefined abbreviations (d1ead47f5d99)
+
 ## v1.0.0
 
 ### Feature
