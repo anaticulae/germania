@@ -25,6 +25,8 @@ LanguageResult = collections.namedtuple(
 
 
 def determine(text: str) -> LanguageResult:
+    if not isinstance(text, str):
+        text = ' '.join(text)
     cat = nltk.classify.textcat.TextCat()
     detected = cat.guess_language(text)
     language = konrad.Language.UNKNOWN
@@ -38,6 +40,10 @@ def isfre(tokens: str) -> bool:
     >>> isfre('Ich bin Helmut')
     False
     >>> isfre('Bonjour monsieur.')
+    True
+
+    verify that interface support tokens
+    >>> isfre('Toujour suis Luis.'.split())
     True
     """
     return determine(tokens).language == konrad.Language.FRENCH
