@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.2.0
+
+### Feature
+
+* enable tokens as language input (d55c52e9636d)
+
 ## v1.1.0
 
 ### Feature
