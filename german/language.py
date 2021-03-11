@@ -37,8 +37,7 @@ def isfre(tokens: str) -> bool:
     """\
     >>> isfre('Ich bin Helmut')
     False
-
-    iseng('Bonjour monsieur.')
+    >>> isfre('Bonjour monsieur.')
     True
     """
     return determine(tokens).language == konrad.Language.FRENCH
@@ -48,8 +47,7 @@ def iseng(tokens: str) -> bool:
     """\
     >>> iseng('Ich bin Helmut')
     False
-
-    iseng('i like fish')
+    >>> iseng('i like fish')
     True
     """
     return determine(tokens).language == konrad.Language.ENGLISH
