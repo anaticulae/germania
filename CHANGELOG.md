@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.2.1
+
+### Fix
+
+* merge divis followed by upper case char correctly (02f7e253b6bf)
+
 ## v1.2.0
 
 ### Feature
