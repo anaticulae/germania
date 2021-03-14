@@ -39,10 +39,15 @@ def sentence_tokenize(
     ['Dieser Satz enthält eine Trennung.']
     >>> sentence_tokenize('Das  sind   eindeutig zu   viele Trennungen.', normalize_spaces=True)
     ['Das sind eindeutig zu viele Trennungen.']
+    >>> sentence_tokenize('Der Stadtteil Berlin-\nNeuköln liegt im Süden von Berlin.')
+    ['Der Stadtteil Berlin-Neuköln liegt im Süden von Berlin.']
     """
     # prepare input data
     if merge_divis:
-        text = text.replace('-\n', '')
+        # Ensure that divis of following UpperCase-Word is not merged
+        # TODO: IMPORVE REGEX
+        text = re.sub(r'(-\n)(?P<data>[a-zäöü])', r'\g<data>', text)
+        text = re.sub(r'(-\n)(?P<data>[A-ZÄÖÜ])', r'-\g<data>', text)
     if normalize_newline:
         text = text.replace('\n', ' ')
     if normalize_spaces:
