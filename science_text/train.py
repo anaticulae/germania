@@ -64,14 +64,14 @@ def train(src: str, dest: str, verbose: bool = False):
 SOURCES = hugedata.RESOURCES
 
 
-def setup():
+def setup(root):
     verbose = 'verbose' in sys.argv or '--verbose' in sys.argv
 
     tmp = utila.tmpfile(german_data.ROOT)
     train(SOURCES, tmp, verbose=verbose)
 
     dumped = utila.file_read_binary(tmp)
-    root = os.path.join(german_data.ROOT, 'german_data')
+    root = os.path.join(root, 'german_data')
     dests = [
         os.path.join(root, 'nltk_data/tokenizers/punkt/science.pickle'),
         os.path.join(root, 'nltk_data/tokenizers/punkt/PY3/science.pickle'),
@@ -85,4 +85,5 @@ def setup():
 
 
 if __name__ == "__main__":
-    setup()
+    ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+    setup(ROOT)
