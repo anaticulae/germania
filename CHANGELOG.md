@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.2.3
+
+### Fix
+
+* write trained data to local repository (971a3e8510ca)
+
 ## v1.2.2
 
 ## v1.2.1
