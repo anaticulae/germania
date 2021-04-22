@@ -11,6 +11,9 @@ import re
 
 import utila
 
+# TODO: MOVE TO A MORE GENERAL PLACE
+TABLE = str.maketrans({'∼': '~'})
+
 
 def hyperlink(raw: str, position: bool = False):
     r"""\
@@ -24,10 +27,13 @@ def hyperlink(raw: str, position: bool = False):
     'www.statistik.at/blickgem/fa1/g31818.pdf'
     >>> hyperlink('http://www.statistik.at/index.html?includePage=detailedView%C2%A7ionName=Bildung%2C+Kultur&pubId=461')
     ['http://www.statistik.at/index.html?includePage=detailedView%C2%A7ionName=Bildung%2C+Kultur&pubId=461']
+    >>> hyperlink('10 Silla and Kaestner from http://www.ppgia.pucpr.br/∼silla/softwares/yasd.zip.' )
+    ['http://www.ppgia.pucpr.br/~silla/softwares/yasd.zip']
     """
     raw = raw.replace('\n', '')
+    raw = raw.translate(TABLE)
     pattern = r"""
-    (http://|https://|www)[\w\d\./\-\?\=\&\%\+]+
+    (http://|https://|www)[\w\d\./\-\?\=\&\%\+\~]+[\w\d/\?\=\&\%]\b  # no dot at the end
     """
     result = []
     for item in re.finditer(pattern, raw, flags=re.VERBOSE):
