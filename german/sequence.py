@@ -62,6 +62,7 @@ def searches(
         lowercase: bool = True,
         tokens_complex: bool = True,
         compare_content: bool = True,
+        overlapping_remove: bool = True,
 ) -> list:
     # prepare here to avoid preparing for every tokens
     if isinstance(sentence, str):
@@ -79,6 +80,28 @@ def searches(
             result.extend(matches)
     # TODO: SORT RESULT?
     result = utila.make_unique(result)
+    if overlapping_remove:
+        result = remove_overlapping(result)
+    return result
+
+
+def remove_overlapping(items: list) -> list:
+    """\
+    >>> remove_overlapping([(0, 5), (4, 9)])
+    [(0, 5), (4, 9)]
+    >>> remove_overlapping([(2, 5), (3, 4)])
+    [(2, 5)]
+    """
+    items = sorted(items, key=lambda x: x[0])
+    result = []
+    done = set()
+    for item in items:
+        start, stop = item
+        if all((item in done for item in range(start, stop))):
+            continue
+        for index in range(start, stop):
+            done.add(index)
+        result.append(item)
     return result
 
 
