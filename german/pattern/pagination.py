@@ -10,6 +10,15 @@
 import operator
 import re
 
+PAGE_PATTERN = r"""
+    (S|S\.|Seite|p|p\.|page)
+    [ ]{0,4}
+    (
+        (?P<pstart>\d{1,4})[ ]{0,2}(-|–)[ ]{0,2}(?P<pend>\d{1,4})|
+        (?P<page>\d{1,4})
+    )
+"""
+
 
 def pagenumbers(raw: str):
     """Extract single pages and page ranges out of `raw` text.
@@ -18,14 +27,7 @@ def pagenumbers(raw: str):
     [(1, 5), (4, 4), (13, 50), (20, 30), (30, 30), (319, 350), (500, 500)]
     """
     result = []
-    pattern = r"""(S|S\.|Seite|p|p\.|page)
-                [ ]{0,4}
-                (
-                    (?P<pstart>\d{1,4})[ ]{0,2}(-|–)[ ]{0,2}(?P<pend>\d{1,4})|
-                    (?P<page>\d{1,4})
-                )
-               """
-    for item in re.finditer(pattern, raw, re.VERBOSE):
+    for item in re.finditer(PAGE_PATTERN, raw, re.VERBOSE | re.IGNORECASE):
         try:
             # single page
             pstart = int(item['page'])
