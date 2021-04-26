@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.2.4
+
+### Feature
+
+* add option to remove overlapping extraction (03b8940b35d2)
+* extend hyperlink pattern (77645c2ed574)
+
 ## v1.2.3
 
 ### Fix
