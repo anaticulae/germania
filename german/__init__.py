@@ -34,6 +34,7 @@ from german.magic import isyear
 from german.magic import wordtype
 from german.magic import wordtypes
 from german.pattern import matched
+from german.pattern.access import accessed
 from german.pattern.author import authors
 from german.pattern.author import authors_decide
 from german.pattern.date import dates
