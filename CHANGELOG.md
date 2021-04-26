@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.2.5
+
+### Feature
+
+* moves pages code (981082204320)
+* move accessed pattern (58006876503b)
+
 ## v1.2.4
 
 ### Feature
