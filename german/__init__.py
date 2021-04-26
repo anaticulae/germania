@@ -42,6 +42,8 @@ from german.pattern.date import years
 from german.pattern.href import hyperlink
 from german.pattern.mail import mails
 from german.pattern.pagination import pagenumbers
+from german.pattern.pagination import pages
+from german.pattern.pagination import pages_complex
 from german.quotation import extract_quotes
 from german.quotation import raw_quotation
 from german.sentence import Sentences
