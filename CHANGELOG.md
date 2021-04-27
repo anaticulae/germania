@@ -2,6 +2,15 @@
 
 Every noteable change is logged here.
 
+## v1.3.0
+
+### Feature
+
+* use negative person list (3f9615e2c97d)
+* use lower cased set (ce28827d83d0)
+* add dict of institution (2940f142fe30)
+* add dict with no person names (95fa42199944)
+
 ## v1.2.5
 
 ### Feature
