@@ -7,9 +7,30 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import german_data
+import iamraw
+import pytest
+
+import german
+
+NOPERSONS = """\
+Duden. Rechtschreibung
+Duden
+""".strip().splitlines()
 
 
-def test_load_data():
-    assert german_data.NOPERSON
-    assert 'DIN' in german_data.NOPERSON
+@pytest.mark.parametrize(
+    'raw',
+    [pytest.param(item, id=item) for item in NOPERSONS],
+)
+def test_noperson(raw):
+    assert not german.isperson(raw)
+
+
+@pytest.mark.parametrize(
+    'raw',
+    [pytest.param(item, id=item) for item in NOPERSONS],
+)
+def test_authors(raw):
+    parsed = german.authors(raw)
+    decided = german.authors_decide(parsed)
+    assert isinstance(decided[0], iamraw.NoPerson)

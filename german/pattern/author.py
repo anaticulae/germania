@@ -101,6 +101,8 @@ def judge(parsed: list):
     if len(parsed) == 1:
         return iamraw.NoPerson(raw=parsed[0])  # pylint:disable=E1101
     raw = ' '.join(parsed)
+    if any([item for item in parsed if item in german.magic.NOPERSON]):
+        return iamraw.NoPerson(raw=raw)
     if not person_simple(parsed):
         return iamraw.NoPerson(raw=raw)  # pylint:disable=E1101
     name, firstname = decide_name(parsed)

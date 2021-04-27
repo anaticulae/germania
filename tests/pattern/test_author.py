@@ -29,7 +29,7 @@ def test_authors_decide():
     raw = 'BOBEK H., FESL M.'
     authors = german.authors(raw)
     decided = german.authors_decide(authors)
-    assert all(isinstance(item, iamraw.Person) for item in decided)
+    assert all([isinstance(item, iamraw.Person) for item in decided])
 
 
 AUTHORS = """\
