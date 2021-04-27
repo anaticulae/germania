@@ -7,9 +7,11 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import german
 import german_data
 
 
 def test_noperson():
     assert german_data.NOPERSON
     assert 'DIN' in german_data.NOPERSON
+    assert not german.isperson('Duden')

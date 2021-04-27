@@ -116,6 +116,7 @@ def isyear(item: str) -> bool:
 
 
 NAMES = german_data.NAMES | nltk_data.lookup.NAME_MALE | nltk_data.lookup.NAME_FEMALE
+NOPERSON = german_data.NOPERSON | german_data.PRESS | german_data.INSTITUTION
 
 
 def isperson(item: str) -> bool:
@@ -128,8 +129,12 @@ def isperson(item: str) -> bool:
     True
     >>> isperson('Archibald') # nltk data
     True
+    >>> isperson('DEUTSCHE NORM DIN') # noperson list
+    False
     """
     item = item.strip().lower()
+    if item in NOPERSON:
+        return False
     if item in NAMES:
         return True
     arabic = r'(ibn|el)([ ]|\-?)\w{4,}'
