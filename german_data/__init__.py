@@ -18,5 +18,6 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
 NAMES = load_data('names.dict')
 PRESS = load_data('press.dict')
+NOPERSON = load_data('noperson.dict')
 
 nltk.data.path.insert(0, os.path.join(ROOT, 'german_data/nltk_data'))
