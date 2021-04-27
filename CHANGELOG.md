@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.3.1
+
+### Feature
+
+* use no-person detector to invalidate parsed authors (e15ed9a77138)
+
 ## v1.3.0
 
 ### Feature
