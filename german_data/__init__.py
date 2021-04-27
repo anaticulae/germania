@@ -16,6 +16,7 @@ from german_data.utils import load_dict
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
+# TODO: INTRODUCE LAZY LOADING
 NAMES = load_data('names.dict')
 PRESS = load_data('press.dict')
 NOPERSON = load_data('noperson.dict')
