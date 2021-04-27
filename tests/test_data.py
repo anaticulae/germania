@@ -12,4 +12,4 @@ import german_data
 
 def test_noperson():
     assert german_data.NOPERSON
-    assert 'din' in german_data.NOPERSON
+    assert 'DIN' in german_data.NOPERSON

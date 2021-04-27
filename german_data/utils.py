@@ -14,10 +14,32 @@ import utila
 import german_data
 
 
-def load_dict(path) -> set:
+class LowerCasedSet:  # TODO: MOVE TO UTILA
+    """\
+    >>> data = LowerCasedSet('Helm melm GELM'.split())
+    >>> assert 'HELM' in data
+    >>> assert len(list(data)) == 3
+    """
+
+    def __init__(self, values):
+        self.values = frozenset([item.lower() for item in values])
+
+    def __iter__(self):
+        return iter(self.values)
+
+    def __contains__(self, item):
+        return item.lower() in self.values
+
+    def __or__(self, items):
+        if isinstance(items, LowerCasedSet):
+            items: frozenset = items.values
+        return LowerCasedSet(self.values | items)
+
+
+def load_dict(path) -> LowerCasedSet:
     assert os.path.exists(path), str(path)
     loaded = utila.file_read(path).splitlines()
-    result = set(item.lower() for item in loaded)
+    result = LowerCasedSet(loaded)
     return result
 
 
