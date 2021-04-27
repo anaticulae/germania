@@ -133,7 +133,7 @@ def isperson(item: str) -> bool:
     if item in NAMES:
         return True
     arabic = r'(ibn|el)([ ]|\-?)\w{4,}'
-    if re.match(arabic, item, re.I):
+    if re.match(arabic, item, re.IGNORECASE):
         return True
     return False
 
