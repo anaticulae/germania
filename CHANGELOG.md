@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v1.3.2
+
+### Feature
+
+* add a new university (bfe8f237a2a6)
+
+### Fix
+
+* word bounding is not required (09f45801cb43)
+
 ## v1.3.1
 
 ### Feature
