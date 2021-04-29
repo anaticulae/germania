@@ -25,7 +25,7 @@ def hyperlink(raw: str, position: bool = False):
     # TODO: REPLACE THIS PATTERN
     pattern = r"""
     (https://|http://|www\.)
-    [\w\d\./\-\?\=\&\%\+\~]+[\w\d/\?\=\&\%]\b  # no dot at the end
+    [\w\d\./\-\?\=\&\%\+\~]+[\w\d/\?\=\&\%]  # no dot at the end
     """
     result = []
     for item in re.finditer(pattern, raw, flags=re.VERBOSE):

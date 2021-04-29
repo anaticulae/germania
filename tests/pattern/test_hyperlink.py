@@ -31,6 +31,9 @@ http://www.statistik.at/index.html?includePage=detailedView%C2%A7ionName=Bildung
 10 Silla and Kaestner from http://www.ppgia.pucpr.br/∼silla/softwares/yasd.zip.
 http://www.ppgia.pucpr.br/~silla/softwares/yasd.zip
 
+https://www.menschen_und_gesellschaft/
+https://www.menschen_und_gesellschaft/
+
 """
 
 
