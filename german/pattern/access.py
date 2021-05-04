@@ -46,6 +46,8 @@ def accessed(raw: str):
         % '|'.join(MONTH),
         r'\((?P<year>\d{2,4})\.(?P<month>\d{1,2})\.(?P<day>\d{1,2})\)',
         r'\((?P<day>\d{1,2})\.(?P<month>\d{1,2})\.(?P<year>\d{2,4})\)',
+        r'\((?P<day>\d{1,2})\.[ ]{0,3}%s[ ]{0,3}(?P<year>\d{2,4})\)' %
+        '|'.join(MONTH),
     ]
     for item in pattern:
         matched = re.search(item, raw, re.IGNORECASE | re.VERBOSE)
