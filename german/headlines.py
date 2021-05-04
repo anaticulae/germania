@@ -7,19 +7,21 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-HEADLINES = {
-    'Anhang',
-    'Anhangsverzeichnis',
-    'Bibliografie',
-    'Eidesstattliche Erklärung',
-    'Eidesstattliche Versicherung',
-    'Einleitung',
-    'Erklärung',
-    'Internetquellen',
-    'Literaturverzeichnis',
-    'Quellenverzeichnis',
-    'Zeitschriftenartikel',
-}
+import utila
+
+HEADLINES = """\
+Anhang
+Anhangsverzeichnis
+Bibliografie
+Eidesstattliche Erklärung
+Eidesstattliche Versicherung
+Einleitung
+Erklärung
+Internetquellen
+Literaturverzeichnis
+Quellenverzeichnis
+Zeitschriftenartikel
+""".strip().splitlines()
 
 
 def isheadline(token: str) -> bool:
@@ -33,7 +35,6 @@ def isheadline(token: str) -> bool:
     False
     """
     token = token.strip()
-    token = token.title()
-    if token in HEADLINES:
+    if utila.similar(HEADLINES, token, maxdiff=0.85):
         return True
     return False
