@@ -32,6 +32,8 @@ def accessed(raw: str):
     ('(27.05.2018)', (2018, 5, 27))
     >>> accessed('[Letzter Zugriff: 16.02.15]')
     ('[Letzter Zugriff: 16.02.15]', (15, 2, 16))
+    >>> accessed('(Datum des Zugriffs: 05. Juli 2004)')
+    ('Zugriffs: 05. Juli 2004', (2004, 7, 5))
     """
     pattern = [
         r'\[Letzter[ ]{0,3}Zugriff\:[ ]{0,3}(?P<day>\d{1,2})\.(?P<month>\d{1,2})\.(?P<year>\d{2,4})\]',
@@ -42,6 +44,8 @@ def accessed(raw: str):
         r'\[Online\;[ ]{0,3}Zugriff[ ]{0,3}(?P<month>\w+)[ ]{0,3}(?P<day>\d{1,2})\,[ ]{0,3}(?P<year>\d{2,4})\]',
         r'Version\:[ ]{0,3}(?P<month>\w+)[ ]{0,3}(?P<year>\d{2,4})',
         r'Zugriff[ ]{0,3}am[ ]{0,3}(?P<day>\d{1,2})\.(?P<month>\d{1,2})\.(?P<year>\d{2,4})',
+        r'Zugriffs?[ ]{0,3}:?[ ]{0,3}(?P<day>\d{1,2})\.[ ]{0,3}(?P<month>%s)[ ]{0,3}(?P<year>\d{2,4})'
+        % '|'.join(MONTH),
     ]
     for item in pattern:
         matched = re.search(item, raw, re.IGNORECASE | re.VERBOSE)
