@@ -42,16 +42,12 @@ def sentence_tokenize(
     >>> sentence_tokenize('Der Stadtteil Berlin-\nNeuköln liegt im Süden von Berlin.')
     ['Der Stadtteil Berlin-Neuköln liegt im Süden von Berlin.']
     """
-    # prepare input data
-    if merge_divis:
-        # Ensure that divis of following UpperCase-Word is not merged
-        # TODO: IMPORVE REGEX
-        text = re.sub(r'(-\n)(?P<data>[a-zäöü])', r'\g<data>', text)
-        text = re.sub(r'(-\n)(?P<data>[A-ZÄÖÜ])', r'-\g<data>', text)
-    if normalize_newline:
-        text = text.replace('\n', ' ')
-    if normalize_spaces:
-        text = re.sub(r'\s+', ' ', text)
+    text = utila.normalize_text(
+        text,
+        merge_divis=merge_divis,
+        normalize_newline=normalize_newline,
+        normalize_spaces=normalize_spaces,
+    )
     # tokenize sentence
     tokenized = knlp.sent_tokenize(text, language='science')
     return tokenized
