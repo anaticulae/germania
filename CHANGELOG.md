@@ -2,6 +2,15 @@
 
 Every noteable change is logged here.
 
+## v1.4.0
+
+### Feature
+
+* extend month detector pattern (9bf6f026ff1e)
+* use modern similar approach (1665b96be71c)
+* add day-month-year pattern (dc524813e9f0)
+* extend pattern (db01ecc41792)
+
 ## v1.3.2
 
 ### Feature
