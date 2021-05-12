@@ -47,6 +47,7 @@ if __name__ == "__main__":
         packages=[
             'german',
             'german.pattern',
+            'german.utils',
             'german_data',
             'science_text',
         ],
