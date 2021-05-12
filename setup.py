@@ -8,37 +8,32 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-from os import chdir
-from os.path import abspath
-from os.path import dirname
-from os.path import join
-from re import search
+import os
+import re
 
-from setuptools import setup
+import setuptools
 
-ROOT = abspath(dirname(__file__))
+ROOT = os.path.abspath(os.path.dirname(__file__))
 UTF8 = 'utf8'
 
-with open(join(ROOT, 'README.md'), mode='rt', encoding=UTF8) as fp:
+with open(os.path.join(ROOT, 'README.md'), encoding=UTF8) as fp:
     README = fp.read()
 
-with open(join(ROOT, 'german/__init__.py'), mode='rt', encoding=UTF8) as fp:
-    VERSION = search(r'__version__ = \'(.*?)\'', fp.read()).group(1)
+with open(os.path.join(ROOT, 'german/__init__.py'), encoding=UTF8) as fp:
+    VERSION = re.search(r'__version__ = \'(.*?)\'', fp.read()).group(1)
 
-with open(join(ROOT, "requirements.txt"), mode='rt', encoding=UTF8) as fp:
-    INSTALL_REQUIRES = [
-        line for line in fp.readlines() if line and '#' not in line
-    ]
+with open(os.path.join(ROOT, "requirements.txt"), encoding=UTF8) as fp:
+    REQUIRES = [line for line in fp.readlines() if line and '#' not in line]
 
 if __name__ == "__main__":
     # allow setup.py to run from another directory
-    chdir(ROOT)
-    setup(
+    os.chdir(ROOT)
+    setuptools.setup(
         author='Helmut Konrad Fahrendholz',
         author_email='info@checkitweg.de',
         description='just wrap it',
         include_package_data=True,
-        install_requires=INSTALL_REQUIRES,
+        install_requires=REQUIRES,
         long_description=README,
         name='german',
         platforms='any',
@@ -46,7 +41,6 @@ if __name__ == "__main__":
         version=VERSION,
         zip_safe=False,  # create 'zip'-file if True. Don't do it!
         classifiers=[
-            'Programming Language :: Python :: 3.6',
             'Programming Language :: Python :: 3.7',
             'Programming Language :: Python :: 3.8',
         ],
