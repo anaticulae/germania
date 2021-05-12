@@ -2,6 +2,15 @@
 
 Every noteable change is logged here.
 
+## v1.5.0
+
+### Feature
+
+* add MONTH_REGEX (cd749de8c544)
+* add month detector to public API (e63336122227)
+* add month list (1b37f147694e)
+* add improved month pattern (df34f5b82598)
+
 ## v1.4.0
 
 ### Feature
