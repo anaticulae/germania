@@ -26,6 +26,10 @@ import re
 
 import utila
 
+import german.utils.month
+
+MONTHREGEX = german.utils.month.MONTH_REGEX
+
 
 def accessed(raw: str):
     """\
@@ -36,6 +40,7 @@ def accessed(raw: str):
     >>> accessed('(Datum des Zugriffs: 05. Juli 2004)')
     ('Zugriffs: 05. Juli 2004', (2004, 7, 5))
     """
+    # yapf:disable
     pattern = [
         r'\[Letzter[ ]{0,3}Zugriff\:[ ]{0,3}(?P<day>\d{1,2})\.(?P<month>\d{1,2})\.(?P<year>\d{2,4})\]',
         r'Letzter[ ]{0,3}Zugriff\:[ ]{0,3}(?P<day>\d{1,2})\.(?P<month>\d{1,2})\.(?P<year>\d{2,4})',
@@ -43,13 +48,12 @@ def accessed(raw: str):
         r'\[Online\;[ ]{0,3}Zugriff[ ]{0,3}(?P<month>\w+)[ ]{0,3}(?P<day>\d{1,2})\,[ ]{0,3}(?P<year>\d{2,4})\]',
         r'Version\:[ ]{0,3}(?P<month>\w+)[ ]{0,3}(?P<year>\d{2,4})',
         r'Zugriff[ ]{0,3}am[ ]{0,3}(?P<day>\d{1,2})\.(?P<month>\d{1,2})\.(?P<year>\d{2,4})',
-        r'Zugriffs?[ ]{0,3}:?[ ]{0,3}(?P<day>\d{1,2})\.[ ]{0,3}(?P<month>%s)[ ]{0,3}(?P<year>\d{2,4})'
-        % prepare_month(),
+        r'Zugriffs?[ ]{0,3}:?[ ]{0,3}(?P<day>\d{1,2})\.[ ]{0,3}(?P<month>' + MONTHREGEX + r')[ ]{0,3}(?P<year>\d{2,4})',
         r'\((?P<year>\d{2,4})\.(?P<month>\d{1,2})\.(?P<day>\d{1,2})\)',
         r'\((?P<day>\d{1,2})\.(?P<month>\d{1,2})\.(?P<year>\d{2,4})\)',
-        r'\((?P<day>\d{1,2})\.[ ]{0,3}(?P<month>%s)[ ]{0,3}(?P<year>\d{2,4})\)'
-        % prepare_month(),
+        r'\((?P<day>\d{1,2})\.[ ]{0,3}(?P<month>' + MONTHREGEX + r')[ ]{0,3}(?P<year>\d{2,4})\)',
     ]
+    # yapf:enable
     for item in pattern:
         matched = re.search(item, raw, re.IGNORECASE | re.VERBOSE)
         if not matched:
@@ -57,7 +61,7 @@ def accessed(raw: str):
         raw = utila.extract_match(matched)
         date = (
             int(matched['year']),
-            month(matched['month']),
+            german.utils.month.month(matched['month']),
             day(matched),
         )
         return (raw, date)
@@ -68,28 +72,3 @@ def day(matched):
     with contextlib.suppress(IndexError):
         return int(matched['day'])
     return 0
-
-
-MONTH = [
-    'januar', 'februar', 'märz marz', 'april', 'mai', 'juni', 'juli', 'august',
-    'september', 'oktober', 'november', 'dezember'
-]
-
-
-def month(item: str):
-    """\
-    >>> month('marz')
-    3
-    """
-    item = item.lower()
-    for index, month_ in enumerate(MONTH, start=1):
-        if item in month_:
-            return index
-    return int(item)
-
-
-def prepare_month() -> str:
-    joined = '|'.join(MONTH)
-    # join multiple month
-    result = joined.replace(' ', '|')
-    return result
