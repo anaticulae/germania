@@ -6,6 +6,15 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+"""Month detector
+==============
+
+Determine number of month:
+
+>>> import german
+>>> german.month('may')
+5
+"""
 
 import contextlib
 

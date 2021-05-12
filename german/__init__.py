@@ -57,6 +57,7 @@ from german.sequence import searches
 from german.tagger import word_tag
 from german.text import words_fromstr
 from german.utils.month import MONTH
+from german.utils.month import month
 from german.word import Words
 from german.word import contain_quotation_marks
 from german.word import word_tokenize
