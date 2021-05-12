@@ -11,7 +11,7 @@ import contextlib
 
 import utila
 
-MONTH = """\
+MONTH_RAW = """\
 january
 januar
 jan
@@ -57,8 +57,11 @@ december
 dec
 """.strip()
 
-GROUPS = [[item for item in month.splitlines()] for month in MONTH.split('\n\n')]  # yapf:disable
+GROUPS = [
+    [item for item in month.splitlines()] for month in MONTH_RAW.split('\n\n')
+]
 MONTH_REGEX = '(' + '|'.join(utila.flatten(GROUPS)) + ')'
+MONTH = utila.flatten(GROUPS)
 
 
 def month(item: str):
