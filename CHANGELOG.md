@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.5.1
+
+### Feature
+
+* use family name to verify authors (c1e6867a6b47)
+
 ## v1.5.0
 
 ### Feature
