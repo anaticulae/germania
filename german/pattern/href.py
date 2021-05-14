@@ -14,21 +14,29 @@ import utila
 # TODO: MOVE TO A MORE GENERAL PLACE
 TABLE = str.maketrans({'∼': '~'})
 
+CHARS = r'[\w\d\./\-\_\?\=\&\%\+\~]+[\w\d/\?\=\&\%]'
+HYPERLINK = rf"""
+    (
+        (https://|http://|www\.)
+        {CHARS}+[\w\d/\?\=\&\%]  # no dot at the end
+    |
+        [\w\d\-\_\.]+?\.(de|net|org|com|co\.uk|\w{2,3}){CHARS}
+    )
+"""
+
 
 def hyperlink(raw: str, position: bool = False):
     r"""\
     >>> hyperlink('Before: http://student.unifr.ch/\nReferenzrahmen2001.pdf after.', position=True)
     [('http://student.unifr.ch/Referenzrahmen2001.pdf', 8)]
+    >>> hyperlink('Wiki [On-line]. Available: wehewehe.org/gsdl2.5/cgi-bin/hdict?d=D21021')
+    ['wehewehe.org/gsdl2.5/cgi-bin/hdict?d=D21021']
     """
     raw = raw.replace('\n', '')
     raw = raw.translate(TABLE)
     # TODO: REPLACE THIS PATTERN
-    pattern = r"""
-    (https://|http://|www\.)
-    [\w\d\./\-\?\=\&\%\+\~]+[\w\d/\?\=\&\%]  # no dot at the end
-    """
     result = []
-    for item in re.finditer(pattern, raw, flags=re.VERBOSE):
+    for item in re.finditer(HYPERLINK, raw, flags=re.VERBOSE):
         matched = utila.extract_match(item)
         if position:
             result.append((matched, item.span()[0]))
