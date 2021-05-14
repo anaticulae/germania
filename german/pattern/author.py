@@ -35,6 +35,8 @@ def authors(raw: str):
 ['CAMPAGNOLI', 'R. R.'], ['PINHEIRO', 'W. M.'], ['PESSOA', 'L.']]
     >>> authors('M. Baccar,')
     [['M.', 'Baccar']]
+    >>> authors('Hug, T. & Poscheschinik, G.')
+    [['Hug', 'T.'], ['Poscheschinik', 'G.']]
     """
     raw = raw.strip()
     free = freeand(raw)
@@ -53,6 +55,10 @@ def authors(raw: str):
 
 
 def authors_decide(parsed: list) -> iamraw.Persons:
+    """\
+    >>> authors_decide([['Hug', 'T.'], ['Poscheschinik', 'G.']])
+    [Person(name='Hug', firstname='T.',...Person(name='Poscheschinik',...ik G.')]
+    """
     result = []
     for author in parsed:
         result.append(judge(author))

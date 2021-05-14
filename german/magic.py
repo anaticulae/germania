@@ -115,7 +115,8 @@ def isyear(item: str) -> bool:
     return 1900 <= item <= 2030
 
 
-NAMES = german_data.NAMES | nltk_data.lookup.NAME_MALE | nltk_data.lookup.NAME_FEMALE
+NAMES = (german_data.NAMES | nltk_data.lookup.NAME_MALE |
+         nltk_data.lookup.NAME_FEMALE | nltk_data.lookup.NAME_FAMILY)
 NOPERSON = german_data.NOPERSON | german_data.PRESS | german_data.INSTITUTION
 
 
