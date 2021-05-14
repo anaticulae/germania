@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.5.2
+
+### Feature
+
+* extend hyperlink pattern (317ff03c3ec6)
+
 ## v1.5.1
 
 ### Feature
