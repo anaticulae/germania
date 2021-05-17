@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.5.3
+
+### Feature
+
+* extend no person list (33ddf1c75051)
+
 ## v1.5.2
 
 ### Feature
