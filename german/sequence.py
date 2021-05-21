@@ -142,9 +142,8 @@ def _match(
             if not item_expected_str:
                 return False
             continue
-        else:
-            if item not in item_expected:
-                return False
+        if item not in item_expected:
+            return False
     return True
 
 

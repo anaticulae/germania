@@ -107,7 +107,7 @@ def judge(parsed: list):
     if len(parsed) == 1:
         return iamraw.NoPerson(raw=parsed[0])  # pylint:disable=E1101
     raw = ' '.join(parsed)
-    if any([item for item in parsed if item in german.magic.NOPERSON]):
+    if any(item for item in parsed if item in german.magic.NOPERSON):
         return iamraw.NoPerson(raw=raw)
     if not person_simple(parsed):
         return iamraw.NoPerson(raw=raw)  # pylint:disable=E1101
@@ -134,7 +134,7 @@ def person_simple(parsed: list, max_names: int = 4) -> bool:
     """
     if len(parsed) > max_names:
         return False
-    if any([german.isperson(name) for name in parsed]):
+    if any(german.isperson(name) for name in parsed):
         return True
     if all(VALID_NAME.match(item) for item in parsed):
         # ensure that author contains `.` to fit in short `X. Name` pattern

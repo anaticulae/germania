@@ -34,14 +34,13 @@ def word_tokenize(
         if char == ' ':
             handle_whitespace(result, current)
             continue
+        try:
+            special = konrad.matches(char, lang=lang)
+        except KeyError:
+            # append normal text char or number
+            current.append(char)
         else:
-            try:
-                special = konrad.matches(char, lang=lang)
-            except KeyError:
-                # append normal text char or number
-                current.append(char)
-            else:
-                handle_token(result, items, current, index, char, special)
+            handle_token(result, items, current, index, char, special)
     if current:
         if items[-1] in konrad.SIGN or not validate_sentences:
             result.append(''.join(current))

@@ -67,7 +67,7 @@ dec
 """.strip()
 
 GROUPS = [
-    [item for item in month.splitlines()] for month in MONTH_RAW.split('\n\n')
+    list(month.splitlines()) for month in MONTH_RAW.split('\n\n')
 ]
 MONTH_REGEX = '(' + '|'.join(utila.flatten(GROUPS)) + ')'
 MONTH = utila.flatten(GROUPS)
