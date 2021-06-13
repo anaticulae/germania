@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v1.5.6
+
+### Feature
+
+* make quotation parser language dependent (fdb4f4a0d54a)
+
+### Fix
+
+* remove marks from language test (11280f4cde1c)
+
 ## v1.5.5
 
 ## v1.5.4
