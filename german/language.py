@@ -25,6 +25,8 @@ LanguageResult = collections.namedtuple(
 
 
 def determine(text: str) -> LanguageResult:
+    if isinstance(text, list):
+        text = konrad.remove_marks(text)
     if not isinstance(text, str):
         text = ' '.join(text)
     cat = nltk.classify.textcat.TextCat()
