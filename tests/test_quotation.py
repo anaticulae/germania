@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import konrad
+
 import german
 import tests.test_sentence_split
 
@@ -71,3 +73,17 @@ def test_parse_long_quote():
 
     raw = german.raw_quotation(splitted, extracted)
     assert len(raw) == 1
+
+
+ENGLISH = """\
+Kaplan/Haenlein (2009) schreiben
+dazu: “In our view […] Social Media is a group of Internet-based
+applications that build on the ideological and technological foundations
+of Web 2.0, and that allow the creation and exchange of User Generated
+Content”12.
+"""
+
+
+def test_parse_quote_english():
+    extracted = german.extract_quotes(ENGLISH, lang=konrad.ENGLISH)
+    assert extracted == [(7, 46)]

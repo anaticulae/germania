@@ -14,23 +14,41 @@ import konrad.mark
 
 import german
 
+DOUBLE_GER = (
+    konrad.Mark.QUOTATION_MARK_DOUBLE_OPEN,
+    konrad.Mark.QUOTATION_MARK_DOUBLE_CLOSE,
+)
+DOUBLE_ENG = (
+    konrad.Mark.EN_QUOTATION_MARK_DOUBLE_OPEN,
+    konrad.Mark.EN_QUOTATION_MARK_DOUBLE_CLOSE,
+)
+SINGLE_GER = (
+    konrad.Mark.QUOTATION_MARK_SINGLE_OPEN,
+    konrad.Mark.QUOTATION_MARK_SINGLE_CLOSE,
+)
+SINGLE_ENG = (
+    konrad.Mark.EN_QUOTATION_MARK_SINGLE_OPEN,
+    konrad.Mark.EN_QUOTATION_MARK_SINGLE_CLOSE,
+)
+
 
 def extract_quotes(items: str, lang=konrad.GERMAN) -> list:  # pylint:disable=W0613
     assert isinstance(items, str), type(items)
-    tokens = german.word_tokenize(items, validate_sentences=False)
+    tokens = german.word_tokenize(items, lang=lang, validate_sentences=False)
     result = []
 
-    doubled = parse_quotation(tokens)
+    double = DOUBLE_ENG if lang == konrad.ENGLISH else DOUBLE_GER
+    doubled = parse_quotation(tokens, *double)
     if doubled:
         result.extend(doubled)
 
-    single = parse_quotation(
+    single = SINGLE_ENG if lang == konrad.ENGLISH else SINGLE_GER
+    singled = parse_quotation(
         tokens,
-        start_tag=konrad.Mark.QUOTATION_MARK_SINGLE_OPEN,
-        end_tag=konrad.Mark.QUOTATION_MARK_SINGLE_CLOSE,
+        *single,
     )
-    if single:
-        result.extend(single)
+    if singled:
+        result.extend(singled)
     return result
 
 
