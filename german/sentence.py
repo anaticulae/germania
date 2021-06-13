@@ -15,11 +15,11 @@ Sentences = utila.Strings
 
 
 def sentence_tokenize(
-        text: str,
-        *,
-        merge_divis: bool = True,
-        normalize_newline: bool = True,
-        normalize_spaces: bool = False,
+    text: str,
+    *,
+    merge_divis: bool = True,
+    normalize_newline: bool = True,
+    normalize_spaces: bool = False,
 ) -> Sentences:  # pylint:disable=R1260,R0912
     r"""Split a regular `text` into sentence chunks.
 

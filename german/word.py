@@ -19,9 +19,9 @@ Words = typing.List[str]
 
 
 def word_tokenize(
-        items: str,
-        validate_sentences: bool = True,
-        lang: konrad.Language = None,
+    items: str,
+    validate_sentences: bool = True,
+    lang: konrad.Language = None,
 ) -> Words:
     if validate_sentences and not german.is_sentence(items):
         # Ensure to parse complete sentences.

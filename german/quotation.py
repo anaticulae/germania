@@ -35,9 +35,9 @@ def extract_quotes(items: str, lang=konrad.GERMAN) -> list:  # pylint:disable=W0
 
 
 def parse_quotation(
-        tokens,
-        start_tag=konrad.Mark.QUOTATION_MARK_DOUBLE_OPEN,
-        end_tag=konrad.Mark.QUOTATION_MARK_DOUBLE_CLOSE,
+    tokens,
+    start_tag=konrad.Mark.QUOTATION_MARK_DOUBLE_OPEN,
+    end_tag=konrad.Mark.QUOTATION_MARK_DOUBLE_CLOSE,
 ):
     result = []
     start, end = None, None

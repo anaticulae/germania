@@ -17,12 +17,12 @@ import german
 
 
 def search(
-        tokens: list,
-        sentence: list,
-        *,
-        lowercase: bool = True,
-        tokens_complex: bool = True,
-        compare_content: bool = True,
+    tokens: list,
+    sentence: list,
+    *,
+    lowercase: bool = True,
+    tokens_complex: bool = True,
+    compare_content: bool = True,
 ) -> list:
     # prepare data
     if isinstance(tokens, str):
@@ -56,13 +56,13 @@ def search(
 
 
 def searches(
-        tokenslist: list,
-        sentence: list,
-        *,
-        lowercase: bool = True,
-        tokens_complex: bool = True,
-        compare_content: bool = True,
-        overlapping_remove: bool = True,
+    tokenslist: list,
+    sentence: list,
+    *,
+    lowercase: bool = True,
+    tokens_complex: bool = True,
+    compare_content: bool = True,
+    overlapping_remove: bool = True,
 ) -> list:
     # prepare here to avoid preparing for every tokens
     if isinstance(sentence, str):
@@ -117,11 +117,11 @@ def lower(item: typing.Any) -> typing.Any:
 
 
 def _match(
-        chunk: list,
-        expected: list,
-        *,
-        tokens_complex,
-        compare_content: bool,
+    chunk: list,
+    expected: list,
+    *,
+    tokens_complex,
+    compare_content: bool,
 ) -> bool:
     assert len(chunk) == len(expected)
     for item, item_expected in zip(chunk, expected):
