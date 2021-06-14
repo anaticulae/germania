@@ -13,6 +13,10 @@ import knlp
 import konrad
 import konrad.mark
 
+DOUBLE_SIMPLE = (
+    konrad.Mark.QUOTATION_MARK,
+    konrad.Mark.QUOTATION_MARK,
+)
 DOUBLE_GER = (
     konrad.Mark.QUOTATION_MARK_DOUBLE_OPEN,
     konrad.Mark.QUOTATION_MARK_DOUBLE_CLOSE,
@@ -41,6 +45,7 @@ def extract_quotes(items: str, lang='science') -> list:  # pylint:disable=W0613
     for signs in (
             DOUBLE_ENG if lang == konrad.ENGLISH else DOUBLE_GER,
             SINGLE_ENG if lang == konrad.ENGLISH else SINGLE_GER,
+            DOUBLE_SIMPLE,
     ):
         parsed = parse_quotation(tokens, *signs)
         if not parsed:
