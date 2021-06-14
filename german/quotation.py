@@ -9,10 +9,9 @@
 
 import contextlib
 
+import knlp
 import konrad
 import konrad.mark
-
-import german
 
 DOUBLE_GER = (
     konrad.Mark.QUOTATION_MARK_DOUBLE_OPEN,
@@ -32,11 +31,12 @@ SINGLE_ENG = (
 )
 
 
-def extract_quotes(items: str, lang=konrad.GERMAN) -> list:  # pylint:disable=W0613
+def extract_quotes(items: str, lang='science') -> list:  # pylint:disable=W0613
     assert isinstance(items, str), type(items)
-    tokens = german.word_tokenize(items, lang=lang, validate_sentences=False)
-    result = []
+    tokens = knlp.word_tokenize(items, language=lang)
+    tokens = [konrad.matchesmore(word, lang=lang) for word in tokens]
 
+    result = []
     double = DOUBLE_ENG if lang == konrad.ENGLISH else DOUBLE_GER
     doubled = parse_quotation(tokens, *double)
     if doubled:
