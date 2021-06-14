@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.5.8
+
+### Feature
+
+* use modern nltk token splitter (18ab7dd05320)
+
 ## v1.5.7
 
 ## v1.5.6
