@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v1.5.9
+
+### Feature
+
+* parse simple quotation marks (94848853cf9f)
+
+### Fix
+
+* do not out range quotation merger (6b8231aea846)
+
 ## v1.5.8
 
 ### Feature
