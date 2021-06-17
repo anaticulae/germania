@@ -12,6 +12,7 @@ import contextlib
 import knlp
 import konrad
 import konrad.mark
+import utila
 
 DOUBLE_SIMPLE = (
     konrad.Mark.QUOTATION_MARK,
@@ -92,6 +93,10 @@ def mark2str(item) -> str:
 def raw_quotation(tokens, indexes) -> list:
     result = []
     for start, end in indexes:
+        if end > len(tokens):
+            utila.error(f'outranges quotation: {start} {end}')
+        # do not out range tokens
+        end = min(end, len(tokens))
         collected = [mark2str(tokens[index]) for index in range(start, end)]
         result.append(' '.join(collected))
     return result
