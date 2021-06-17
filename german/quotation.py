@@ -33,22 +33,19 @@ SINGLE_ENG = (
 
 def extract_quotes(items: str, lang='science') -> list:  # pylint:disable=W0613
     assert isinstance(items, str), type(items)
+    # prepare token
     tokens = knlp.word_tokenize(items, language=lang)
     tokens = [konrad.matchesmore(word, lang=lang) for word in tokens]
-
+    # start parsing
     result = []
-    double = DOUBLE_ENG if lang == konrad.ENGLISH else DOUBLE_GER
-    doubled = parse_quotation(tokens, *double)
-    if doubled:
-        result.extend(doubled)
-
-    single = SINGLE_ENG if lang == konrad.ENGLISH else SINGLE_GER
-    singled = parse_quotation(
-        tokens,
-        *single,
-    )
-    if singled:
-        result.extend(singled)
+    for signs in (
+            DOUBLE_ENG if lang == konrad.ENGLISH else DOUBLE_GER,
+            SINGLE_ENG if lang == konrad.ENGLISH else SINGLE_GER,
+    ):
+        parsed = parse_quotation(tokens, *signs)
+        if not parsed:
+            continue
+        result.extend(parsed)
     return result
 
 
