@@ -6,6 +6,30 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+"""Authors
+=======
+
+>>> authors('Becker, W.; Ulrich, P.; Botzkowski, T.; Eurich, S.')
+[['Becker', 'W.'], ['Ulrich', 'P.'], ['Botzkowski', 'T.'], ['Eurich', 'S.']]
+
+>>> authors('AASLID, R. - BRUBAKK, AO.')
+[['AASLID', 'R.'], ['BRUBAKK', 'AO.']]
+
+>>> authors('Beirness, D. and Vogel-Sprott, M.')
+[['Beirness', 'D.'], ['Vogel-Sprott', 'M.']]
+
+>>> authors('KUNCZIK, Michael/ZIPFEL, Astrid')
+[['KUNCZIK', 'Michael'], ['ZIPFEL', 'Astrid']]
+
+>>> authors('BOBEK H., FESL M.')
+[['BOBEK', 'H.'], ['FESL', 'M.']]
+
+>>> authors('HÖFER, Judith')
+[['HÖFER', 'Judith']]
+
+>>> authors('PEREIRA, M.G., VOLCHAN, E., SOUZA, G. G. DE, OLIVEIRA, L., CAMPAGNOLI, R. R., PINHEIRO, W. M., & PESSOA, L. ')
+[['PEREIRA', 'M.G.'], ['VOLCHAN', 'E.'], ['SOUZA', 'G. G. DE'], ['OLIVEIRA', 'L.'], ['CAMPAGNOLI', 'R. R.'], ['PINHEIRO', 'W. M.'], ['PESSOA', 'L.']]
+"""
 
 import re
 
@@ -17,22 +41,6 @@ import german
 
 def authors(raw: str):
     """\
-    >>> authors('Becker, W.; Ulrich, P.; Botzkowski, T.; Eurich, S.')
-    [['Becker', 'W.'], ['Ulrich', 'P.'], ['Botzkowski', 'T.'], ['Eurich', 'S.']]
-    >>> authors('AASLID, R. - BRUBAKK, AO.')
-    [['AASLID', 'R.'], ['BRUBAKK', 'AO.']]
-    >>> authors('Beirness, D. and Vogel-Sprott, M.')
-    [['Beirness', 'D.'], ['Vogel-Sprott', 'M.']]
-    >>> authors('KUNCZIK, Michael/ZIPFEL, Astrid')
-    [['KUNCZIK', 'Michael'], ['ZIPFEL', 'Astrid']]
-    >>> authors('BOBEK H., FESL M.')
-    [['BOBEK', 'H.'], ['FESL', 'M.']]
-    >>> authors('HÖFER, Judith')
-    [['HÖFER', 'Judith']]
-    >>> authors('PEREIRA, M.G., VOLCHAN, E., SOUZA, G. G. DE, OLIVEIRA, L., '
-    ... 'CAMPAGNOLI, R. R., PINHEIRO, W. M., & PESSOA, L. ')
-    [['PEREIRA', 'M.G.'], ['VOLCHAN', 'E.'], ['SOUZA', 'G. G. DE'], ['OLIVEIRA', 'L.'], \
-['CAMPAGNOLI', 'R. R.'], ['PINHEIRO', 'W. M.'], ['PESSOA', 'L.']]
     >>> authors('M. Baccar,')
     [['M.', 'Baccar']]
     >>> authors('Hug, T. & Poscheschinik, G.')
