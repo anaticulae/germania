@@ -80,11 +80,14 @@ def freeand(raw: str):
     """\
     >>> freeand('Beirness, D. & Vogel-Sprott, M.')
     [['Beirness', 'D.'], ['Vogel-Sprott', 'M.']]
+
+    garbage in garbage out, names are not separated correctly
+    >>> freeand('Grunwald, Armin, Gerhard Banse, Christopher Coenen und Leonhard Hennen')
+    [['Grunwald', 'Armin'], ['Gerhard Banse', 'Christopher Coenen'], ['Leonhard Hennen']]
     """
     extracted = []
     try:
-        # TODO: SOLVE `AND` PROBLEM ON OTHER PLACE?
-        left, right = raw.split(' and ') if ' and ' in raw else raw.split('&')
+        left, right = splitand(raw)
         extracted.extend(left.split(','))
         extracted.extend(right.split(','))
     except ValueError:
@@ -101,6 +104,12 @@ def freeand(raw: str):
         else:
             result.append([item])
     return result
+
+
+def splitand(raw: str):
+    raw = raw.replace(' and ', '&')
+    raw = raw.replace(' und ', '&')
+    return raw.split('&')
 
 
 def judge(parsed: list):
