@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v1.5.10
+
+### Feature
+
+* add german `and` (482985daa8a3)
+
+### Documentation
+
+* move doc tests to header (a352f72bfcea)
+
 ## v1.5.9
 
 ### Feature
