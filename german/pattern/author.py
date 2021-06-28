@@ -153,6 +153,8 @@ def person_simple(parsed: list, max_names: int = 4) -> bool:
     True
     >>> person_simple('OHMEDA MEDIZINTECHNIK'.split())
     False
+    >>> person_simple('Luhmann Niklas'.split())
+    True
     """
     if len(parsed) > max_names:
         return False
