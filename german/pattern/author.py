@@ -115,8 +115,13 @@ def freeand(raw: str):
 
 
 def splitand(raw: str):
-    raw = raw.replace(' and ', '&')
-    raw = raw.replace(' und ', '&')
+    """\
+    >>> splitand('ADM Arbeitskreis Deutscher Markt und Sozialforschungsinstitute e.V.')
+    ['ADM Arbeitskreis Deutscher Markt und Sozialforschungsinstitute e.V.']
+    """
+    if any(german.isperson(name) for name in raw.split()):
+        raw = raw.replace(' and ', '&')
+        raw = raw.replace(' und ', '&')
     return raw.split('&')
 
 
