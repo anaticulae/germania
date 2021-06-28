@@ -132,12 +132,17 @@ def isperson(item: str) -> bool:
     True
     >>> isperson('DEUTSCHE NORM DIN') # noperson list
     False
+    >>> isperson('Vogel-Sprott')
+    True
     """
     item = item.strip().lower()
     if item in NOPERSON:
         return False
     if item in NAMES:
         return True
+    if '-' in item:
+        if any(isperson(name) for name in item.split('-')):
+            return True
     arabic = r'(ibn|el)([ ]|\-?)\w{4,}'
     if re.match(arabic, item, re.IGNORECASE):
         return True
