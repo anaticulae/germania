@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v1.5.11
+
+### Feature
+
+* improve person checker (26a8354e4589)
+
+### Fix
+
+* do not split non person authors (9de511ed3fdd)
+
 ## v1.5.10
 
 ### Feature
