@@ -49,6 +49,7 @@ from german.quotation import raw_quotation
 from german.sentence import Sentences
 from german.sentence import is_sentence
 from german.sentence import is_sentence_closed
+from german.sentence import sentence_select
 from german.sentence import sentence_tokenize
 from german.sentence import split_token
 from german.sequence import init

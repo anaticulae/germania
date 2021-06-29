@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import difflib
+
 import knlp
 import konrad
 import utila
@@ -171,3 +173,41 @@ def split_special_chars(token):
         token = f' {special} '.join(splitted)
     splitted = token.split()
     return splitted
+
+
+def sentence_select(text: str, tokens: list) -> str:
+    """Select best matching sentence. Determine all possbile starts and
+    ends and determine the most valueable sentence between.
+
+    >>> sentence_select(text='Hier wohnt der; Helmut, sehr gerne.',
+    ...                 tokens=' wohnt der ; Helmut , '.split())
+    'wohnt der; Helmut,'
+    """
+    expected = ' '.join(konrad.mark2str(item) for item in tokens)
+    # determine all possible starts and ends
+    start, end = tokens[0], tokens[-1]
+    starts = utila.findindex(text, konrad.mark2str(start))
+    ends = utila.findindex(text, konrad.mark2str(end))
+    if not start or not end:
+        return ''
+    best = ''
+    mostequal = 0.0
+    for first, second in utila.starmap((starts, ends)):
+        # for first in starts:
+        #     for second in ends:
+        if second < first:
+            continue
+        sentence = text[first:second + 1]
+        # spaces are handled as junk
+        equal = difflib.SequenceMatcher(
+            lambda x: x == " ",
+            expected,
+            sentence,
+        )
+        ratio = equal.ratio()
+        if ratio < mostequal:
+            continue
+        # update best one
+        best = sentence
+        mostequal = ratio
+    return best
