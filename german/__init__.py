@@ -67,6 +67,6 @@ from german.word import word_tokenize
 split_words = word_tokenize  # pylint:disable=C0103
 split_sentences = sentence_tokenize  # pylint:disable=C0103
 
-__version__ = '1.5.11'
+__version__ = '1.6.0'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))

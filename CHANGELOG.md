@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.6.0
+
+### Feature
+
+* add method select sentence by token (ca13b29959cf)
+* add famous person (839583ebc048)
+
 ## v1.5.11
 
 ### Feature
