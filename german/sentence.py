@@ -13,6 +13,8 @@ import knlp
 import konrad
 import utila
 
+import german
+
 Sentences = utila.Strings
 
 
@@ -183,11 +185,12 @@ def sentence_select(text: str, tokens: list) -> str:
     ...                 tokens=' wohnt der ; Helmut , '.split())
     'wohnt der; Helmut,'
     """
-    expected = ' '.join(konrad.mark2str(item) for item in tokens)
+    lang = german.lang(text)
+    expected = ' '.join(konrad.mark2str(item, lang=lang) for item in tokens)
     # determine all possible starts and ends
     start, end = tokens[0], tokens[-1]
-    starts = utila.findindex(text, konrad.mark2str(start))
-    ends = utila.findindex(text, konrad.mark2str(end))
+    starts = utila.findindex(text, konrad.mark2str(start, lang=lang))
+    ends = utila.findindex(text, konrad.mark2str(end, lang=lang))
     if not start or not end:
         return ''
     best = ''
