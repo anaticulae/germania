@@ -192,7 +192,7 @@ def sentence_select(text: str, tokens: list) -> str:
     starts = utila.findindex(text, konrad.mark2str(start, lang=lang))
     ends = utila.findindex(text, konrad.mark2str(end, lang=lang))
     if not start or not end:
-        return ''
+        return None
     best = ''
     mostequal = 0.0
     for first, second in utila.starmap((starts, ends)):
