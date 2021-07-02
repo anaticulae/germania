@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.6.1
+
+### Feature
+
+* return None if matching front or end is not possible (01fa0712c6e8)
+* convert marks by language (4d2061d7b8cf)
+
 ## v1.6.0
 
 ### Feature
