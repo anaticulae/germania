@@ -29,6 +29,9 @@
 
 >>> authors('PEREIRA, M.G., VOLCHAN, E., SOUZA, G. G. DE, OLIVEIRA, L., CAMPAGNOLI, R. R., PINHEIRO, W. M., & PESSOA, L. ')
 [['PEREIRA', 'M.G.'], ['VOLCHAN', 'E.'], ['SOUZA', 'G. G. DE'], ['OLIVEIRA', 'L.'], ['CAMPAGNOLI', 'R. R.'], ['PINHEIRO', 'W. M.'], ['PESSOA', 'L.']]
+
+>>> [author.name for author in authors_decide(authors('E. D’Andrea, P. Ducange'))]
+['D’Andrea', 'Ducange']
 """
 
 import re
@@ -156,6 +159,8 @@ def person_simple(parsed: list, max_names: int = 4) -> bool:
     >>> person_simple('OHMEDA MEDIZINTECHNIK'.split())
     False
     >>> person_simple('Luhmann Niklas'.split())
+    True
+    >>> person_simple('E. D’Andrea'.split())
     True
     """
     if len(parsed) > max_names:

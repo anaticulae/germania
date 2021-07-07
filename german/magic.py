@@ -136,14 +136,18 @@ def isperson(item: str) -> bool:
     True
     >>> isperson('S. 2269–2283')
     False
+    >>> isperson('E. D’Andrea')
+    True
     """
     item = item.strip().lower()
     if item in NOPERSON:
         return False
     if item in NAMES:
         return True
-    if '-' in item:
-        if any(isperson(name) for name in item.split('-')):
+    for char in '-’':
+        if char not in item:
+            continue
+        if any(isperson(name) for name in item.split(char)):
             return True
     arabic = r'(ibn|el)([ ]|\-?)\w{4,}'
     if re.match(arabic, item, re.IGNORECASE):
