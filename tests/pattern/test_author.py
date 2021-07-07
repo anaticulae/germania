@@ -48,3 +48,15 @@ Batra, Anil; Bilke-Hentsch, Oliver (Hg.)
 def test_author_parser(raw, expected):
     parsed = german.authors(raw)
     assert parsed == expected
+
+
+NO_AUTHORS = """\
+S. 2269–2283
+""".strip().splitlines()
+
+
+@pytest.mark.parametrize('raw', NO_AUTHORS)
+def test_no_author(raw):
+    parsed = german.authors(raw)
+    authors = german.authors_decide(parsed)
+    assert all((isinstance(item, iamraw.NoPerson) for item in authors))

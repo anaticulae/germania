@@ -133,6 +133,8 @@ def judge(parsed: list):
         return iamraw.NoPerson(raw=raw)
     if not person_simple(parsed):
         return iamraw.NoPerson(raw=raw)  # pylint:disable=E1101
+    if any(utila.parse_numbers(name) for name in parsed):
+        return iamraw.NoPerson(raw=raw)
     name, firstname = decide_name(parsed)
     result = iamraw.Person(
         name=name,

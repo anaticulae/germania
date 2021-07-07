@@ -134,6 +134,8 @@ def isperson(item: str) -> bool:
     False
     >>> isperson('Vogel-Sprott')
     True
+    >>> isperson('S. 2269–2283')
+    False
     """
     item = item.strip().lower()
     if item in NOPERSON:
