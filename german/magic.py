@@ -183,3 +183,16 @@ def ispress(press: str, length_min: int = 6) -> bool:
     if sdata.rate_publisher(press):
         return True
     return False
+
+
+def iscity(city: str, length_min: int = 4) -> bool:
+    """\
+    >>> iscity('Berlino')
+    True
+    """
+    city = city.strip().upper()
+    if len(city) < length_min:
+        return False
+    if sdata.rate_city(city):
+        return True
+    return False

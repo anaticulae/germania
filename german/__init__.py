@@ -27,6 +27,7 @@ from german.language import isfre
 from german.language import isger
 from german.magic import WordType
 from german.magic import WordTypes
+from german.magic import iscity
 from german.magic import isperson
 from german.magic import ispress
 from german.magic import isreference
