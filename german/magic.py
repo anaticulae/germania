@@ -14,6 +14,7 @@ import typing
 
 import konrad
 import nltk_data.lookup
+import sdata
 import utila
 
 import german_data
@@ -164,6 +165,8 @@ def ispress(press: str, length_min: int = 6) -> bool:
     True
     >>> ispress('De')
     False
+    >>> ispress('pytest Documentation')
+    False
     """
     press = press.strip().upper()
     if len(press) < length_min:
@@ -171,5 +174,7 @@ def ispress(press: str, length_min: int = 6) -> bool:
     if press in german_data.PRESS:
         return True
     if any((item for item in german_data.PRESS if item in press)):
+        return True
+    if sdata.rate_publisher(press):
         return True
     return False
