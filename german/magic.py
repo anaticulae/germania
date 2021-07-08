@@ -6,6 +6,23 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+"""\
+>>> isperson('Archibald') # nltk data
+True
+>>> isperson('DEUTSCHE NORM DIN') # noperson list
+False
+>>> isperson('Vogel-Sprott')
+True
+>>> isperson('S. 2269–2283')
+False
+>>> isperson('E. D’Andrea')
+True
+
+>>> ispress('De')
+False
+>>> ispress('pytest Documentation')
+False
+"""
 
 import enum
 import functools
@@ -128,16 +145,6 @@ def isperson(item: str, length_min: int = 3) -> bool:  # pylint:disable=R0911
     True
     >>> isperson('EL-Wateria')
     True
-    >>> isperson('Archibald') # nltk data
-    True
-    >>> isperson('DEUTSCHE NORM DIN') # noperson list
-    False
-    >>> isperson('Vogel-Sprott')
-    True
-    >>> isperson('S. 2269–2283')
-    False
-    >>> isperson('E. D’Andrea')
-    True
     """
     item = item.strip().upper()
     if len(item) < length_min:
@@ -165,10 +172,6 @@ def ispress(press: str, length_min: int = 6) -> bool:
     True
     >>> ispress('De Gruyter')
     True
-    >>> ispress('De')
-    False
-    >>> ispress('pytest Documentation')
-    False
     """
     press = press.strip().upper()
     if len(press) < length_min:
