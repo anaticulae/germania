@@ -2,6 +2,20 @@
 
 Every noteable change is logged here.
 
+## v1.7.0
+
+### Feature
+
+* add city decider (4ac0116cc199)
+* use magic person list (7a3a6d103607)
+* use magic publisher (ead1f7146c87)
+* make checker more strict (febe03ae6ccd)
+* add special sign to name detector (2ad47d2d64ae)
+
+### Fix
+
+* extend NoPerson parser (33a3036a302a)
+
 ## v1.6.1
 
 ### Feature
