@@ -120,7 +120,7 @@ NAMES = (german_data.NAMES | nltk_data.lookup.NAME_MALE |
 NOPERSON = german_data.NOPERSON | german_data.PRESS | german_data.INSTITUTION
 
 
-def isperson(item: str, length_min: int = 3) -> bool:
+def isperson(item: str, length_min: int = 3) -> bool:  # pylint:disable=R0911
     """\
     >>> isperson('Olsen')
     True
@@ -153,6 +153,8 @@ def isperson(item: str, length_min: int = 3) -> bool:
             return True
     arabic = r'(ibn|el)([ ]|\-?)\w{4,}'
     if re.match(arabic, item, re.IGNORECASE):
+        return True
+    if sdata.isname(item):
         return True
     return False
 
