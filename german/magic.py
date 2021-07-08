@@ -9,7 +9,6 @@
 
 import enum
 import functools
-import os
 import re
 import typing
 
@@ -139,7 +138,7 @@ def isperson(item: str) -> bool:
     >>> isperson('E. D’Andrea')
     True
     """
-    item = item.strip().lower()
+    item = item.strip().upper()
     if item in NOPERSON:
         return False
     if item in NAMES:
@@ -162,16 +161,9 @@ def ispress(press: str) -> bool:
     >>> ispress('De Gruyter')
     True
     """
-    press = press.strip().lower()
+    press = press.strip().upper()
     if press in german_data.PRESS:
         return True
     if any((item for item in german_data.PRESS if item in press)):
         return True
     return False
-
-
-def load_dict(path) -> set:
-    assert os.path.exists(path), str(path)
-    loaded = utila.file_read(path).splitlines()
-    result = set(item.lower() for item in loaded)
-    return result
