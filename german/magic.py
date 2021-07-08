@@ -119,7 +119,7 @@ NAMES = (german_data.NAMES | nltk_data.lookup.NAME_MALE |
 NOPERSON = german_data.NOPERSON | german_data.PRESS | german_data.INSTITUTION
 
 
-def isperson(item: str) -> bool:
+def isperson(item: str, length_min: int = 3) -> bool:
     """\
     >>> isperson('Olsen')
     True
@@ -139,6 +139,8 @@ def isperson(item: str) -> bool:
     True
     """
     item = item.strip().upper()
+    if len(item) < length_min:
+        return False
     if item in NOPERSON:
         return False
     if item in NAMES:
@@ -154,14 +156,18 @@ def isperson(item: str) -> bool:
     return False
 
 
-def ispress(press: str) -> bool:
+def ispress(press: str, length_min: int = 6) -> bool:
     """\
     >>> ispress('Springer')
     True
     >>> ispress('De Gruyter')
     True
+    >>> ispress('De')
+    False
     """
     press = press.strip().upper()
+    if len(press) < length_min:
+        return False
     if press in german_data.PRESS:
         return True
     if any((item for item in german_data.PRESS if item in press)):
