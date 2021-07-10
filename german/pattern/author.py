@@ -121,6 +121,8 @@ def splitand(raw: str):
     """\
     >>> splitand('ADM Arbeitskreis Deutscher Markt und Sozialforschungsinstitute e.V.')
     ['ADM Arbeitskreis Deutscher Markt und Sozialforschungsinstitute e.V.']
+    >>> splitand('Bundesministerium der Justiz und für Verbraucherschutz')
+    ['Bundesministerium der Justiz und für Verbraucherschutz']
     """
     if any(german.isperson(name) for name in raw.split()):
         raw = raw.replace(' and ', '&')

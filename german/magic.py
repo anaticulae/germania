@@ -29,6 +29,7 @@ import functools
 import re
 import typing
 
+import knlp
 import konrad
 import nltk_data.lookup
 import sdata
@@ -134,7 +135,8 @@ def isyear(item: str) -> bool:
 
 NAMES = (german_data.NAMES | nltk_data.lookup.NAME_MALE |
          nltk_data.lookup.NAME_FEMALE | nltk_data.lookup.NAME_FAMILY)
-NOPERSON = german_data.NOPERSON | german_data.PRESS | german_data.INSTITUTION
+NOPERSON = (german_data.NOPERSON | german_data.PRESS | german_data.INSTITUTION |
+            knlp.STOPWORDS)
 
 
 def isperson(item: str, length_min: int = 3) -> bool:  # pylint:disable=R0911
