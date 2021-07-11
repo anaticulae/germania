@@ -133,10 +133,21 @@ def isyear(item: str) -> bool:
     return 1900 <= item <= 2030
 
 
-NAMES = (german_data.NAMES | nltk_data.lookup.NAME_MALE |
-         nltk_data.lookup.NAME_FEMALE | nltk_data.lookup.NAME_FAMILY)
-NOPERSON = (german_data.NOPERSON | german_data.PRESS | german_data.INSTITUTION |
-            knlp.STOPWORDS)
+# yapf:disable
+STOPWORDS = set(knlp.STOPWORDS) - utila.splititems('der de da')
+NAMES = (
+    german_data.NAMES |
+    nltk_data.lookup.NAME_MALE |
+    nltk_data.lookup.NAME_FEMALE |
+    nltk_data.lookup.NAME_FAMILY
+)
+NOPERSON = (
+    german_data.NOPERSON |
+    german_data.PRESS |
+    german_data.INSTITUTION |
+    STOPWORDS
+)
+# yapf:enable
 
 
 def isperson(item: str, length_min: int = 3) -> bool:  # pylint:disable=R0911
