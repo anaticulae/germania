@@ -158,6 +158,8 @@ def isperson(item: str, length_min: int = 3) -> bool:  # pylint:disable=R0911
     True
     >>> isperson('EL-Wateria')
     True
+    >>> isperson('C.-H. Lee')
+    True
     """
     item = item.strip().upper()
     if len(item) < length_min:
@@ -173,6 +175,10 @@ def isperson(item: str, length_min: int = 3) -> bool:  # pylint:disable=R0911
             return True
     arabic = r'(ibn|el)([ ]|\-?)\w{4,}'
     if re.match(arabic, item, re.IGNORECASE):
+        return True
+    prepattern = r'\w\.(\-|[ ])\w\.[ ]{0,3}\w{3,20}'
+    if re.match(prepattern, item, re.IGNORECASE):
+        # TODO: DO NOT CRUMBLE SINGLE AND DOUBLE NAMES?
         return True
     if sdata.isname(item):
         return True
