@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.7.1
+
+### Fix
+
+* increase no author list (adc154a64bb7)
+
 ## v1.7.0
 
 ### Feature
