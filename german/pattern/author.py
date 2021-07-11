@@ -32,6 +32,11 @@
 
 >>> [author.name for author in authors_decide(authors('E. D’Andrea, P. Ducange'))]
 ['D’Andrea', 'Ducange']
+
+>>> authors_decide(authors('S. Van Der Walt, S. C. Colbert, G. Varoquaux'))
+[Person(name='Walt', firstname='S. Van Der',...Person(name='Colbert', firstname='S. C.'...Person(name='Varoquaux', firstname='G.'...]
+
+
 """
 
 import re
@@ -55,7 +60,7 @@ def authors(raw: str):
     hyphen = simple(raw, extern='-', intern=',')
     slash = simple(raw, extern='/', intern=',')
     comma = simple(raw, extern=',', intern=' ')
-
+    # judge
     result = [free, semicolon, hyphen, slash, comma]
     balanced = [balance(item) for item in result]
     max_balance = maxindex(balanced)
@@ -194,7 +199,15 @@ def balance(parsed_authors):
 
 
 def valid_author(author):
+    """\
+    >>> valid_author(['S.', 'Van', 'Der', 'Walt'])
+    True
+    >>> valid_author(['S.', 'C.', 'Colbert'])
+    True
+    """
     if len(author) != 2:
+        if len(author) > 2 and person_simple(author):
+            return True
         return False
     for item in author:
         if ';' in item:
