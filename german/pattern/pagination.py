@@ -6,6 +6,11 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+"""\
+Regression test to avoid parsing `bis 14` as `S 14`
+>>> pagenumbers('bis 14.02.2012')
+[]
+"""
 # TODO: UNITE THESE PATTERN LATER
 
 import contextlib
@@ -15,6 +20,7 @@ import re
 import utila
 
 PAGE_PATTERN = r"""
+    \b
     (S|S\.|Seite|p|p\.|page)
     [ ]{0,4}
     (
