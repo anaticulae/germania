@@ -88,7 +88,8 @@ def simple(raw: str, extern: str = ';', intern: str = ','):
     """
     result = []
     for item in raw.split(extern):
-        result.append([it.strip() for it in item.split(intern) if it.strip()])
+        parsed = [it.strip() for it in item.split(intern) if it.strip()]
+        result.append(parsed)
     return result
 
 
