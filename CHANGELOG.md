@@ -2,6 +2,22 @@
 
 Every noteable change is logged here.
 
+## v1.8.0
+
+### Feature
+
+* add verbose flag (eef89bedab71)
+* make author immutable (232f07225cf5)
+* add verbose flag to return parsed content (72ecf4889e97)
+* add verbose flag to return parsed raw (871fdc0ba332)
+* add double dot name pattern (b541768d5453)
+* enable dutch authors (cafc2bfb3ca0)
+
+### Fix
+
+* improve pagination pattern (b112f6a7343a)
+* remove dutch names from NoPerson list (f7931d452372)
+
 ## v1.7.1
 
 ### Fix
