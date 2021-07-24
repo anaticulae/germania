@@ -50,12 +50,14 @@ import utila
 import german
 
 
-def authors(raw: str):
+def authors(raw: str, verbose: bool = False):
     """\
     >>> authors('M. Baccar,')
     [('M.', 'Baccar')]
     >>> authors('Hug, T. & Poscheschinik, G.')
     [('Hug', 'T.'), ('Poscheschinik', 'G.')]
+    >>> authors('Hug, T. & Poscheschinik, G.', verbose=True)
+    ([('Hug', 'T.'), ('Poscheschinik', 'G.')], 'Hug, T. & Poscheschinik, G.')
     """
     raw = raw.strip()
     free = freeand(raw)
@@ -70,6 +72,9 @@ def authors(raw: str):
     best = result[max_balance]
     # skip empty items as a result of empty `,` see: 'M. Baccar,'
     best = [tuple(item) for item in best if item]
+    if verbose:
+        # TODO: USE BEST MATCH ALGO TO DETERMINE SHORTEST RAW AREA
+        best = (best, raw)
     return best
 
 
