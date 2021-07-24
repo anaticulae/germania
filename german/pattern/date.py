@@ -7,39 +7,42 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import operator
 import re
 
-import utila
 
-
-def years(raw: str, min_=1950, max_=2020):
+def years(raw: str, min_=1950, max_=2020, verbose: bool = False):
     """Extract sorted list of years out of `raw` text.
 
     >>> years('1999, Helm was born in 1987. Mud exists since 1800. 2050 20000 2020')
     [1987, 1999, 2020]
+    >>> years('Helm was born in 1987.', verbose=True)
+    [(1987, '1987')]
     """
-    result = []
     pattern = r'\b(19|20)\d{2}\b'
+    result = []
     for item in re.finditer(pattern, raw):
-        item = utila.extract_match(item)
-        year = int(item)
+        year = int(item[0])
         if min_ <= year <= max_:
-            result.append(year)
-    result = sorted(result)
+            parsed = year
+            if verbose:
+                parsed = (year, item[0])
+            result.append(parsed)
+    result = sorted(result, key=lambda x: x[0] if verbose else x)
     return result
 
 
-def dates(raw: str, min_year=1950, max_year=2020):
+def dates(raw: str, min_year=1950, max_year=2020, verbose: bool = False):
     """Extract sorted list of dates out of `raw` text.
 
     >>> dates('Stand 20.10.2020, (15.11.2014), 01.01.1999 01.01.1940')
     [(1999, 1, 1), (2014, 11, 15), (2020, 10, 20)]
+    >>> dates('Stand 20.10.2020', verbose=True)
+    [((2020, 10, 20), '20.10.2020')]
     """
-    result = []
     pattern = r'(\d{1,2})\.(\d{1,2})\.(\d{4})'
-    for item in re.findall(pattern, raw):
-        day, month, year = item
+    result = []
+    for item in re.finditer(pattern, raw):
+        day, month, year = item[1], item[2], item[3]
         day, month, year = int(day), int(month), int(year)
         if not 1 <= day <= 31:
             continue
@@ -47,6 +50,11 @@ def dates(raw: str, min_year=1950, max_year=2020):
             continue
         if not min_year <= year <= max_year:
             continue
-        result.append((year, month, day))
-    result = sorted(result, key=operator.itemgetter(0, 1, 2))
+        parsed = (year, month, day)
+        if verbose:
+            parsed = (parsed, item[0])
+        result.append(parsed)
+    # sort by year, month, day
+    for pos in range(3):
+        result = sorted(result, key=lambda x: x[0][pos] if verbose else x[pos])  # pylint:disable=W0640
     return result
