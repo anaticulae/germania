@@ -10,25 +10,25 @@
 =======
 
 >>> authors('Becker, W.; Ulrich, P.; Botzkowski, T.; Eurich, S.')
-[['Becker', 'W.'], ['Ulrich', 'P.'], ['Botzkowski', 'T.'], ['Eurich', 'S.']]
+[('Becker', 'W.'), ('Ulrich', 'P.'), ('Botzkowski', 'T.'), ('Eurich', 'S.')]
 
 >>> authors('AASLID, R. - BRUBAKK, AO.')
-[['AASLID', 'R.'], ['BRUBAKK', 'AO.']]
+[('AASLID', 'R.'), ('BRUBAKK', 'AO.')]
 
 >>> authors('Beirness, D. and Vogel-Sprott, M.')
-[['Beirness', 'D.'], ['Vogel-Sprott', 'M.']]
+[('Beirness', 'D.'), ('Vogel-Sprott', 'M.')]
 
 >>> authors('KUNCZIK, Michael/ZIPFEL, Astrid')
-[['KUNCZIK', 'Michael'], ['ZIPFEL', 'Astrid']]
+[('KUNCZIK', 'Michael'), ('ZIPFEL', 'Astrid')]
 
 >>> authors('BOBEK H., FESL M.')
-[['BOBEK', 'H.'], ['FESL', 'M.']]
+[('BOBEK', 'H.'), ('FESL', 'M.')]
 
 >>> authors('HÖFER, Judith')
-[['HÖFER', 'Judith']]
+[('HÖFER', 'Judith')]
 
 >>> authors('PEREIRA, M.G., VOLCHAN, E., SOUZA, G. G. DE, OLIVEIRA, L., CAMPAGNOLI, R. R., PINHEIRO, W. M., & PESSOA, L. ')
-[['PEREIRA', 'M.G.'], ['VOLCHAN', 'E.'], ['SOUZA', 'G. G. DE'], ['OLIVEIRA', 'L.'], ['CAMPAGNOLI', 'R. R.'], ['PINHEIRO', 'W. M.'], ['PESSOA', 'L.']]
+[('PEREIRA', 'M.G.'), ('VOLCHAN', 'E.'), ('SOUZA', 'G. G. DE'), ('OLIVEIRA', 'L.'), ('CAMPAGNOLI', 'R. R.'), ('PINHEIRO', 'W. M.'), ('PESSOA', 'L.')]
 
 >>> [author.name for author in authors_decide(authors('E. D’Andrea, P. Ducange'))]
 ['D’Andrea', 'Ducange']
@@ -50,9 +50,9 @@ import german
 def authors(raw: str):
     """\
     >>> authors('M. Baccar,')
-    [['M.', 'Baccar']]
+    [('M.', 'Baccar')]
     >>> authors('Hug, T. & Poscheschinik, G.')
-    [['Hug', 'T.'], ['Poscheschinik', 'G.']]
+    [('Hug', 'T.'), ('Poscheschinik', 'G.')]
     """
     raw = raw.strip()
     free = freeand(raw)
@@ -66,7 +66,7 @@ def authors(raw: str):
     max_balance = maxindex(balanced)
     best = result[max_balance]
     # skip empty items as a result of empty `,` see: 'M. Baccar,'
-    best = [item for item in best if item]
+    best = [tuple(item) for item in best if item]
     return best
 
 
@@ -84,11 +84,11 @@ def authors_decide(parsed: list) -> iamraw.Persons:
 def simple(raw: str, extern: str = ';', intern: str = ','):
     """\
     >>> simple('Becker, W.; Ulrich, P.')
-    [['Becker', 'W.'], ['Ulrich', 'P.']]
+    [('Becker', 'W.'), ('Ulrich', 'P.')]
     """
     result = []
     for item in raw.split(extern):
-        parsed = [it.strip() for it in item.split(intern) if it.strip()]
+        parsed = tuple(it.strip() for it in item.split(intern) if it.strip())
         result.append(parsed)
     return result
 
@@ -96,11 +96,11 @@ def simple(raw: str, extern: str = ';', intern: str = ','):
 def freeand(raw: str):
     """\
     >>> freeand('Beirness, D. & Vogel-Sprott, M.')
-    [['Beirness', 'D.'], ['Vogel-Sprott', 'M.']]
+    [('Beirness', 'D.'), ('Vogel-Sprott', 'M.')]
 
     garbage in garbage out, names are not separated correctly
     >>> freeand('Grunwald, Armin, Gerhard Banse, Christopher Coenen und Leonhard Hennen')
-    [['Grunwald', 'Armin'], ['Gerhard Banse', 'Christopher Coenen'], ['Leonhard Hennen']]
+    [('Grunwald', 'Armin'), ('Gerhard Banse', 'Christopher Coenen'), ('Leonhard Hennen',)]
     """
     extracted = []
     try:
@@ -120,6 +120,7 @@ def freeand(raw: str):
             result[-1].append(item)
         else:
             result.append([item])
+    result = [tuple(item) for item in result]
     return result
 
 

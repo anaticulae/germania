@@ -41,7 +41,7 @@ Batra, Anil; Bilke-Hentsch, Oliver (Hg.)
 @pytest.mark.parametrize('raw, expected', [
     pytest.param(
         AUTHORS[0],
-        [['Batra', 'Anil'], ['Bilke-Hentsch', 'Oliver (Hg.)']],
+        [('Batra', 'Anil'), ('Bilke-Hentsch', 'Oliver (Hg.)')],
         id='batra',
     ),
 ])
