@@ -27,14 +27,17 @@
 >>> authors('HÖFER, Judith')
 [('HÖFER', 'Judith')]
 
->>> authors('PEREIRA, M.G., VOLCHAN, E., SOUZA, G. G. DE, OLIVEIRA, L., CAMPAGNOLI, R. R., PINHEIRO, W. M., & PESSOA, L. ')
-[('PEREIRA', 'M.G.'), ('VOLCHAN', 'E.'), ('SOUZA', 'G. G. DE'), ('OLIVEIRA', 'L.'), ('CAMPAGNOLI', 'R. R.'), ('PINHEIRO', 'W. M.'), ('PESSOA', 'L.')]
+>>> authors('PEREIRA, M.G., VOLCHAN, E., SOUZA, G. G. DE, OLIVEIRA, '
+... 'L., CAMPAGNOLI, R. R., PINHEIRO, W. M., & PESSOA, L. ')          # doctest: +NORMALIZE_WHITESPACE
+[('PEREIRA', 'M.G.'), ('VOLCHAN', 'E.'), ('SOUZA', 'G. G. DE'), ('OLIVEIRA', 'L.'),
+('CAMPAGNOLI', 'R. R.'), ('PINHEIRO', 'W. M.'), ('PESSOA', 'L.')]
 
 >>> [author.name for author in authors_decide(authors('E. D’Andrea, P. Ducange'))]
 ['D’Andrea', 'Ducange']
 
->>> authors_decide(authors('S. Van Der Walt, S. C. Colbert, G. Varoquaux'))
-[Person(name='Walt', firstname='S. Van Der',...Person(name='Colbert', firstname='S. C.'...Person(name='Varoquaux', firstname='G.'...]
+>>> authors_decide(authors('S. Van Der Walt, S. C. Colbert, G. Varoquaux'))  # doctest: +NORMALIZE_WHITESPACE
+[Person(name='Walt', firstname='S. Van Der',...Person(name='Colbert',
+firstname='S. C.'...Person(name='Varoquaux', firstname='G.'...]
 
 
 """
