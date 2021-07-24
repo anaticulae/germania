@@ -14,7 +14,6 @@ Regression test to avoid parsing `bis 14` as `S 14`
 # TODO: UNITE THESE PATTERN LATER
 
 import contextlib
-import operator
 import re
 
 import utila
@@ -30,24 +29,32 @@ PAGE_PATTERN = r"""
 """
 
 
-def pagenumbers(raw: str):
+def pagenumbers(raw: str, verbose: bool = False):
     """Extract single pages and page ranges out of `raw` text.
 
     >>> pagenumbers('S. 13-50 S.30 S. 1-5 S.319-350, Seite 20–30., page 500 p.4')
     [(1, 5), (4, 4), (13, 50), (20, 30), (30, 30), (319, 350), (500, 500)]
+    >>> pagenumbers('S. 13-50', verbose=True)
+    [((13, 50), 'S. 13-50')]
     """
     result = []
     for item in re.finditer(PAGE_PATTERN, raw, re.VERBOSE | re.IGNORECASE):
         try:
             # single page
             pstart = int(item['page'])
-            result.append((pstart, pstart))
+            parsed = (pstart, pstart)
+            if verbose:
+                parsed = (parsed, item[0])
+            result.append(parsed)
         except TypeError:
             # from page start till page end
             pstart = int(item['pstart'])
             pend = int(item['pend'])
-            result.append((pstart, pend))
-    result = sorted(result, key=operator.itemgetter(0))
+            parsed = (pstart, pend)
+            if verbose:
+                parsed = (parsed, item[0])
+            result.append(parsed)
+    result = sorted(result, key=lambda x: x[0][0] if verbose else x[0])
     return result
 
 
