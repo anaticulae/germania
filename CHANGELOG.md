@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.9.0
+
+### Feature
+
+* merge NoPerson's to a single NoPerson (fc2329026c25)
+
 ## v1.8.0
 
 ### Feature
