@@ -39,7 +39,12 @@
 [Person(name='Walt', firstname='S. Van Der',...Person(name='Colbert',
 firstname='S. C.'...Person(name='Varoquaux', firstname='G.'...]
 
+>>> authors('Deutsche Norm DIN 1422, Teil 1', verbose=True)
+([('Deutsche', 'Norm', 'DIN', '1422'), ('Teil', '1')], 'Deutsche Norm DIN 1422, Teil 1')
 
+If parsing only NoPersons we merge them to a single NoPerson
+>>> authors_decide(*authors('Deutsche Norm DIN 1422, Teil 1', verbose=True))
+[NoPerson(confidence=None, raw='Deutsche Norm DIN 1422, Teil 1')]
 """
 
 import re
@@ -78,7 +83,7 @@ def authors(raw: str, verbose: bool = False):
     return best
 
 
-def authors_decide(parsed: list) -> iamraw.Persons:
+def authors_decide(parsed: list, raw: str = None) -> iamraw.Persons:
     """\
     >>> authors_decide([['Hug', 'T.'], ['Poscheschinik', 'G.']])
     [Person(name='Hug', firstname='T.',...Person(name='Poscheschinik',...ik G.')]
@@ -86,6 +91,10 @@ def authors_decide(parsed: list) -> iamraw.Persons:
     result = []
     for author in parsed:
         result.append(judge(author))
+    if raw:
+        # merge more than one NoPerson`s to a single NoPerson
+        if all(isinstance(item, iamraw.NoPerson) for item in result):
+            result = [iamraw.NoPerson(raw=raw)]
     return result
 
 
