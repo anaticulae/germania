@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.9.1
+
+### Feature
+
+* add verbose flag (a3e37903800a)
+
 ## v1.9.0
 
 ### Feature
