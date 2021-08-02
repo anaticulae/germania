@@ -25,12 +25,14 @@ HYPERLINK = rf"""
 """
 
 
-def hyperlink(raw: str, position: bool = False):
+def hyperlink(raw: str, position: bool = False, verbose: bool = False):
     r"""\
     >>> hyperlink('Before: http://student.unifr.ch/\nReferenzrahmen2001.pdf after.', position=True)
     [('http://student.unifr.ch/Referenzrahmen2001.pdf', 8)]
     >>> hyperlink('Wiki [On-line]. Available: wehewehe.org/gsdl2.5/cgi-bin/hdict?d=D21021')
     ['wehewehe.org/gsdl2.5/cgi-bin/hdict?d=D21021']
+    >>> hyperlink('Wiki [On-line]. Available: wehewehe.org/gsdl2.5/cgi-bin/hdict?d=D21021', verbose=True)
+    [('wehewehe.org/gsdl2.5/cgi-bin/hdict?d=D21021', 'wehewehe.org/gsdl2.5/cgi-bin/hdict?d=D21021')]
     """
     raw = raw.replace('\n', '')
     raw = raw.translate(TABLE)
@@ -38,8 +40,10 @@ def hyperlink(raw: str, position: bool = False):
     result = []
     for item in re.finditer(HYPERLINK, raw, flags=re.VERBOSE):
         matched = utila.extract_match(item)
+        value = matched
         if position:
-            result.append((matched, item.span()[0]))
-        else:
-            result.append(matched)
+            value = (value, item.span()[0])
+        if verbose:
+            value = (value, matched)
+        result.append(value)
     return result
