@@ -7,5 +7,5 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-utilatest>=0.8.3<1.0.0
-backbone>=0.6.6<1.0.0
+utilatest>=0.8.4<1.0.0
+backbone>=0.7.0<1.0.0
