@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.9.2
+
+### Feature
+
+* improve text extraction quality (5fd562535463)
+
 ## v1.9.1
 
 ### Feature
