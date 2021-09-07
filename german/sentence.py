@@ -50,9 +50,33 @@ def sentence_tokenize(
         normalize_newline=normalize_newline,
         normalize_spaces=normalize_spaces,
     )
+    text = text_magic(text)
     # tokenize sentence
     tokenized = knlp.sent_tokenize(text, language='science')
     return tokenized
+
+
+def text_magic(text: str) -> str:
+    """Prepare text with some knowledge.
+
+    >>> text_magic('Helmut hier u. a. und mehr.')
+    'Helmut hier u.a. und mehr.'
+    >>> text_magic('a. a. o.')
+    'a.a.o.'
+
+    # TODO: REMOVE THIS HACK LATER
+    """
+    # text = text.replace('u. a.', 'u.a.'): automate this
+    for token, replace in TEXT_MAGIC:
+        text = text.replace(token, replace)
+    return text
+
+
+TEXT_MAGIC = [
+    ('. '.join(item.split('.')).strip(), item)
+    for item in list(konrad.ABBREVIATION) + list(konrad.ABBREVIATION_LOWER)
+    if item.count('.') > 1
+]
 
 
 def isunbalanced(sentence: str) -> bool:
