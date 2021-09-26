@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.10.0
+
+### Feature
+
+* add minimal matching ratio (4616c025acb1)
+* add str as possible input (2093fe22e4d6)
+
 ## v1.9.2
 
 ### Feature
