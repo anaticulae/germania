@@ -201,7 +201,7 @@ def split_special_chars(token):
     return splitted
 
 
-def sentence_select(text: str, tokens: list) -> str:
+def sentence_select(text: str, tokens: list, ratio_min: float = 0.5) -> str:  # pylint:disable=R0914
     """Select best matching sentence. Determine all possbile starts and
     ends and determine the most valueable sentence between.
 
@@ -239,4 +239,7 @@ def sentence_select(text: str, tokens: list) -> str:
         # update best one
         best = sentence
         mostequal = ratio
+    if mostequal < ratio_min:
+        # matching is not good enough, do not return any result
+        return None
     return best
