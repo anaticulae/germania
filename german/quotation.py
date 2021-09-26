@@ -67,17 +67,15 @@ def parse_quotation(
         if start is None and end is None:
             if item == end_tag:
                 result.append((None, index))
-                continue
-            if item == start_tag:
+            elif item == start_tag:
                 start = index
-                continue
-        elif start is not None:
+            continue
+        if start is not None:
             if item == end_tag:
                 result.append((start, index + 1))
                 start = None
-                continue
-        elif end is not None:
-            pass
+        # if end is not None:
+        #     pass
     return result
 
 

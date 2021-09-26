@@ -58,7 +58,8 @@ def handle_whitespace(result, current):
             # number and space '5 '
             result.append(current[0])
             current.clear()
-    elif len(current) >= 2:
+        return
+    if len(current) >= 2:
         result.append(''.join(current))
         current.clear()
 
