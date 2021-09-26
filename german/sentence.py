@@ -209,6 +209,8 @@ def sentence_select(text: str, tokens: list) -> str:
     ...                 tokens=' wohnt der ; Helmut , '.split())
     'wohnt der; Helmut,'
     """
+    if isinstance(tokens, str):
+        tokens = tokens.split()
     lang = german.lang(text)
     expected = ' '.join(konrad.mark2str(item, lang=lang) for item in tokens)
     # determine all possible starts and ends
