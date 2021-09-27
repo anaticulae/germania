@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.10.1
+
+### Feature
+
+* merge neighbored unbalanced sentences (bf68bdf904de)
+* improve splitting high note at sentence end (a0b07c5b9392)
+
 ## v1.10.0
 
 ### Feature
