@@ -8,6 +8,7 @@
 # =============================================================================
 
 import difflib
+import re
 
 import knlp
 import konrad
@@ -63,12 +64,21 @@ def text_magic(text: str) -> str:
     'Helmut hier u.a. und mehr.'
     >>> text_magic('a. a. o.')
     'a.a.o.'
+    >>> text_magic('ohnehin unmöglich.89 So')
+    'ohnehin unmöglich. 89 So'
 
     # TODO: REMOVE THIS HACK LATER
     """
     # text = text.replace('u. a.', 'u.a.'): automate this
     for token, replace in TEXT_MAGIC:
         text = text.replace(token, replace)
+    # highnote at the end of sentence
+    text = re.sub(
+        r'([a-z])([\.\!\?])(\d{1,4})([ ]{1,4})',
+        r'\1\2 \3\4',
+        text,
+        flags=re.I,
+    )
     return text
 
 
