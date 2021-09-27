@@ -52,8 +52,8 @@ def test_words_split():
 
 
 def test_words_simple_split():
-    first, second, third, fourth, fifth, sixth = german.sentence_tokenize(
-        SIMPLE)  # pylint:disable=W0632
+    splitted = german.sentence_tokenize(SIMPLE)
+    first, second, third, fourth, fifth, sixth = splitted  # pylint:disable=W0632
     first = german.word_tokenize(first)
     second = german.word_tokenize(second)
     third = german.word_tokenize(third)
