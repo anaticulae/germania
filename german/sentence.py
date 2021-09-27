@@ -232,8 +232,6 @@ def sentence_select(text: str, tokens: list, ratio_min: float = 0.5) -> str:  # 
     best = ''
     mostequal = 0.0
     for first, second in utila.starmap((starts, ends)):
-        # for first in starts:
-        #     for second in ends:
         if second < first:
             continue
         sentence = text[first:second + 1]
