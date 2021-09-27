@@ -54,7 +54,8 @@ def sentence_tokenize(
     text = text_magic(text)
     # tokenize sentence
     tokenized = knlp.sent_tokenize(text, language='science')
-    return tokenized
+    result = balance_sentence(tokenized)
+    return result
 
 
 def text_magic(text: str) -> str:
@@ -82,6 +83,35 @@ def text_magic(text: str) -> str:
     return text
 
 
+def balance_sentence(sentences: list) -> list:
+    """Merge neighbored unbalanced sentences."""
+    # TODO: VERIFY IF THIS ALGO IMPROVES MERGING RESULT
+    unbalenced = [
+        index for index, item in enumerate(sentences) if quotation_count(item)
+    ]
+    # Determine groups of unbalanced sentences.
+    grouped = utila.groupby_diff(unbalenced)
+
+    def merge_group(group):
+        if len(group) == 1:
+            # merging single item is not required
+            return sentences[group[0]]
+        text = ' '.join([sentences[index] for index in group])
+        return text
+
+    merged = {group[0]: merge_group(group) for group in grouped}
+    result = []
+    for index, _ in enumerate(sentences):
+        try:
+            result.append(merged[index])
+        except KeyError:
+            if index in unbalenced:
+                # already merge into other sentence
+                continue
+            result.append(sentences[index])
+    return result
+
+
 TEXT_MAGIC = [
     ('. '.join(item.split('.')).strip(), item)
     for item in list(konrad.ABBREVIATION) + list(konrad.ABBREVIATION_LOWER)
@@ -101,6 +131,17 @@ def isunbalanced(sentence: str) -> bool:
         if sentence.count(start) != sentence.count(close):
             return True
     return False
+
+
+def quotation_count(tokens: list) -> int:
+    # TODO: MOVE TO KONRAD PACKAGE
+    count = 0
+    # TODO: CHECK DIFFERENT DOUBLE QUOTATION MARK SIGNS
+    for token in tokens:
+        count += token.count('„')
+        count -= token.count('”')
+        count -= token.count('“')
+    return count
 
 
 def open_quotation_mark(tokens: list) -> int:
