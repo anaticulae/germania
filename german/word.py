@@ -23,6 +23,10 @@ def word_tokenize(
     validate_sentences: bool = True,
     lang: konrad.Language = None,
 ) -> Words:
+    """\
+    >>> word_tokenize('•Wie gestaltet sich die Anreise der Kunden?')
+    [<Mark.LIST_DOT:...>, 'Wie', 'gestaltet',...<Mark.QUESTION_MARK:...>]
+    """
     if validate_sentences and not german.is_sentence(items):
         # Ensure to parse complete sentences.
         return None
