@@ -10,6 +10,7 @@
 import difflib
 import re
 
+import configo
 import knlp
 import konrad
 import utila
@@ -157,17 +158,26 @@ def open_quotation_mark(tokens: list) -> int:
 
 QUOTATION_CLOSE_SIGNS = '"”“'  # TODO: REPLACE WITH KONRAD
 
+SENTENCE_LENGTH_MIN = configo.HV_INT_PLUS(default=4)
 
-def is_sentence(sentence: str, min_length: int = 4) -> bool:
-    if len(sentence) < min_length:  # TODO: HOLY VALUE
+SENTENCE_DOTS_MAX = configo.HV_PERCENT_PLUS(default=4.0)
+
+
+def is_sentence(
+    sentence: str,
+    min_length: int = SENTENCE_LENGTH_MIN,
+    dots_percent_max=SENTENCE_DOTS_MAX,
+) -> bool:
+    length = len(sentence)
+    if length < min_length:
         # sentence is too short
         return False
-    length = len(sentence)
     dotcount = sentence.count('.')
-    percent_sentence = sentence.count('.') / length if length else 0.0
-    if dotcount >= 3 and percent_sentence > 0.04:  # TODO: HOLY VALUE
-        # sentence contains too much dots, maybe a toc line
-        return False
+    if dotcount >= 3:
+        percent_sentence = dotcount / length
+        if percent_sentence > dots_percent_max:
+            # sentence contains too much dots, maybe a toc line
+            return False
     splitted = sentence_tokenize(sentence)
     if len(splitted) > 1:
         return False
