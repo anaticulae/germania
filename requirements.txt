@@ -7,10 +7,10 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-utila>=2.53.0<3.0.0
+utila>=2.59.0<3.0.0
 
 konrad>=0.7.1<1.0.0
-iamraw>=4.33.2<5.0.0
+iamraw>=4.38.1<5.0.0
 
 knlp>=0.4.4<1.0.0
 nltk>=3.6.2<4.0.0
