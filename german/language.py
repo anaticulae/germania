@@ -16,7 +16,6 @@ import collections
 import contextlib
 
 import konrad
-import nltk.classify.textcat
 
 LanguageResult = collections.namedtuple(
     'LanguageResult',
@@ -29,7 +28,7 @@ def determine(text: str) -> LanguageResult:
         text = konrad.remove_marks(text)
     if not isinstance(text, str):
         text = ' '.join(text)
-    cat = nltk.classify.textcat.TextCat()
+    cat = textcat()
     detected = cat.guess_language(text)
     language = konrad.Language.UNKNOWN
     with contextlib.suppress(KeyError):
@@ -75,3 +74,13 @@ MAPPING = {
     # 'es': konrad.Language.SPANISH,
     'fra': konrad.Language.FRENCH,
 }
+
+TEXTCAT = None
+
+
+def textcat():
+    global TEXTCAT
+    if TEXTCAT is None:
+        import nltk.classify.textcat
+        TEXTCAT = nltk.classify.textcat.TextCat()
+    return TEXTCAT
