@@ -7,9 +7,11 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import functools
 import re
 
 
+@functools.lru_cache(maxsize=4096)
 def years(raw: str, min_=1950, max_=2020, verbose: bool = False):
     """Extract sorted list of years out of `raw` text.
 
@@ -31,6 +33,7 @@ def years(raw: str, min_=1950, max_=2020, verbose: bool = False):
     return result
 
 
+@functools.lru_cache(maxsize=4096)
 def dates(raw: str, min_year=1950, max_year=2020, verbose: bool = False):
     """Extract sorted list of dates out of `raw` text.
 

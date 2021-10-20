@@ -47,6 +47,7 @@ If parsing only NoPersons we merge them to a single NoPerson
 [NoPerson(confidence=None, raw='Deutsche Norm DIN 1422, Teil 1')]
 """
 
+import functools
 import re
 
 import iamraw
@@ -55,6 +56,7 @@ import utila
 import german
 
 
+@functools.lru_cache(maxsize=4096)
 def authors(raw: str, verbose: bool = False):
     """\
     >>> authors('M. Baccar,')
@@ -98,6 +100,7 @@ def authors_decide(parsed: list, raw: str = None) -> iamraw.Persons:
     return result
 
 
+@functools.lru_cache(maxsize=4096)
 def simple(raw: str, extern: str = ';', intern: str = ','):
     """\
     >>> simple('Becker, W.; Ulrich, P.')
@@ -110,6 +113,7 @@ def simple(raw: str, extern: str = ';', intern: str = ','):
     return result
 
 
+@functools.lru_cache(maxsize=4096)
 def freeand(raw: str):
     """\
     >>> freeand('Beirness, D. & Vogel-Sprott, M.')
@@ -141,6 +145,7 @@ def freeand(raw: str):
     return result
 
 
+@functools.lru_cache(maxsize=4096)
 def splitand(raw: str):
     """\
     >>> splitand('ADM Arbeitskreis Deutscher Markt und Sozialforschungsinstitute e.V.')

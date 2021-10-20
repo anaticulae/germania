@@ -8,6 +8,7 @@
 # =============================================================================
 
 import contextlib
+import functools
 
 import knlp
 import konrad
@@ -36,6 +37,7 @@ SINGLE_ENG = (
 )
 
 
+@functools.lru_cache(maxsize=4096)
 def extract_quotes(items: str, lang='science') -> list:  # pylint:disable=W0613
     assert isinstance(items, str), type(items)
     # prepare token
@@ -82,6 +84,7 @@ def parse_quotation(
 REVERSED = {value: key for key, value in konrad.mark.MATCH.items()}
 
 
+@functools.lru_cache(maxsize=4096)
 def mark2str(item) -> str:
     with contextlib.suppress(KeyError):
         item = REVERSED[item]

@@ -17,6 +17,7 @@ Determine number of month:
 """
 
 import contextlib
+import functools
 
 import utila
 
@@ -71,6 +72,7 @@ MONTH_REGEX = '(' + '|'.join(utila.flatten(GROUPS)) + ')'
 MONTH = utila.flatten(GROUPS)
 
 
+@functools.lru_cache(maxsize=4096)
 def month(item: str):
     """\
     >>> month('marz')

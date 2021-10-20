@@ -104,6 +104,7 @@ def wordtypes(item: str) -> WordTypes:
 REFERENCE = re.compile(r'(\d+\.?)+')
 
 
+@functools.lru_cache(maxsize=4096)
 def isreference(item: str) -> bool:
     """\
     >>> isreference('3.2.1.')
@@ -121,6 +122,7 @@ def isreference(item: str) -> bool:
     return REFERENCE.match(item) is not None
 
 
+@functools.lru_cache(maxsize=4096)
 def isyear(item: str) -> bool:
     """\
     >>> isyear(1995)
@@ -150,6 +152,7 @@ NOPERSON = (
 # yapf:enable
 
 
+@functools.lru_cache(maxsize=4096)
 def isperson(item: str, length_min: int = 3) -> bool:  # pylint:disable=R0911
     """\
     >>> isperson('Olsen')
@@ -185,6 +188,7 @@ def isperson(item: str, length_min: int = 3) -> bool:  # pylint:disable=R0911
     return False
 
 
+@functools.lru_cache(maxsize=4096)
 def ispress(press: str, length_min: int = 6) -> bool:
     """\
     >>> ispress('Springer')
@@ -204,6 +208,7 @@ def ispress(press: str, length_min: int = 6) -> bool:
     return False
 
 
+@functools.lru_cache(maxsize=4096)
 def iscity(city: str, length_min: int = 4) -> bool:
     """\
     >>> iscity('Berlino')

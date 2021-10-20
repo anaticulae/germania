@@ -22,6 +22,7 @@ accessed
 """
 
 import contextlib
+import functools
 import re
 
 import utila
@@ -31,6 +32,7 @@ import german.utils.month
 MONTHREGEX = german.utils.month.MONTH_REGEX
 
 
+@functools.lru_cache(maxsize=4096)
 def accessed(raw: str):
     """\
     >>> accessed('europaeischegemeinschaften?p=all (27.05.2018).')

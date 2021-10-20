@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import functools
+
 import utila
 
 HEADLINES = """\
@@ -24,6 +26,7 @@ Zeitschriftenartikel
 """.strip().splitlines()
 
 
+@functools.lru_cache(maxsize=4096)
 def isheadline(token: str) -> bool:
     """Check if token is a headline.
 

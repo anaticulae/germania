@@ -14,6 +14,7 @@ Regression test to avoid parsing `bis 14` as `S 14`
 # TODO: UNITE THESE PATTERN LATER
 
 import contextlib
+import functools
 import re
 
 import utila
@@ -29,6 +30,7 @@ PAGE_PATTERN = r"""
 """
 
 
+@functools.lru_cache(maxsize=4096)
 def pagenumbers(raw: str, verbose: bool = False):
     """Extract single pages and page ranges out of `raw` text.
 
@@ -58,6 +60,7 @@ def pagenumbers(raw: str, verbose: bool = False):
     return result
 
 
+@functools.lru_cache(maxsize=4096)
 def pages(raw: str):
     """\
     >>> pages('IEEE Joint, 2004, S. 113-117')
@@ -86,6 +89,7 @@ def pages(raw: str):
     return None
 
 
+@functools.lru_cache(maxsize=4096)
 def pages_complex(raw: str):
     """\
     >>> pages_complex('Germaniques 53, H. 2, 93-122.')

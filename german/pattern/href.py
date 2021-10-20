@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import functools
 import re
 
 import utila
@@ -25,6 +26,7 @@ HYPERLINK = rf"""
 """
 
 
+@functools.lru_cache(maxsize=4096)
 def hyperlink(raw: str, position: bool = False, verbose: bool = False):
     r"""\
     >>> hyperlink('Before: http://student.unifr.ch/\nReferenzrahmen2001.pdf after.', position=True)

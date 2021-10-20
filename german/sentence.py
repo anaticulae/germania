@@ -8,6 +8,7 @@
 # =============================================================================
 
 import difflib
+import functools
 import re
 
 import configo
@@ -20,6 +21,7 @@ import german
 Sentences = utila.Strings
 
 
+@functools.lru_cache(maxsize=4096)
 def sentence_tokenize(
     text: str,
     *,
@@ -59,6 +61,7 @@ def sentence_tokenize(
     return result
 
 
+@functools.lru_cache(maxsize=4096)
 def text_magic(text: str) -> str:
     """Prepare text with some knowledge.
 
@@ -120,6 +123,7 @@ TEXT_MAGIC = [
 ]
 
 
+@functools.lru_cache(maxsize=4096)
 def isunbalanced(sentence: str) -> bool:
     """\
     >>> isunbalanced('I am ( unbalanced')
@@ -163,6 +167,7 @@ SENTENCE_LENGTH_MIN = configo.HV_INT_PLUS(default=4)
 SENTENCE_DOTS_MAX = configo.HV_PERCENT_PLUS(default=4.0)
 
 
+@functools.lru_cache(maxsize=4096)
 def is_sentence(
     sentence: str,
     min_length: int = SENTENCE_LENGTH_MIN,
@@ -234,6 +239,7 @@ def is_sentence_closed(token: list) -> bool:  # pylint:disable=R0911
     return False
 
 
+@functools.lru_cache(maxsize=4096)
 def split_token(text: str, normalize: bool = True):
     # replace text division -
     text = text.replace('-\n', '')
@@ -250,6 +256,7 @@ def split_token(text: str, normalize: bool = True):
 SPECIAL = ['„', '“', '‘', '‚']
 
 
+@functools.lru_cache(maxsize=4096)
 def split_special_chars(token):
     """\
     >>> split_special_chars('„‚privat‘')
