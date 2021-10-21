@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.12.0
+
+### Feature
+
+* add method to determine isbn, issn and doi (040b0fe0fdfa)
+
 ## v1.11.0
 
 ### Feature
