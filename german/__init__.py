@@ -42,6 +42,9 @@ from german.pattern import matched
 from german.pattern.access import accessed
 from german.pattern.author import authors
 from german.pattern.author import authors_decide
+from german.pattern.book import doi
+from german.pattern.book import isbn
+from german.pattern.book import issn
 from german.pattern.date import dates
 from german.pattern.date import years
 from german.pattern.href import hyperlink
