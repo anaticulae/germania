@@ -13,7 +13,7 @@ Examples:
 ISBN
 ----
 
->>> isbn('ISBN 978-0-9745607-3-1.')
+>>> isbn('Das ist ein Buch ISBN 978-0-9745607-3-1. Bücher sind schön.')
 ['ISBN 978-0-9745607-3-1']
 >>> isbn('ISBN 13: 978-1292-02572-8')
 ['ISBN 13: 978-1292-02572-8']
@@ -41,6 +41,8 @@ ISSN
 
 >>> issn('ISSN 1095-7162')
 ['ISSN 1095-7162']
+>>> issn('issn: 0018-9162.')
+['issn: 0018-9162']
 
 DOI
 ---
@@ -116,7 +118,8 @@ def doi(raw: str) -> list:
 
 ISSN = utila.compiles(r"""
 (
-    ISSN
+    ISSN|
+    ISSN:
 )
 \s{0,3}
 (
