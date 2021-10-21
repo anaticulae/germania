@@ -2,6 +2,19 @@
 
 Every noteable change is logged here.
 
+## v1.11.0
+
+### Feature
+
+* unite magic improver (452ec0321b7e)
+* add methods to improve abbreviation and highnote (e9cd6a50bdd1)
+* add method to improve links (273e49bed21f)
+* use more caching to reduce lookup time (3d1ade3263d8)
+
+### Fix
+
+* load nltk on first lookup (cfe0170d8175)
+
 ## v1.10.2
 
 ## v1.10.1
