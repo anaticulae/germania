@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.12.1
+
+### Fix
+
+* improve issn parser (5079aefa79e8)
+
 ## v1.12.0
 
 ### Feature
