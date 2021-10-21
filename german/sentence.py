@@ -9,7 +9,6 @@
 
 import difflib
 import functools
-import re
 
 import configo
 import knlp
@@ -54,37 +53,12 @@ def sentence_tokenize(
         normalize_newline=normalize_newline,
         normalize_spaces=normalize_spaces,
     )
-    text = text_magic(text)
+    # TODO: REMOVE LATER
+    text = german.text_magic(text)
     # tokenize sentence
     tokenized = knlp.sent_tokenize(text, language='science')
     result = balance_sentence(tokenized)
     return result
-
-
-@functools.lru_cache(maxsize=4096)
-def text_magic(text: str) -> str:
-    """Prepare text with some knowledge.
-
-    >>> text_magic('Helmut hier u. a. und mehr.')
-    'Helmut hier u.a. und mehr.'
-    >>> text_magic('a. a. o.')
-    'a.a.o.'
-    >>> text_magic('ohnehin unmöglich.89 So')
-    'ohnehin unmöglich. 89 So'
-
-    # TODO: REMOVE THIS HACK LATER
-    """
-    # text = text.replace('u. a.', 'u.a.'): automate this
-    for token, replace in TEXT_MAGIC:
-        text = text.replace(token, replace)
-    # highnote at the end of sentence
-    text = re.sub(
-        r'([a-z])([\.\!\?])(\d{1,4})([ ]{1,4})',
-        r'\1\2 \3\4',
-        text,
-        flags=re.I,
-    )
-    return text
 
 
 def balance_sentence(sentences: list) -> list:
@@ -114,13 +88,6 @@ def balance_sentence(sentences: list) -> list:
                 continue
             result.append(sentences[index])
     return result
-
-
-TEXT_MAGIC = [
-    ('. '.join(item.split('.')).strip(), item)
-    for item in list(konrad.ABBREVIATION) + list(konrad.ABBREVIATION_LOWER)
-    if item.count('.') > 1
-]
 
 
 @functools.lru_cache(maxsize=4096)
