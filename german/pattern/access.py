@@ -42,11 +42,15 @@ PATTERN = [
     r'\[Online\;[ ]{0,3}Zugriff' + MONTHDAYYEAR + r'\]',
     r'Version\:[ ]{0,3}(?P<month>\w+)[ ]{0,3}(?P<year>\d{2,4})',
     r'Zugriff[ ]{0,3}am[ ]{0,3}' + DAYMONTHYEAR,
+    r'Zugriff[ ]{0,3}am[ ]{0,3}' + DAYTMONTHYEAR,
+    r'Zugriff[ ]{0,3}am[ ]{0,3}' + MONTHDAYYEAR,
     r'Zugriffs?[ ]{0,3}:?[ ]{0,3}' + DAYTMONTHYEAR,
     r'\((?P<year>\d{2,4})\.(?P<month>\d{1,2})\.(?P<day>\d{1,2})\)',
     r'\(' + DAYMONTHYEAR + r'\)',
     r'\(' + DAYTMONTHYEAR + r'\)',
     r'Abgerufen[ ]{0,3}(am[ ]{0,3})?' + DAYMONTHYEAR,
+    r'Abgerufen[ ]{0,3}(am[ ]{0,3})?' + DAYTMONTHYEAR,
+    r'Abgerufen[ ]{0,3}(am[ ]{0,3})?' + MONTHDAYYEAR,
 ]
 
 
