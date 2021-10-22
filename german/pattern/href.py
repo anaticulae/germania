@@ -12,6 +12,7 @@ import re
 
 import utila
 
+# TODO: DO NOT CHANGE HYPERLINK
 # TODO: MOVE TO A MORE GENERAL PLACE
 TABLE = str.maketrans({'∼': '~'})
 
