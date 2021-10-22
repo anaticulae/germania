@@ -31,20 +31,22 @@ import german.utils.month
 
 MONTHREGEX = german.utils.month.MONTH_REGEX
 
-# yapf:disable
+MONTHDAYYEAR = r'[ ]{0,3}(?P<month>\w+)[ ]{0,3}(?P<day>\d{1,2})\,[ ]{0,3}(?P<year>\d{2,4})'
+DAYMONTHYEAR = r'[ ]{0,3}(?P<day>\d{1,2})\.(?P<month>\d{1,2})\.(?P<year>\d{2,4})'
+DAYTMONTHYEAR = r'(?P<day>\d{1,2})\.[ ]{0,3}(?P<month>' + MONTHREGEX + r')[ ]{0,3}(?P<year>\d{2,4})'
+
 PATTERN = [
-    r'\[Letzter[ ]{0,3}Zugriff\:[ ]{0,3}(?P<day>\d{1,2})\.(?P<month>\d{1,2})\.(?P<year>\d{2,4})\]',
-    r'Letzter[ ]{0,3}Zugriff\:[ ]{0,3}(?P<day>\d{1,2})\.(?P<month>\d{1,2})\.(?P<year>\d{2,4})',
-    r'\[Online[ ]{0,3}Zugriff\:[ ]{0,3}(?P<day>\d{1,2})\.(?P<month>\d{1,2})\.(?P<year>\d{2,4})\]',
-    r'\[Online\;[ ]{0,3}Zugriff[ ]{0,3}(?P<month>\w+)[ ]{0,3}(?P<day>\d{1,2})\,[ ]{0,3}(?P<year>\d{2,4})\]',
+    r'\[Letzter[ ]{0,3}Zugriff\:' + DAYMONTHYEAR + r'\]',
+    r'Letzter[ ]{0,3}Zugriff\:' + DAYMONTHYEAR,
+    r'\[Online[ ]{0,3}Zugriff\:' + DAYMONTHYEAR + r'\]',
+    r'\[Online\;[ ]{0,3}Zugriff' + MONTHDAYYEAR + r'\]',
     r'Version\:[ ]{0,3}(?P<month>\w+)[ ]{0,3}(?P<year>\d{2,4})',
-    r'Zugriff[ ]{0,3}am[ ]{0,3}(?P<day>\d{1,2})\.(?P<month>\d{1,2})\.(?P<year>\d{2,4})',
-    r'Zugriffs?[ ]{0,3}:?[ ]{0,3}(?P<day>\d{1,2})\.[ ]{0,3}(?P<month>' + MONTHREGEX + r')[ ]{0,3}(?P<year>\d{2,4})',
+    r'Zugriff[ ]{0,3}am[ ]{0,3}' + DAYMONTHYEAR,
+    r'Zugriffs?[ ]{0,3}:?[ ]{0,3}' + DAYTMONTHYEAR,
     r'\((?P<year>\d{2,4})\.(?P<month>\d{1,2})\.(?P<day>\d{1,2})\)',
-    r'\((?P<day>\d{1,2})\.(?P<month>\d{1,2})\.(?P<year>\d{2,4})\)',
-    r'\((?P<day>\d{1,2})\.[ ]{0,3}(?P<month>' + MONTHREGEX + r')[ ]{0,3}(?P<year>\d{2,4})\)',
+    r'\(' + DAYMONTHYEAR + r'\)',
+    r'\(' + DAYTMONTHYEAR + r'\)',
 ]
-# yapf:enable
 
 
 @functools.lru_cache(maxsize=4096)
