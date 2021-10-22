@@ -2,6 +2,25 @@
 
 Every noteable change is logged here.
 
+## v1.13.0
+
+### Feature
+
+* add dates master to process all dates pattern (61996ef80367)
+* add month year pattern (b3927d5e111b)
+* extend month list (866c57cc5524)
+* simplify pattern, remove chars separately (56a0d4310e66)
+* add reversed date pattern (bece191e2541)
+* increase max year (2a6448efed39)
+* add verbose flag (d4eb3edf08a3)
+* add more access (ae5dc330e906)
+* extend access pattern (23668bcb398a)
+
+### Fix
+
+* flip raw and data (048a405cca68)
+* add possible white spaces (9594105fd07c)
+
 ## v1.12.1
 
 ### Fix
