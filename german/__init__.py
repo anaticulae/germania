@@ -46,6 +46,8 @@ from german.pattern.book import doi
 from german.pattern.book import isbn
 from german.pattern.book import issn
 from german.pattern.date import dates
+from german.pattern.date import dates_master
+from german.pattern.date import dates_month_year
 from german.pattern.date import years
 from german.pattern.href import hyperlink
 from german.pattern.mail import mails

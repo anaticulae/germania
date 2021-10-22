@@ -42,6 +42,30 @@ def years(raw: str, min_=1950, max_=2025, verbose: bool = False):
 DATES = re.compile(r'(\d{4}|\d{1,2})\.(\d{1,2})\.(\d{4}|\d{1,2})')
 
 
+def dates_master(raw: str, year_min=1950, year_max=2025, verbose: bool = False):  # pylint:disable=W0613
+    """\
+    >>> dates_master('Aug. 1991')
+    [('1991', 8, 0)]
+    >>> dates_master('Stand 20.10.2020', verbose=True)
+    [((2020, 10, 20), '20.10.2020')]
+    """
+    result = []
+    for method in (
+            dates_month_year,
+            dates,
+    ):
+        parsed = method(raw, verbose=True)
+        if not parsed:
+            continue
+        for item in parsed:
+            raw = raw.replace(item[1], '*' * len(item[1]))
+            if verbose:
+                result.append(item)
+            else:
+                result.append(item[0])
+    return result
+
+
 @functools.lru_cache(maxsize=4096)
 def dates(raw: str, min_year=1950, max_year=2025, verbose: bool = False):
     """Extract sorted list of dates out of `raw` text.
