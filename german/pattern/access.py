@@ -36,12 +36,10 @@ DAYTMONTHYEAR = r'[ ]{0,3}(?P<day>\d{1,2})\.[ ]{0,3}(?P<month>' + MONTHREGEX + r
 YEARMONTHDAY = r'[ ]{0,3}(?P<year>\d{2,4})\.(?P<month>\d{1,2})\.(?P<day>\d{1,2})'
 
 PATTERN = [
-    r'Letzter[ ]{0,3}Zugriff\:' + MONTHDAYYEAR,
-    r'Letzter[ ]{0,3}Zugriff\:' + DAYMONTHYEAR,
-    r'Letzter[ ]{0,3}Zugriff\:' + DAYTMONTHYEAR,
-    r'Online[ ]{0,3}Zugriff\:' + DAYMONTHYEAR,
-    r'Online\;[ ]{0,3}Zugriff' + MONTHDAYYEAR,
-    r'Version\:[ ]{0,3}(?P<month>\w+)[ ]{0,3}(?P<year>\d{2,4})',
+    r'(Online\;?|Letzter)[ ]{0,3}Zugriff\:?' + DAYMONTHYEAR,
+    r'(Online\;?|Letzter)[ ]{0,3}Zugriff\:?' + DAYTMONTHYEAR,
+    r'(Online\;?|Letzter)[ ]{0,3}Zugriff\:?' + MONTHDAYYEAR,
+    r'Version\:?[ ]{0,3}(?P<month>\w+)[ ]{0,3}(?P<year>\d{2,4})',
     r'Zugriff[ ]{0,3}(am)?' + DAYMONTHYEAR,
     r'Zugriff[ ]{0,3}(am)?' + DAYTMONTHYEAR,
     r'Zugriff[ ]{0,3}(am)?' + MONTHDAYYEAR,
@@ -53,8 +51,6 @@ PATTERN = [
     DAYTMONTHYEAR,
     YEARMONTHDAY,
 ]
-
-# TODO: REDUCE COMPLEXITY
 
 
 @functools.lru_cache(maxsize=4096)
