@@ -46,6 +46,7 @@ PATTERN = [
     r'\((?P<year>\d{2,4})\.(?P<month>\d{1,2})\.(?P<day>\d{1,2})\)',
     r'\(' + DAYMONTHYEAR + r'\)',
     r'\(' + DAYTMONTHYEAR + r'\)',
+    r'Abgerufen[ ]{0,3}(am[ ]{0,3})?' + DAYMONTHYEAR,
 ]
 
 
@@ -58,6 +59,8 @@ def accessed(raw: str):
     ('[Letzter Zugriff: 16.02.15]', (15, 2, 16))
     >>> accessed('(Datum des Zugriffs: 05. Juli 2004)')
     ('Zugriffs: 05. Juli 2004', (2004, 7, 5))
+    >>> accessed('Abgerufen am 06.06.2015')
+    ('Abgerufen am 06.06.2015', (2015, 6, 6))
     """
     for item in PATTERN:
         matched = re.search(item, raw, re.IGNORECASE | re.VERBOSE)
