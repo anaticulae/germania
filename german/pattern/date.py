@@ -10,6 +10,8 @@
 import functools
 import re
 
+YEARS = re.compile(r'\b(19|20)\d{2}\b')
+
 
 @functools.lru_cache(maxsize=4096)
 def years(raw: str, min_=1950, max_=2020, verbose: bool = False):
@@ -20,9 +22,8 @@ def years(raw: str, min_=1950, max_=2020, verbose: bool = False):
     >>> years('Helm was born in 1987.', verbose=True)
     [(1987, '1987')]
     """
-    pattern = r'\b(19|20)\d{2}\b'
     result = []
-    for item in re.finditer(pattern, raw):
+    for item in re.finditer(YEARS, raw):
         year = int(item[0])
         if min_ <= year <= max_:
             parsed = year
@@ -31,6 +32,9 @@ def years(raw: str, min_=1950, max_=2020, verbose: bool = False):
             result.append(parsed)
     result = sorted(result, key=lambda x: x[0] if verbose else x)
     return result
+
+
+DATES = re.compile(r'(\d{1,2})\.(\d{1,2})\.(\d{4})')
 
 
 @functools.lru_cache(maxsize=4096)
@@ -42,9 +46,8 @@ def dates(raw: str, min_year=1950, max_year=2020, verbose: bool = False):
     >>> dates('Stand 20.10.2020', verbose=True)
     [((2020, 10, 20), '20.10.2020')]
     """
-    pattern = r'(\d{1,2})\.(\d{1,2})\.(\d{4})'
     result = []
-    for item in re.finditer(pattern, raw):
+    for item in re.finditer(DATES, raw):
         day, month, year = item[1], item[2], item[3]
         day, month, year = int(day), int(month), int(year)
         if not 1 <= day <= 31:
