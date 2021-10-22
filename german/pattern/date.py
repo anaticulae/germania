@@ -47,6 +47,8 @@ def dates(raw: str, min_year=1950, max_year=2025, verbose: bool = False):
     [((2020, 10, 20), '20.10.2020')]
     >>> dates('Stand 2021.09.10', verbose=True)
     [((2021, 9, 10), '2021.09.10')]
+    >>> dates('europaeischegemeinschaften?p=all (27.05.2018).', verbose=True)
+    [((2018, 5, 27), '27.05.2018')]
     """
     result = []
     for item in re.finditer(DATES, raw):

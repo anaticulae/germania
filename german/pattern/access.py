@@ -47,17 +47,12 @@ PATTERN = [
     r'Abgerufen[ ]{0,3}(am[ ]{0,3})?' + DAYMONTHYEAR,
     r'Abgerufen[ ]{0,3}(am[ ]{0,3})?' + DAYTMONTHYEAR,
     r'Abgerufen[ ]{0,3}(am[ ]{0,3})?' + YEARMONTHDAY,
-    DAYMONTHYEAR,
-    DAYTMONTHYEAR,
-    YEARMONTHDAY,
 ]
 
 
 @functools.lru_cache(maxsize=4096)
 def accessed(raw: str, verbose: bool = True):
     """\
-    >>> accessed('europaeischegemeinschaften?p=all (27.05.2018).')
-    ((2018, 5, 27), '27.05.2018')
     >>> accessed('[Letzter Zugriff: 16.02.15]')
     ((15, 2, 16), 'Letzter Zugriff: 16.02.15')
     >>> accessed('(Datum des Zugriffs: 05. Juli 2004)')
