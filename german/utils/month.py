@@ -24,18 +24,22 @@ import utila
 MONTH_RAW = """\
 JANUARY
 JANUAR
+JAN.
 JAN
 
 FEBRUARY
 FEBRUAR
+FEB.
 FEB
 
 MÄRZ
 MARZ
 MARCH
+MAR.
 MAR
 
 APRIL
+APR.
 APR
 
 MAI
@@ -43,29 +47,36 @@ MAY
 
 JUNI
 JUNE
+JUN.
 JUN
 
 JULI
 JULY
+JUL.
 JUL
 
 AUGUST
+AUG.
 AUG
 
 SEPTEMBER
+SEP.
 SEP
 
 OKTOBER
 OCTOBER
+OCT.
 OCT
 
 NOVEMBER
+NOV.
 NOV
 
 DEZEMBER
 DECEMBER
+DEC.
 DEC
-"""
+""".strip()
 
 GROUPS = [
     utila.splitlines(month, unique=False, lowers=False) for month in
