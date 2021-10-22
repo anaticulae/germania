@@ -33,7 +33,7 @@ MONTHREGEX = german.utils.month.MONTH_REGEX
 
 MONTHDAYYEAR = r'[ ]{0,3}(?P<month>\w+)[ ]{0,3}(?P<day>\d{1,2})\,[ ]{0,3}(?P<year>\d{2,4})'
 DAYMONTHYEAR = r'[ ]{0,3}(?P<day>\d{1,2})\.(?P<month>\d{1,2})\.(?P<year>\d{2,4})'
-DAYTMONTHYEAR = r'(?P<day>\d{1,2})\.[ ]{0,3}(?P<month>' + MONTHREGEX + r')[ ]{0,3}(?P<year>\d{2,4})'
+DAYTMONTHYEAR = r'[ ]{0,3}(?P<day>\d{1,2})\.[ ]{0,3}(?P<month>' + MONTHREGEX + r')[ ]{0,3}(?P<year>\d{2,4})'
 YEARMONTHDAY = r'[ ]{0,3}(?P<year>\d{2,4})\.(?P<month>\d{1,2})\.(?P<day>\d{1,2})'
 
 PATTERN = [
@@ -42,10 +42,10 @@ PATTERN = [
     r'\[Online[ ]{0,3}Zugriff\:' + DAYMONTHYEAR + r'\]',
     r'\[Online\;[ ]{0,3}Zugriff' + MONTHDAYYEAR + r'\]',
     r'Version\:[ ]{0,3}(?P<month>\w+)[ ]{0,3}(?P<year>\d{2,4})',
-    r'Zugriff[ ]{0,3}am[ ]{0,3}' + DAYMONTHYEAR,
-    r'Zugriff[ ]{0,3}am[ ]{0,3}' + DAYTMONTHYEAR,
-    r'Zugriff[ ]{0,3}am[ ]{0,3}' + MONTHDAYYEAR,
-    r'Zugriffs?[ ]{0,3}:?[ ]{0,3}' + DAYTMONTHYEAR,
+    r'Zugriff[ ]{0,3}(am)?' + DAYMONTHYEAR,
+    r'Zugriff[ ]{0,3}(am)?' + DAYTMONTHYEAR,
+    r'Zugriff[ ]{0,3}(am)?' + MONTHDAYYEAR,
+    r'Zugriffs?[ ]{0,3}:?' + DAYTMONTHYEAR,
     r'\((?P<year>\d{2,4})\.(?P<month>\d{1,2})\.(?P<day>\d{1,2})\)',
     r'\(' + DAYMONTHYEAR + r'\)',
     r'\(' + DAYTMONTHYEAR + r'\)',
