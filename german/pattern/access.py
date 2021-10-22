@@ -13,11 +13,11 @@ accessed
 --------
 
 >>> accessed('[Online; Zugriff Oktober 20, 2015]')
-('[Online; Zugriff Oktober 20, 2015]', (2015, 10, 20))
+((2015, 10, 20), '[Online; Zugriff Oktober 20, 2015]')
 >>> accessed('Version:August 2012')
-('Version:August 2012', (2012, 8, 0))
+((2012, 8, 0), 'Version:August 2012')
 >>> accessed('Zugriff am 19.06.2014')
-('Zugriff am 19.06.2014', (2014, 6, 19))
+((2014, 6, 19), 'Zugriff am 19.06.2014')
 >>> assert accessed('Juli') is None  # regression
 """
 
@@ -54,18 +54,20 @@ PATTERN = [
     r'Abgerufen[ ]{0,3}(am[ ]{0,3})?' + YEARMONTHDAY,
 ]
 
+# TODO: REDUCE COMPLEXITY
+
 
 @functools.lru_cache(maxsize=4096)
 def accessed(raw: str, verbose: bool = True):
     """\
     >>> accessed('europaeischegemeinschaften?p=all (27.05.2018).')
-    ('(27.05.2018)', (2018, 5, 27))
+    ((2018, 5, 27), '(27.05.2018)')
     >>> accessed('[Letzter Zugriff: 16.02.15]')
-    ('[Letzter Zugriff: 16.02.15]', (15, 2, 16))
+    ((15, 2, 16), '[Letzter Zugriff: 16.02.15]')
     >>> accessed('(Datum des Zugriffs: 05. Juli 2004)')
-    ('Zugriffs: 05. Juli 2004', (2004, 7, 5))
+    ((2004, 7, 5), 'Zugriffs: 05. Juli 2004')
     >>> accessed('Abgerufen am 06.06.2015')
-    ('Abgerufen am 06.06.2015', (2015, 6, 6))
+    ((2015, 6, 6), 'Abgerufen am 06.06.2015')
     >>> accessed('Abgerufen am 2015.06.06', verbose=False)
     (2015, 6, 6)
     """
@@ -80,7 +82,7 @@ def accessed(raw: str, verbose: bool = True):
             day(matched),
         )
         if verbose:
-            return (raw, date)
+            return (date, raw)
         return date
     return None
 
