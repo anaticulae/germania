@@ -34,7 +34,7 @@ def years(raw: str, min_=1950, max_=2025, verbose: bool = False):
     return result
 
 
-DATES = re.compile(r'(\d{1,2})\.(\d{1,2})\.(\d{4})')
+DATES = re.compile(r'(\d{4}|\d{1,2})\.(\d{1,2})\.(\d{4}|\d{1,2})')
 
 
 @functools.lru_cache(maxsize=4096)
@@ -45,11 +45,15 @@ def dates(raw: str, min_year=1950, max_year=2025, verbose: bool = False):
     [(1999, 1, 1), (2014, 11, 15), (2020, 10, 20)]
     >>> dates('Stand 20.10.2020', verbose=True)
     [((2020, 10, 20), '20.10.2020')]
+    >>> dates('Stand 2021.09.10', verbose=True)
+    [((2021, 9, 10), '2021.09.10')]
     """
     result = []
     for item in re.finditer(DATES, raw):
         day, month, year = item[1], item[2], item[3]
         day, month, year = int(day), int(month), int(year)
+        if day > year:
+            year, day = day, year
         if not 1 <= day <= 31:
             continue
         if not 1 <= month <= 12:
