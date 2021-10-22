@@ -13,7 +13,7 @@ accessed
 --------
 
 >>> accessed('[Online; Zugriff Oktober 20, 2015]')
-((2015, 10, 20), '[Online; Zugriff Oktober 20, 2015]')
+((2015, 10, 20), 'Online; Zugriff Oktober 20, 2015')
 >>> accessed('Version:August 2012')
 ((2012, 8, 0), 'Version:August 2012')
 >>> accessed('Zugriff am 19.06.2014')
@@ -36,21 +36,22 @@ DAYTMONTHYEAR = r'[ ]{0,3}(?P<day>\d{1,2})\.[ ]{0,3}(?P<month>' + MONTHREGEX + r
 YEARMONTHDAY = r'[ ]{0,3}(?P<year>\d{2,4})\.(?P<month>\d{1,2})\.(?P<day>\d{1,2})'
 
 PATTERN = [
-    r'\[Letzter[ ]{0,3}Zugriff\:' + DAYMONTHYEAR + r'\]',
+    r'Letzter[ ]{0,3}Zugriff\:' + MONTHDAYYEAR,
     r'Letzter[ ]{0,3}Zugriff\:' + DAYMONTHYEAR,
-    r'\[Online[ ]{0,3}Zugriff\:' + DAYMONTHYEAR + r'\]',
-    r'\[Online\;[ ]{0,3}Zugriff' + MONTHDAYYEAR + r'\]',
+    r'Letzter[ ]{0,3}Zugriff\:' + DAYTMONTHYEAR,
+    r'Online[ ]{0,3}Zugriff\:' + DAYMONTHYEAR,
+    r'Online\;[ ]{0,3}Zugriff' + MONTHDAYYEAR,
     r'Version\:[ ]{0,3}(?P<month>\w+)[ ]{0,3}(?P<year>\d{2,4})',
     r'Zugriff[ ]{0,3}(am)?' + DAYMONTHYEAR,
     r'Zugriff[ ]{0,3}(am)?' + DAYTMONTHYEAR,
     r'Zugriff[ ]{0,3}(am)?' + MONTHDAYYEAR,
     r'Zugriffs?[ ]{0,3}:?' + DAYTMONTHYEAR,
-    r'\((?P<year>\d{2,4})\.(?P<month>\d{1,2})\.(?P<day>\d{1,2})\)',
-    r'\(' + DAYMONTHYEAR + r'\)',
-    r'\(' + DAYTMONTHYEAR + r'\)',
     r'Abgerufen[ ]{0,3}(am[ ]{0,3})?' + DAYMONTHYEAR,
     r'Abgerufen[ ]{0,3}(am[ ]{0,3})?' + DAYTMONTHYEAR,
     r'Abgerufen[ ]{0,3}(am[ ]{0,3})?' + YEARMONTHDAY,
+    DAYMONTHYEAR,
+    DAYTMONTHYEAR,
+    YEARMONTHDAY,
 ]
 
 # TODO: REDUCE COMPLEXITY
@@ -60,9 +61,9 @@ PATTERN = [
 def accessed(raw: str, verbose: bool = True):
     """\
     >>> accessed('europaeischegemeinschaften?p=all (27.05.2018).')
-    ((2018, 5, 27), '(27.05.2018)')
+    ((2018, 5, 27), '27.05.2018')
     >>> accessed('[Letzter Zugriff: 16.02.15]')
-    ((15, 2, 16), '[Letzter Zugriff: 16.02.15]')
+    ((15, 2, 16), 'Letzter Zugriff: 16.02.15')
     >>> accessed('(Datum des Zugriffs: 05. Juli 2004)')
     ((2004, 7, 5), 'Zugriffs: 05. Juli 2004')
     >>> accessed('Abgerufen am 06.06.2015')
