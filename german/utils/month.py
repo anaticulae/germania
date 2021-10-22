@@ -22,54 +22,54 @@ import functools
 import utila
 
 MONTH_RAW = """\
-january
-januar
-jan
+JANUARY
+JANUAR
+JAN
 
-february
-februar
-feb
+FEBRUARY
+FEBRUAR
+FEB
 
-märz
-marz
-march
-mar
+MÄRZ
+MARZ
+MARCH
+MAR
 
-april
-apr
+APRIL
+APR
 
-mai
-may
+MAI
+MAY
 
-juni
-june
-jun
+JUNI
+JUNE
+JUN
 
-juli
-july
-jul
+JULI
+JULY
+JUL
 
-august
-aug
+AUGUST
+AUG
 
-september
-sep
+SEPTEMBER
+SEP
 
-oktober
-october
-oct
+OKTOBER
+OCTOBER
+OCT
 
-november
-nov
+NOVEMBER
+NOV
 
-dezember
-december
-dec
-""".strip()
+DEZEMBER
+DECEMBER
+DEC
+"""
 
 GROUPS = [
-    utila.splitlines(month, unique=False)
-    for month in utila.splitlines(MONTH_RAW, pattern='\n\n', unique=False)
+    utila.splitlines(month, unique=False, lowers=False) for month in
+    utila.splitlines(MONTH_RAW, pattern='\n\n', unique=False, lowers=False)
 ]
 MONTH_REGEX = '(' + '|'.join(utila.flatten(GROUPS)) + ')'
 MONTH = utila.flatten(GROUPS)
@@ -84,7 +84,7 @@ def month(item: str):
     >>> month('02')
     2
     """
-    item = item.lower()
+    item = item.upper()
     for index, group in enumerate(GROUPS, start=1):
         if item not in group:
             continue
