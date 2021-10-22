@@ -23,7 +23,6 @@ accessed
 
 import contextlib
 import functools
-import re
 
 import utila
 
@@ -72,7 +71,7 @@ def accessed(raw: str, verbose: bool = True):
     (2015, 6, 6)
     """
     for item in PATTERN:
-        matched = re.search(item, raw, re.IGNORECASE | re.VERBOSE)
+        matched = utila.search(item, raw)
         if not matched:
             continue
         raw = utila.extract_match(matched)
