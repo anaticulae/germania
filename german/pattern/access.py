@@ -34,6 +34,7 @@ MONTHREGEX = german.utils.month.MONTH_REGEX
 MONTHDAYYEAR = r'[ ]{0,3}(?P<month>\w+)[ ]{0,3}(?P<day>\d{1,2})\,[ ]{0,3}(?P<year>\d{2,4})'
 DAYMONTHYEAR = r'[ ]{0,3}(?P<day>\d{1,2})\.(?P<month>\d{1,2})\.(?P<year>\d{2,4})'
 DAYTMONTHYEAR = r'(?P<day>\d{1,2})\.[ ]{0,3}(?P<month>' + MONTHREGEX + r')[ ]{0,3}(?P<year>\d{2,4})'
+YEARMONTHDAY = r'[ ]{0,3}(?P<year>\d{2,4})\.(?P<month>\d{1,2})\.(?P<day>\d{1,2})'
 
 PATTERN = [
     r'\[Letzter[ ]{0,3}Zugriff\:' + DAYMONTHYEAR + r'\]',
@@ -50,12 +51,12 @@ PATTERN = [
     r'\(' + DAYTMONTHYEAR + r'\)',
     r'Abgerufen[ ]{0,3}(am[ ]{0,3})?' + DAYMONTHYEAR,
     r'Abgerufen[ ]{0,3}(am[ ]{0,3})?' + DAYTMONTHYEAR,
-    r'Abgerufen[ ]{0,3}(am[ ]{0,3})?' + MONTHDAYYEAR,
+    r'Abgerufen[ ]{0,3}(am[ ]{0,3})?' + YEARMONTHDAY,
 ]
 
 
 @functools.lru_cache(maxsize=4096)
-def accessed(raw: str):
+def accessed(raw: str, verbose: bool = True):
     """\
     >>> accessed('europaeischegemeinschaften?p=all (27.05.2018).')
     ('(27.05.2018)', (2018, 5, 27))
@@ -65,6 +66,8 @@ def accessed(raw: str):
     ('Zugriffs: 05. Juli 2004', (2004, 7, 5))
     >>> accessed('Abgerufen am 06.06.2015')
     ('Abgerufen am 06.06.2015', (2015, 6, 6))
+    >>> accessed('Abgerufen am 2015.06.06', verbose=False)
+    (2015, 6, 6)
     """
     for item in PATTERN:
         matched = re.search(item, raw, re.IGNORECASE | re.VERBOSE)
@@ -76,7 +79,9 @@ def accessed(raw: str):
             german.utils.month.month(matched['month']),
             day(matched),
         )
-        return (raw, date)
+        if verbose:
+            return (raw, date)
+        return date
     return None
 
 
