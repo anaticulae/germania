@@ -76,7 +76,7 @@ DEZEMBER
 DECEMBER
 DEC.
 DEC
-""".strip()
+"""
 
 GROUPS = [
     utila.splitlines(month, unique=False, lowers=False) for month in

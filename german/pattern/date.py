@@ -10,7 +10,12 @@
 import functools
 import re
 
+import utila
+
+import german.utils.month
+
 YEARS = re.compile(r'\b(19|20)\d{2}\b')
+MONTH_REGEX = german.utils.month.MONTH_REGEX
 
 
 @functools.lru_cache(maxsize=4096)
@@ -69,4 +74,23 @@ def dates(raw: str, min_year=1950, max_year=2025, verbose: bool = False):
     # sort by year, month, day
     for pos in range(3):
         result = sorted(result, key=lambda x: x[0][pos] if verbose else x[pos])  # pylint:disable=W0640
+    return result
+
+
+MONTH_YEAR = utila.compiles(MONTH_REGEX + r'[ ]{0,3}(\d{2,4})')
+
+
+def dates_month_year(raw: str, verbose: bool = True):
+    """\
+    >>> dates_month_year('Aug. 1991')
+    [(('1991', 8, 0), 'Aug. 1991')]
+    """
+    result = []
+    for item in re.finditer(MONTH_YEAR, raw):
+        month, year, day = item[1], item[2], 0
+        month = german.utils.month.month(month)
+        parsed = (year, month, day)
+        if verbose:
+            parsed = (parsed, item[0])
+        result.append(parsed)
     return result
