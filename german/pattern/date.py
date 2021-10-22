@@ -14,7 +14,7 @@ YEARS = re.compile(r'\b(19|20)\d{2}\b')
 
 
 @functools.lru_cache(maxsize=4096)
-def years(raw: str, min_=1950, max_=2020, verbose: bool = False):
+def years(raw: str, min_=1950, max_=2025, verbose: bool = False):
     """Extract sorted list of years out of `raw` text.
 
     >>> years('1999, Helm was born in 1987. Mud exists since 1800. 2050 20000 2020')
@@ -38,7 +38,7 @@ DATES = re.compile(r'(\d{1,2})\.(\d{1,2})\.(\d{4})')
 
 
 @functools.lru_cache(maxsize=4096)
-def dates(raw: str, min_year=1950, max_year=2020, verbose: bool = False):
+def dates(raw: str, min_year=1950, max_year=2025, verbose: bool = False):
     """Extract sorted list of dates out of `raw` text.
 
     >>> dates('Stand 20.10.2020, (15.11.2014), 01.01.1999 01.01.1940')
