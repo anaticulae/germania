@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.13.1
+
+### Feature
+
+* change return type (ddae175cb47e)
+
 ## v1.13.0
 
 ### Feature
