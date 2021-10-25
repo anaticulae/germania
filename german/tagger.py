@@ -7,14 +7,21 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import nltk.tag.perceptron
+import functools
 
-TAGGER = nltk.tag.perceptron.PerceptronTagger(load=False)
-TAGGER.train([
-    [('today', 'NN'), ('is', 'VBZ'), ('good', 'JJ'), ('day', 'NN')],
-    [('yes', 'NNS'), ('it', 'PRP'), ('beautiful', 'JJ')],
-])
+
+@functools.lru_cache(maxsize=None)
+def tagger():
+    # lazy loading nltk
+    # TODO: MOVE TO knlp
+    import nltk.tag.perceptron
+    tagger = nltk.tag.perceptron.PerceptronTagger(load=False)
+    tagger.train([
+        [('today', 'NN'), ('is', 'VBZ'), ('good', 'JJ'), ('day', 'NN')],
+        [('yes', 'NNS'), ('it', 'PRP'), ('beautiful', 'JJ')],
+    ])
+    return tagger
 
 
 def word_tag(tokens: list) -> str:
-    return TAGGER.tag(tokens)
+    return tagger().tag(tokens)
