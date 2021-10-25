@@ -9,17 +9,18 @@
 
 import os
 
-import nltk.data
+import nltk_data
 
 from german_data.utils import load_data
 from german_data.utils import load_dict
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+NLTK_DATA = os.path.join(ROOT, 'german_data/nltk_data')
+# TODO: REPLACE WITH KNLP
+nltk_data.add_nltk_path(NLTK_DATA)
 
 # TODO: INTRODUCE LAZY LOADING
 NAMES = load_data('names.dict')
 PRESS = load_data('press.dict')
 NOPERSON = load_data('noperson.dict')
 INSTITUTION = load_data('institution.dict')
-
-nltk.data.path.insert(0, os.path.join(ROOT, 'german_data/nltk_data'))
