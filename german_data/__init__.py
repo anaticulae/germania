@@ -10,7 +10,6 @@
 import os
 
 import nltk_data
-
 from german_data.utils import load_data
 from german_data.utils import load_dict
 

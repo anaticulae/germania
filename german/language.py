@@ -14,6 +14,7 @@ Use nltk to determine language where sentence is written in.
 
 import collections
 import contextlib
+import functools
 
 import konrad
 
@@ -75,12 +76,9 @@ MAPPING = {
     'fra': konrad.Language.FRENCH,
 }
 
-TEXTCAT = None
 
-
+@functools.lru_cache(maxsize=None)
 def textcat():
-    global TEXTCAT
-    if TEXTCAT is None:
-        import nltk.classify.textcat
-        TEXTCAT = nltk.classify.textcat.TextCat()
-    return TEXTCAT
+    import nltk.classify.textcat
+    result = nltk.classify.textcat.TextCat()
+    return result

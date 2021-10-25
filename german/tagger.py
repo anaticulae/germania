@@ -15,12 +15,12 @@ def tagger():
     # lazy loading nltk
     # TODO: MOVE TO knlp
     import nltk.tag.perceptron
-    tagger = nltk.tag.perceptron.PerceptronTagger(load=False)
-    tagger.train([
+    result = nltk.tag.perceptron.PerceptronTagger(load=False)
+    result.train([
         [('today', 'NN'), ('is', 'VBZ'), ('good', 'JJ'), ('day', 'NN')],
         [('yes', 'NNS'), ('it', 'PRP'), ('beautiful', 'JJ')],
     ])
-    return tagger
+    return result
 
 
 def word_tag(tokens: list) -> str:
