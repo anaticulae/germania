@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.13.2
+
+### Feature
+
+* improve nltk path insertion (6776c4b37440)
+* lazy loader tagger (078d12b0e201)
+
 ## v1.13.1
 
 ### Feature
