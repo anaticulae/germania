@@ -63,6 +63,7 @@ def searches(
     tokens_complex: bool = True,
     compare_content: bool = True,
     overlapping_remove: bool = True,
+    verbose: bool = False,
 ) -> list:
     # prepare here to avoid preparing for every tokens
     if isinstance(sentence, str):
@@ -82,6 +83,11 @@ def searches(
     result = utila.make_unique(result)
     if overlapping_remove:
         result = remove_overlapping(result)
+    if verbose:
+        if not result:
+            return []
+        raw = [sentence[start:end] for start, end in result]
+        return result, raw
     return result
 
 
