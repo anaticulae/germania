@@ -63,8 +63,11 @@ def searches(
     tokens_complex: bool = True,
     compare_content: bool = True,
     overlapping_remove: bool = True,
+    neighbours_merge: bool = False,
     verbose: bool = False,
 ) -> list:
+    if neighbours_merge:
+        assert overlapping_merge, 'enable overlapping_merge'
     # prepare here to avoid preparing for every tokens
     if isinstance(sentence, str):
         sentence = german.word_tokenize(sentence, validate_sentences=False)
@@ -82,7 +85,7 @@ def searches(
     # TODO: SORT RESULT?
     result = utila.make_unique(result)
     if overlapping_remove:
-        result = overlapping_merge(result)
+        result = overlapping_merge(result, connected_merge=neighbours_merge)
     if verbose:
         if not result:
             return []
@@ -91,13 +94,13 @@ def searches(
     return result
 
 
-def overlapping_merge(items: list) -> list:
+def overlapping_merge(items: list, connected_merge: bool = False) -> list:
     """\
     >>> overlapping_merge([(0, 5), (4, 9)])
     [(0, 5), (4, 9)]
     >>> overlapping_merge([(2, 5), (3, 4)])
     [(2, 5)]
-    >>> overlapping_merge([(0, 5), (5, 9)])
+    >>> overlapping_merge([(0, 5), (5, 9)], connected_merge=True)
     [(0, 9)]
     """
     items = sorted(items, key=lambda x: x[0])
@@ -110,7 +113,7 @@ def overlapping_merge(items: list) -> list:
         for index in range(start, stop):
             done.add(index)
         result.append(item)
-    if not result:
+    if not result or not connected_merge:
         return result
     # merge connected
     connected = [result[0]]
