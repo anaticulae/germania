@@ -97,6 +97,8 @@ def remove_overlapping(items: list) -> list:
     [(0, 5), (4, 9)]
     >>> remove_overlapping([(2, 5), (3, 4)])
     [(2, 5)]
+    >>> remove_overlapping([(0, 5), (5, 9)])
+    [(0, 9)]
     """
     items = sorted(items, key=lambda x: x[0])
     result = []
@@ -108,7 +110,17 @@ def remove_overlapping(items: list) -> list:
         for index in range(start, stop):
             done.add(index)
         result.append(item)
-    return result
+    if not result:
+        return result
+    # merge connected
+    connected = [result[0]]
+    for item in result[1:]:
+        if connected[-1][1] == item[0]:
+            # update last item
+            connected[-1] = (connected[-1][0], item[1])
+        else:
+            connected.append(item)
+    return connected
 
 
 def init(text: str) -> set:
