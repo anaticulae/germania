@@ -82,7 +82,7 @@ def searches(
     # TODO: SORT RESULT?
     result = utila.make_unique(result)
     if overlapping_remove:
-        result = remove_overlapping(result)
+        result = overlapping_merge(result)
     if verbose:
         if not result:
             return []
@@ -91,13 +91,13 @@ def searches(
     return result
 
 
-def remove_overlapping(items: list) -> list:
+def overlapping_merge(items: list) -> list:
     """\
-    >>> remove_overlapping([(0, 5), (4, 9)])
+    >>> overlapping_merge([(0, 5), (4, 9)])
     [(0, 5), (4, 9)]
-    >>> remove_overlapping([(2, 5), (3, 4)])
+    >>> overlapping_merge([(2, 5), (3, 4)])
     [(2, 5)]
-    >>> remove_overlapping([(0, 5), (5, 9)])
+    >>> overlapping_merge([(0, 5), (5, 9)])
     [(0, 9)]
     """
     items = sorted(items, key=lambda x: x[0])
