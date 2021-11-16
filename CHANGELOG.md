@@ -2,6 +2,17 @@
 
 Every noteable change is logged here.
 
+## v1.14.0
+
+### Feature
+
+* add parameter to merge directed neighbours (2ef68dd508ca)
+* add verbose option return token sequence also (4e917852c7ed)
+
+### Fix
+
+* merge connected neighbors (bb8e60dcfe7b)
+
 ## v1.13.2
 
 ### Feature
