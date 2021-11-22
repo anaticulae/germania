@@ -20,9 +20,14 @@ CHARS = r'[\w\d\./\-\_\?\=\&\%\+\~]+[\w\d/\?\=\&\%]'
 HYPERLINK = rf"""
     (
         (https://|http://|www\.)
-        {CHARS}+[\w\d/\?\=\&\%]  # no dot at the end
+        {CHARS}+
+        [\w\d/\?\=\&\%]                     # no dot at the end
     |
-        [\w\d\-\_\.]+?\.(de|net|org|com|co\.uk|\w{2,3}){CHARS}
+        [\w\d\-\_\.]+?                      # soft pattern without url start
+        \.
+        (de|net|org|com|co\.uk|\w{2,3})
+        \/
+        {CHARS}
     )
 """
 
