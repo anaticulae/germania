@@ -36,6 +36,8 @@ def hyperlink(raw: str, position: bool = False, verbose: bool = False):
     ['wehewehe.org/gsdl2.5/cgi-bin/hdict?d=D21021']
     >>> hyperlink('Wiki [On-line]. Available: wehewehe.org/gsdl2.5/cgi-bin/hdict?d=D21021', verbose=True)
     [('wehewehe.org/gsdl2.5/cgi-bin/hdict?d=D21021', 'wehewehe.org/gsdl2.5/cgi-bin/hdict?d=D21021')]
+    >>> hyperlink('persönliche bzw.demographische Daten')
+    []
     """
     raw = raw.replace('\n', '')
     raw = raw.translate(TABLE)
