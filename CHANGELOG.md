@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.14.1
+
+### Fix
+
+* make href pattern more strict (31e3434c03f7)
+
 ## v1.14.0
 
 ### Feature
