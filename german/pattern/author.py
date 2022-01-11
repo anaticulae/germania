@@ -256,11 +256,14 @@ def valid_author(author):
     return True
 
 
-def maxindex(items):
+def maxindex(items) -> int:
     if not items:
         return None
     current = 0
-    for index, (value, count) in enumerate(items[1:], start=1):
+    for index, content in enumerate(items[1:], start=1):
+        if content is None:
+            continue
+        value, count = content
         best = items[current][0]
         if value > best:
             current = index
