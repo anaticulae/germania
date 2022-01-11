@@ -45,11 +45,19 @@ firstname='S. C.'...Person(name='Varoquaux', firstname='G.'...]
 If parsing only NoPersons we merge them to a single NoPerson
 >>> authors_decide(*authors('Deutsche Norm DIN 1422, Teil 1', verbose=True))
 [NoPerson(confidence=None, raw='Deutsche Norm DIN 1422, Teil 1')]
+
+>>> authors('Lianos, Manuel/Hetzel, Rudolf')
+[('Lianos', 'Manuel'), ('Hetzel', 'Rudolf')]
+
+TODO: HOW TO IMPROVE THIS SITUATION?
+>>> authors('Lianos, Manuel/Hetzel, Rudolf, Die Quadratur der Kreise. So arbeitet die FirmenLobby in Berlin')
+[('Lianos', 'Manuel')]
 """
 
 import functools
 import re
 
+import configo
 import iamraw
 import utila
 
@@ -100,6 +108,9 @@ def authors_decide(parsed: list, raw: str = None) -> iamraw.Persons:
     return result
 
 
+NAME_COUNT_MAX = configo.HV_INT_PLUS(default=7)
+
+
 @functools.lru_cache(maxsize=4096)
 def simple(raw: str, extern: str = ';', intern: str = ','):
     """\
@@ -109,6 +120,8 @@ def simple(raw: str, extern: str = ';', intern: str = ','):
     result = []
     for item in raw.split(extern):
         parsed = tuple(it.strip() for it in item.split(intern) if it.strip())
+        if any(len(names.split()) > NAME_COUNT_MAX for names in parsed):
+            continue
         result.append(parsed)
     return result
 
