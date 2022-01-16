@@ -55,10 +55,18 @@ def sentence_tokenize(
     )
     # TODO: REMOVE LATER
     text = german.text_magic(text)
+    language = language_select(text)
     # tokenize sentence
-    tokenized = knlp.sent_tokenize(text, language='science')
+    tokenized = knlp.sent_tokenize(text, language=language)
     result = balance_sentence(tokenized)
     return result
+
+
+@functools.lru_cache(maxsize=4096)
+def language_select(text: str) -> str:
+    if german.iseng(text):
+        return 'science_english'
+    return 'science'
 
 
 def balance_sentence(sentences: list) -> list:
