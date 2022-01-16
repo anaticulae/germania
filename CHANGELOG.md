@@ -654,4 +654,3 @@ Every noteable change is logged here.
 * move code from words project (d65ff33371a3)
 
 ## v0.0.0 Initial release
-
