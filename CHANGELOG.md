@@ -2,6 +2,23 @@
 
 Every noteable change is logged here.
 
+## v1.15.0
+
+### Feature
+
+* add method to select parser by guessed language (d070c7542127)
+* add method to train improved English tokeniser (3751a6f9b29c)
+* limit possible name length (f5f33a4333cf)
+
+### Fix
+
+* skip None extraction (3b935f1dade6)
+
+### Documentation
+
+* adjust modules path (95b1d0342db4)
+* Happy New Year! (305ea5498962)
+
 ## v1.14.1
 
 ### Fix
