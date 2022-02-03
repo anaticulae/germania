@@ -35,7 +35,10 @@ class TextErrorMachine:
                 continue
             if not utila.iterable(detected):
                 result.append(detected)
+                detected.debug_method = method.__name__
                 continue
+            for item in detected:
+                item.debug_method = method.__name__
             result.extend(detected)
         if page is not None:
             for item in result:
@@ -57,7 +60,7 @@ class PhysicMachine(TextErrorMachine):
     """\
     >>> machine = PhysicMachine()
     >>> machine.determine('The weight is 200kg. Thats a lot.')
-    [TextError(...state=<TextErrorType.RULE...>, location=RangedLocation(char=13, char_end=19), raw='200kg', better='200 kg')]
+    [TextError(...state=<TextErrorType.RULE...>, location=RangedLocation(char=13, char_end=19), raw='200kg', better='200 kg', debug_method='check_physical_spaces')]
     """
 
     MISSING_SPACE_BEFORE_UNIT = utila.compiles(r"""

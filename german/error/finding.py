@@ -37,6 +37,8 @@ class TextError:
     location: iamraw.Location = None
     raw: str = None
     better: str = None
+    debug_method: str = None
+    """Name of method which had determined this error."""
 
 
 TextErrors = typing.List[TextError]
