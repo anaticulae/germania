@@ -46,6 +46,7 @@ if __name__ == "__main__":
         ],
         packages=[
             'german',
+            'german.error',
             'german.improve',
             'german.pattern',
             'german.utils',
