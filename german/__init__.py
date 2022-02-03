@@ -21,6 +21,7 @@ import nltk_data
 from german.error.finding import TextError
 from german.error.finding import TextErrors
 from german.error.finding import TextErrorType
+from german.error.machine import TextErrorMachine
 from german.headlines import HEADLINES
 from german.headlines import isheadline
 from german.improve.abbreviation import abbreviation_magic
