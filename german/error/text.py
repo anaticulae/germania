@@ -35,6 +35,8 @@ class TextMachine(german.TextErrorMachine):
         []
         >>> check('Berlin 19982, s. VII ')
         []
+        >>> check('S. Meuschel, Legitimation und Parteiherrschaft ')
+        []
         """
         result = []
         for match in self.MISSING_PAGENUMBER.finditer(text):
@@ -55,6 +57,8 @@ def follows_name(text: str) -> bool:
     >>> follows_name('Helmut wohnt hier')
     True
     >>> follows_name('Copyright (c) 2022 by Helmut')
+    False
+    >>> follows_name('Der Brief')
     False
     """
     text = text.strip()
