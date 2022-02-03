@@ -59,8 +59,8 @@ class TextErrorMachine:
 class PhysicMachine(TextErrorMachine):
     """\
     >>> machine = PhysicMachine()
-    >>> machine.determine('The weight is 200kg. Thats a lot.')
-    [TextError(...state=<TextErrorType.RULE...>, location=RangedLocation(char=13, char_end=19), raw='200kg', better='200 kg', debug_method='check_physical_spaces')]
+    >>> machine.determine('The weight is 200kg. Thats a lot.', page=10)
+    [TextError(...state=<TextErrorType.RULE...>, location=RangedLocation(page=10, char=13, char_end=19), raw='200kg', better='200 kg', debug_method='check_physical_spaces')]
     """
 
     MISSING_SPACE_BEFORE_UNIT = utila.compiles(r"""
