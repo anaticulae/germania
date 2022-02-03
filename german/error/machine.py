@@ -16,6 +16,11 @@ import german.error.finding
 
 
 class TextErrorMachine:
+    """\
+    >>> empty = TextErrorMachine()
+    >>> empty.determine('')
+    []
+    """
 
     def determine(
         self,
