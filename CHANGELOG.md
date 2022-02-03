@@ -2,6 +2,15 @@
 
 Every noteable change is logged here.
 
+## v1.16.0
+
+### Feature
+
+* add machine to detect text errors (e363a3838cb7)
+* add error detected method name (52b9260006a5)
+* add machine to ease error defining (f539d3e4e2b3)
+* add enum to present writing error (d9e91a191b2d)
+
 ## v1.15.0
 
 ### Feature
