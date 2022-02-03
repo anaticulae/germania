@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.16.1
+
+### Feature
+
+* do not detect names as missing page number (922c94251014)
+
 ## v1.16.0
 
 ### Feature
