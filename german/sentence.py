@@ -245,8 +245,10 @@ def split_special_chars(token):
 
 
 def sentence_select(text: str, tokens: list, ratio_min: float = 0.5) -> str:  # pylint:disable=R0914
-    """Select best matching sentence. Determine all possbile starts and
-    ends and determine the most valueable sentence between.
+    """Select best matching sentence.
+
+    Determine all possbile starts and ends and determine the most
+    valueable sentence between.
 
     >>> sentence_select(text='Hier wohnt der; Helmut, sehr gerne.',
     ...                 tokens=' wohnt der ; Helmut , '.split())
