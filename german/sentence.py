@@ -46,6 +46,8 @@ def sentence_tokenize(
     ['Das sind eindeutig zu viele Trennungen.']
     >>> sentence_tokenize('Der Stadtteil Berlin-\nNeuköln liegt im Süden von Berlin.')
     ['Der Stadtteil Berlin-Neuköln liegt im Süden von Berlin.']
+    >>> sentence_tokenize('Manfred sagt: "Ich bin König, wer bist du?"')
+    ['Manfred sagt:', '"Ich bin König, wer bist du?"']
     """
     text = utila.normalize_text(
         text,
