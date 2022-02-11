@@ -106,7 +106,7 @@ def isunbalanced(sentence: str) -> bool:
     >>> isunbalanced('I am not ( unbalanced )')
     False
     """
-    pair = (('(', ')'), ('[', ']'))
+    pair = '() []'.split()
     for start, close in pair:
         if sentence.count(start) != sentence.count(close):
             return True
