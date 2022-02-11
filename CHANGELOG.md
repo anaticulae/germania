@@ -247,10 +247,6 @@ Every noteable change is logged here.
 
 * remove marks from language test (11280f4cde1c)
 
-## v1.5.5
-
-## v1.5.4
-
 ## v1.5.3
 
 ### Feature
@@ -331,8 +327,6 @@ Every noteable change is logged here.
 ### Fix
 
 * write trained data to local repository (971a3e8510ca)
-
-## v1.2.2
 
 ## v1.2.1
 
@@ -427,8 +421,6 @@ Every noteable change is logged here.
 
 * add sentence prepare method (62a9e2306d30)
 
-## v0.13.3
-
 ## v0.13.2
 
 ### Feature
@@ -450,8 +442,6 @@ Every noteable change is logged here.
 * use extended author from detector package (62a1484c864d)
 * extend public API (f1ae79d5cc9d)
 * clarify method name (aeb3679a0aaa)
-
-## v0.12.1
 
 ## v0.12.0
 
@@ -509,8 +499,6 @@ Every noteable change is logged here.
 
 ## v0.9.2
 
-## v0.9.1
-
 ## v0.9.0
 
 ### Feature
@@ -518,18 +506,6 @@ Every noteable change is logged here.
 * add authors to extract list of authors (8dfc93770b12)
 * add hyphen as possible page range separator (2da41473205d)
 * add method to determine if token is a headline (54f559f4f60f)
-
-## v0.8.6
-
-## v0.8.5
-
-## v0.8.4
-
-## v0.8.3
-
-## v0.8.2
-
-## v0.8.1
 
 ## v0.8.0
 
@@ -547,22 +523,6 @@ Every noteable change is logged here.
 
 ## v0.6.9
 
-## v0.6.8
-
-## v0.6.7
-
-## v0.6.6
-
-## v0.6.5
-
-## v0.6.4
-
-## v0.6.3
-
-## v0.6.2
-
-## v0.6.1
-
 ## v0.6.0
 
 ### Feature
@@ -571,12 +531,6 @@ Every noteable change is logged here.
 * move dates and page numbers code from section project (37944be089fd)
 
 ## v0.5.4
-
-## v0.5.3
-
-## v0.5.2
-
-## v0.5.1
 
 ## v0.5.0
 
@@ -613,24 +567,6 @@ Every noteable change is logged here.
 
 ## v0.3.15
 
-## v0.3.14
-
-## v0.3.13
-
-## v0.3.12
-
-## v0.3.11
-
-## v0.3.10
-
-## v0.3.9
-
-## v0.3.8
-
-## v0.3.7
-
-## v0.3.6
-
 ## v0.3.5
 
 ### Fix
@@ -642,10 +578,6 @@ Every noteable change is logged here.
 ### Fix
 
 * ensure to parse last word in invalid sentences (37dfe4106519)
-
-## v0.3.3
-
-## v0.3.2
 
 ## v0.3.1
 
@@ -669,10 +601,6 @@ Every noteable change is logged here.
 
 * add general purpose of this package (819f3a14262d)
 * remove non existing doc link (a8484ab63dcb)
-
-## v0.2.3
-
-## v0.2.2
 
 ## v0.2.1
 
