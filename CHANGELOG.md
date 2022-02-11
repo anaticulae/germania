@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.16.2
+
+### Feature
+
+* sort date by occurrence (86574882d6c9)
+* add option to sort result (64458cdbe6d2)
+
 ## v1.16.1
 
 ### Feature
