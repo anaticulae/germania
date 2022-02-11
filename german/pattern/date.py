@@ -42,7 +42,13 @@ def years(raw: str, min_=1950, max_=2025, verbose: bool = False):
 DATES = re.compile(r'(\d{4}|\d{1,2})\.(\d{1,2})\.(\d{4}|\d{1,2})')
 
 
-def dates_master(raw: str, year_min=1950, year_max=2025, verbose: bool = False):  # pylint:disable=W0613
+def dates_master(
+    raw: str,
+    year_min=1950,
+    year_max=2025,
+    verbose: bool = False,
+    sort: bool = True,
+):  # pylint:disable=W0613
     """\
     >>> dates_master('Aug. 1991')
     [('1991', 8, 0)]
@@ -54,7 +60,7 @@ def dates_master(raw: str, year_min=1950, year_max=2025, verbose: bool = False):
             dates_month_year,
             dates,
     ):
-        parsed = method(raw, verbose=True)
+        parsed = method(raw, sort=sort, verbose=True)
         if not parsed:
             continue
         for item in parsed:
@@ -67,7 +73,13 @@ def dates_master(raw: str, year_min=1950, year_max=2025, verbose: bool = False):
 
 
 @functools.lru_cache(maxsize=4096)
-def dates(raw: str, min_year=1950, max_year=2025, verbose: bool = False):
+def dates(
+    raw: str,
+    min_year=1950,
+    max_year=2025,
+    verbose: bool = False,
+    sort: bool = True,
+):
     """Extract sorted list of dates out of `raw` text.
 
     >>> dates('Stand 20.10.2020, (15.11.2014), 01.01.1999 01.01.1940')
@@ -95,16 +107,15 @@ def dates(raw: str, min_year=1950, max_year=2025, verbose: bool = False):
         if verbose:
             parsed = (parsed, item[0])
         result.append(parsed)
-    # sort by year, month, day
-    for pos in range(3):
-        result = sorted(result, key=lambda x: x[0][pos] if verbose else x[pos])  # pylint:disable=W0640
+    if sort:
+        result = sortby_year(result, verbose=verbose)
     return result
 
 
 MONTH_YEAR = utila.compiles(MONTH_REGEX + r'[ ]{0,3}(\d{2,4})')
 
 
-def dates_month_year(raw: str, verbose: bool = True):
+def dates_month_year(raw: str, verbose: bool = True, sort: bool = True):
     """\
     >>> dates_month_year('Aug. 1991')
     [(('1991', 8, 0), 'Aug. 1991')]
@@ -117,4 +128,16 @@ def dates_month_year(raw: str, verbose: bool = True):
         if verbose:
             parsed = (parsed, item[0])
         result.append(parsed)
+    if sort:
+        result = sortby_year(result, verbose=verbose)
     return result
+
+
+def sortby_year(items, verbose: bool = True):
+    # sort by year, month, day
+    for pos in range(3):
+        items = sorted(
+            items,
+            key=lambda x: x[0][pos] if verbose else x[pos],  # pylint:disable=W0640
+        )
+    return items
