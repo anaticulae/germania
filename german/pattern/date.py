@@ -65,10 +65,13 @@ def dates_master(
             continue
         for item in parsed:
             raw = raw.replace(item[1], '*' * len(item[1]))
-            if verbose:
-                result.append(item)
-            else:
-                result.append(item[0])
+            result.append(item)
+    # sort result by first occurence
+    result = sorted(result, key=lambda x: raw.find(x[1]))
+    if not verbose:
+        result = [item[0] for item in result]
+    if sort:
+        result = sortby_year(result, verbose=verbose)
     return result
 
 
