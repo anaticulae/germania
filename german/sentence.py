@@ -98,6 +98,9 @@ def balance_sentence(sentences: list) -> list:
     return result
 
 
+PAIR = '() []'.split()
+
+
 @functools.lru_cache(maxsize=4096)
 def isunbalanced(sentence: str) -> bool:
     """\
@@ -106,8 +109,7 @@ def isunbalanced(sentence: str) -> bool:
     >>> isunbalanced('I am not ( unbalanced )')
     False
     """
-    pair = '() []'.split()
-    for start, close in pair:
+    for start, close in PAIR:
         if sentence.count(start) != sentence.count(close):
             return True
     return False
