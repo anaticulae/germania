@@ -12,25 +12,25 @@ import konrad
 import german
 
 SENTENCE = """\
-Verkehrsanbindung der Stadt Neunkirchen An der schon immer wichtigen
-Handelsroute von Wien über den Semmering via Graz nach Triest gelegen
+Verkehrsanbindung der Stadt Neunkirchen An der schon immer wichtigen \
+Handelsroute von Wien über den Semmering via Graz nach Triest gelegen \
 wurde die Stadt von je her von Handel und Verkehr geprägt (siehe Abb. 1).
 """
 
 SIMPLE = """\
-Abbildungen 18 und 19 zeigen die Art der Anreise in der Innenstadt nach
-Geschlechtern differenziert. Die Unterschiede erweisen sich bei den
-Anteilen des KFZ und der Fußläufigkeit als relativ hoch, öffentlicher
+Abbildungen 18 und 19 zeigen die Art der Anreise in der Innenstadt nach \
+Geschlechtern differenziert. Die Unterschiede erweisen sich bei den \
+Anteilen des KFZ und der Fußläufigkeit als relativ hoch, öffentlicher \
 Verkehr und Fahrrad sind auf einem ähnlichen Niveau.
 
-Abb. 20 und 21 zeigen die Art der Anreise im Panoramapark nach
-Geschlechtern differenziert. Der Anteil der KFZ-Benutzer ist annähernd
-gleich, die Anteile bei Fahrrad und Fußgänger jedoch sind komplementär
-zu einander. So ist der hohe KFZ-Anteil ein Zeichen dafür, dass die
-Erreichbarkeit mit dem Auto sehr gut ist und auch große
-Gratisstellplätze vorhanden sind. Der hohe Anteil an Fahrradfahrern bei
-den Männern wiederum zeugt von der guten Anbindung an das (weiter
-wachsende) Radwegenetz, der hohe Fußgängerwert bei den Frauen kann als
+Abb. 20 und 21 zeigen die Art der Anreise im Panoramapark nach \
+Geschlechtern differenziert. Der Anteil der KFZ-Benutzer ist annähernd \
+gleich, die Anteile bei Fahrrad und Fußgänger jedoch sind komplementär \
+zu einander. So ist der hohe KFZ-Anteil ein Zeichen dafür, dass die \
+Erreichbarkeit mit dem Auto sehr gut ist und auch große \
+Gratisstellplätze vorhanden sind. Der hohe Anteil an Fahrradfahrern bei \
+den Männern wiederum zeugt von der guten Anbindung an das (weiter \
+wachsende) Radwegenetz, der hohe Fußgängerwert bei den Frauen kann als \
 eine Folge der guten innerstädtischen Lage verstanden werden.
 """
 
@@ -69,10 +69,10 @@ def test_words_simple_split():
 
 
 SINGLE_NUMBER = """\
-Besuchsfrequenz Neunkirchen gesamt Betrachtet man die Besuchsfrequenz
-für gesamt Neunkirchen so zeigen sich nur geringste Unterschiede im
-Prozentbereich bei den beiden Geschlechtern (siehe Abb. 5 und 6) –
-insgesamt gesehen wird Neunkirchen somit von Männern wie Frauen in
+Besuchsfrequenz Neunkirchen gesamt Betrachtet man die Besuchsfrequenz \
+für gesamt Neunkirchen so zeigen sich nur geringste Unterschiede im \
+Prozentbereich bei den beiden Geschlechtern (siehe Abb. 5 und 6) – \
+insgesamt gesehen wird Neunkirchen somit von Männern wie Frauen in \
 äußerst ähnlicher Häufigkeit besucht.
 """
 
@@ -84,7 +84,7 @@ def test_parse_single_number():
 
 
 FOUR_DOT_ZERO = """\
-„Digitalisierung und Industrie 4.0 im Mittelstand – Gestaltungsmöglich
+„Digitalisierung und Industrie 4.0 im Mittelstand – Gestaltungsmöglich \
 - keiten der digitalen Infrastruktur entlang der Wertschöpfungskette”.
 """
 
@@ -104,9 +104,9 @@ def test_parse_float_number():
 
 
 POINT_3_DOT_2_DOT = """\
-Als Erhebungsmethode wurde die persönliche Befragung vor Ort mit Hilfe
-eines standardisierten Fragebogens (siehe Punkt 3.2.: Fragebogen, Abb. 3
-und Abb. 4) Punkt 6.4.1.3 an folgenden Wochentagen ausgewählt: Dienstag,
+Als Erhebungsmethode wurde die persönliche Befragung vor Ort mit Hilfe \
+eines standardisierten Fragebogens (siehe Punkt 3.2.: Fragebogen, Abb. 3 \
+und Abb. 4) Punkt 6.4.1.3 an folgenden Wochentagen ausgewählt: Dienstag, \
 Freitag, Samstag im Zeitraum von Mai bis Juli 2017.
 """
 
@@ -114,14 +114,13 @@ Freitag, Samstag im Zeitraum von Mai bis Juli 2017.
 def test_parse_3dot_2dot():
     sentences = german.sentence_tokenize(POINT_3_DOT_2_DOT)
     assert len(sentences) == 1
-
     first_words = german.word_tokenize(sentences[0])
     assert '3.2.' in first_words
     assert '6.4.1.3' in first_words
 
 
 SPLIT_NUMBERS = """\
-Zusätzliche Anfor­derungen an die Betriebsstrategie ergeben sich aus den
+Zusätzliche Anfor­derungen an die Betriebsstrategie ergeben sich aus den \
 Abgas- und Geräuschemissionen und dem Schwingungskomfort [RNB12, S. 62ff].
 """
 

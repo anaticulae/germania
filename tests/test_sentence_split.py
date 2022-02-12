@@ -13,21 +13,21 @@ import pytest
 import german
 
 EXAMPLE = """\
-Viele Philosophen und Psychologen ließen sich von der Beziehung zwischen
-Denken und Fühlen faszinieren. Die Annahme, dass „warme“ Emotionen und
-„kalte“ Kognitionen – umgangssprachlich „Herz und V ernunft“ –
-getrennte, gegensätzliche Systeme seien, prägte westliche Philosophen
-und Wissenschaftler über Jahrhunderte. Erst während der letzten 3 Jahre
-setzte sich langsam eine Meinung in Verhaltens- und Neurowissenschaften
-durch, welche die strikte Trennung obsolet werden ließ (Scherer, 1993).
-Nach heutiger Auffassung interagieren beide Systeme nicht nur
-miteinander, diese Interaktion ist sogar notwendig und hat sich
-phylogenetisch durchgesetzt (Ochsner & Gross, 2005). So kam es zu einem
-Boom, der die Auswirkungen von Emotionen auf kognitive Prozesse,
-angefangen bei Entscheidungsfindung bis hin zu Gedächtnis, in
-zahlreichen Studien untersuchte Phelps (2006). Die Leistung des
-Arbeitsgedächtnisses lässt sich durch eine Reihe von Aufgaben testen,
-wie z. B. die Zahlenspanne (digit span; Richardson, 2007) oder die
+Viele Philosophen und Psychologen ließen sich von der Beziehung zwischen \
+Denken und Fühlen faszinieren. Die Annahme, dass „warme“ Emotionen und \
+„kalte“ Kognitionen – umgangssprachlich „Herz und V ernunft“ – \
+getrennte, gegensätzliche Systeme seien, prägte westliche Philosophen \
+und Wissenschaftler über Jahrhunderte. Erst während der letzten 3 Jahre \
+setzte sich langsam eine Meinung in Verhaltens- und Neurowissenschaften \
+durch, welche die strikte Trennung obsolet werden ließ (Scherer, 1993). \
+Nach heutiger Auffassung interagieren beide Systeme nicht nur \
+miteinander, diese Interaktion ist sogar notwendig und hat sich \
+phylogenetisch durchgesetzt (Ochsner & Gross, 2005). So kam es zu einem \
+Boom, der die Auswirkungen von Emotionen auf kognitive Prozesse, \
+angefangen bei Entscheidungsfindung bis hin zu Gedächtnis, in \
+zahlreichen Studien untersuchte Phelps (2006). Die Leistung des \
+Arbeitsgedächtnisses lässt sich durch eine Reihe von Aufgaben testen, \
+wie z. B. die Zahlenspanne (digit span; Richardson, 2007) oder die \
 Sternberg-Aufgabe (Sternberg, 1966)."""
 
 
@@ -61,13 +61,13 @@ def test_words_fromstr():
 
 
 MERGE_DIVISION = """\
-kollektive Handlungssysteme der gesellschaftlichen
-Interessenartikulation. […] Als „Heraus-
-forderer“ machen sie Anliegen geltend, die im Prozess der politischen
+kollektive Handlungssysteme der gesellschaftlichen \
+Interessenartikulation. […] Als „Heraus- \
+forderer“ machen sie Anliegen geltend, die im Prozess der politischen \
 Willensbildung systema-
-tisch ausgeblendet werden. Sie stehen daher in konflikthafter
-Interaktion mit etablierten Akteu-
-ren – Institutionen und Organisationen – aus dem
+tisch ausgeblendet werden. Sie stehen daher in konflikthafter \
+Interaktion mit etablierten Akteu- \
+ren – Institutionen und Organisationen – aus dem \
 politisch-administrativen System (Hervorhe-
 bung im Original).
 """
@@ -82,12 +82,12 @@ def test_sentence_merge_with_textbreak():
 
 
 LINE_ENDING = """\
-Das Web als Service-Plattform: Verschiedene Dienste bieten die
-Möglichkeit, Arbeit über das Web zu organisieren; sie übernehmen
-Aufgaben, die ehemals Desktopanwendungen vorbehalten waren (z.B.
-Terminplanung, Dokument- bzw. Datenverwaltung etc.). Kollektive
-Intelligenz: Die Nutzer beteiligen sich und generieren gemeinsam
-Inhalte. Als Paradebeispiel gilt die Plattform Wikipedia, deren Artikel
+Das Web als Service-Plattform: Verschiedene Dienste bieten die \
+Möglichkeit, Arbeit über das Web zu organisieren; sie übernehmen \
+Aufgaben, die ehemals Desktopanwendungen vorbehalten waren (z.B. \
+Terminplanung, Dokument- bzw. Datenverwaltung etc.). Kollektive \
+Intelligenz: Die Nutzer beteiligen sich und generieren gemeinsam \
+Inhalte. Als Paradebeispiel gilt die Plattform Wikipedia, deren Artikel \
 von Nutzern selbst verfasst bzw. verändert werden.
 """
 
@@ -98,13 +98,13 @@ def test_sentence_split_abrreviation_and_bracket():
 
 
 SHORT_SENTENCE = """\
-Das Web 2.0 gilt heute als eine Plattform, die sich vor allem durch die
-direkte Beteiligung der Nutzer und daraus entstehende Netzwerkeffekte,
-wie z.B. das Nutzen kollektiven Wissens auszeichnet. Partizipation und
-Kooperation sind wichtige Charakteristika des Web 2.0 – je mehr Nutzer
-beteiligt sind, desto besser wird der Dienst. Und: Durch
-Kundenbeteiligung und computergesteuertes Datenmanagement können
-Nischenmärkte und unscheinbare Webangebote im Long Tail zu kollektiver
+Das Web 2.0 gilt heute als eine Plattform, die sich vor allem durch die \
+direkte Beteiligung der Nutzer und daraus entstehende Netzwerkeffekte, \
+wie z.B. das Nutzen kollektiven Wissens auszeichnet. Partizipation und \
+Kooperation sind wichtige Charakteristika des Web 2.0 – je mehr Nutzer \
+beteiligt sind, desto besser wird der Dienst. Und: Durch \
+Kundenbeteiligung und computergesteuertes Datenmanagement können \
+Nischenmärkte und unscheinbare Webangebote im Long Tail zu kollektiver \
 Stärke heranwachsen.
 """
 
@@ -115,10 +115,10 @@ def test_sentence_split_short():
 
 
 MULTIPLE_SENTENCE_IN_QUOTATION = """\
-Auch der SPIEGEL beschreibt eine ähnliche Situation: Die Nutzer würden
-sich selbst entblättern, so ist in einem Leitartikel aus dem Jahr 2006
-zu lesen. Auf der Frontseite des Heftes titelt das Blatt entsprechend:
-„Ich im Internet. Wie sich die Menschheit online entblößt.“ In dem
+Auch der SPIEGEL beschreibt eine ähnliche Situation: Die Nutzer würden \
+sich selbst entblättern, so ist in einem Leitartikel aus dem Jahr 2006 \
+zu lesen. Auf der Frontseite des Heftes titelt das Blatt entsprechend: \
+„Ich im Internet. Wie sich die Menschheit online entblößt.“ In dem \
 Artikel heißt es:
 """
 
@@ -130,8 +130,8 @@ def test_sentence_split_multiple_quoted_sentence():
 
 
 SINGLE_QUOTATION_IN_TEXT = """\
-This is a single " quotation “ '“ charachter in text. The parser brokes
-before cause expected .“ pattern but delivers token of length 1 cause
+This is a single " quotation “ '“ charachter in text. The parser brokes \
+before cause expected .“ pattern but delivers token of length 1 cause \
 the single char.
 """
 
@@ -142,27 +142,27 @@ def test_sentence_split_single_quotation_in_text():
     assert len(sentences) == 2
 
 
-STANDARD = """„Protest“, so schreibt Sigrid Baringhorst, „ist
-kommunikatives Handeln“ (1998: 327). Will man das Phänomen ‚Protest‘
-angemessen erfassen, so gilt es zu untersuchen, wie er kommuniziert
+STANDARD = """„Protest“, so schreibt Sigrid Baringhorst, „ist \
+kommunikatives Handeln“ (1998: 327). Will man das Phänomen ‚Protest‘ \
+angemessen erfassen, so gilt es zu untersuchen, wie er kommuniziert \
 wird."""
 
-MIXED = """‚Soziale Bewegung‘ – dieser Begriff beschreibt ein Gebilde,
-das analytisch schwer zu fassen ist. Van de Donk u.a. (2004b: 3)
-beschreiben soziale Bewegungen als „fuzzy and fluid phenomena often
-without clear boundaries“, und fügen hinzu: „In sum, a social movement
-is a ‚moving target’, difficult to observe.” Dennoch soll im Folgenden
+MIXED = """‚Soziale Bewegung‘ – dieser Begriff beschreibt ein Gebilde, \
+das analytisch schwer zu fassen ist. Van de Donk u.a. (2004b: 3) \
+beschreiben soziale Bewegungen als „fuzzy and fluid phenomena often \
+without clear boundaries“, und fügen hinzu: „In sum, a social movement \
+is a ‚moving target’, difficult to observe.” Dennoch soll im Folgenden \
 der Versuch einer Definition vorgenommen werden."""
 
 REQUIRE_SINGLE_INSIDE = """\
-Bevor die Konzepte der Privatheit und Öffentlichkeit
-systemtheoretisch näher betrachtet werden, soll vorab kurz umrissen
-werden, was darunter verstanden wird. Rössler beschreibt etwas
-Privates folgendermaßen: „‚privat‘ nennen wir einerseits Handlungs-
-und Verhaltensweisen, zum Zweiten ein bestimmtes Wissen und drittens
-Räume“ und weiter: „als privat gilt etwas dann, wenn man selbst
-den Zugang zu diesem „etwas“ kontrollieren kann“. Privatheit
-beinhaltet also den Aspekt der Zugangskontrolle seitens des
+Bevor die Konzepte der Privatheit und Öffentlichkeit \
+systemtheoretisch näher betrachtet werden, soll vorab kurz umrissen \
+werden, was darunter verstanden wird. Rössler beschreibt etwas \
+Privates folgendermaßen: „‚privat‘ nennen wir einerseits Handlungs- \
+und Verhaltensweisen, zum Zweiten ein bestimmtes Wissen und drittens \
+Räume“ und weiter: „als privat gilt etwas dann, wenn man selbst \
+den Zugang zu diesem „etwas“ kontrollieren kann“. Privatheit \
+beinhaltet also den Aspekt der Zugangskontrolle seitens des \
 Individuums.
 """
 
@@ -186,7 +186,7 @@ def test_split_paragraph_with_quotation_mixed():
 
 
 NUMBER_IN_TEXT = """\
-Aus diesen Zielen abgeleitet, resultierte Industrie 4.0 als eines von
+Aus diesen Zielen abgeleitet, resultierte Industrie 4.0 als eines von \
 zehn Zukunftsprojekten im Rahmen der Hightech-Strategie.
 """
 
@@ -197,26 +197,26 @@ def test_split_sentence_with_number():
 
 
 VERY_LONG = """\
-Im Hinblick auf die weiterführenden Kapitel dieser Arbeit erscheint
-diese Definition als zielführend, da zum einen betriebswirtschaftliche
-Aspekte berücksichtigt werden und zum anderen die technische Ausrichtung
-erkennbar ist: „Der Begriff Industrie 4.0 steht für die vierte
-industrielle Revolution, eine neue Stufe der Organisation und Steuerung
-der gesamten Wertschöpfungskette über den Lebenszyklus von Produkten.
-Dieser Zyklus orientiert sich an den zunehmend individualisierten
-Kundenwünschen und erstreckt sich von der Idee, dem Auftrag über die
-Entwicklung und Fertigung, die Auslieferung eines Produkts an den
-Endkunden bis hin zum Recycling, einschließlich der damit verbundenen
-Dienstleistungen. Basis ist die Verfügbarkeit aller relevanten
-Informationen in Echtzeit durch Vernetzung aller an der Wertschöpfung
-beteiligten Instanzen sowie die Fähigkeit, aus den Daten den zu jedem
-Zeitpunkt optimalen Wertschöpfungsfluss abzuleiten. Durch die Verbindung
-von Menschen, Objekten und Systemen entstehen dynamische,
-echtzeitoptimierte und selbst organisierende, unternehmensübergreifende
-Wertschöpfungsnetzwerke, die sich nach unterschiedlichen Kriterien wie
-bspw. Kosten, Verfügbarkeit und Ressourcenverbrauch optimieren
-lassen.“27 Ein zentrales Merkmal der dargestellten Definition ist somit
-die Optimierung der Wertschöpfungskette hin zu
+Im Hinblick auf die weiterführenden Kapitel dieser Arbeit erscheint \
+diese Definition als zielführend, da zum einen betriebswirtschaftliche \
+Aspekte berücksichtigt werden und zum anderen die technische Ausrichtung \
+erkennbar ist: „Der Begriff Industrie 4.0 steht für die vierte \
+industrielle Revolution, eine neue Stufe der Organisation und Steuerung \
+der gesamten Wertschöpfungskette über den Lebenszyklus von Produkten. \
+Dieser Zyklus orientiert sich an den zunehmend individualisierten \
+Kundenwünschen und erstreckt sich von der Idee, dem Auftrag über die \
+Entwicklung und Fertigung, die Auslieferung eines Produkts an den \
+Endkunden bis hin zum Recycling, einschließlich der damit verbundenen \
+Dienstleistungen. Basis ist die Verfügbarkeit aller relevanten \
+Informationen in Echtzeit durch Vernetzung aller an der Wertschöpfung \
+beteiligten Instanzen sowie die Fähigkeit, aus den Daten den zu jedem \
+Zeitpunkt optimalen Wertschöpfungsfluss abzuleiten. Durch die Verbindung \
+von Menschen, Objekten und Systemen entstehen dynamische, \
+echtzeitoptimierte und selbst organisierende, unternehmensübergreifende \
+Wertschöpfungsnetzwerke, die sich nach unterschiedlichen Kriterien wie \
+bspw. Kosten, Verfügbarkeit und Ressourcenverbrauch optimieren \
+lassen.“27 Ein zentrales Merkmal der dargestellten Definition ist somit \
+die Optimierung der Wertschöpfungskette hin zu \
 unternehmensübergreifenden Wertschöpfungsnetzwerken.
 """
 
@@ -227,10 +227,10 @@ def test_split_sentence_with_long_citation():
 
 
 VALID_SENTENCE = """\
-„Unter dem Begriff Digitalisierung verstehen wir die Transformation von
-Geschäftsmodellen mit Hilfe von Informations- und
-Kommunikationstechnologien zur Reduktion von Schnittstellen, zur
-funktionsübergreifenden Vernetzung und zur Erhöhung der Effektivität und
+„Unter dem Begriff Digitalisierung verstehen wir die Transformation von \
+Geschäftsmodellen mit Hilfe von Informations- und \
+Kommunikationstechnologien zur Reduktion von Schnittstellen, zur \
+funktionsübergreifenden Vernetzung und zur Erhöhung der Effektivität und \
 Effizienz.“16
 """
 
@@ -247,13 +247,13 @@ def test_split_word_quotation_highnumber():
 
 
 ROMAN_NUMBERS = """\
-Im Jahre 872 soll nach Schweickhadt, Ritter von Sickingen, die heutige
-Pfarrkirche erbaut worden sein, hierfür gibt es aber weder Beweise durch
-Inschriften noch durch schriftliche Quellen, 1036 wurde die Siedlung
-durch König Konrad II. zum Markt erhoben, 1136 wurde das Münzrecht
-verliehen und 1139 von Papst Innozenz II. bestätigt. Die erste
-urkundliche Erwähnung geht auf das Jahr 1094 zurück wo Neunkirchen als
-„Niuwenchirgun“, als „Neue Kirche“, bezeichnet wird (vgl. BOUS (1933),
+Im Jahre 872 soll nach Schweickhadt, Ritter von Sickingen, die heutige \
+Pfarrkirche erbaut worden sein, hierfür gibt es aber weder Beweise durch \
+Inschriften noch durch schriftliche Quellen, 1036 wurde die Siedlung \
+durch König Konrad II. zum Markt erhoben, 1136 wurde das Münzrecht \
+verliehen und 1139 von Papst Innozenz II. bestätigt. Die erste \
+urkundliche Erwähnung geht auf das Jahr 1094 zurück wo Neunkirchen als \
+„Niuwenchirgun“, als „Neue Kirche“, bezeichnet wird (vgl. BOUS (1933), \
 S. 3 ff). Hier spricht Helm?
 """
 
@@ -265,13 +265,13 @@ def test_split_roman_numbers():
 
 
 TABLE = """\
-In beiden Durchgängen war der SAM-Arousal-Wert nach dem neutralen
-Versuchsblock geringer als in den Furcht- respektive E kel-Blöcken (s.
-Tab. 3). Zwischensubjekteffekte (Geschlecht, Versuchsleiter, Sequenz,
-Durchgang) ergaben keine signifikanten Unterschiede, weder einzeln noch
-in Interaktionen (p>,05).
-Tab. 3: Mittelwerte und Standardabweichungen für die Arousal-Werte des
-SAM im Vergleich zwischen den drei emotionalen Qualitäten (Neutral,
+In beiden Durchgängen war der SAM-Arousal-Wert nach dem neutralen \
+Versuchsblock geringer als in den Furcht- respektive E kel-Blöcken (s. \
+Tab. 3). Zwischensubjekteffekte (Geschlecht, Versuchsleiter, Sequenz, \
+Durchgang) ergaben keine signifikanten Unterschiede, weder einzeln noch \
+in Interaktionen (p>,05). \
+Tab. 3: Mittelwerte und Standardabweichungen für die Arousal-Werte des \
+SAM im Vergleich zwischen den drei emotionalen Qualitäten (Neutral, \
 Furcht und Ekel).
 """
 
