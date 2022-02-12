@@ -25,3 +25,5 @@ class SPunktLanguageVars(nltk.tokenize.punkt.PunktLanguageVars):
         r'["\')}\]“”\d]+?(?:\s+|(?=--)|$)',
         re.MULTILINE,
     )
+    sent_end_chars = '.?!:'
+    internal_punctuation = ',;'
