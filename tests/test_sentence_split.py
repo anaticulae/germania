@@ -11,6 +11,7 @@ import konrad
 import pytest
 
 import german
+import tests
 
 EXAMPLE = """\
 Viele Philosophen und Psychologen ließen sich von der Beziehung zwischen \
@@ -33,7 +34,7 @@ Sternberg-Aufgabe (Sternberg, 1966)."""
 
 def test_split():
     sentences = german.sentence_tokenize(EXAMPLE)
-    assert len(sentences) == 6
+    tests.assert_length(sentences, 6)
     # splitted = german.word.split(EXAMPLE)
 
     first = german.word_tokenize(sentences[0])
@@ -62,7 +63,7 @@ def test_words_fromstr():
 
 MERGE_DIVISION = """\
 kollektive Handlungssysteme der gesellschaftlichen \
-Interessenartikulation. […] Als „Heraus- \
+Interessenartikulation. […] Als „Heraus-
 forderer“ machen sie Anliegen geltend, die im Prozess der politischen \
 Willensbildung systema-
 tisch ausgeblendet werden. Sie stehen daher in konflikthafter \
@@ -75,7 +76,7 @@ bung im Original).
 
 def test_sentence_merge_with_textbreak():
     sentences = german.sentence_tokenize(MERGE_DIVISION)
-    assert len(sentences) == 3
+    tests.assert_length(sentences, 3)
     assert 'Herausforderer' in sentences[1]
     assert 'systematisch' in sentences[1]
     assert 'Hervorhebung' in sentences[2]
@@ -94,7 +95,7 @@ von Nutzern selbst verfasst bzw. verändert werden.
 
 def test_sentence_split_abrreviation_and_bracket():
     sentences = german.sentence_tokenize(LINE_ENDING)
-    assert len(sentences) == 3
+    tests.assert_length(sentences, 3)
 
 
 SHORT_SENTENCE = """\
@@ -111,7 +112,7 @@ Stärke heranwachsen.
 
 def test_sentence_split_short():
     sentences = german.sentence_tokenize(SHORT_SENTENCE)
-    assert len(sentences) == 3
+    tests.assert_length(sentences, 3)
 
 
 MULTIPLE_SENTENCE_IN_QUOTATION = """\
@@ -125,7 +126,7 @@ Artikel heißt es:
 
 def test_sentence_split_multiple_quoted_sentence():
     sentences = german.sentence_tokenize(MULTIPLE_SENTENCE_IN_QUOTATION)
-    assert len(sentences) == 3
+    tests.assert_length(sentences, 3)
     assert sentences[-1] == 'In dem Artikel heißt es:', sentences[-1]
 
 
@@ -139,7 +140,7 @@ the single char.
 def test_sentence_split_single_quotation_in_text():
     sentences = german.sentence_tokenize(SINGLE_QUOTATION_IN_TEXT)
     # dont't know the right result
-    assert len(sentences) == 2
+    tests.assert_length(sentences, 2)
 
 
 STANDARD = """„Protest“, so schreibt Sigrid Baringhorst, „ist \
@@ -169,17 +170,17 @@ Individuums.
 
 def test_validate_count_of_double_quotation():
     splitted = german.sentence_tokenize(REQUIRE_SINGLE_INSIDE)
-    assert len(splitted) == 3
+    tests.assert_length(splitted, 3)
 
 
 def test_split_paragraph_with_quotation():
     splitted = german.sentence_tokenize(STANDARD)
-    assert len(splitted) == 2
+    tests.assert_length(splitted, 2)
 
 
 def test_split_paragraph_with_quotation_mixed():
     splitted = german.sentence_tokenize(MIXED)
-    assert len(splitted) == 3
+    tests.assert_length(splitted, 3)
     last = ('Dennoch soll im Folgenden der Versuch einer '
             'Definition vorgenommen werden.')
     assert splitted[-1] == last, splitted
@@ -193,7 +194,7 @@ zehn Zukunftsprojekten im Rahmen der Hightech-Strategie.
 
 def test_split_sentence_with_number():
     splitted = german.sentence_tokenize(NUMBER_IN_TEXT)
-    assert len(splitted) == 1
+    tests.assert_length(splitted, 1)
 
 
 VERY_LONG = """\
@@ -223,7 +224,7 @@ unternehmensübergreifenden Wertschöpfungsnetzwerken.
 
 def test_split_sentence_with_long_citation():
     splitted = german.sentence_tokenize(VERY_LONG)
-    assert len(splitted) == 5
+    tests.assert_length(splitted, 5)
 
 
 VALID_SENTENCE = """\
@@ -237,7 +238,7 @@ Effizienz.“16
 
 def test_split_sentence_quotation_highnumber():
     splitted = german.sentence_tokenize(VALID_SENTENCE)
-    assert len(splitted) == 1
+    tests.assert_length(splitted, 1)
 
 
 def test_split_word_quotation_highnumber():
@@ -261,7 +262,7 @@ S. 3 ff). Hier spricht Helm?
 @pytest.mark.xfail(reason='roman numbers does not work properly')
 def test_split_roman_numbers():
     splitted = german.sentence_tokenize(ROMAN_NUMBERS)
-    assert len(splitted) == 3
+    tests.assert_length(splitted, 3)
 
 
 TABLE = """\
@@ -278,7 +279,7 @@ Furcht und Ekel).
 
 def test_split_table_reference():
     splitted = german.sentence_tokenize(TABLE)
-    assert len(splitted) == 3
+    tests.assert_length(splitted, 3)
 
 
 HIGHNOTE_ATEND = """\
@@ -298,5 +299,5 @@ MERGE_UNBALANCED = 'in seinem Buch „Post-Privacy. Prima leben ohne Privatsphä
 
 def test_split_highnote_atend():
     splitted = german.sentence_tokenize(HIGHNOTE_ATEND)
-    assert len(splitted) == 4
+    tests.assert_length(splitted, 4)
     assert MERGE_UNBALANCED in splitted[-1]

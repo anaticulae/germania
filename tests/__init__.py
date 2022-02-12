@@ -6,3 +6,13 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
+
+import utila
+
+
+def assert_length(sentences, count):
+    if len(sentences) == count:
+        return
+    for sentence in sentences:
+        utila.log(sentence, end='\n\n')
+    assert len(sentences) == count
