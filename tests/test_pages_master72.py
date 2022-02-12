@@ -12,13 +12,14 @@ import os
 import utila
 
 import german
+import tests
 
 
 def test_text_seventytwo_extract_sentences():
     expected = firstpage_sentences()
     raw = ' '.join(expected)
     splitted = german.sentence_tokenize(raw)
-    assert len(splitted) == len(expected)
+    tests.assert_length(splitted, len(expected))
     assert splitted == expected
 
 

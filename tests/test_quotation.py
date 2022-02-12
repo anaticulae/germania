@@ -14,35 +14,33 @@ import tests.test_sentence_split
 
 
 def test_quotation_extract():
-    first, second = german.sentence_tokenize(tests.test_sentence_split.STANDARD)  # pylint:disable=W0632
+    sentences = german.sentence_tokenize(tests.test_sentence_split.STANDARD)
     expected = [
         (0, 3),
         (9, 14),
     ]
-    first_quotes = german.extract_quotes(first)
+    first_quotes = german.extract_quotes(sentences[0])
     assert first_quotes == expected
-
     expected = [
         (4, 7),
     ]
-    second_quotes = german.extract_quotes(second)
+    second_quotes = german.extract_quotes(sentences[1])
     assert second_quotes == expected
 
 
 def test_quotation_raw():
-    first, second = german.sentence_tokenize(tests.test_sentence_split.STANDARD)  # pylint:disable=W0632
+    sentences = german.sentence_tokenize(tests.test_sentence_split.STANDARD)
     expected = [
         (0, 3),
         (9, 14),
     ]
-    splitted = german.word_tokenize(first)
+    splitted = german.word_tokenize(sentences[0])
     raw = german.raw_quotation(splitted, expected)
     assert len(raw) == 2
-
     expected = [
         (4, 7),
     ]
-    splitted = german.word_tokenize(second)
+    splitted = german.word_tokenize(sentences[1])
     raw = german.raw_quotation(splitted, expected)
     assert len(raw) == 1
 

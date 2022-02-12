@@ -114,7 +114,7 @@ Freitag, Samstag im Zeitraum von Mai bis Juli 2017.
 
 def test_parse_3dot_2dot():
     sentences = german.sentence_tokenize(POINT_3_DOT_2_DOT)
-    tests.assert_length(sentences, 1)
+    tests.assert_length(sentences, 2)
     first_words = german.word_tokenize(sentences[0])
     assert '3.2.' in first_words
     assert '6.4.1.3' in first_words

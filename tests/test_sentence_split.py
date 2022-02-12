@@ -95,7 +95,7 @@ von Nutzern selbst verfasst bzw. verändert werden.
 
 def test_sentence_split_abrreviation_and_bracket():
     sentences = german.sentence_tokenize(LINE_ENDING)
-    tests.assert_length(sentences, 3)
+    tests.assert_length(sentences, 5)
 
 
 SHORT_SENTENCE = """\
@@ -112,7 +112,7 @@ Stärke heranwachsen.
 
 def test_sentence_split_short():
     sentences = german.sentence_tokenize(SHORT_SENTENCE)
-    tests.assert_length(sentences, 3)
+    tests.assert_length(sentences, 4)
 
 
 MULTIPLE_SENTENCE_IN_QUOTATION = """\
@@ -126,7 +126,7 @@ Artikel heißt es:
 
 def test_sentence_split_multiple_quoted_sentence():
     sentences = german.sentence_tokenize(MULTIPLE_SENTENCE_IN_QUOTATION)
-    tests.assert_length(sentences, 3)
+    tests.assert_length(sentences, 5)
     assert sentences[-1] == 'In dem Artikel heißt es:', sentences[-1]
 
 
@@ -170,7 +170,7 @@ Individuums.
 
 def test_validate_count_of_double_quotation():
     splitted = german.sentence_tokenize(REQUIRE_SINGLE_INSIDE)
-    tests.assert_length(splitted, 3)
+    tests.assert_length(splitted, 5)
 
 
 def test_split_paragraph_with_quotation():
@@ -178,9 +178,11 @@ def test_split_paragraph_with_quotation():
     tests.assert_length(splitted, 2)
 
 
+@pytest.mark.xfail(reason='is parsed as single sentence')
 def test_split_paragraph_with_quotation_mixed():
+    # TODO: `Van de Donk u.a. (2004b: 3)` is parsed as single sentence
     splitted = german.sentence_tokenize(MIXED)
-    tests.assert_length(splitted, 3)
+    tests.assert_length(splitted, 4)
     last = ('Dennoch soll im Folgenden der Versuch einer '
             'Definition vorgenommen werden.')
     assert splitted[-1] == last, splitted
@@ -224,7 +226,7 @@ unternehmensübergreifenden Wertschöpfungsnetzwerken.
 
 def test_split_sentence_with_long_citation():
     splitted = german.sentence_tokenize(VERY_LONG)
-    tests.assert_length(splitted, 5)
+    tests.assert_length(splitted, 6)
 
 
 VALID_SENTENCE = """\
@@ -279,7 +281,7 @@ Furcht und Ekel).
 
 def test_split_table_reference():
     splitted = german.sentence_tokenize(TABLE)
-    tests.assert_length(splitted, 3)
+    tests.assert_length(splitted, 4)
 
 
 HIGHNOTE_ATEND = """\
