@@ -61,6 +61,7 @@ def sentence_tokenize(
     # tokenize sentence
     tokenized = knlp.sent_tokenize(text, language=language)
     result = balance_sentence(tokenized)
+    result = double_colon_error(result)
     return result
 
 
@@ -69,6 +70,22 @@ def language_select(text: str) -> str:
     if german.iseng(text):
         return 'science_english'
     return 'science'
+
+
+def double_colon_error(sentences: list) -> list:
+    if not sentences:
+        return []
+    result = [sentences[0]]
+    for sentence in sentences[1:]:
+        if result[-1][-1] != ':':
+            result.append(sentence)
+            continue
+        if isunbalanced(result[-1]) and isunbalanced(sentence):
+            # merge with sentence before to improve extraction result
+            result[-1] = result[-1] + ' ' + sentence
+            continue
+        result.append(sentence)
+    return result
 
 
 def balance_sentence(sentences: list) -> list:
