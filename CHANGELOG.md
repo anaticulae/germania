@@ -2,6 +2,14 @@
 
 Every noteable change is logged here.
 
+## v1.17.0
+
+### Feature
+
+* add double colon improver (882982fa7502)
+* use double colon as sentence end (dde74b275c60)
+* add shebang (fa48e30ce4d9)
+
 ## v1.16.2
 
 ### Feature
