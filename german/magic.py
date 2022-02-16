@@ -135,23 +135,6 @@ def isyear(item: str) -> bool:
     return 1900 <= item <= 2030
 
 
-# yapf:disable
-STOPWORDS = set(knlp.STOPWORDS) - utila.splititems('der de da')
-NAMES = (
-    german_data.NAMES |
-    nltk_data.lookup.NAME_MALE |
-    nltk_data.lookup.NAME_FEMALE |
-    nltk_data.lookup.NAME_FAMILY
-)
-NOPERSON = (
-    german_data.NOPERSON |
-    german_data.PRESS |
-    german_data.INSTITUTION |
-    STOPWORDS
-)
-# yapf:enable
-
-
 @functools.lru_cache(maxsize=4096)
 def isperson(item: str, length_min: int = 3) -> bool:  # pylint:disable=R0911
     """\
@@ -167,9 +150,10 @@ def isperson(item: str, length_min: int = 3) -> bool:  # pylint:disable=R0911
     item = item.strip().upper()
     if len(item) < length_min:
         return False
-    if item in NOPERSON:
+    names, noperson = datums()
+    if item in noperson:
         return False
-    if item in NAMES:
+    if item in names:
         return True
     for char in '-’':
         if char not in item:
@@ -220,3 +204,23 @@ def iscity(city: str, length_min: int = 4) -> bool:
     if sdata.rate_city(city):
         return True
     return False
+
+
+@functools.lru_cache
+def datums():
+    # yapf:disable
+    stopwords = set(knlp.STOPWORDS) - utila.splititems('der de da')
+    names = (
+        german_data.NAMES |
+        nltk_data.lookup.NAME_MALE |
+        nltk_data.lookup.NAME_FEMALE |
+        nltk_data.lookup.NAME_FAMILY
+    )
+    noperson = (
+        german_data.NOPERSON |
+        german_data.PRESS |
+        german_data.INSTITUTION |
+        stopwords
+    )
+    return names, noperson
+    # yapf:enable
