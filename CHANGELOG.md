@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.17.1
+
+### Feature
+
+* lazy load data (9419de499c81)
+
 ## v1.17.0
 
 ### Feature
