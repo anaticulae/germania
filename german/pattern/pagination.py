@@ -114,5 +114,7 @@ def pages_complex(raw: str):
         return None
     raw = utila.extract_match(matched)
     with contextlib.suppress(TypeError):
-        return raw, (int(matched['pagestart']), int(matched['pageend']))
+        start = int(matched['pagestart'])
+        end = int(matched['pageend'])
+        return raw, (start, end)
     return None
