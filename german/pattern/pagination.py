@@ -19,7 +19,7 @@ import re
 
 import utila
 
-PAGE_PATTERN = r"""
+PAGENUMBERS = utila.compiles(r"""
     \b
     (S|S\.|Seite|p|p\.|page)
     [ ]{0,4}
@@ -27,7 +27,7 @@ PAGE_PATTERN = r"""
         (?P<pstart>\d{1,4})[ ]{0,2}(-|–)[ ]{0,2}(?P<pend>\d{1,4})|
         (?P<page>\d{1,4})
     )
-"""
+""")
 
 
 @functools.lru_cache(maxsize=4096)
@@ -40,7 +40,7 @@ def pagenumbers(raw: str, verbose: bool = False):
     [((13, 50), 'S. 13-50')]
     """
     result = []
-    for item in re.finditer(PAGE_PATTERN, raw, re.VERBOSE | re.IGNORECASE):
+    for item in PAGENUMBERS.finditer(raw):
         try:
             # single page
             pstart = int(item['page'])
@@ -89,6 +89,16 @@ def pages(raw: str):
     return None
 
 
+COMPLEX = utila.compiles(r"""
+(
+    (\,){0,1}[ ]{0,3}
+    (
+        (?P<pagestart>\d{1,4})[ ]{0,3}(\-|–)[ ]{0,3}(?P<pageend>\d{1,4})(\.|$)
+    )
+)
+""")
+
+
 @functools.lru_cache(maxsize=4096)
 def pages_complex(raw: str):
     """\
@@ -99,14 +109,7 @@ def pages_complex(raw: str):
     >>> pages_complex(',41, 1-10')
     (', 1-10', (1, 10))
     """
-    pattern = r"""(
-         (\,){0,1}[ ]{0,3}
-         (
-          (?P<pagestart>\d{1,4})[ ]{0,3}(\-|–)[ ]{0,3}(?P<pageend>\d{1,4})(\.|$)
-         )
-    )
-    """
-    matched = re.search(pattern, raw, re.VERBOSE)
+    matched = COMPLEX.search(raw)
     if not matched:
         return None
     raw = utila.extract_match(matched)
