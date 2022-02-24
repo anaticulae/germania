@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.17.3
+
+### Fix
+
+* make href magic more strict (f66726e0499e)
+
 ## v1.17.2
 
 ## v1.17.1
