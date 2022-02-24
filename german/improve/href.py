@@ -10,6 +10,8 @@
 import functools
 import re
 
+import utila
+
 
 @functools.lru_cache(maxsize=4096)
 def href_magic(text: str) -> str:
@@ -26,11 +28,17 @@ def link_fink(text: str) -> str:
     """\
     >>> link_fink('url: http : / / www . bitkom . org / files / documents / BITKOM _ Leitfaden')
     'url: http://www.bitkom.org/files/documents/BITKOM_Leitfaden'
+    >>> link_fink('singulären  bzw.  typischen')
+    'singulären  bzw.  typischen'
     """
+    if not IS_HTTP.search(text):
+        return text
     for (token, replacement) in SPACE_PATTERN:
         text = re.sub(token, replacement, text)
     return text
 
+
+IS_HTTP = utila.compiles(r'\bhttp')
 
 SPACE_PATTERN = (
     ('. org', '.org'),
