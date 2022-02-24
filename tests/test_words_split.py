@@ -131,3 +131,16 @@ def test_parse_numbers_in_text():
     assert 'RNB' in numbers
     assert '62' in numbers
     assert 'ff' in numbers
+
+
+ABBREV = [
+    'im  Sinne  von  singulären  bzw.\n',
+    'typischen  Merkmalen  eines  konkreten  Individuums,  sondern  als  „Kollektividee“.\n',
+    'Personen entstehen zwangsläufig'
+]
+
+
+def test_merge_abbreviation_at_end():
+    text = ''.join(ABBREV)
+    merged = german.sentence_tokenize(text)
+    assert 'singulären  bzw. typischen' in str(merged)
