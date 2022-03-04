@@ -216,6 +216,8 @@ def is_sentence_closed(token: list) -> bool:  # pylint:disable=R0911
             # ... hello."
             if before_last_char in konrad.SIGN:
                 return True
+    if magic_ending(token):
+        return True
     if len(token) > 3:
         before_last = token[-2]
         third_last = token[-3]
@@ -232,6 +234,18 @@ def is_sentence_closed(token: list) -> bool:  # pylint:disable=R0911
             return True
         # DOTTED, QUOTED, NUMBER
         # 'Effizienz.', '“', '16'
+    return False
+
+
+HIGHNOTE_MAGIC_PATTERN = utila.compiles(r'[\.\?\!\:]\{\{hn\:\d{1,4}\:nh\}\}')
+
+
+def magic_ending(tokens) -> bool:
+    if not tokens:
+        return False
+    last = tokens[-1]
+    if HIGHNOTE_MAGIC_PATTERN.search(last):
+        return True
     return False
 
 

@@ -26,6 +26,8 @@ def word_tokenize(
     """\
     >>> word_tokenize('•Wie gestaltet sich die Anreise der Kunden?')
     [<Mark.LIST_DOT:...>, 'Wie', 'gestaltet',...<Mark.QUESTION_MARK:...>]
+    >>> word_tokenize('Systemen“{{hn:144:nh}}. Sie!', validate_sentences=False)
+    ['Systemen', <Mark.QUOTATION_MARK_DOUBLE_CLOSE: 33>, '{{hn:144:nh}}', <Mark.FULLSTOP: 22>...]
     """
     if validate_sentences and not german.is_sentence(items):
         # Ensure to parse complete sentences.
@@ -53,6 +55,7 @@ def word_tokenize(
     result = unplug_numbers(result)
     result = merge_numbers(result, items)
     result = merge_reference(result, items)
+    result = merge_highnote(result)
     return result
 
 
@@ -143,6 +146,71 @@ def merge_reference(result, source) -> list:
         else:
             merged.append(item)
     return merged
+
+
+class MergeAutomata:
+
+    def __init__(self, pattern, replace: callable):
+        self.pattern = pattern
+        self.replace = replace
+        self.buffer = []
+        self.result = []
+
+    def put(self, item):
+        self.buffer.append(item)
+        if self.match is None:
+            # not long enough
+            return
+        if self.match is False:  # pylint:disable=compare-to-zero
+            self.result.append(self.buffer[0])
+            self.buffer = self.buffer[1:]
+            return
+        replaced = self.replace(self.buffer)
+        self.result.append(replaced)
+        self.buffer.clear()
+
+    @property
+    def match(self) -> bool:
+        if len(self.buffer) < len(self.pattern):
+            return None
+        for current, expected in zip(self.buffer, self.pattern):
+            if isinstance(expected, (str, konrad.Mark)):
+                if current != expected:
+                    return False
+                continue
+            if not expected.match(current):
+                return False
+        return True
+
+    def end(self) -> list:
+        self.result.extend(self.buffer)
+        result = list(self.result)
+        self.result.clear()
+        self.buffer.clear()
+        return result
+
+
+HIGHNOTE = MergeAutomata(
+    pattern=(
+        konrad.Mark.BRACKET_ELEPHANT_OPEN,
+        konrad.Mark.BRACKET_ELEPHANT_OPEN,
+        'hn',
+        konrad.Mark.COLON,
+        utila.compiles(r'\d{1,4}'),
+        konrad.Mark.COLON,
+        'nh',
+        konrad.Mark.BRACKET_ELEPHANT_CLOSE,
+        konrad.Mark.BRACKET_ELEPHANT_CLOSE,
+    ),
+    replace=lambda x: '{{hn:%s:nh}}' % x[4],
+)
+
+
+def merge_highnote(items) -> list:
+    for item in items:
+        HIGHNOTE.put(item)
+    result = HIGHNOTE.end()
+    return result
 
 
 def unplug_numbers(result):

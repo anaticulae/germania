@@ -334,3 +334,20 @@ def test_split_highnote_magic_pattern():
     for current, expected in zip(sentences, HIGHNOTE_MAGIC_ENDS):
         current = current[-len(expected):]
         assert current == expected
+
+
+EXPECTED = [
+    '{{hn:143:nh}}',
+    konrad.Mark.FULLSTOP,
+    konrad.Mark.FULLSTOP,
+    konrad.Mark.FULLSTOP,
+    '{{hn:145:nh}}',
+]
+
+
+def test_split_highnote_magic_words():
+    sentences = german.sentence_tokenize(HIGHNOTE_MAGIC)
+    for sentence, expected in zip(sentences, EXPECTED):
+        words = german.word_tokenize(sentence)
+        assert words, sentence
+        assert words[-1] == expected
