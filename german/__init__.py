@@ -23,8 +23,6 @@ from german.error.finding import TextErrors
 from german.error.finding import TextErrorType
 from german.error.machine import TextErrorMachine
 from german.error.text import TextMachine
-from german.headlines import HEADLINES
-from german.headlines import isheadline
 from german.improve.abbreviation import abbreviation_magic
 from german.improve.highnote import highnote_magic
 from german.improve.href import href_magic
