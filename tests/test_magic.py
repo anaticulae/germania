@@ -9,13 +9,14 @@
 
 import iamraw
 import pytest
+import utila
 
 import german
 
-NOPERSONS = """\
+NOPERSONS = utila.splitlines("""\
 Duden. Rechtschreibung
 Duden
-""".strip().splitlines()
+""")
 
 
 @pytest.mark.parametrize(
