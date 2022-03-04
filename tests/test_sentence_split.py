@@ -303,3 +303,34 @@ def test_split_highnote_atend():
     splitted = german.sentence_tokenize(HIGHNOTE_ATEND)
     tests.assert_length(splitted, 4)
     assert MERGE_UNBALANCED in splitted[-1]
+
+
+HIGHNOTE_MAGIC = """\
+Gedanken können kommunikative Vorgänge nur bedingt und vermittelt \
+beeinflussen.{{hn:143:nh}} Hier dienen Personen jedoch „der \
+strukturellen Kopplung von psychischen und sozialen \
+Systemen“{{hn:144:nh}}. Sie entstehen durch Interaktionen und ordnen die \
+Verhaltenserwartungen darin mithilfe des psychischen Systems. Je mehr \
+(verschiedene) Erwartungen dabei auf ein Individuum bezogen werden, \
+desto vielschichtiger ist die Person. Daher kann sie, je nach Kontext \
+und Umfeld, verschiedene, sogar widersprüchliche Züge zeigen.{{hn:145:nh}} \
+Erwartungen haben im Zusammenhang von Interaktionssystemen eine zentrale \
+Funktion, weil sie angemessenes Verhalten überhaupt erst ermöglichen.
+"""
+
+HIGHNOTE_MAGIC_ENDS = """\
+einflussen.{{hn:143:nh}}
+hen und sozialen Systemen“{{hn:144:nh}}.
+en darin mithilfe des psychischen Systems.
+werden, desto vielschichtiger ist die Person.
+rsprüchliche Züge zeigen.{{hn:145:nh}}
+rale Funktion, weil sie angemessenes Verhalten überhaupt erst ermöglichen.\
+""".splitlines()
+
+
+def test_split_highnote_magic_pattern():
+    sentences = german.sentence_tokenize(HIGHNOTE_MAGIC)
+    assert len(sentences) == len(HIGHNOTE_MAGIC_ENDS)
+    for current, expected in zip(sentences, HIGHNOTE_MAGIC_ENDS):
+        current = current[-len(expected):]
+        assert current == expected

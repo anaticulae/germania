@@ -21,9 +21,16 @@ class SPunktLanguageVars(nltk.tokenize.punkt.PunktLanguageVars):
     _re_non_word_chars = r"(?:[?!)\";}\]\*:@\'\({\[”“„])"
 
     # \d to align citing numbers for example: lassen.“27 Jetzt geht es
+    # highnote magic pattern: {{hn:143:nh}}
     re_boundary_realignment = re.compile(
-        r'["\')}\]“”\d]+?(?:\s+|(?=--)|$)',
-        re.MULTILINE,
+        r"""
+        (
+            ["\')}\]“”\d]|
+            \{\{hn\:\d{1,4}\:nh\}\}     # highnote magic pattern
+        )+?
+        (?:\s+|(?=--)|$)
+        """,
+        flags=re.MULTILINE | re.X,
     )
     sent_end_chars = '.?!:'
     internal_punctuation = ',;'
