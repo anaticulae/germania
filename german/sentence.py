@@ -218,22 +218,8 @@ def is_sentence_closed(token: list) -> bool:  # pylint:disable=R0911
                 return True
     if magic_ending(token):
         return True
-    if len(token) > 3:
-        before_last = token[-2]
-        third_last = token[-3]
-        # HACK AND INCOMPLETE
-        # greater than three cause a sentence needs some words
-        # DOTTED, QUOTED
-        # 'Effizienz.', '“'
-        # TODO: SIMPLIFY THIS, USE PERMUTATION AND TOKEN CLASSES
-        if last in QUOTATION_CLOSE_SIGNS and before_last[-1] in CLOSE_SIGNS:
-            return True
-        if before_last in QUOTATION_CLOSE_SIGNS and last[-1] in CLOSE_SIGNS:
-            return True
-        if last.isnumeric() and before_last in QUOTATION_CLOSE_SIGNS and third_last[-1] in CLOSE_SIGNS: # yapf:disable
-            return True
-        # DOTTED, QUOTED, NUMBER
-        # 'Effizienz.', '“', '16'
+    if quotation_ending(token):
+        return True
     return False
 
 
@@ -246,6 +232,30 @@ def magic_ending(tokens) -> bool:
     last = tokens[-1]
     if HIGHNOTE_MAGIC_PATTERN.search(last):
         return True
+    return False
+
+
+def quotation_ending(token) -> bool:
+    if len(token) < 3:
+        return False
+    last = token[-1].strip()
+    before_last = token[-2]
+    third_last = token[-3]
+    # HACK AND INCOMPLETE
+    # greater than three cause a sentence needs some words
+    # DOTTED, QUOTED
+    # 'Effizienz.', '“'
+    # TODO: SIMPLIFY THIS, USE PERMUTATION AND TOKEN CLASSES
+    if last in QUOTATION_CLOSE_SIGNS and before_last[-1] in CLOSE_SIGNS:
+        return True
+    if before_last in QUOTATION_CLOSE_SIGNS and last[-1] in CLOSE_SIGNS:
+        return True
+    if last.isnumeric():
+        if before_last in QUOTATION_CLOSE_SIGNS:
+            if third_last[-1] in CLOSE_SIGNS:
+                return True
+    # DOTTED, QUOTED, NUMBER
+    # 'Effizienz.', '“', '16'
     return False
 
 
