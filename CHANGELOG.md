@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.18.0
+
+### Feature
+
+* add magic pattern generator (3e735443e092)
+* align highnote magic pattern to sentence before (e7392c155af1)
+
 ## v1.17.3
 
 ### Fix
