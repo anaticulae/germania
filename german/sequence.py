@@ -17,7 +17,7 @@ import german
 
 
 def search(
-    tokens: list,
+    pattern: list,
     sentence: list,
     *,
     lowercase: bool = True,
@@ -25,25 +25,25 @@ def search(
     compare_content: bool = True,
 ) -> list:
     # prepare data
-    if isinstance(tokens, str):
-        tokens = german.word_tokenize(tokens, validate_sentences=False)
+    if isinstance(pattern, str):
+        pattern = german.word_tokenize(pattern, validate_sentences=False)
     if isinstance(sentence, str):
         sentence = german.word_tokenize(sentence, validate_sentences=False)
-    tokens_length = len(tokens)
+    tokens_length = len(pattern)
     if tokens_length > len(sentence):
         return []
     if lowercase:
-        tokens = [lower(item) for item in tokens]
+        pattern = [lower(item) for item in pattern]
         sentence = [lower(item) for item in sentence]
     sentence = [german.wordtypes(word) for word in sentence]
     if tokens_complex:
-        tokens = [german.wordtypes(token) for token in tokens]
+        pattern = [german.wordtypes(token) for token in pattern]
     # start searching
     result = []
-    for start in range(len(sentence) - len(tokens) + 1):
+    for start in range(len(sentence) - len(pattern) + 1):
         selected = sentence[start:start + tokens_length]
         if not _match(
-                tokens,
+                pattern,
                 selected,
                 tokens_complex=tokens_complex,
                 compare_content=compare_content,
@@ -56,7 +56,7 @@ def search(
 
 
 def searches(
-    tokenslist: list,
+    patterns: list,
     sentence: list,
     *,
     lowercase: bool = True,
@@ -72,10 +72,10 @@ def searches(
     if isinstance(sentence, str):
         sentence = german.word_tokenize(sentence, validate_sentences=False)
     result = []
-    for tokens in tokenslist:
+    for pattern in patterns:
         matches = search(
-            tokens,
-            sentence,
+            pattern=pattern,
+            sentence=sentence,
             lowercase=lowercase,
             tokens_complex=tokens_complex,
             compare_content=compare_content,
