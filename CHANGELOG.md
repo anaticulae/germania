@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v1.19.0
+
+### Feature
+
+* add regex pattern matcher (f4184d590821)
+
+### Documentation
+
+* extend interface documentation (f9fc176ec89f)
+
 ## v1.18.0
 
 ### Feature
