@@ -9,6 +9,7 @@
 
 import contextlib
 import operator
+import re
 import typing
 
 import utila
@@ -25,10 +26,15 @@ def search(
     compare_content: bool = True,
 ) -> list:
     # prepare data
-    if isinstance(pattern, str):
-        pattern = german.word_tokenize(pattern, validate_sentences=False)
     if isinstance(sentence, str):
         sentence = german.word_tokenize(sentence, validate_sentences=False)
+    if isinstance(pattern, re.Pattern):
+        return search_regex(
+            pattern,
+            sentence,
+        )
+    if isinstance(pattern, str):
+        pattern = german.word_tokenize(pattern, validate_sentences=False)
     tokens_length = len(pattern)
     if tokens_length > len(sentence):
         return []
@@ -55,6 +61,18 @@ def search(
     return result
 
 
+def search_regex(
+    pattern: re.Pattern,
+    sentence: list,
+) -> list:
+    result = []
+    for index, word in enumerate(sentence):
+        if not pattern.match(str(word)):
+            continue
+        result.append((index, index + 1))
+    return result
+
+
 def searches(
     patterns: list,
     sentence: list,
@@ -66,6 +84,11 @@ def searches(
     neighbours_merge: bool = False,
     verbose: bool = False,
 ) -> list:
+    r"""\
+    >>> searches([utila.compiles(r'\{\{hn\:\d{1,4}\:nh\}\}')],
+    ... 'Treiber charakterisiert.{{hn:7:nh}}', verbose=True)
+    ([(3, 4)], [['{{hn:7:nh}}']])
+    """
     if neighbours_merge:
         assert overlapping_merge, 'enable overlapping_merge'
     # prepare here to avoid preparing for every tokens
