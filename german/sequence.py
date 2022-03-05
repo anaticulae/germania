@@ -141,7 +141,7 @@ def _match(
     chunk: list,
     expected: list,
     *,
-    tokens_complex,
+    tokens_complex: bool,
     compare_content: bool,
 ) -> bool:
     assert len(chunk) == len(expected)
