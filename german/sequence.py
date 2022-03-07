@@ -125,7 +125,11 @@ def overlapping_merge(items: list, connected_merge: bool = False) -> list:
     [(2, 5)]
     >>> overlapping_merge([(0, 5), (5, 9)], connected_merge=True)
     [(0, 9)]
+    >>> overlapping_merge([(38, 41), (38, 44), (38, 45)])  # 'biggest groups'
+    [(38, 45)]
     """
+    # sort second value first to move 'biggest groups' to the front
+    items = sorted(items, key=lambda x: x[1], reverse=True)
     items = sorted(items, key=lambda x: x[0])
     result = []
     done = set()
