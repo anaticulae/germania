@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.19.1
+
+### Fix
+
+* do not use internal API (7cf0e5899a8b)
+* improve sequence merger (e6768eb5fb47)
+
 ## v1.19.0
 
 ### Feature
