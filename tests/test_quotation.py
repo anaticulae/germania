@@ -64,7 +64,7 @@ davon betroffen.
 def test_parse_long_quote():
     extracted = german.extract_quotes(QUOTE_IN_TEXT)
     # TODO: INVESTIGATE WHAT IS THE RIGHT ONE
-    expected = [(29, 62)]
+    expected = [(29, 64)]
     assert extracted == expected
 
     splitted = german.word_tokenize(QUOTE_IN_TEXT, validate_sentences=False)
@@ -84,4 +84,4 @@ Content”12.
 
 def test_parse_quote_english():
     extracted = german.extract_quotes(ENGLISH, lang=konrad.ENGLISH)
-    assert extracted == [(7, 46)]
+    assert extracted == [(9, 49)]

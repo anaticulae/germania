@@ -10,10 +10,11 @@
 import contextlib
 import functools
 
-import knlp
 import konrad
 import konrad.mark
 import utila
+
+import german
 
 DOUBLE_SIMPLE = (
     konrad.Mark.QUOTATION_MARK,
@@ -41,7 +42,11 @@ SINGLE_ENG = (
 def extract_quotes(items: str, lang='science') -> list:  # pylint:disable=W0613
     assert isinstance(items, str), type(items)
     # prepare token
-    tokens = knlp.word_tokenize(items, language=lang)
+    tokens = german.word_tokenize(
+        items,
+        lang=lang,
+        validate_sentences=False,
+    )
     tokens = [konrad.matchesmore(word, lang=lang) for word in tokens]
     # start parsing
     result = []
