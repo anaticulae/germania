@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.19.2
+
+### Fix
+
+* make automata thread safe (502f57508e26)
+
 ## v1.19.1
 
 ### Fix
