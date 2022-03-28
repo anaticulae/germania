@@ -190,26 +190,24 @@ class MergeAutomata:
         return result
 
 
-HIGHNOTE = MergeAutomata(
-    pattern=(
-        konrad.Mark.BRACKET_ELEPHANT_OPEN,
-        konrad.Mark.BRACKET_ELEPHANT_OPEN,
-        'hn',
-        konrad.Mark.COLON,
-        utila.compiles(r'\d{1,4}'),
-        konrad.Mark.COLON,
-        'nh',
-        konrad.Mark.BRACKET_ELEPHANT_CLOSE,
-        konrad.Mark.BRACKET_ELEPHANT_CLOSE,
-    ),
-    replace=lambda x: '{{hn:%s:nh}}' % x[4],
-)
-
-
 def merge_highnote(items) -> list:
+    highnote = MergeAutomata(
+        pattern=(
+            konrad.Mark.BRACKET_ELEPHANT_OPEN,
+            konrad.Mark.BRACKET_ELEPHANT_OPEN,
+            'hn',
+            konrad.Mark.COLON,
+            utila.compiles(r'\d{1,4}'),
+            konrad.Mark.COLON,
+            'nh',
+            konrad.Mark.BRACKET_ELEPHANT_CLOSE,
+            konrad.Mark.BRACKET_ELEPHANT_CLOSE,
+        ),
+        replace=lambda x: '{{hn:%s:nh}}' % x[4],
+    )
     for item in items:
-        HIGHNOTE.put(item)
-    result = HIGHNOTE.end()
+        highnote.put(item)
+    result = highnote.end()
     return result
 
 
