@@ -90,6 +90,20 @@ def locallink(raw: str, position: bool = False, verbose: bool = False) -> list:
     return result
 
 
+def links(raw: str, position: bool = False, verbose: bool = False) -> list:
+    """\
+    >>> links('Available: wehewehe.org/gsdl2.5/cgi-bin/hdict?d=D21021'
+    ... 'document: file:///C:/kiwi/bachelor028.pdf.',
+    ... verbose=True, position=True)
+    [(('wehewehe.org/gsdl2.5/cgi-bin/hdict?d=D21021document', 11)...(('file:///C:/kiwi/bachelor028.pdf', 64)...)]
+    """
+    result = hyperlink(raw, position=position, verbose=verbose)
+    result += locallink(raw, position=position, verbose=verbose)
+    if position:
+        result.sort(key=lambda x: x[0][1] if verbose else x[1])
+    return result
+
+
 def prepare(item, position: bool = False, verbose: bool = False):
     matched = utila.extract_match(item)
     value = matched
