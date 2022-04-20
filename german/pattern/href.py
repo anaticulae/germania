@@ -8,7 +8,6 @@
 # =============================================================================
 
 import functools
-import re
 
 import utila
 
@@ -17,7 +16,7 @@ import utila
 TABLE = str.maketrans({'∼': '~'})
 
 CHARS = r'[\w\d\./\-\_\?\=\&\%\+\~]+[\w\d/\?\=\&\%]'
-HYPERLINK = rf"""
+HYPERLINK = utila.compiles(rf"""
     (
         (https://|http://|www\.)
         {CHARS}+
@@ -29,7 +28,7 @@ HYPERLINK = rf"""
         \/
         {CHARS}
     )
-"""
+""")
 
 
 @functools.lru_cache(maxsize=4096)
@@ -48,7 +47,7 @@ def hyperlink(raw: str, position: bool = False, verbose: bool = False):
     raw = raw.translate(TABLE)
     # TODO: REPLACE THIS PATTERN
     result = []
-    for item in re.finditer(HYPERLINK, raw, flags=re.VERBOSE):
+    for item in HYPERLINK.finditer(raw):
         matched = utila.extract_match(item)
         value = matched
         if position:
