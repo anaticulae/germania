@@ -48,12 +48,11 @@ def hyperlink(raw: str, position: bool = False, verbose: bool = False):
     # TODO: REPLACE THIS PATTERN
     result = []
     for item in HYPERLINK.finditer(raw):
-        matched = utila.extract_match(item)
-        value = matched
-        if position:
-            value = (value, item.span()[0])
-        if verbose:
-            value = (value, matched)
+        value = prepare(
+            item,
+            position=position,
+            verbose=verbose,
+        )
         result.append(value)
     return result
 
@@ -82,11 +81,20 @@ def locallink(raw: str, position: bool = False, verbose: bool = False) -> list:
     raw = raw.replace('\n', '')
     result = []
     for item in LOCALLINK.finditer(raw):
-        matched = utila.extract_match(item)
-        value = matched
-        if position:
-            value = (value, item.span()[0])
-        if verbose:
-            value = (value, matched)
+        value = prepare(
+            item,
+            position=position,
+            verbose=verbose,
+        )
         result.append(value)
     return result
+
+
+def prepare(item, position: bool = False, verbose: bool = False):
+    matched = utila.extract_match(item)
+    value = matched
+    if position:
+        value = (value, item.span()[0])
+    if verbose:
+        value = (value, matched)
+    return value
