@@ -28,7 +28,7 @@ class TextErrorMachine:
         page: int = None,
     ) -> german.error.finding.TextErrors:
         result = []
-        todo = methods(self, starts='check_')
+        todo = utila.methods(self, starts='check_')
         for method in todo:
             detected = method(text)
             if not detected:
@@ -82,16 +82,3 @@ class PhysicMachine(TextErrorMachine):
             )
             result.append(error)
         return result
-
-
-def methods(item, starts=''):
-    # TODO: REPLACE WITH UTILA CODE
-    result = []
-    for name in dir(item):
-        method = getattr(item, name)
-        if not callable(method):
-            continue
-        if not name.startswith(starts):
-            continue
-        result.append(method)
-    return result
