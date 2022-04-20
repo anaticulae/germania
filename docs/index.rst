@@ -1,5 +1,5 @@
 Welcome to just wrap it
-=================================
+=======================
 
 General
 -------
@@ -28,7 +28,8 @@ Developer
   todo
 
 Modules
---------------------
+-------
+
 .. toctree::
    :maxdepth: 4
 
