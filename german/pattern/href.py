@@ -56,3 +56,37 @@ def hyperlink(raw: str, position: bool = False, verbose: bool = False):
             value = (value, matched)
         result.append(value)
     return result
+
+
+LOCALLINK = utila.compiles(r"""
+    (
+        file[:]
+        [\/]{2,3}
+        [cdef]                                  # windows local drive
+        [:]
+        (
+            [\w\d\./\-\_\?\=\&\%\+\~]+
+            [\w\d/\?\=\&\%]                     # no dot at the end
+        )
+    )
+""")
+
+
+def locallink(raw: str, position: bool = False, verbose: bool = False) -> list:
+    """\
+    >>> locallink('Hier liegt das document: file:///C:/kiwi/bachelor028.pdf.')
+    ['file:///C:/kiwi/bachelor028.pdf']
+    >>> locallink('vom 21.06.2016, unter: file:///C:/Users/user/Downloads/MEMO-16-2265_DE.pdf ', position=True)
+    [('file:///C:/Users/user/Downloads/MEMO-16-2265_DE.pdf', 23)]
+    """
+    raw = raw.replace('\n', '')
+    result = []
+    for item in LOCALLINK.finditer(raw):
+        matched = utila.extract_match(item)
+        value = matched
+        if position:
+            value = (value, item.span()[0])
+        if verbose:
+            value = (value, matched)
+        result.append(value)
+    return result

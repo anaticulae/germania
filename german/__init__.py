@@ -53,6 +53,7 @@ from german.pattern.date import dates_master
 from german.pattern.date import dates_month_year
 from german.pattern.date import years
 from german.pattern.href import hyperlink
+from german.pattern.href import locallink
 from german.pattern.mail import mails
 from german.pattern.pagination import pagenumbers
 from german.pattern.pagination import pages
