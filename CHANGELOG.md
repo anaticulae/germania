@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.20.0
+
+### Feature
+
+* add method to parse hyper links and local links (656b541b4445)
+* add method to parse local links (b03070c2a49e)
+
 ## v1.19.2
 
 ### Fix
