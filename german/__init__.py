@@ -77,6 +77,7 @@ from german.utils.month import MONTH_REGEX
 from german.utils.month import month
 from german.word import Words
 from german.word import contain_quotation_marks
+from german.word import word_normalize
 from german.word import word_tokenize
 
 split_words = word_tokenize  # pylint:disable=C0103

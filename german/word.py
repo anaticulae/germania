@@ -59,6 +59,15 @@ def word_tokenize(
     return result
 
 
+def word_normalize(item: str, lang: str = 'ger') -> str:
+    """\
+    >>> word_normalize('Eisenbahnen')
+    'eisenbahn'
+    """
+    stemmer = stemmer_load(lang=lang)
+    return stemmer.stem(item)
+
+
 def handle_whitespace(result, current):
     if len(current) == 1:
         if utila.isnumber(current[0]):
@@ -284,3 +293,9 @@ def contain_quotation_marks(items) -> bool:
     False
     """
     return any(item in MARKS for item in items)
+
+
+def stemmer_load(lang: str = 'ger'):  # pylint:disable=W0613
+    import nltk.stem
+    result = nltk.stem.SnowballStemmer(language='german')
+    return result
