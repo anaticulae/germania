@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.21.0
+
+### Feature
+
+* add method to stem word (e09846f6b3d5)
+
 ## v1.20.0
 
 ### Feature
