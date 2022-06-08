@@ -70,7 +70,7 @@ def accessed(text: str, verbose: bool = True):
     for pattern in PATTERN:
         for matched in utila.finditer(pattern, text=text):
             raw = utila.extract_match(matched)
-            text = text.replace(raw, '*' * len(raw), 1)
+            text = utila.ghost_replace(text, pattern=raw)
             date = (
                 int(matched['year']),
                 german.utils.month.month(matched['month']),
