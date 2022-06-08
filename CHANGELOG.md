@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.21.1
+
+### Feature
+
+* extend access pattern (468fc246ab09)
+
 ## v1.21.0
 
 ### Feature
