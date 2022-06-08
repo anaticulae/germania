@@ -47,6 +47,9 @@ PATTERN = [
     r'Abgerufen[ ]{0,3}(am[ ]{0,3})?' + DAYMONTHYEAR,
     r'Abgerufen[ ]{0,3}(am[ ]{0,3})?' + DAYTMONTHYEAR,
     r'Abgerufen[ ]{0,3}(am[ ]{0,3})?' + YEARMONTHDAY,
+    r'\(?Stand:[ ]{0,3}' + DAYMONTHYEAR + r'\)?',
+    r'\(?Stand:[ ]{0,3}' + DAYTMONTHYEAR + r'\)?',
+    r'\(?Stand:[ ]{0,3}' + YEARMONTHDAY + r'\)?',
 ]
 
 
@@ -61,6 +64,8 @@ def accessed(text: str, verbose: bool = True):
     [((2015, 6, 6), 'Abgerufen am 06.06.2015')]
     >>> accessed('Abgerufen am 2015.06.06', verbose=False)
     [(2015, 6, 6)]
+    >>> accessed('(Stand: 15.7.2014).')
+    [((2014, 7, 15), '(Stand: 15.7.2014)')]
     """
     result = []
     for pattern in PATTERN:
