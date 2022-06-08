@@ -30,9 +30,9 @@ import german.utils.month
 MONTHREGEX = german.utils.month.MONTH_REGEX
 
 MONTHDAYYEAR = r'[ ]{0,3}(?P<month>\w+)[ ]{0,3}(?P<day>\d{1,2})\,[ ]{0,3}(?P<year>\d{2,4})'
-DAYMONTHYEAR = r'[ ]{0,3}(?P<day>\d{1,2})\.(?P<month>\d{1,2})\.(?P<year>\d{2,4})'
+DAYMONTHYEAR = r'[ ]{0,3}(?P<day>\d{1,2})[ ]{0,2}[\.\-][ ]{0,2}(?P<month>\d{1,2})[ ]{0,2}[\.\-][ ]{0,2}(?P<year>\d{2,4})'
 DAYTMONTHYEAR = r'[ ]{0,3}(?P<day>\d{1,2})\.[ ]{0,3}(?P<month>' + MONTHREGEX + r')[ ]{0,3}(?P<year>\d{2,4})'
-YEARMONTHDAY = r'[ ]{0,3}(?P<year>\d{2,4})\.(?P<month>\d{1,2})\.(?P<day>\d{1,2})'
+YEARMONTHDAY = r'[ ]{0,3}(?P<year>\d{2,4})[ ]{0,2}[\.\-][ ]{0,2}(?P<month>\d{1,2})[ ]{0,2}[\.\-][ ]{0,2}(?P<day>\d{1,2})'
 
 PATTERN = [
     r'(Online\;?|Letzter)[ ]{0,3}Zugriff\:?' + DAYMONTHYEAR,
@@ -46,6 +46,9 @@ PATTERN = [
     r'Abgerufen[ ]{0,3}(am[ ]{0,3})?' + DAYMONTHYEAR,
     r'Abgerufen[ ]{0,3}(am[ ]{0,3})?' + DAYTMONTHYEAR,
     r'Abgerufen[ ]{0,3}(am[ ]{0,3})?' + YEARMONTHDAY,
+    r'Accessed[ ]{0,3}(on[ ]{0,3})?' + DAYMONTHYEAR,
+    r'Accessed[ ]{0,3}(on[ ]{0,3})?' + DAYTMONTHYEAR,
+    r'Accessed[ ]{0,3}(on[ ]{0,3})?' + YEARMONTHDAY,
     r'\(?Stand:[ ]{0,3}' + DAYMONTHYEAR + r'\)?',
     r'\(?Stand:[ ]{0,3}' + DAYTMONTHYEAR + r'\)?',
     r'\(?Stand:[ ]{0,3}' + YEARMONTHDAY + r'\)?',
@@ -65,6 +68,8 @@ def accessed(text: str, verbose: bool = True):
     [(2015, 6, 6)]
     >>> accessed('(Stand: 15.7.2014).')
     [((2014, 7, 15), '(Stand: 15.7.2014)')]
+    >>> accessed('Accessed on 2020- 08-09')
+    [((2020, 8, 9), 'Accessed on 2020- 08-09')]
     """
     result = []
     for pattern in PATTERN:
