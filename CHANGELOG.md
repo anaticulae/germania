@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.21.2
+
+### Feature
+
+* extend pattern (298a9e13d734)
+
 ## v1.21.1
 
 ### Feature
