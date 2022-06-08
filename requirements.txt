@@ -7,13 +7,13 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-utila>=2.73.2<3.0.0
+utila>=2.75.0<3.0.0
 
-konrad>=0.7.1<1.0.0
+konrad>=0.7.2<1.0.0
 iamraw>=4.72.3<5.0.0
 configo>=0.18.0<1.0.0
 
-knlp>=0.6.1<1.0.0
+knlp>=0.6.2<1.0.0
 nltk>=3.6.2<4.0.0
 nltk_data>=0.2.3<1.0.0
 # names, cities, universities
