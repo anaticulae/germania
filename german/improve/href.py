@@ -7,13 +7,12 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import functools
 import re
 
 import utila
 
 
-@functools.lru_cache(maxsize=4096)
+@utila.cacheme
 def href_magic(text: str) -> str:
     """\
     >>> href_magic('4. url: https : / / www . apache . org / licenses/LICENS')
@@ -23,7 +22,7 @@ def href_magic(text: str) -> str:
     return result
 
 
-@functools.lru_cache(maxsize=4096)
+@utila.cacheme
 def link_fink(text: str) -> str:
     """\
     >>> link_fink('url: http : / / www . bitkom . org / files / documents / BITKOM _ Leitfaden')

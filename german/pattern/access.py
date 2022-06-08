@@ -22,7 +22,6 @@ accessed
 """
 
 import contextlib
-import functools
 
 import utila
 
@@ -53,7 +52,7 @@ PATTERN = [
 ]
 
 
-@functools.lru_cache(maxsize=4096)
+@utila.cacheme
 def accessed(text: str, verbose: bool = True):
     """\
     >>> accessed('[Letzter Zugriff: 16.02.15]')

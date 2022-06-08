@@ -7,8 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import functools
-
 import utila
 
 # TODO: DO NOT CHANGE HYPERLINK
@@ -31,7 +29,7 @@ HYPERLINK = utila.compiles(rf"""
 """)
 
 
-@functools.lru_cache(maxsize=4096)
+@utila.cacheme
 def hyperlink(raw: str, position: bool = False, verbose: bool = False):
     r"""\
     >>> hyperlink('Before: http://student.unifr.ch/\nReferenzrahmen2001.pdf after.', position=True)

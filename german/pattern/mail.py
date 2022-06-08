@@ -7,7 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import functools
 import re
 
 import utila
@@ -17,7 +16,7 @@ PATTERN = r"""
 """
 
 
-@functools.lru_cache(maxsize=4096)
+@utila.cacheme
 def mails(raw: str) -> list:
     """\
     >>> mails('This is email:1helmut.k.fahrendholz@mailbox.tu-berlin.de end.')

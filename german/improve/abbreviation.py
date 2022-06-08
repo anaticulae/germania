@@ -7,12 +7,11 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import functools
-
 import konrad
+import utila
 
 
-@functools.lru_cache(maxsize=4096)
+@utila.cacheme
 def abbreviation_magic(text: str) -> str:
     """\
     >>> abbreviation_magic('Helmut hier u. a. und mehr.')

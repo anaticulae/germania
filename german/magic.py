@@ -25,7 +25,6 @@ False
 """
 
 import enum
-import functools
 import re
 import typing
 
@@ -51,7 +50,7 @@ class WordType(enum.Enum):
 WordTypes = typing.List[WordType]
 
 
-@functools.lru_cache(maxsize=4096)
+@utila.cacheme
 def wordtype(item: str) -> WordType:  # pylint:disable=R0911
     """\
     >>> wordtype('1995').name
@@ -75,7 +74,7 @@ def wordtype(item: str) -> WordType:  # pylint:disable=R0911
     return WordType.UNDEFINED
 
 
-@functools.lru_cache(maxsize=4096)
+@utila.cacheme
 def wordtypes(item: str) -> WordTypes:
     """\
     >>> wordtypes('1996')
@@ -104,7 +103,7 @@ def wordtypes(item: str) -> WordTypes:
 REFERENCE = re.compile(r'(\d+\.?)+')
 
 
-@functools.lru_cache(maxsize=4096)
+@utila.cacheme
 def isreference(item: str) -> bool:
     """\
     >>> isreference('3.2.1.')
@@ -122,7 +121,7 @@ def isreference(item: str) -> bool:
     return REFERENCE.match(item) is not None
 
 
-@functools.lru_cache(maxsize=4096)
+@utila.cacheme
 def isyear(item: str) -> bool:
     """\
     >>> isyear(1995)
@@ -135,7 +134,7 @@ def isyear(item: str) -> bool:
     return 1900 <= item <= 2030
 
 
-@functools.lru_cache(maxsize=4096)
+@utila.cacheme
 def isperson(item: str, length_min: int = 3) -> bool:  # pylint:disable=R0911
     """\
     >>> isperson('Olsen')
@@ -172,7 +171,7 @@ def isperson(item: str, length_min: int = 3) -> bool:  # pylint:disable=R0911
     return False
 
 
-@functools.lru_cache(maxsize=4096)
+@utila.cacheme
 def ispress(press: str, length_min: int = 6) -> bool:
     """\
     >>> ispress('Springer')
@@ -192,7 +191,7 @@ def ispress(press: str, length_min: int = 6) -> bool:
     return False
 
 
-@functools.lru_cache(maxsize=4096)
+@utila.cacheme
 def iscity(city: str, length_min: int = 4) -> bool:
     """\
     >>> iscity('Berlino')
@@ -206,7 +205,7 @@ def iscity(city: str, length_min: int = 4) -> bool:
     return False
 
 
-@functools.lru_cache
+@utila.cacheme
 def datums():
     # yapf:disable
     stopwords = set(knlp.STOPWORDS) - utila.splititems('der de da')

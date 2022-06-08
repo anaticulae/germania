@@ -14,9 +14,9 @@ Use nltk to determine language where sentence is written in.
 
 import collections
 import contextlib
-import functools
 
 import konrad
+import utila
 
 LanguageResult = collections.namedtuple(
     'LanguageResult',
@@ -77,7 +77,7 @@ MAPPING = {
 }
 
 
-@functools.lru_cache(maxsize=None)
+@utila.cacheme
 def textcat():
     import nltk.classify.textcat
     result = nltk.classify.textcat.TextCat()

@@ -7,10 +7,10 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import functools
+import utila
 
 
-@functools.lru_cache(maxsize=None)
+@utila.cacheme
 def tagger():
     # lazy loading nltk
     # TODO: MOVE TO knlp

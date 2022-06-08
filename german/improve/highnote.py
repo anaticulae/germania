@@ -7,11 +7,12 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import functools
 import re
 
+import utila
 
-@functools.lru_cache(maxsize=4096)
+
+@utila.cacheme
 def highnote_magic(text: str) -> str:
     """\
     >>> highnote_magic('ohnehin unmöglich.89 So')

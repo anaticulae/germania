@@ -8,7 +8,6 @@
 # =============================================================================
 
 import difflib
-import functools
 
 import configo
 import knlp
@@ -20,7 +19,7 @@ import german
 Sentences = utila.Strings
 
 
-@functools.lru_cache(maxsize=4096)
+@utila.cacheme
 def sentence_tokenize(
     text: str,
     *,
@@ -65,7 +64,7 @@ def sentence_tokenize(
     return result
 
 
-@functools.lru_cache(maxsize=4096)
+@utila.cacheme
 def language_select(text: str) -> str:
     if german.iseng(text):
         return 'science_english'
@@ -120,7 +119,7 @@ def balance_sentence(sentences: list) -> list:
 PAIR = '() []'.split()
 
 
-@functools.lru_cache(maxsize=4096)
+@utila.cacheme
 def isunbalanced(sentence: str) -> bool:
     """\
     >>> isunbalanced('I am ( unbalanced')
@@ -163,7 +162,7 @@ SENTENCE_LENGTH_MIN = configo.HV_INT_PLUS(default=4)
 SENTENCE_DOTS_MAX = configo.HV_PERCENT_PLUS(default=4.0)
 
 
-@functools.lru_cache(maxsize=4096)
+@utila.cacheme
 def is_sentence(
     sentence: str,
     min_length: int = SENTENCE_LENGTH_MIN,
@@ -259,7 +258,7 @@ def quotation_ending(token) -> bool:
     return False
 
 
-@functools.lru_cache(maxsize=4096)
+@utila.cacheme
 def split_token(text: str, normalize: bool = True):
     # replace text division -
     text = text.replace('-\n', '')
@@ -276,7 +275,7 @@ def split_token(text: str, normalize: bool = True):
 SPECIAL = ['„', '“', '‘', '‚']
 
 
-@functools.lru_cache(maxsize=4096)
+@utila.cacheme
 def split_special_chars(token):
     """\
     >>> split_special_chars('„‚privat‘')

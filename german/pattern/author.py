@@ -54,7 +54,6 @@ TODO: HOW TO IMPROVE THIS SITUATION?
 [('Lianos', 'Manuel')]
 """
 
-import functools
 import re
 
 import configo
@@ -64,7 +63,7 @@ import utila
 import german
 
 
-@functools.lru_cache(maxsize=4096)
+@utila.cacheme
 def authors(raw: str, verbose: bool = False):
     """\
     >>> authors('M. Baccar,')
@@ -111,7 +110,7 @@ def authors_decide(parsed: list, raw: str = None) -> iamraw.Persons:
 NAME_COUNT_MAX = configo.HV_INT_PLUS(default=7)
 
 
-@functools.lru_cache(maxsize=4096)
+@utila.cacheme
 def simple(raw: str, extern: str = ';', intern: str = ','):
     """\
     >>> simple('Becker, W.; Ulrich, P.')
@@ -126,7 +125,7 @@ def simple(raw: str, extern: str = ';', intern: str = ','):
     return result
 
 
-@functools.lru_cache(maxsize=4096)
+@utila.cacheme
 def freeand(raw: str):
     """\
     >>> freeand('Beirness, D. & Vogel-Sprott, M.')
@@ -158,7 +157,7 @@ def freeand(raw: str):
     return result
 
 
-@functools.lru_cache(maxsize=4096)
+@utila.cacheme
 def splitand(raw: str):
     """\
     >>> splitand('ADM Arbeitskreis Deutscher Markt und Sozialforschungsinstitute e.V.')

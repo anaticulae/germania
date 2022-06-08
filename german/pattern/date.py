@@ -7,7 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import functools
 import re
 
 import utila
@@ -18,7 +17,7 @@ YEARS = re.compile(r'\b(19|20)\d{2}\b')
 MONTH_REGEX = german.utils.month.MONTH_REGEX
 
 
-@functools.lru_cache(maxsize=4096)
+@utila.cacheme
 def years(raw: str, min_=1950, max_=2025, verbose: bool = False):
     """Extract sorted list of years out of `raw` text.
 
@@ -75,7 +74,7 @@ def dates_master(
     return result
 
 
-@functools.lru_cache(maxsize=4096)
+@utila.cacheme
 def dates(
     raw: str,
     min_year=1950,
