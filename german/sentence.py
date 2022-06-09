@@ -162,14 +162,15 @@ SENTENCE_LENGTH_MIN = configo.HV_INT_PLUS(default=4)
 SENTENCE_DOTS_MAX = configo.HV_PERCENT_PLUS(default=4.0)
 
 
+@utila.rename(min_length='length_min')
 @utila.cacheme
 def is_sentence(
     sentence: str,
-    min_length: int = SENTENCE_LENGTH_MIN,
+    length_min: int = SENTENCE_LENGTH_MIN,
     dots_percent_max=SENTENCE_DOTS_MAX,
 ) -> bool:
     length = len(sentence)
-    if length < min_length:
+    if length < length_min:
         # sentence is too short
         return False
     dotcount = sentence.count('.')
