@@ -36,7 +36,13 @@ def years(raw: str, min_=1950, max_=2025, verbose: bool = False):
     return result
 
 
-DATES = utila.compiles(r'(\d{4}|\d{1,2})\.(\d{1,2})\.(\d{4}|\d{1,2})')
+DATES = utila.compiles(r"""
+    (
+        \d{4}|
+        \d{1,2})\.(\d{1,2})\.(\d{4}|
+        \d{1,2}
+    )
+""")
 
 
 def dates_master(
