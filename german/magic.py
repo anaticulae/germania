@@ -134,6 +134,11 @@ def isyear(item: str) -> bool:
     return 1900 <= item <= 2030
 
 
+ARABIC = utila.compiles(r'(ibn|el)([ ]|\-?)\w{4,}')
+
+PREPATTERN = utila.compiles(r'\w\.(\-|[ ])\w\.[ ]{0,3}\w{3,20}')
+
+
 @utila.cacheme
 def isperson(item: str, length_min: int = 3) -> bool:  # pylint:disable=R0911
     """\
@@ -159,11 +164,9 @@ def isperson(item: str, length_min: int = 3) -> bool:  # pylint:disable=R0911
             continue
         if any(isperson(name) for name in item.split(char)):
             return True
-    arabic = r'(ibn|el)([ ]|\-?)\w{4,}'
-    if re.match(arabic, item, re.IGNORECASE):
+    if ARABIC.match(item):
         return True
-    prepattern = r'\w\.(\-|[ ])\w\.[ ]{0,3}\w{3,20}'
-    if re.match(prepattern, item, re.IGNORECASE):
+    if PREPATTERN.match(item):
         # TODO: DO NOT CRUMBLE SINGLE AND DOUBLE NAMES?
         return True
     if sdata.isname(item):
