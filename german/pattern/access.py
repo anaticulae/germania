@@ -34,24 +34,26 @@ DAYMONTHYEAR = r'[ ]{0,3}(?P<day>\d{1,2})[ ]{0,2}[\.\-][ ]{0,2}(?P<month>\d{1,2}
 DAYTMONTHYEAR = r'[ ]{0,3}(?P<day>\d{1,2})\.[ ]{0,3}(?P<month>' + MONTHREGEX + r')[ ]{0,3}(?P<year>\d{2,4})'
 YEARMONTHDAY = r'[ ]{0,3}(?P<year>\d{2,4})[ ]{0,2}[\.\-][ ]{0,2}(?P<month>\d{1,2})[ ]{0,2}[\.\-][ ]{0,2}(?P<day>\d{1,2})'
 
+SIMPLE = r"""
+    \(?
+    (
+        (Online\;?|Letzter)[ ]{0,3}Zugriff[ ]{0,3}\:?|
+        Zugriff[ ]{0,3}(am)?|
+        Datum[ ]des[ ]{0,3}Zugriffs?[ ]{0,3}(am)?\:?|
+        Abgerufen[ ]{0,3}(am[ ]{0,3})?|
+        Accessed[ ]{0,3}(on[ ]{0,3})?|
+        Stand:[ ]{0,3}
+    )
+    %s
+    \)?
+"""
+
 PATTERN = [
-    r'(Online\;?|Letzter)[ ]{0,3}Zugriff\:?' + DAYMONTHYEAR,
-    r'(Online\;?|Letzter)[ ]{0,3}Zugriff\:?' + DAYTMONTHYEAR,
-    r'(Online\;?|Letzter)[ ]{0,3}Zugriff\:?' + MONTHDAYYEAR,
+    SIMPLE % DAYMONTHYEAR,
+    SIMPLE % DAYTMONTHYEAR,
+    SIMPLE % MONTHDAYYEAR,
+    SIMPLE % YEARMONTHDAY,
     r'Version\:?[ ]{0,3}(?P<month>\w+)[ ]{0,3}(?P<year>\d{2,4})',
-    r'Zugriff[ ]{0,3}(am)?' + DAYMONTHYEAR,
-    r'Zugriff[ ]{0,3}(am)?' + DAYTMONTHYEAR,
-    r'Zugriff[ ]{0,3}(am)?' + MONTHDAYYEAR,
-    r'Zugriffs?[ ]{0,3}:?' + DAYTMONTHYEAR,
-    r'Abgerufen[ ]{0,3}(am[ ]{0,3})?' + DAYMONTHYEAR,
-    r'Abgerufen[ ]{0,3}(am[ ]{0,3})?' + DAYTMONTHYEAR,
-    r'Abgerufen[ ]{0,3}(am[ ]{0,3})?' + YEARMONTHDAY,
-    r'Accessed[ ]{0,3}(on[ ]{0,3})?' + DAYMONTHYEAR,
-    r'Accessed[ ]{0,3}(on[ ]{0,3})?' + DAYTMONTHYEAR,
-    r'Accessed[ ]{0,3}(on[ ]{0,3})?' + YEARMONTHDAY,
-    r'\(?Stand:[ ]{0,3}' + DAYMONTHYEAR + r'\)?',
-    r'\(?Stand:[ ]{0,3}' + DAYTMONTHYEAR + r'\)?',
-    r'\(?Stand:[ ]{0,3}' + YEARMONTHDAY + r'\)?',
 ]
 PATTERN = [utila.compiles(pattern) for pattern in PATTERN]
 
@@ -62,7 +64,7 @@ def accessed(text: str, verbose: bool = True):
     >>> accessed('[Letzter Zugriff: 16.02.15]')
     [((15, 2, 16), 'Letzter Zugriff: 16.02.15')]
     >>> accessed('(Datum des Zugriffs: 05. Juli 2004)')
-    [((2004, 7, 5), 'Zugriffs: 05. Juli 2004')]
+    [((2004, 7, 5), '(Datum des Zugriffs: 05. Juli 2004)')]
     >>> accessed('Abgerufen am 06.06.2015')
     [((2015, 6, 6), 'Abgerufen am 06.06.2015')]
     >>> accessed('Abgerufen am 2015.06.06', verbose=False)
