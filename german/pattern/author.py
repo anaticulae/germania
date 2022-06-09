@@ -194,7 +194,8 @@ def judge(parsed: list):
 VALID_NAME = re.compile(r'(\w\.|\w{4,})')
 
 
-def person_simple(parsed: list, max_names: int = 4) -> bool:
+@utila.rename(max_names='names_max')
+def person_simple(parsed: list, names_max: int = 4) -> bool:
     """\
     >>> person_simple('K. Fahrendholz'.split())
     True
@@ -207,7 +208,7 @@ def person_simple(parsed: list, max_names: int = 4) -> bool:
     >>> person_simple('E. D’Andrea'.split())
     True
     """
-    if len(parsed) > max_names:
+    if len(parsed) > names_max:
         return False
     if any(german.isperson(name) for name in parsed):
         return True
