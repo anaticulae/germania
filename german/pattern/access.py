@@ -53,6 +53,7 @@ PATTERN = [
     r'\(?Stand:[ ]{0,3}' + DAYTMONTHYEAR + r'\)?',
     r'\(?Stand:[ ]{0,3}' + YEARMONTHDAY + r'\)?',
 ]
+PATTERN = [utila.compiles(pattern) for pattern in PATTERN]
 
 
 @utila.cacheme
@@ -73,7 +74,7 @@ def accessed(text: str, verbose: bool = True):
     """
     result = []
     for pattern in PATTERN:
-        for matched in utila.finditer(pattern, text=text):
+        for matched in pattern.finditer(text):
             raw = utila.extract_match(matched)
             text = utila.ghost_replace(text, pattern=raw)
             date = (
