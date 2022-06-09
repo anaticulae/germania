@@ -295,6 +295,7 @@ def contain_quotation_marks(items) -> bool:
     return any(item in MARKS for item in items)
 
 
+@utila.cacheme
 def stemmer_load(lang: str = 'ger'):  # pylint:disable=W0613
     import nltk.stem
     result = nltk.stem.SnowballStemmer(language='german')
