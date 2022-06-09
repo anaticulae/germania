@@ -7,13 +7,11 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import re
-
 import utila
 
 import german.utils.month
 
-YEARS = re.compile(r'\b(19|20)\d{2}\b')
+YEARS = utila.compiles(r'\b(19|20)\d{2}\b')
 MONTH_REGEX = german.utils.month.MONTH_REGEX
 
 
@@ -27,7 +25,7 @@ def years(raw: str, min_=1950, max_=2025, verbose: bool = False):
     [(1987, '1987')]
     """
     result = []
-    for item in re.finditer(YEARS, raw):
+    for item in YEARS.finditer(raw):
         year = int(item[0])
         if min_ <= year <= max_:
             parsed = year
@@ -38,7 +36,7 @@ def years(raw: str, min_=1950, max_=2025, verbose: bool = False):
     return result
 
 
-DATES = re.compile(r'(\d{4}|\d{1,2})\.(\d{1,2})\.(\d{4}|\d{1,2})')
+DATES = utila.compiles(r'(\d{4}|\d{1,2})\.(\d{1,2})\.(\d{4}|\d{1,2})')
 
 
 def dates_master(
@@ -95,7 +93,7 @@ def dates(
     [((2018, 5, 27), '27.05.2018')]
     """
     result = []
-    for item in re.finditer(DATES, raw):
+    for item in DATES.finditer(raw):
         day, month, year = item[1], item[2], item[3]
         day, month, year = int(day), int(month), int(year)
         if day > year:
@@ -124,7 +122,7 @@ def dates_month_year(raw: str, verbose: bool = True, sort: bool = True):
     [(('1991', 8, 0), 'Aug. 1991')]
     """
     result = []
-    for item in re.finditer(MONTH_YEAR, raw):
+    for item in MONTH_YEAR.finditer(raw):
         month, year, day = item[1], item[2], 0
         month = german.utils.month.month(month)
         parsed = (year, month, day)
