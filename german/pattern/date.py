@@ -74,11 +74,12 @@ def dates_master(
     return result
 
 
+@utila.rename(min_year='year_min', max_year='year_max')
 @utila.cacheme
 def dates(
     raw: str,
-    min_year=1950,
-    max_year=2025,
+    year_min=1950,
+    year_max=2025,
     verbose: bool = False,
     sort: bool = True,
 ):
@@ -103,7 +104,7 @@ def dates(
             continue
         if not 1 <= month <= 12:
             continue
-        if not min_year <= year <= max_year:
+        if not year_min <= year <= year_max:
             continue
         parsed = (year, month, day)
         if verbose:
