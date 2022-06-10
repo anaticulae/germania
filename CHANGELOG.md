@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.21.3
+
+### Feature
+
+* compile pattern (0f137c5180ae)
+
 ## v1.21.2
 
 ### Feature
