@@ -197,6 +197,8 @@ def is_sentence_closed(token: list) -> bool:  # pylint:disable=R0911
 
     >>> is_sentence_closed(['Effektivität', 'und', 'Effizienz.', '“'])
     True
+    >>> is_sentence_closed(' Welt prägt die Immersionserfahrung.“{{hn:19:nh}}'.split())
+    True
     """
     assert token, 'empty sentence'
     assert isinstance(token, (list, tuple)), type(token)
@@ -223,7 +225,11 @@ def is_sentence_closed(token: list) -> bool:  # pylint:disable=R0911
     return False
 
 
-HIGHNOTE_MAGIC_PATTERN = utila.compiles(r'[\.\?\!\:]\{\{hn\:\d{1,4}\:nh\}\}')
+HIGHNOTE_MAGIC_PATTERN = utila.compiles(r"""
+        [\.\?\!\:]                  # sentence end sign
+        ["''“‘]{0,1}                # optinal quotation sign
+        \{\{hn\:\d{1,4}\:nh\}\}     # highnote at the end
+""")
 
 
 def magic_ending(tokens) -> bool:
