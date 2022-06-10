@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.21.4
+
+### Fix
+
+* adjust sentence end checker (cf7eae9ce9e9)
+
 ## v1.21.3
 
 ### Feature
