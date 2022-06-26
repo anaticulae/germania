@@ -26,7 +26,10 @@ class SPunktLanguageVars(nltk.tokenize.punkt.PunktLanguageVars):
         r"""
         (
             ["\')}\]“”\d]|
-            \{\{hn\:\d{1,4}\:nh\}\}     # highnote magic pattern
+            (
+                [ ]{0,3}                    # allow some white space before
+                \{\{hn\:\d{1,4}\:nh\}\}     # highnote magic pattern
+            )
         )+?
         (?:\s+|(?=--)|$)
         """,
