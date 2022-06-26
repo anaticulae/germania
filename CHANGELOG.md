@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.21.5
+
+### Feature
+
+* allow white space before highnote pattern (1d126eb1bd6f)
+
 ## v1.21.4
 
 ### Fix
