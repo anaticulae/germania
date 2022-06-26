@@ -49,6 +49,7 @@ if __name__ == "__main__":
             'german.error',
             'german.improve',
             'german.pattern',
+            'german.sentence',
             'german.utils',
             'german_data',
             'science_text',
