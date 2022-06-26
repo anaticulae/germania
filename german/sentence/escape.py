@@ -15,6 +15,8 @@ Do not change anything if both operation are used.
 
 import utila
 
+import german.utils.month
+
 
 def escapes(text: str):
     """\
@@ -43,11 +45,9 @@ DATE = utila.compiles(r"""
     [ ]{0,5}
     \.
     [ ]{0,5}
-    (
-        Juni|
-        Juli
-    )
-""")
+    %s
+""" % german.utils.month.MONTH_REGEX)
+
 UN_DATE = utila.compiles(r"""
     \<\<\<DATE\:(.+?)\>\>\>
 """)
