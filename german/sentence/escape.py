@@ -71,4 +71,5 @@ def un_date(text):
     >>> un_date(r'vorgelegt, die am <<<DATE:21.\WJuni>>> 2016  verabschiedet wurde')
     'vorgelegt, die am 21. Juni 2016  verabschiedet wurde'
     """
-    return UN_DATE.sub(r'\1', text).replace(r'\W', ' ')
+    revert = lambda x: x[1].replace(r'\W', ' ')
+    return UN_DATE.sub(revert, text)
