@@ -9,8 +9,13 @@
 """\
 Do not change anything if both operation are used.
 
->>> unescape(unescape('Am 30. Juli habe ich Geburtstag.'))
+>>> double = lambda x: unescape(unescape(x))
+>>> double('Am 30. Juli habe ich Geburtstag.')
 'Am 30. Juli habe ich Geburtstag.'
+
+>>> double('sich vom 15. Februar bis zum 13. März, was den')
+'sich vom 15. Februar bis zum 13. März, was den'
+
 """
 
 import utila
