@@ -48,6 +48,7 @@ def sentence_tokenize(
     >>> sentence_tokenize('Manfred sagt: "Ich bin König, wer bist du?"')
     ['Manfred sagt:', '"Ich bin König, wer bist du?"']
     """
+    import german.sentence.escape  # pylint:disable=W0621
     text = utila.normalize_text(
         text,
         merge_divis=merge_divis,
@@ -57,8 +58,10 @@ def sentence_tokenize(
     # TODO: REMOVE LATER
     text = german.text_magic(text)
     language = language_select(text)
+    text = german.sentence.escape.escapes(text)
     # tokenize sentence
     tokenized = knlp.sent_tokenize(text, language=language)
+    tokenized = [german.sentence.escape.unescape(item) for item in tokenized]
     result = balance_sentence(tokenized)
     result = double_colon_error(result)
     return result
