@@ -2,6 +2,19 @@
 
 Every noteable change is logged here.
 
+## v1.22.0
+
+### Feature
+
+* use escape to improve extraction (4cf49d9e8355)
+* extend month pattern (191f865b8eaa)
+* add method to automate escaping (a701a2358ccf)
+* add method to escape dates (50b52a98d195)
+
+### Fix
+
+* just revert in finding, not on global text (e21762050d18)
+
 ## v1.21.5
 
 ### Feature
