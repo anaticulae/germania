@@ -6,8 +6,37 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+"""\
+Do not change anything if both operation are used.
+
+>>> unescape(unescape('Am 30. Juli habe ich Geburtstag.'))
+'Am 30. Juli habe ich Geburtstag.'
+"""
 
 import utila
+
+
+def escapes(text: str):
+    """\
+    >>> escapes('')
+    ''
+    """
+    todo = utila.methods(utila.load_module(__file__), starts='ex_')
+    for method in todo:
+        text = method(text)
+    return text
+
+
+def unescape(text: str):
+    """\
+    >>> unescape('')
+    ''
+    """
+    todo = utila.methods(utila.load_module(__file__), starts='un_')
+    for method in todo:
+        text = method(text)
+    return text
+
 
 DATE = utila.compiles(r"""
     \d{1,2}
