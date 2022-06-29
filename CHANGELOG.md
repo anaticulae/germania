@@ -2,6 +2,18 @@
 
 Every noteable change is logged here.
 
+## v1.23.0
+
+### Feature
+
+* add English page pattern (3a70e5833532)
+* add method to convert token to plain text (600c77bf491b)
+
+### Fix
+
+* do not treat name as page number error (4151260e0afc)
+* do not detect abbreviation as page error (41359d537bd7)
+
 ## v1.22.0
 
 ### Feature
