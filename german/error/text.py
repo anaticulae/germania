@@ -48,6 +48,10 @@ class TextMachine(german.TextErrorMachine):
         []
         >>> check('Meuschel S., Legitimation und Parteiherrschaft ')
         []
+
+        run large text test
+        >>> import backbone;check(backbone.text_improved(1024*1024))
+        []
         """
         result = []
         for match in self.MISSING_PAGENUMBER.finditer(text):
