@@ -38,6 +38,8 @@ class TextMachine(german.TextErrorMachine):
         [TextError(...<TextErrorType.MISSING...raw='S.'...)]
         >>> check('Hier fehlt wohlx S. die Seitennummer')
         [TextError(...<TextErrorType.MISSING...raw='S.'...)]
+        >>> check('Vgl. Dixon, S.: Twitter: distribution of global audiences 2021')
+        []
         >>> check('Schols. Hier')
         []
         >>> check('Berlin 19982, s. VII ')
@@ -59,7 +61,7 @@ class TextMachine(german.TextErrorMachine):
             if follows_name(after):
                 continue
             start, lookback = match.span()[0], 60
-            before = text[start - lookback:start]
+            before = text[max(0, start - lookback):start]
             if name_before(before):
                 continue
             error = german.TextError(
