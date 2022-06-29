@@ -13,7 +13,7 @@ import utila
 # TODO: MOVE TO A MORE GENERAL PLACE
 TABLE = str.maketrans({'∼': '~'})
 
-CHARS = r'[\w\d\./\-\_\?\=\&\%\+\~]+[\w\d/\?\=\&\%]'
+CHARS = r'[\w\d\./\-\_\?\=\&\%\+\~\#]+[\w\d/\?\=\&\%]'
 HYPERLINK = utila.compiles(rf"""
     (
         (https://|http://|www\.)
@@ -23,7 +23,7 @@ HYPERLINK = utila.compiles(rf"""
         [\w\d\-\_\.]+?                      # soft pattern without url start
         \.
         (de|net|org|com|co\.uk|\w{2,3})
-        \/
+        [\/\#]
         {CHARS}
     )
 """)
@@ -40,6 +40,10 @@ def hyperlink(raw: str, position: bool = False, verbose: bool = False):
     [('wehewehe.org/gsdl2.5/cgi-bin/hdict?d=D21021', 'wehewehe.org/gsdl2.5/cgi-bin/hdict?d=D21021')]
     >>> hyperlink('persönliche bzw.demographische Daten')
     []
+    >>> hyperlink('https://news.linkedin.com/about-us#Statistics')
+    ['https://news.linkedin.com/about-us#Statistics']
+    >>> hyperlink('https://news.linkedin.com/#Statistics')
+    ['https://news.linkedin.com/#Statistics']
     """
     raw = raw.replace('\n', '')
     raw = raw.translate(TABLE)
