@@ -19,7 +19,10 @@ class TextMachine(german.TextErrorMachine):
 
     MISSING_PAGENUMBER = utila.compiles(r"""
         \W
-        (S\.)
+        (
+            S\.|
+            p\.
+        )
         [ ]{0,4}\n?
         (?![\dixv\s])   # s. VII
     """)
