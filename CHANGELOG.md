@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.23.1
+
+### Fix
+
+* adjust pagenumber skip at the start of a sentence (fac1aaafedf1)
+* extend hyperlink parser (5e8b53387790)
+
 ## v1.23.0
 
 ### Feature
