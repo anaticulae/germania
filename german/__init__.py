@@ -70,6 +70,7 @@ from german.sentence import split_token
 from german.sequence import init
 from german.sequence import search
 from german.sequence import searches
+from german.sequence import token_plain
 from german.tagger import word_tag
 from german.text import words_fromstr
 from german.utils.month import MONTH

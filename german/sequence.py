@@ -12,6 +12,7 @@ import operator
 import re
 import typing
 
+import konrad
 import utila
 
 import german
@@ -212,3 +213,38 @@ def simplify(items: list) -> list:
             continue
         result.append(item)
     return result
+
+
+def token_plain(items: list) -> str:
+    """\
+    >>> token_plain('A. 5 . 2)'.split())
+    'A.5.2)'
+    >>> token_plain('A. 5 .)'.split())
+    'A.5.)'
+    """
+    if utila.iterable(items):
+        items = [konrad.mark2str(item) for item in items]
+        raw = ' '.join(items)
+    else:
+        raw = items
+    raw = raw.replace('( ', '(')
+    raw = raw.replace('[ ', '[')
+    raw = raw.replace(' )', ')')
+    raw = raw.replace(' ]', ']')
+    raw = raw.replace(' ,', ',')
+    raw = raw.replace(' ; ', '; ')
+    raw = raw.replace(' - ', '-')
+    raw = raw.replace(' : ', ': ')
+    raw = raw.replace(' .', '.')
+    # TODO: VERY BAD
+    raw = re.sub(
+        r'([A-Z]\.)[ ](\d{1,2})[ ]?\.[ ]?(\d{1,2})',
+        r'\1\2.\3',
+        raw,
+    )
+    raw = re.sub(
+        r'([A-Z]\.)[ ](\d{1,2})[ ]?\.',
+        r'\1\2.',
+        raw,
+    )
+    return raw
