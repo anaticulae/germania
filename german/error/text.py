@@ -36,7 +36,7 @@ class TextMachine(german.TextErrorMachine):
         >>> check = TextMachine().check_pagenumber_complete
         >>> check('Bonn, Herford 1993, S.\nDer Brief')
         [TextError(...<TextErrorType.MISSING...raw='S.'...)]
-        >>> check('Hier fehlt wohl S. die Seitennummer')
+        >>> check('Hier fehlt wohlx S. die Seitennummer')
         [TextError(...<TextErrorType.MISSING...raw='S.'...)]
         >>> check('Schols. Hier')
         []
@@ -46,11 +46,17 @@ class TextMachine(german.TextErrorMachine):
         []
         >>> check('in the U.S. | Pew Research')
         []
+        >>> check('Meuschel S., Legitimation und Parteiherrschaft ')
+        []
         """
         result = []
         for match in self.MISSING_PAGENUMBER.finditer(text):
             after = text[match.span()[1]:]
             if follows_name(after):
+                continue
+            start, lookback = match.span()[0], 60
+            before = text[start - lookback:start]
+            if name_before(before):
                 continue
             error = german.TextError(
                 state=german.TextErrorType.MISSING,
@@ -77,4 +83,19 @@ def follows_name(text: str) -> bool:
         name = name.strip(':;, ')
         if sdata.isname(name):
             return True
+    return False
+
+
+def name_before(text: str) -> bool:
+    """\
+    >>> name_before('Legitimation und Parteiherrschaft Meuschel')
+    True
+    """
+    token = text.rstrip(':;, ').rsplit(maxsplit=1)
+    if not token:
+        return False
+    # select the right one
+    name = token[-1].strip(':;, ')
+    if sdata.isname(name):
+        return True
     return False
