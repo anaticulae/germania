@@ -18,7 +18,11 @@ import german
 class TextMachine(german.TextErrorMachine):
 
     MISSING_PAGENUMBER = utila.compiles(r"""
-        \W
+        (
+            \s|
+            [^\w]\.| # u.s.
+            [,;:]
+        )
         (
             S\.|
             p\.
@@ -40,6 +44,8 @@ class TextMachine(german.TextErrorMachine):
         []
         >>> check('S. Meuschel, Legitimation und Parteiherrschaft ')
         []
+        >>> check('in the U.S. | Pew Research')
+        []
         """
         result = []
         for match in self.MISSING_PAGENUMBER.finditer(text):
@@ -49,7 +55,7 @@ class TextMachine(german.TextErrorMachine):
             error = german.TextError(
                 state=german.TextErrorType.MISSING,
                 location=self.location(match),
-                raw=match[1],
+                raw=match[0].strip(),
             )
             result.append(error)
         return result
