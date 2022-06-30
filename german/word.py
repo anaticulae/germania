@@ -63,8 +63,12 @@ def word_normalize(item: str, lang: str = 'ger') -> str:
     """\
     >>> word_normalize('Eisenbahnen')
     'eisenbahn'
+    >>> word_normalize('Eisenbahnen Eisenbahnen Eisenbahnen')
+    'eisenbahn eisenbahn eisenbahn'
     """
     stemmer = stemmer_load(lang=lang)
+    if ' ' in item:
+        return ' '.join(word_normalize(it) for it in item.split())
     return stemmer.stem(item)
 
 
