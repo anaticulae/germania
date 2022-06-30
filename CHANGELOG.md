@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.24.0
+
+### Feature
+
+* add method to find abbreviation (548fa06ad415)
+* add ability to stem multiple token in one invocation (b2aa76fa73b7)
+
 ## v1.23.1
 
 ### Fix
