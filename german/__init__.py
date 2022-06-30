@@ -18,6 +18,7 @@ import os
 
 import nltk_data
 
+from german.abbrev import find_abbrev
 from german.error.finding import TextError
 from german.error.finding import TextErrors
 from german.error.finding import TextErrorType
