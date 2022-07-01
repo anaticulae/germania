@@ -252,8 +252,8 @@ def token_plain(items: list) -> str:
 
 def ngram(tokens: list, length: int = 2) -> list:
     """\
-    >>> ngram('Ich verware mich dagegen überwacht zu werden.'.split(), length=4)
-    [['Ich', 'verware', 'mich', 'dagegen'], ['verware', 'mich', 'dagegen', 'überwacht'], \
+    >>> ngram('Ich verwahre mich dagegen überwacht zu werden.'.split(), length=4)
+    [['Ich', 'verwahre', 'mich', 'dagegen'], ['verwahre', 'mich', 'dagegen', 'überwacht'], \
 ['mich', 'dagegen', 'überwacht', 'zu'], ['dagegen', 'überwacht', 'zu', 'werden.']]
     """
     result = []
