@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.25.0
+
+### Feature
+
+* add method to compute ngram (05e5a159e9d2)
+
 ## v1.24.0
 
 ### Feature
