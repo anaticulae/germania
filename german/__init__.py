@@ -69,6 +69,7 @@ from german.sentence import sentence_select
 from german.sentence import sentence_tokenize
 from german.sentence import split_token
 from german.sequence import init
+from german.sequence import ngram
 from german.sequence import search
 from german.sequence import searches
 from german.sequence import token_plain
