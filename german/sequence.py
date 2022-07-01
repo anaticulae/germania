@@ -250,18 +250,25 @@ def token_plain(items: list) -> str:
     return raw
 
 
-def ngram(tokens: list, length: int = 2) -> list:
+def ngram(tokens: list, length: int = 2, verbose: bool = False) -> tuple:
     """\
     >>> ngram('Ich verwahre mich dagegen überwacht zu werden.'.split(), length=4)
-    [['Ich', 'verwahre', 'mich', 'dagegen'], ['verwahre', 'mich', 'dagegen', 'überwacht'], \
-['mich', 'dagegen', 'überwacht', 'zu'], ['dagegen', 'überwacht', 'zu', 'werden.']]
+    (('Ich', 'verwahre', 'mich', 'dagegen'), ('verwahre', 'mich', 'dagegen', 'überwacht'),\
+ ('mich', 'dagegen', 'überwacht', 'zu'), ('dagegen', 'überwacht', 'zu', 'werden.'))
     >>> ngram(['Ich'])
-    []
+    ()
+    >>> ngram('Hier spricht Dr. Helmut'.split(), verbose=True, length=3)
+    ((('Hier', 'spricht', 'Dr.'), (0, 3)), (('spricht', 'Dr.', 'Helmut'), (1, 4)))
     """
     result = []
-    for index in range(len(tokens) - length + 1):
-        selected = tokens[index:index + length]
+    for start in range(len(tokens) - length + 1):
+        end = start + length
+        selected = tuple(tokens[start:end])
         if len(selected) < length:
             continue
-        result.append(selected)
+        if verbose:
+            result.append((selected, (start, end)))
+        else:
+            result.append(selected)
+    result: tuple = tuple(result)
     return result
