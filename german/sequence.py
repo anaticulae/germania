@@ -255,8 +255,13 @@ def ngram(tokens: list, length: int = 2) -> list:
     >>> ngram('Ich verwahre mich dagegen überwacht zu werden.'.split(), length=4)
     [['Ich', 'verwahre', 'mich', 'dagegen'], ['verwahre', 'mich', 'dagegen', 'überwacht'], \
 ['mich', 'dagegen', 'überwacht', 'zu'], ['dagegen', 'überwacht', 'zu', 'werden.']]
+    >>> ngram(['Ich'])
+    []
     """
     result = []
     for index in range(len(tokens) - length + 1):
-        result.append(tokens[index:index + length])
+        selected = tokens[index:index + length]
+        if len(selected) < length:
+            continue
+        result.append(selected)
     return result
