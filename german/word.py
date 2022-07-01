@@ -28,6 +28,8 @@ def word_tokenize(
     [<Mark.LIST_DOT:...>, 'Wie', 'gestaltet',...<Mark.QUESTION_MARK:...>]
     >>> word_tokenize('Systemen“{{hn:144:nh}}. Sie!', validate_sentences=False)
     ['Systemen', <Mark.QUOTATION_MARK_DOUBLE_CLOSE: 33>, '{{hn:144:nh}}', <Mark.FULLSTOP: 22>...]
+    >>> word_tokenize('Mister-Dinh', validate_sentences=False)
+    ['Mister', <Mark.HYPHEN: 23>, 'Dinh']
     """
     if validate_sentences and not german.is_sentence(items):
         # Ensure to parse complete sentences.
