@@ -2,6 +2,21 @@
 
 Every noteable change is logged here.
 
+## v1.26.0
+
+### Feature
+
+* add parameter to normalize after tokenize (d9a14501b981)
+* add verbose flag, make data static (f86ccebce80f)
+
+### Fix
+
+* skip too short ngram (18786de7670c)
+
+### Documentation
+
+* extend interface documentation (cc4075023afc)
+
 ## v1.25.0
 
 ### Feature
