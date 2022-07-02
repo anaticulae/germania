@@ -21,6 +21,7 @@ Words = typing.List[str]
 def word_tokenize(
     items: str,
     validate_sentences: bool = True,
+    token_normalize: bool = False,
     lang: konrad.Language = None,
 ) -> Words:
     """\
@@ -58,6 +59,11 @@ def word_tokenize(
     result = merge_numbers(result, items)
     result = merge_reference(result, items)
     result = merge_highnote(result)
+    if token_normalize:
+        result = [
+            word_normalize(item) if isinstance(item, str) else item
+            for item in result
+        ]
     return result
 
 
