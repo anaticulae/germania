@@ -89,6 +89,9 @@ def searches(
     >>> searches([utila.compiles(r'\{\{hn\:\d{1,4}\:nh\}\}')],
     ... 'Treiber charakterisiert.{{hn:7:nh}}', verbose=True)
     ([(3, 4)], [['{{hn:7:nh}}']])
+    >>> searches(sentence=['muss', 'gerad', 'wirtschaft', 'schwach', 'unternehm', 'neu', 'und'],
+    ... patterns=[('onlin', 'unternehm'),], tokens_complex=False)
+    []
     """
     if neighbours_merge:
         assert overlapping_merge, 'enable overlapping_merge'
