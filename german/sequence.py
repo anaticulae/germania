@@ -85,7 +85,21 @@ def searches(
     neighbours_merge: bool = False,
     verbose: bool = False,
 ) -> list:
-    r"""\
+    r"""Searches multiple pattern in a single sentence.
+
+    Args:
+        patterns(list): list of pattern
+        sentence(list): list of tokens
+        lowercase(bool): lowercase content before searching
+        tokens_complex(bool): compare token by type, e.g. person, digit etc.
+        compare_content(bool): ensure that string matches by content and
+                               not type
+        overlapping_remove(bool): merge intersecting results due
+                                  mutliple patterns
+        neighbours_merge(bool): merge neighbour detection
+        verbose(bool): add raw data to detected result
+    Returns:
+        List of findings.
     >>> searches([utila.compiles(r'\{\{hn\:\d{1,4}\:nh\}\}')],
     ... 'Treiber charakterisiert.{{hn:7:nh}}', verbose=True)
     ([(3, 4)], [['{{hn:7:nh}}']])
