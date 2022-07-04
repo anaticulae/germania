@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v1.26.1
+
+### Fix
+
+* do not search patterns by type (1cdbbe9db8b1)
+
+### Documentation
+
+* extend interface documentation (a41bcaf4a839)
+
 ## v1.26.0
 
 ### Feature
