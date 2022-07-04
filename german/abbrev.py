@@ -29,7 +29,11 @@ def find_abbrev(abbrev: str, words: list) -> str:
         german.word_normalize(item) if isinstance(item, str) else item
         for item in words
     ]
-    detected = german.searches(patterns=lookup, sentence=normalized)
+    detected = german.searches(
+        patterns=lookup,
+        sentence=normalized,
+        tokens_complex=False,
+    )
     if not detected:
         return None
     result = ' '.join(words[index] for index in utila.rlist(*detected[0]))
