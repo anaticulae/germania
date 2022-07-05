@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.26.2
+
+### Feature
+
+* compile pattern (4fdc52a49bda)
+
 ## v1.26.1
 
 ### Fix
