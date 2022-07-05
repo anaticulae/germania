@@ -31,6 +31,8 @@ def word_tokenize(
     ['Systemen', <Mark.QUOTATION_MARK_DOUBLE_CLOSE: 33>, '{{hn:144:nh}}', <Mark.FULLSTOP: 22>...]
     >>> word_tokenize('Mister-Dinh', validate_sentences=False)
     ['Mister', <Mark.HYPHEN: 23>, 'Dinh']
+    >>> word_tokenize('mit 38 % höheren Click-Through-Raten als andere Bilder', validate_sentences=False)
+    ['mit', '38', <Mark.PERCENT: 43>, 'höheren', 'Click', <Mark.HYPHEN: 23>, 'Through', <Mark.HYPHEN: 23>...]
     """
     if validate_sentences and not german.is_sentence(items):
         # Ensure to parse complete sentences.
