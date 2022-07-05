@@ -7,7 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import re
 import typing
 
 import konrad
@@ -234,13 +233,16 @@ def merge_highnote(items) -> list:
     return result
 
 
+UNPLUG_NUMBERS = utila.compiles(r'(\d{1,10})')
+
+
 def unplug_numbers(result):
     """\
     >>> unplug_numbers(['Hier', 'ABC134', 'S.', '32ff'])
     ['Hier', 'ABC', '134', 'S.', '32', 'ff']
     """
     result = [
-        re.split(r'(\d+)', item) if isinstance(item, str) else item
+        UNPLUG_NUMBERS.split(item) if isinstance(item, str) else item
         for item in result
     ]
     result = utila.flatten(result, append=True)  # pylint:disable=unexpected-keyword-arg
