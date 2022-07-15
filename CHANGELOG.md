@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.26.3
+
+### Fix
+
+* insert language parameter (8b7ef9edf68b)
+* do not fail on regex mark match (02fdfd3bb86e)
+
 ## v1.26.2
 
 ### Feature
