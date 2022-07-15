@@ -200,6 +200,8 @@ class MergeAutomata:
                 if current != expected:
                     return False
                 continue
+            if isinstance(current, konrad.Mark):
+                return False
             if not expected.match(current):
                 return False
         return True
