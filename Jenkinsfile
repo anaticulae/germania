@@ -18,6 +18,11 @@ pipeline {
                 sh 'baw sh "pip install ."'
             }
         }
+        stage('train'){
+            steps{
+                sh 'baw sh "python science_text/train.py"'
+            }
+        }
         stage('doctest'){
             steps{
                 sh 'baw test docs -n1'
