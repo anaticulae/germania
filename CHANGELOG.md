@@ -2,6 +2,24 @@
 
 Every noteable change is logged here.
 
+## v1.27.0 (2022-09-27)
+
+### Feature
+
+* train science text (e8f03a310565)
+
+### Fix
+
+* ensure that data package exists (0ee2fccd3b66)
+
+### Chore
+
+* use separate training step (3d7592eb9859)
+* add train module to generate tokenizer (0e4a69f483f5)
+* upgrade requirements.txt (e28cae825d92)
+* add Jenkinsfile (e186590751e2)
+* upgrade requirements.txt (ae980af96c0c)
+
 ## v1.26.3
 
 ### Fix
