@@ -17,7 +17,7 @@ import utila
 import science_text.config
 
 
-def train():
+def setup(root):
     # pylint:disable=W0212
     science = nltk.load("tokenizers/punkt/{0}.pickle".format('science'))
     german = nltk.load("tokenizers/punkt/{0}.pickle".format('german'))
@@ -26,12 +26,11 @@ def train():
     tokenizer._params.abbrev_types |= science._params.abbrev_types
     tokenizer._params.abbrev_types |= german._params.abbrev_types
     dumped = pickle.dumps(tokenizer)
-    science_english_write(dumped)
+    science_english_write(dumped, root)
 
 
-def science_english_write(dumped):
-    root = os.path.abspath(os.path.split(__file__)[0])
-    base = os.path.join(root, '..', 'german_data/nltk_data/tokenizers/punkt/')
+def science_english_write(dumped, root):
+    base = os.path.join(root, 'german_data/nltk_data/tokenizers/punkt/')
     base = os.path.abspath(base)
     dests = [
         os.path.join(base, 'science_english.pickle'),
@@ -45,4 +44,5 @@ def science_english_write(dumped):
 
 
 if __name__ == "__main__":
-    train()
+    import science_text
+    setup(science_text.ROOT)
