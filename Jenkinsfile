@@ -16,6 +16,7 @@ pipeline {
             steps{
                 sh 'baw sync all'
                 sh 'baw sh "pip install ."'
+                sh 'baw sh "python train.py"'
             }
         }
         stage('train'){

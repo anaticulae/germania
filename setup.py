@@ -27,7 +27,6 @@ with open(os.path.join(ROOT, "requirements.txt"), encoding=UTF8) as fp:
 
 if __name__ == "__main__":
     # allow setup.py to run from another directory
-    os.chdir(ROOT)
     setuptools.setup(
         author='Helmut Konrad Fahrendholz',
         author_email='info@checkitweg.de',
