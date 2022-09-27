@@ -77,7 +77,7 @@ def setup(root):
         os.path.join(root, 'nltk_data/tokenizers/punkt/PY3/science.pickle'),
     ]
     for dest in dests:
-        parent, _ = os.path.split(dest)
+        parent = utila.path_parent(dest)
         os.makedirs(parent, exist_ok=True)
         utila.log(dest)
         utila.file_replace_binary(dest, dumped)

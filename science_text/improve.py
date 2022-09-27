@@ -38,7 +38,7 @@ def science_english_write(dumped):
         os.path.join(base, 'PY3/science_english.pickle'),
     ]
     for dest in dests:
-        parent, _ = os.path.split(dest)
+        parent = utila.path_parent(dest)
         os.makedirs(parent, exist_ok=True)
         utila.log(dest)
         utila.file_replace_binary(dest, dumped)
