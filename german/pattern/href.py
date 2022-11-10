@@ -100,7 +100,9 @@ def links(raw: str, position: bool = False, verbose: bool = False) -> list:
     [(('wehewehe.org/gsdl2.5/cgi-bin/hdict?d=D21021document', 11)...(('file:///C:/kiwi/bachelor028.pdf', 64)...)]
     """
     result = hyperlink(raw, position=position, verbose=verbose)
-    result += locallink(raw, position=position, verbose=verbose)
+    if localrefs := locallink(raw, position=position, verbose=verbose):
+        # avoid side effects localrefs must not change result of hyperlink
+        result = result + localrefs
     if position:
         result.sort(key=lambda x: x[0][1] if verbose else x[1])
     return result
