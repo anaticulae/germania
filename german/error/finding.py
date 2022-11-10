@@ -9,7 +9,6 @@
 
 import dataclasses
 import enum
-import typing
 
 import iamraw
 
@@ -41,4 +40,4 @@ class TextError:
     """Name of method which had determined this error."""
 
 
-TextErrors = typing.List[TextError]
+TextErrors = list[TextError]

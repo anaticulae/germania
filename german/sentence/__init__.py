@@ -130,9 +130,9 @@ def isunbalanced(sentence: str) -> bool:
     >>> isunbalanced('I am not ( unbalanced )')
     False
     """
-    for start, close in PAIR:
-        if sentence.count(start) != sentence.count(close):
-            return True
+    if any((sentence.count(start) != sentence.count(close))
+           for start, close in PAIR):
+        return True
     return False
 
 
@@ -278,7 +278,7 @@ def split_token(text: str, normalize: bool = True):
     if normalize:
         tokens = [token for token in tokens if token]
     tokens = [split_special_chars(item) for item in tokens]
-    tokens = utila.flatten(tokens)
+    tokens = utila.flat(tokens)
     return tokens
 
 

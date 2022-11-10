@@ -124,7 +124,7 @@ def searches(
         if matches:
             result.extend(matches)
     # TODO: SORT RESULT?
-    result = utila.make_unique(result)
+    result = utila.unique(result)
     if overlapping_remove:
         result = overlapping_merge(result, connected_merge=neighbours_merge)
     if verbose:

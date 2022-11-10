@@ -26,7 +26,6 @@ False
 
 import enum
 import re
-import typing
 
 import knlp
 import konrad
@@ -47,7 +46,7 @@ class WordType(enum.Enum):
     UNDEFINED = enum.auto()
 
 
-WordTypes = typing.List[WordType]
+WordTypes = list[WordType]
 
 
 @utila.cacheme

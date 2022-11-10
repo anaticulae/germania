@@ -7,14 +7,12 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import typing
-
 import konrad
 import utila
 
 import german
 
-Words = typing.List[str]
+Words = list[str]
 
 
 def word_tokenize(
@@ -247,7 +245,7 @@ def unplug_numbers(result):
         UNPLUG_NUMBERS.split(item) if isinstance(item, str) else item
         for item in result
     ]
-    result = utila.flatten(result, append=True)  # pylint:disable=unexpected-keyword-arg
+    result = utila.flat(result, append=True)  # pylint:disable=unexpected-keyword-arg
     result = utila.notempty(result)  # pylint:disable=E1101
     return result
 

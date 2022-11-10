@@ -81,8 +81,8 @@ GROUPS = [
     utila.splitlines(month, unique=False, lowers=False) for month in
     utila.splitlines(MONTH_RAW, pattern='\n\n', unique=False, lowers=False)
 ]
-MONTH_REGEX = '(' + '|'.join(utila.flatten(GROUPS)) + ')'
-MONTH = utila.flatten(GROUPS)
+MONTH_REGEX = '(' + '|'.join(utila.flat(GROUPS)) + ')'
+MONTH = utila.flat(GROUPS)
 
 
 @utila.cacheme
