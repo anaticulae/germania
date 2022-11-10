@@ -2,6 +2,19 @@
 
 Every noteable change is logged here.
 
+## v1.27.1 (2022-11-10)
+
+### Fix
+
+* fix side effects when parsing locals (a77847f14fe8)
+
+### Chore
+
+* upgrade environment (37be3ea47652)
+* convert nightly to all (8748108f86b9)
+* upgrade requirements.txt (7010b0a26279)
+* do not run in privileged mode (66c3a2f84dfd)
+
 ## v1.27.0 (2022-09-27)
 
 ### Feature
