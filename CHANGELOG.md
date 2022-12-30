@@ -2,6 +2,20 @@
 
 Every noteable change is logged here.
 
+## v1.28.0 (2022-12-30)
+
+### Feature
+
+* make train runnable (608b3a156b07)
+
+### Chore
+
+* ensure that model is trained (acacf0ffb9c9)
+* add install task (6990b80a92ff)
+* use utila quick (561200196a7f)
+* upgrade pipeline (8bd04a4d7518)
+* upgrade requirements.txt (0ca395984692)
+
 ## v1.27.1 (2022-11-10)
 
 ### Fix
