@@ -8,49 +8,21 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import os
-import re
+import utila
 
-import setuptools
-
-ROOT = os.path.abspath(os.path.dirname(__file__))
-UTF8 = 'utf8'
-
-with open(os.path.join(ROOT, 'README.md'), encoding=UTF8) as fp:
-    README = fp.read()
-
-with open(os.path.join(ROOT, 'german/__init__.py'), encoding=UTF8) as fp:
-    VERSION = re.search(r'__version__ = \'(.*?)\'', fp.read()).group(1)
-
-with open(os.path.join(ROOT, "requirements.txt"), encoding=UTF8) as fp:
-    REQUIRES = [line for line in fp.readlines() if line and '#' not in line]
+PACKAGES = [
+    'german',
+    'german.error',
+    'german.improve',
+    'german.pattern',
+    'german.sentence',
+    'german.utils',
+    'german_data',
+    'science_text',
+]
 
 if __name__ == "__main__":
-    # allow setup.py to run from another directory
-    setuptools.setup(
-        author='Helmut Konrad Fahrendholz',
-        author_email='info@checkitweg.de',
-        description='just wrap it',
+    utila.install(
+        __file__,
         include_package_data=True,
-        install_requires=REQUIRES,
-        long_description=README,
-        name='german',
-        platforms='any',
-        url='https://dev.package.checkitweg.de/german',
-        version=VERSION,
-        zip_safe=False,  # create 'zip'-file if True. Don't do it!
-        classifiers=[
-            'Programming Language :: Python :: 3.7',
-            'Programming Language :: Python :: 3.8',
-        ],
-        packages=[
-            'german',
-            'german.error',
-            'german.improve',
-            'german.pattern',
-            'german.sentence',
-            'german.utils',
-            'german_data',
-            'science_text',
-        ],
     )
