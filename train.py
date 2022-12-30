@@ -26,11 +26,15 @@ def setup_nltk():
     utila.log(f'NLTK: {nltk.data.path}\n')
 
 
-if __name__ == "__main__":
-    ROOT = science_text.ROOT
-    utila.log(f'ROOT: {ROOT}')
+def train():
+    root = science_text.ROOT
+    utila.log(f'ROOT: {root}')
     setup_nltk()
     utila.log('\nscience_text.train.setup')
-    science_text.train.setup(ROOT)
+    science_text.train.setup(root)
     utila.log('\nscience_text.improve.setup')
-    science_text.improve.setup(ROOT)
+    science_text.improve.setup(root)
+
+
+if __name__ == "__main__":
+    train()
