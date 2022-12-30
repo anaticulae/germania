@@ -11,7 +11,7 @@ pipeline{
             steps{script{baw.integrate()}}
         }
         stage('setup'){
-            steps{script{baw.setup()}}
+            steps{script{baw.setup(true)}}
         }
         stage('test'){
             failFast true
