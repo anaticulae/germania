@@ -26,3 +26,5 @@ if __name__ == "__main__":
         __file__,
         include_package_data=True,
     )
+    utila.log('train data')
+    utila.run('python train.py')
