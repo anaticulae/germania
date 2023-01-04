@@ -2,6 +2,17 @@
 
 Every noteable change is logged here.
 
+## v1.28.1 (2023-01-04)
+
+### Documentation
+
+* happy New Year! (ecb2f74d60f2)
+
+### Chore
+
+* upgrade requirements.txt (745bea1d0ab5)
+* ensure that data are trained (c601e469f68c)
+
 ## v1.28.0 (2022-12-30)
 
 ### Feature
