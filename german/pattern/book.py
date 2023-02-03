@@ -55,8 +55,8 @@ DOI
 ['DOI:10.1093/biomet/81.3.425']
 >>> doi('DOI:10.2307/1269730')
 ['DOI:10.2307/1269730']
->>> doi('doi: 10.1145/2723372.2742797.url')
-['doi: 10.1145/2723372.2742797.url']
+>>> doi('doi: 10.1145/2723372.2742797.url', verbose=True)
+[('doi: 10.1145/2723372.2742797.url', 'doi: 10.1145/2723372.2742797.url')]
 """
 
 import utila
@@ -116,10 +116,14 @@ DOI = utila.compiles(r"""
 """)
 
 
-def doi(raw: str) -> list:
+def doi(raw: str, verbose: bool = False) -> list:
     result = []
     for item in DOI.finditer(raw):
         extracted = utila.extract_match(item)
+        if verbose:
+            # TODO: VERBOSE IS NOT VERY USEFUL IN THE MORNING, REQUIRE A
+            # GOOD DATA STRUCTURE
+            extracted: tuple = (extracted, extracted)
         result.append(extracted)
     return result
 
