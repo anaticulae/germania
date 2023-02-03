@@ -17,7 +17,7 @@ import contextlib
 
 import utila
 
-PAGES = r'(S\.?|Seite|p{1,2}\.?|page)'
+PAGES_INTRO = r'(S\.?|Seite|p{1,2}\.?|page)'
 
 PAGENUMBERS = utila.compiles(r"""
     \b
@@ -27,7 +27,7 @@ PAGENUMBERS = utila.compiles(r"""
         (?P<pstart>\d{1,4})[ ]{0,2}[-–][ ]{0,2}(?P<pend>\d{1,4})|
         (?P<page>\d{1,4})
     )
-""" % PAGES)
+""" % PAGES_INTRO)
 
 
 @utila.cacheme
@@ -73,7 +73,7 @@ PATTERN = utila.compiles(r"""
       (?P<page>\d{1,4})
      )
 )
-""" % PAGES)
+""" % PAGES_INTRO)
 
 
 @utila.cacheme
