@@ -58,8 +58,10 @@ def pagenumbers(raw: str, verbose: bool = False):
     return result
 
 
-PATTERN = utila.compiles(r"""(
-     (Seite|S\.|p\.|P\.|page)[ ]{0,3}
+PATTERN = utila.compiles(r"""
+(
+     (Seite|S\.|p\.|P\.|page)
+     [ ]{0,3}
      (
       (?P<pagestart>\d{1,4})[ ]{0,3}(\-|–)[ ]{0,3}(?P<pageend>\d{1,4})|
       (?P<page>\d{1,4})
