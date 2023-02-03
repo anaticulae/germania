@@ -6,3 +6,23 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+
+import utila
+
+
+def collect_and_replace(raw: str, pattern: list, verbose: bool = False) -> list:
+    """Collect due list of pattern and avoids parsing items twice."""
+    collected = []
+    for method in pattern:
+        parsed = method(raw, verbose=True)
+        if not parsed:
+            continue
+        itemraw = parsed[0][1]
+        # do not parse pattern twice
+        raw = raw.replace(itemraw, '*' * len(itemraw))
+        for item in parsed:
+            if verbose:
+                collected.append(item)
+            else:
+                collected.append(itemraw)
+    return collected

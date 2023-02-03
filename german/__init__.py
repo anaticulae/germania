@@ -75,6 +75,7 @@ from german.sequence import searches
 from german.sequence import token_plain
 from german.tagger import word_tag
 from german.text import words_fromstr
+from german.utils import collect_and_replace
 from german.utils.month import MONTH
 from german.utils.month import MONTH_REGEX
 from german.utils.month import month
