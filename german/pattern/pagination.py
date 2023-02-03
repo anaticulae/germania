@@ -62,14 +62,14 @@ def pagenumbers(raw: str, verbose: bool = False):
 
 PATTERN = utila.compiles(r"""
 (
-     (seite|s\.|p\.|page)
+     %s
      [ ]{0,3}
      (
       (?P<pagestart>\d{1,4})[ ]{0,3}(\-|–)[ ]{0,3}(?P<pageend>\d{1,4})|
       (?P<page>\d{1,4})
      )
 )
-""")
+""" % PAGES)
 
 
 @utila.cacheme
