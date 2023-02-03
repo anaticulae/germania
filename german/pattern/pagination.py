@@ -14,7 +14,6 @@ Regression test to avoid parsing `bis 14` as `S 14`
 # TODO: UNITE THESE PATTERN LATER
 
 import contextlib
-import re
 
 import utila
 
@@ -59,6 +58,16 @@ def pagenumbers(raw: str, verbose: bool = False):
     return result
 
 
+PATTERN = utila.compiles(r"""(
+     (Seite|S\.|p\.|P\.|page)[ ]{0,3}
+     (
+      (?P<pagestart>\d{1,4})[ ]{0,3}(\-|–)[ ]{0,3}(?P<pageend>\d{1,4})|
+      (?P<page>\d{1,4})
+     )
+)
+""")
+
+
 @utila.cacheme
 def pages(raw: str):
     """\
@@ -69,15 +78,7 @@ def pages(raw: str):
     >>> pages('text before, S. 263–268')
     ('S. 263–268', (263, 268))
     """
-    pattern = r"""(
-         (Seite|S\.|p\.|P\.|page)[ ]{0,3}
-         (
-          (?P<pagestart>\d{1,4})[ ]{0,3}(\-|–)[ ]{0,3}(?P<pageend>\d{1,4})|
-          (?P<page>\d{1,4})
-         )
-    )
-    """
-    matched = re.search(pattern, raw, re.VERBOSE)
+    matched = PATTERN.search(raw)
     if not matched:
         return None
     raw = utila.extract_match(matched)
