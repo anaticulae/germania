@@ -60,7 +60,7 @@ def pagenumbers(raw: str, verbose: bool = False):
 
 PATTERN = utila.compiles(r"""
 (
-     (Seite|S\.|p\.|P\.|page)
+     (seite|s\.|p\.|page)
      [ ]{0,3}
      (
       (?P<pagestart>\d{1,4})[ ]{0,3}(\-|–)[ ]{0,3}(?P<pageend>\d{1,4})|
@@ -75,6 +75,8 @@ def pages(raw: str):
     """\
     >>> pages('IEEE Joint, 2004, S. 113-117')
     ('S. 113-117', (113, 117))
+    >>> pages('IEEE Joint, 2004, s. 113-117')
+    ('s. 113-117', (113, 117))
     >>> pages('p.103')
     ('p.103', (103,))
     >>> pages('text before, S. 263–268')
