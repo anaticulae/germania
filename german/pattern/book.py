@@ -37,8 +37,6 @@ ISBN
 ISSN
 ----
 
->>> issn('ISSN 1095-7162')
-['ISSN 1095-7162']
 >>> issn('issn: 0018-9162.')
 ['issn: 0018-9162']
 
@@ -138,9 +136,21 @@ ISSN = utila.compiles(r"""
 """)
 
 
-def issn(raw: str) -> list:
+def issn(raw: str, verbose: bool = False) -> list:
+    """\
+    >>> issn('ISSN 1095-7162', verbose=True)
+    [((1095, 7162), 'ISSN 1095-7162')]
+    """
     result = []
     for item in ISSN.finditer(raw):
         extracted = utila.extract_match(item)
+        if verbose:
+            item = utila.parse_tuple(
+                item[2],
+                separator='-',
+                length=None,
+                typ=int,
+            )
+            extracted: tuple = (item, extracted)
         result.append(extracted)
     return result
