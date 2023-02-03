@@ -17,15 +17,17 @@ import contextlib
 
 import utila
 
+PAGES = r'(S\.?|Seite|p{1,2}\.?|page)'
+
 PAGENUMBERS = utila.compiles(r"""
     \b
-    (S|S\.|Seite|p|p\.|page)
+    %s
     [ ]{0,4}
     (
         (?P<pstart>\d{1,4})[ ]{0,2}(-|–)[ ]{0,2}(?P<pend>\d{1,4})|
         (?P<page>\d{1,4})
     )
-""")
+""" % PAGES)
 
 
 @utila.cacheme
