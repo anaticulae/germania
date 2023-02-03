@@ -43,8 +43,8 @@ def pagenumbers(raw: str, verbose: bool = False):
     [((13, 50), 'S. 13-50')]
     >>> pagenumbers('IEEE. 2013, pp. 595–602.', verbose=True)
     [((595, 602), 'pp. 595–602')]
-    >>> pagenumbers('9.Nov (2008), pp. 2579– 2605.', verbose=True)
-    [((2579, 2605), 'pp. 2579– 2605')]
+    >>> pagenumbers('9.Nov (2008), pp. 2579– 2605.')
+    [(2579, 2605)]
     """
     result = []
     for item in PAGENUMBERS.finditer(raw):
@@ -87,6 +87,8 @@ def page_single(raw: str):
     ('p.103', (103,))
     >>> page_single('text before, S. 263–268')
     ('S. 263–268', (263, 268))
+    >>> page_single('NO PAGENUMBER') is None
+    True
     """
     matched = PATTERN.search(raw)
     if not matched:
@@ -118,6 +120,8 @@ def pages_complex(raw: str):
     (', 1-10.', (1, 10))
     >>> pages_complex(',41, 1-10')
     (', 1-10', (1, 10))
+    >>> pages_complex('NO PAGENUMBER') is None
+    True
     """
     matched = COMPLEX.search(raw)
     if not matched:
