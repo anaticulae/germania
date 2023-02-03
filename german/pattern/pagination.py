@@ -18,16 +18,19 @@ import contextlib
 import utila
 
 PAGES_INTRO = r'(S\.?|Seite|p{1,2}\.?|page)'
+PAGES = r"""
+    (
+        (?P<pstart>\d{1,4})[ ]{0,2}[-–][ ]{0,2}(?P<pend>\d{1,4})|
+        (?P<page>\d{1,4})
+    )
+"""
 
 PAGENUMBERS = utila.compiles(r"""
     \b
     %s
     [ ]{0,4}
-    (
-        (?P<pstart>\d{1,4})[ ]{0,2}[-–][ ]{0,2}(?P<pend>\d{1,4})|
-        (?P<page>\d{1,4})
-    )
-""" % PAGES_INTRO)
+    %s
+""" % (PAGES_INTRO, PAGES))
 
 
 @utila.cacheme
@@ -68,12 +71,9 @@ PATTERN = utila.compiles(r"""
 (
      %s
      [ ]{0,3}
-     (
-      (?P<pstart>\d{1,4})[ ]{0,3}[-–][ ]{0,3}(?P<pend>\d{1,4})|
-      (?P<page>\d{1,4})
-     )
+     %s
 )
-""" % PAGES_INTRO)
+""" % (PAGES_INTRO, PAGES))
 
 
 @utila.cacheme
