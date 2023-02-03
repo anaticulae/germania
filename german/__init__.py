@@ -57,8 +57,8 @@ from german.pattern.href import hyperlink
 from german.pattern.href import links
 from german.pattern.href import locallink
 from german.pattern.mail import mails
+from german.pattern.pagination import page_single
 from german.pattern.pagination import pagenumbers
-from german.pattern.pagination import pages
 from german.pattern.pagination import pages_complex
 from german.quotation import extract_quotes
 from german.quotation import raw_quotation
@@ -89,3 +89,6 @@ split_sentences = sentence_tokenize  # pylint:disable=C0103
 __version__ = '1.28.1'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+
+# REMOVE LATER
+pages = page_single

@@ -77,15 +77,15 @@ PATTERN = utila.compiles(r"""
 
 
 @utila.cacheme
-def pages(raw: str):
+def page_single(raw: str):
     """\
-    >>> pages('IEEE Joint, 2004, S. 113-117')
+    >>> page_single('IEEE Joint, 2004, S. 113-117')
     ('S. 113-117', (113, 117))
-    >>> pages('IEEE Joint, 2004, s. 113-117')
+    >>> page_single('IEEE Joint, 2004, s. 113-117')
     ('s. 113-117', (113, 117))
-    >>> pages('p.103')
+    >>> page_single('p.103')
     ('p.103', (103,))
-    >>> pages('text before, S. 263–268')
+    >>> page_single('text before, S. 263–268')
     ('S. 263–268', (263, 268))
     """
     matched = PATTERN.search(raw)
