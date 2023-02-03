@@ -126,8 +126,7 @@ def doi(raw: str) -> list:
 
 ISSN = utila.compiles(r"""
 (
-    ISSN|
-    ISSN:
+    ISSN[:]?
 )
 \s{0,3}
 (
