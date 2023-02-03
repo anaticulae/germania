@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v1.30.0 (2023-02-03)
+
+### Feature
+
+* add references parser (3803d97aa2a7)
+* extend DOI interface (e712398dba3b)
+* add method to run pattern extractor (73cfd6cb8e90)
+* extend ISSN interface (3c13a4b8bb68)
+* extend ISBN parser interface (caab9abe2f51)
+
 ## v1.29.0 (2023-02-03)
 
 ### Feature
