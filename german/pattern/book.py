@@ -33,8 +33,6 @@ ISBN
 ['isbn: 978-1-931971-16-4']
 >>> isbn('isbn:1-931666-22-9')
 ['isbn:1-931666-22-9']
->>> isbn('isbn:978-1-4503-2758-9.')
-['isbn:978-1-4503-2758-9']
 
 ISSN
 ----
@@ -81,10 +79,22 @@ ISBN = utila.compiles(r"""
 """)
 
 
-def isbn(raw: str) -> list:
+def isbn(raw: str, verbose: bool = False) -> list:
+    """\
+    >>> isbn('isbn:978-1-4503-2758-9.', verbose=True)
+    [((978, 1, 4503, 2758, 9), 'isbn:978-1-4503-2758-9')]
+    """
     result = []
     for item in ISBN.finditer(raw):
         extracted = utila.extract_match(item)
+        if verbose:
+            item = utila.parse_tuple(
+                item[2],
+                separator='-',
+                length=None,
+                typ=int,
+            )
+            extracted: tuple = (item, extracted)
         result.append(extracted)
     return result
 
