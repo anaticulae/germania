@@ -48,14 +48,19 @@ pipeline{
                 }
             }
         }
-        stage('pre-release'){
+        stage('all'){
+            steps{
+                script{baw.all()}
+            }
+        }
+        stage('pre'){
             steps{
                 script{baw.pre()}
             }
         }
-        stage('all'){
+        stage('cov'){
             steps{
-                script{baw.all()}
+                script{baw.cov(32, false, true)}
             }
         }
         stage('release'){
