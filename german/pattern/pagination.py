@@ -24,7 +24,7 @@ PAGENUMBERS = utila.compiles(r"""
     %s
     [ ]{0,4}
     (
-        (?P<pstart>\d{1,4})[ ]{0,2}(-|–)[ ]{0,2}(?P<pend>\d{1,4})|
+        (?P<pstart>\d{1,4})[ ]{0,2}[-–][ ]{0,2}(?P<pend>\d{1,4})|
         (?P<page>\d{1,4})
     )
 """ % PAGES)
@@ -69,7 +69,7 @@ PATTERN = utila.compiles(r"""
      %s
      [ ]{0,3}
      (
-      (?P<pagestart>\d{1,4})[ ]{0,3}(\-|–)[ ]{0,3}(?P<pageend>\d{1,4})|
+      (?P<pagestart>\d{1,4})[ ]{0,3}[-–][ ]{0,3}(?P<pageend>\d{1,4})|
       (?P<page>\d{1,4})
      )
 )
