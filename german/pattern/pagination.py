@@ -38,6 +38,10 @@ def pagenumbers(raw: str, verbose: bool = False):
     [(1, 5), (4, 4), (13, 50), (20, 30), (30, 30), (319, 350), (500, 500)]
     >>> pagenumbers('S. 13-50', verbose=True)
     [((13, 50), 'S. 13-50')]
+    >>> pagenumbers('IEEE. 2013, pp. 595–602.', verbose=True)
+    [((595, 602), 'pp. 595–602')]
+    >>> pagenumbers('9.Nov (2008), pp. 2579– 2605.', verbose=True)
+    [((2579, 2605), 'pp. 2579– 2605')]
     """
     result = []
     for item in PAGENUMBERS.finditer(raw):
