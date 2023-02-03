@@ -2,6 +2,19 @@
 
 Every noteable change is logged here.
 
+## v1.29.0 (2023-02-03)
+
+### Feature
+
+* make pattern case insensitive (c7057366ade7)
+
+### Chore
+
+* add cov step (8089c30f1a5b)
+* upgrade requirements.txt (8f87c0d2c58f)
+* upgrade pipe library (a2fc5cfb1778)
+* upgrade Jenkinsfile (098eedafbde8)
+
 ## v1.28.1 (2023-01-04)
 
 ### Documentation
