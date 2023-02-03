@@ -61,6 +61,8 @@ DOI
 
 import utila
 
+import german
+
 ISBN = utila.compiles(r"""
 (
     ISBN\s{0,2}\d{1,2}:|
@@ -156,4 +158,24 @@ def issn(raw: str, verbose: bool = False) -> list:
             )
             extracted: tuple = (item, extracted)
         result.append(extracted)
+    return result
+
+
+PATTERN = (
+    isbn,
+    issn,
+    doi,
+)
+
+
+def references(raw: str, verbose: bool = False) -> list:
+    """\
+    >>> references(':DOI:`10.1002/9781119994398`', verbose=True)
+    [((9781119994398,), '9781119994398')]
+    """
+    result = german.collect_and_replace(
+        raw,
+        pattern=PATTERN,
+        verbose=verbose,
+    )
     return result

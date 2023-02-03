@@ -49,6 +49,7 @@ from german.pattern.author import authors_decide
 from german.pattern.book import doi
 from german.pattern.book import isbn
 from german.pattern.book import issn
+from german.pattern.book import references
 from german.pattern.date import dates
 from german.pattern.date import dates_master
 from german.pattern.date import dates_month_year
