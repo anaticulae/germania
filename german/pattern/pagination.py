@@ -69,7 +69,7 @@ PATTERN = utila.compiles(r"""
      %s
      [ ]{0,3}
      (
-      (?P<pagestart>\d{1,4})[ ]{0,3}[-–][ ]{0,3}(?P<pageend>\d{1,4})|
+      (?P<pstart>\d{1,4})[ ]{0,3}[-–][ ]{0,3}(?P<pend>\d{1,4})|
       (?P<page>\d{1,4})
      )
 )
@@ -95,7 +95,7 @@ def pages(raw: str):
     with contextlib.suppress(TypeError):
         return raw, (int(matched['page']),)
     with contextlib.suppress(TypeError):
-        return raw, (int(matched['pagestart']), int(matched['pageend']))
+        return raw, (int(matched['pstart']), int(matched['pend']))
     return None
 
 
@@ -103,7 +103,7 @@ COMPLEX = utila.compiles(r"""
 (
     (\,){0,1}[ ]{0,3}
     (
-        (?P<pagestart>\d{1,4})[ ]{0,3}(\-|–)[ ]{0,3}(?P<pageend>\d{1,4})(\.|$)
+        (?P<pstart>\d{1,4})[ ]{0,3}(\-|–)[ ]{0,3}(?P<pend>\d{1,4})(\.|$)
     )
 )
 """)
@@ -124,7 +124,7 @@ def pages_complex(raw: str):
         return None
     raw = utila.extract_match(matched)
     with contextlib.suppress(TypeError):
-        start = int(matched['pagestart'])
-        end = int(matched['pageend'])
+        start = int(matched['pstart'])
+        end = int(matched['pend'])
         return raw, (start, end)
     return None
