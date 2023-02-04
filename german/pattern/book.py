@@ -179,3 +179,59 @@ def references(raw: str, verbose: bool = False) -> list:
         verbose=verbose,
     )
     return result
+
+
+VOLUME = utila.compiles(r"""
+(
+    (AUFLAGE|VOL\.)
+    [ ]{0,2}
+    (\d{1,2})
+    |
+    (\d)\.
+    [ ]{0,2}
+    (AUFLAGE)
+)
+""")
+
+
+def volumes(text, verbose: bool = True):
+    """\
+    >>> volumes('(The Formation of the Classical Islamic World). Vol. 36, S. 225-234.')
+    [(36, 'Vol. 36')]
+    >>> volumes('Schriftsprache der Gegenwart. 5. Auflage.', verbose=False)
+    [5]
+    """
+    result = []
+    for item in VOLUME.finditer(text):
+        group = item.groups()
+        value = group[3] if group[3] and group[3].isnumeric() else group[2]
+        if verbose:
+            result.append((int(value), item[0]))
+        else:
+            result.append(int(value))
+    return result
+
+
+BIBS = utila.compiles(r"""
+(
+    Hrsg\.|
+    Aufl\.|
+    Verlag
+)
+""")
+
+
+def bibtexts(text, verbose: bool = True):
+    """\
+    >>> bibtexts(' Adler und Jung. 2. Aufl. Zürich 1996.')
+    [('Aufl.', 'Aufl.')]
+    >>> bibtexts(' Adler und Jung. 2. Aufl. Zürich 1996.', verbose=False)
+    ['Aufl.']
+    """
+    result = []
+    for item in BIBS.finditer(text):
+        if verbose:
+            result.append((item[0], item[0]))
+        else:
+            result.append(item[0])
+    return result
