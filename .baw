@@ -13,3 +13,6 @@ name = just wrap it
 
 source = german_data
     science_text
+
+[release]
+coverage_min = 93
