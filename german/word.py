@@ -30,6 +30,10 @@ def word_tokenize(
     ['Mister', <Mark.HYPHEN: 23>, 'Dinh']
     >>> word_tokenize('mit 38 % höheren Click-Through-Raten als andere Bilder', validate_sentences=False)
     ['mit', '38', <Mark.PERCENT: 43>, 'höheren', 'Click', <Mark.HYPHEN: 23>, 'Through', <Mark.HYPHEN: 23>...]
+    >>> word_tokenize('Wie gestaltet sich') is None
+    True
+    >>> word_tokenize('Wie gestaltet sich die Anreise der Kunden?', token_normalize=True)
+    ['wie', 'gestaltet', 'sich', 'die', 'anreis', 'der', 'kund', <Mark.QUESTION_MARK: 27>]
     """
     if validate_sentences and not german.is_sentence(items):
         # Ensure to parse complete sentences.
