@@ -8,11 +8,22 @@
 # =============================================================================
 
 import hugedata
+import utila
 
 import science_text.train
+import science_text.improve
 
 
 def test_train(testdir):
     root = testdir.tmpdir
     sources = hugedata.RESOURCES[0:3]
     science_text.train.setup(root=root, source=sources)
+    current = utila.file_count(root)
+    assert current == 2
+
+
+def test_improve(testdir):
+    root = testdir.tmpdir
+    science_text.improve.setup(root)
+    current = utila.file_count(root)
+    assert current == 2
