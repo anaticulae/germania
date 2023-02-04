@@ -64,11 +64,11 @@ def train(src: str, dest: str, verbose: bool = False):
 SOURCES = hugedata.RESOURCES
 
 
-def setup(root):
+def setup(root, source=SOURCES):
     verbose = 'verbose' in sys.argv or '--verbose' in sys.argv
 
     tmp = utila.tmpfile(german_data.ROOT)
-    train(SOURCES, tmp, verbose=verbose)
+    train(source, tmp, verbose=verbose)
 
     dumped = utila.file_read_binary(tmp)
     root = os.path.join(root, 'german_data')
