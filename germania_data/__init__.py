@@ -9,12 +9,13 @@
 
 import os
 
+from germania_data.utils import load_data
+from germania_data.utils import load_dict
+
 import nltk_data
-from german_data.utils import load_data
-from german_data.utils import load_dict
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-NLTK_DATA = os.path.join(ROOT, 'german_data/nltk_data')
+NLTK_DATA = os.path.join(ROOT, 'germania_data/nltk_data')
 # ensure that path exists, this is required to run data generator later
 os.makedirs(NLTK_DATA, exist_ok=True)
 # TODO: REPLACE WITH KNLP

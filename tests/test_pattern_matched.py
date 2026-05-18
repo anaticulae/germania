@@ -9,7 +9,7 @@
 
 import konrad
 
-import german
+import germania
 
 EXAMPLE = """\
 JUERGEN LEOHOLD: Communication Requirements for Automotive Systems. In:
@@ -27,17 +27,17 @@ Norm ISO 11898 2003. Road vehicles - Controller area network(CAN)
 
 """.split('\n\n')
 
-EXPECTED = [german.WordType.PERSON, konrad.Mark.COLON, german.WordType.YEAR]
+EXPECTED = [germania.WordType.PERSON, konrad.Mark.COLON, germania.WordType.YEAR]
 
 
 def test_pattern_matched():
-    matched = german.matched(EXAMPLE[0], EXPECTED)
+    matched = germania.matched(EXAMPLE[0], EXPECTED)
     assert matched
 
-    matched = german.matched(EXAMPLE[1], EXPECTED)
+    matched = germania.matched(EXAMPLE[1], EXPECTED)
     assert matched
 
 
 def test_pattern_not_matched():
-    matched = german.matched(NOT_MATCHED[0], EXPECTED)
+    matched = germania.matched(NOT_MATCHED[0], EXPECTED)
     assert not matched

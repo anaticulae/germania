@@ -470,7 +470,7 @@ Every noteable change is logged here.
 
 ### Feature
 
-* add german `and` (482985daa8a3)
+* add germania `and` (482985daa8a3)
 
 ### Documentation
 
@@ -626,7 +626,7 @@ Every noteable change is logged here.
 
 ### Fix
 
-* move science parser to german_data (ba6dd67e8bd7)
+* move science parser to germania_data (ba6dd67e8bd7)
 
 ### Documentation
 

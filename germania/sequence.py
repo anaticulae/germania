@@ -15,7 +15,7 @@ import typing
 import konrad
 import utila
 
-import german
+import germania
 
 
 def search(
@@ -28,23 +28,23 @@ def search(
 ) -> list:
     # prepare data
     if isinstance(sentence, str):
-        sentence = german.word_tokenize(sentence, validate_sentences=False)
+        sentence = germania.word_tokenize(sentence, validate_sentences=False)
     if isinstance(pattern, re.Pattern):
         return search_regex(
             pattern,
             sentence,
         )
     if isinstance(pattern, str):
-        pattern = german.word_tokenize(pattern, validate_sentences=False)
+        pattern = germania.word_tokenize(pattern, validate_sentences=False)
     tokens_length = len(pattern)
     if tokens_length > len(sentence):
         return []
     if lowercase:
         pattern = [lower(item) for item in pattern]
         sentence = [lower(item) for item in sentence]
-    sentence = [german.wordtypes(word) for word in sentence]
+    sentence = [germania.wordtypes(word) for word in sentence]
     if tokens_complex:
-        pattern = [german.wordtypes(token) for token in pattern]
+        pattern = [germania.wordtypes(token) for token in pattern]
     # start searching
     result = []
     for start in range(len(sentence) - len(pattern) + 1):
@@ -111,7 +111,7 @@ def searches(
         assert overlapping_merge, 'enable overlapping_merge'
     # prepare here to avoid preparing for every tokens
     if isinstance(sentence, str):
-        sentence = german.word_tokenize(sentence, validate_sentences=False)
+        sentence = germania.word_tokenize(sentence, validate_sentences=False)
     result = []
     for pattern in patterns:
         matches = search(

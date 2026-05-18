@@ -7,26 +7,26 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import german
+import germania
 
 
 def matched(content: str, pattern: list) -> bool:
     """Split `content` and check to match `pattern`. Pattern is defined
-    `german.WordType` and or `konrad.Mark`."""
+    `germania.WordType` and or `konrad.Mark`."""
     # TODO: VERY SIMPLE
-    tokens = german.word_tokenize(content, validate_sentences=False)
+    tokens = germania.word_tokenize(content, validate_sentences=False)
 
     pattern = list(pattern)
     for token in tokens:
         if not pattern:
             return True
-        wordtype = german.wordtype(token)
+        wordtype = germania.wordtype(token)
         expected = pattern[0]
         if expected == wordtype:
             # remove first item
             pattern = pattern[1:]
             continue
-        if wordtype == german.WordType.MARK and expected == token:
+        if wordtype == germania.WordType.MARK and expected == token:
             # matched mark
             pattern = pattern[1:]
             continue

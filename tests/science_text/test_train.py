@@ -10,8 +10,8 @@
 import hugedata
 import utila
 
-import science_text.train
 import science_text.improve
+import science_text.train
 
 
 def test_train(testdir):

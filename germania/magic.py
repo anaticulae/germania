@@ -27,13 +27,12 @@ False
 import enum
 import re
 
+import germania_data
 import knlp
 import konrad
 import nltk_data.lookup
 import sdata
 import utila
-
-import german_data
 
 
 class WordType(enum.Enum):
@@ -184,9 +183,9 @@ def ispress(press: str, length_min: int = 6) -> bool:
     press = press.strip().upper()
     if len(press) < length_min:
         return False
-    if press in german_data.PRESS:
+    if press in germania_data.PRESS:
         return True
-    if any((item for item in german_data.PRESS if item in press)):
+    if any((item for item in germania_data.PRESS if item in press)):
         return True
     if sdata.rate_publisher(press):
         return True
@@ -212,15 +211,15 @@ def datums():
     # yapf:disable
     stopwords = set(knlp.STOPWORDS) - utila.splititems('der de da')
     names = (
-        german_data.NAMES |
+        germania_data.NAMES |
         nltk_data.lookup.NAME_MALE |
         nltk_data.lookup.NAME_FEMALE |
         nltk_data.lookup.NAME_FAMILY
     )
     noperson = (
-        german_data.NOPERSON |
-        german_data.PRESS |
-        german_data.INSTITUTION |
+        germania_data.NOPERSON |
+        germania_data.PRESS |
+        germania_data.INSTITUTION |
         stopwords
     )
     return names, noperson

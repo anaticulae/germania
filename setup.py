@@ -11,17 +11,17 @@
 import utila
 
 PACKAGES = [
-    'german',
-    'german.error',
-    'german.improve',
-    'german.pattern',
-    'german.sentence',
-    'german.utils',
-    'german_data',
+    'germania',
+    'germania.error',
+    'germania.improve',
+    'germania.pattern',
+    'germania.sentence',
+    'germania.utils',
+    'germania_data',
     'science_text',
 ]
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     utila.install(
         __file__,
         include_package_data=True,

@@ -9,7 +9,7 @@
 
 import pytest
 
-import german
+import germania
 
 HYPERLINKS = """\
 Before: http://student.unifr.ch/
@@ -51,7 +51,7 @@ def prepared():
 
 @pytest.mark.parametrize('raw, expected', prepared())
 def test_hyperlinks(raw, expected):
-    parsed = german.hyperlink(raw)
+    parsed = germania.hyperlink(raw)
     assert parsed == expected
 
 
@@ -59,7 +59,7 @@ def test_link_cached():
     """As a result of invalid cache multiple parsing produces wrong results."""
     raw = 'file:///C:/kiwi/bachelor028.pdf'
     expected = [raw]
-    parsed = german.links(raw)
+    parsed = germania.links(raw)
     assert parsed == expected
-    parsed = german.links(raw)
+    parsed = germania.links(raw)
     assert parsed == expected

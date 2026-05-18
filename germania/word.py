@@ -10,7 +10,7 @@
 import konrad
 import utila
 
-import german
+import germania
 
 Words = list[str]
 
@@ -35,7 +35,7 @@ def word_tokenize(
     >>> word_tokenize('Wie gestaltet sich die Anreise der Kunden?', token_normalize=True)
     ['wie', 'gestaltet', 'sich', 'die', 'anreis', 'der', 'kund', <Mark.QUESTION_MARK: 27>]
     """
-    if validate_sentences and not german.is_sentence(items):
+    if validate_sentences and not germania.is_sentence(items):
         # Ensure to parse complete sentences.
         return None
     items = items.replace('\n', ' ')
@@ -158,7 +158,7 @@ def merge_reference(result, source) -> list:
         if item != konrad.Mark.FULLSTOP and not utila.isnumber(item):
             merged.append(item)
             continue
-        if not german.isreference(merged[-1]):
+        if not germania.isreference(merged[-1]):
             merged.append(item)
             continue
         if item == konrad.Mark.FULLSTOP:

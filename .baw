@@ -8,10 +8,10 @@
 # =============================================================================
 
 [project]
-short = german
+short = germania
 name = just wrap it
 
-source = german_data
+source = germania_data
     science_text
 
 [release]

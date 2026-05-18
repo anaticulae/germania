@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import german
+import germania
 
 TEXT = """\
 Es ist von „ Selbstentäußerung “ 32 , „ virtuellem Seelenstriptease “ 33 , „ Daten \
@@ -35,5 +35,5 @@ Pegelstand eigener Launen und das Schwanken der Gefühle . “\
 
 def test_sentence_select():
     """In TOKENS, in the middle, there are some missing token."""
-    selected = german.sentence_select(TEXT, TOKENS)
+    selected = germania.sentence_select(TEXT, TOKENS)
     assert selected == EXPECTED

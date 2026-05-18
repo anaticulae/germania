@@ -25,9 +25,9 @@ import contextlib
 
 import utila
 
-import german.utils.month
+import germania.utils.month
 
-MONTHREGEX = german.utils.month.MONTH_REGEX
+MONTHREGEX = germania.utils.month.MONTH_REGEX
 
 MONTHDAYYEAR = r'[ ]{0,3}(?P<month>\w+)[ ]{0,3}(?P<day>\d{1,2})\,[ ]{0,3}(?P<year>\d{2,4})'
 DAYMONTHYEAR = r'[ ]{0,3}(?P<day>\d{1,2})[ ]{0,2}[\.\-][ ]{0,2}(?P<month>\d{1,2})[ ]{0,2}[\.\-][ ]{0,2}(?P<year>\d{2,4})'
@@ -81,7 +81,7 @@ def accessed(text: str, verbose: bool = True):
             text = utila.ghost_replace(text, pattern=raw)
             date = (
                 int(matched['year']),
-                german.utils.month.month(matched['month']),
+                germania.utils.month.month(matched['month']),
                 day(matched),
             )
             if verbose:

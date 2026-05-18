@@ -10,7 +10,7 @@
 import konrad
 import pytest
 
-import german
+import germania
 import tests
 
 EXAMPLE = """\
@@ -33,31 +33,31 @@ Sternberg-Aufgabe (Sternberg, 1966)."""
 
 
 def test_split():
-    sentences = german.sentence_tokenize(EXAMPLE)
+    sentences = germania.sentence_tokenize(EXAMPLE)
     tests.assert_length(sentences, 6)
-    # splitted = german.word.split(EXAMPLE)
+    # splitted = germania.word.split(EXAMPLE)
 
-    first = german.word_tokenize(sentences[0])
+    first = germania.word_tokenize(sentences[0])
     assert len(first) == 14 + 1, first  # 14 words plus one dot
 
-    second = german.word_tokenize(sentences[1])
+    second = germania.word_tokenize(sentences[1])
     assert len(second) == 35, second
 
-    third = german.word_tokenize(sentences[2])
+    third = germania.word_tokenize(sentences[2])
     assert len(third) == 31, third
 
-    fourth = german.word_tokenize(sentences[3])
+    fourth = germania.word_tokenize(sentences[3])
     assert len(fourth) == 28, fourth
 
-    fifth = german.word_tokenize(sentences[4])
+    fifth = germania.word_tokenize(sentences[4])
     assert len(fifth) == 33, fifth
 
-    sixth = german.word_tokenize(sentences[5])
+    sixth = germania.word_tokenize(sentences[5])
     assert len(sixth) == 36, sixth
 
 
 def test_words_fromstr():
-    splitted = german.words_fromstr(EXAMPLE)
+    splitted = germania.words_fromstr(EXAMPLE)
     assert len(splitted) == 178, 'algo changed'  # Hint: Value is not correct.
 
 
@@ -75,7 +75,7 @@ bung im Original).
 
 
 def test_sentence_merge_with_textbreak():
-    sentences = german.sentence_tokenize(MERGE_DIVISION)
+    sentences = germania.sentence_tokenize(MERGE_DIVISION)
     tests.assert_length(sentences, 3)
     assert 'Herausforderer' in sentences[1]
     assert 'systematisch' in sentences[1]
@@ -94,7 +94,7 @@ von Nutzern selbst verfasst bzw. verändert werden.
 
 
 def test_sentence_split_abrreviation_and_bracket():
-    sentences = german.sentence_tokenize(LINE_ENDING)
+    sentences = germania.sentence_tokenize(LINE_ENDING)
     tests.assert_length(sentences, 5)
 
 
@@ -111,7 +111,7 @@ Stärke heranwachsen.
 
 
 def test_sentence_split_short():
-    sentences = german.sentence_tokenize(SHORT_SENTENCE)
+    sentences = germania.sentence_tokenize(SHORT_SENTENCE)
     tests.assert_length(sentences, 4)
 
 
@@ -125,7 +125,7 @@ Artikel heißt es:
 
 
 def test_sentence_split_multiple_quoted_sentence():
-    sentences = german.sentence_tokenize(MULTIPLE_SENTENCE_IN_QUOTATION)
+    sentences = germania.sentence_tokenize(MULTIPLE_SENTENCE_IN_QUOTATION)
     tests.assert_length(sentences, 5)
     assert sentences[-1] == 'In dem Artikel heißt es:', sentences[-1]
 
@@ -138,7 +138,7 @@ the single char.
 
 
 def test_sentence_split_single_quotation_in_text():
-    sentences = german.sentence_tokenize(SINGLE_QUOTATION_IN_TEXT)
+    sentences = germania.sentence_tokenize(SINGLE_QUOTATION_IN_TEXT)
     # dont't know the right result
     tests.assert_length(sentences, 2)
 
@@ -169,19 +169,19 @@ Individuums.
 
 
 def test_validate_count_of_double_quotation():
-    splitted = german.sentence_tokenize(REQUIRE_SINGLE_INSIDE)
+    splitted = germania.sentence_tokenize(REQUIRE_SINGLE_INSIDE)
     tests.assert_length(splitted, 5)
 
 
 def test_split_paragraph_with_quotation():
-    splitted = german.sentence_tokenize(STANDARD)
+    splitted = germania.sentence_tokenize(STANDARD)
     tests.assert_length(splitted, 2)
 
 
 @pytest.mark.xfail(reason='is parsed as single sentence')
 def test_split_paragraph_with_quotation_mixed():
     # TODO: `Van de Donk u.a. (2004b: 3)` is parsed as single sentence
-    splitted = german.sentence_tokenize(MIXED)
+    splitted = germania.sentence_tokenize(MIXED)
     tests.assert_length(splitted, 4)
     last = ('Dennoch soll im Folgenden der Versuch einer '
             'Definition vorgenommen werden.')
@@ -195,7 +195,7 @@ zehn Zukunftsprojekten im Rahmen der Hightech-Strategie.
 
 
 def test_split_sentence_with_number():
-    splitted = german.sentence_tokenize(NUMBER_IN_TEXT)
+    splitted = germania.sentence_tokenize(NUMBER_IN_TEXT)
     tests.assert_length(splitted, 1)
 
 
@@ -225,7 +225,7 @@ unternehmensübergreifenden Wertschöpfungsnetzwerken.
 
 
 def test_split_sentence_with_long_citation():
-    splitted = german.sentence_tokenize(VERY_LONG)
+    splitted = germania.sentence_tokenize(VERY_LONG)
     tests.assert_length(splitted, 6)
 
 
@@ -239,12 +239,12 @@ Effizienz.“16
 
 
 def test_split_sentence_quotation_highnumber():
-    splitted = german.sentence_tokenize(VALID_SENTENCE)
+    splitted = germania.sentence_tokenize(VALID_SENTENCE)
     tests.assert_length(splitted, 1)
 
 
 def test_split_word_quotation_highnumber():
-    splitted = german.word_tokenize(VALID_SENTENCE)
+    splitted = germania.word_tokenize(VALID_SENTENCE)
     assert splitted[0] == konrad.Mark.QUOTATION_MARK_DOUBLE_OPEN
     assert splitted[-1] == '16'
 
@@ -263,7 +263,7 @@ S. 3 ff). Hier spricht Helm?
 
 @pytest.mark.xfail(reason='roman numbers does not work properly')
 def test_split_roman_numbers():
-    splitted = german.sentence_tokenize(ROMAN_NUMBERS)
+    splitted = germania.sentence_tokenize(ROMAN_NUMBERS)
     tests.assert_length(splitted, 3)
 
 
@@ -280,7 +280,7 @@ Furcht und Ekel).
 
 
 def test_split_table_reference():
-    splitted = german.sentence_tokenize(TABLE)
+    splitted = germania.sentence_tokenize(TABLE)
     tests.assert_length(splitted, 4)
 
 
@@ -300,7 +300,7 @@ MERGE_UNBALANCED = 'in seinem Buch „Post-Privacy. Prima leben ohne Privatsphä
 
 
 def test_split_highnote_atend():
-    splitted = german.sentence_tokenize(HIGHNOTE_ATEND)
+    splitted = germania.sentence_tokenize(HIGHNOTE_ATEND)
     tests.assert_length(splitted, 4)
     assert MERGE_UNBALANCED in splitted[-1]
 
@@ -329,7 +329,7 @@ rale Funktion, weil sie angemessenes Verhalten überhaupt erst ermöglichen.\
 
 
 def test_split_highnote_magic_pattern():
-    sentences = german.sentence_tokenize(HIGHNOTE_MAGIC)
+    sentences = germania.sentence_tokenize(HIGHNOTE_MAGIC)
     assert len(sentences) == len(HIGHNOTE_MAGIC_ENDS)
     for current, expected in zip(sentences, HIGHNOTE_MAGIC_ENDS):
         current = current[-len(expected):]
@@ -346,8 +346,8 @@ EXPECTED = [
 
 
 def test_split_highnote_magic_words():
-    sentences = german.sentence_tokenize(HIGHNOTE_MAGIC)
+    sentences = germania.sentence_tokenize(HIGHNOTE_MAGIC)
     for sentence, expected in zip(sentences, EXPECTED):
-        words = german.word_tokenize(sentence)
+        words = germania.word_tokenize(sentence)
         assert words, sentence
         assert words[-1] == expected

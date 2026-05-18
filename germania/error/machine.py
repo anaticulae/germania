@@ -12,7 +12,7 @@ import contextlib
 import iamraw
 import utila
 
-import german.error.finding
+import germania.error.finding
 
 
 class TextErrorMachine:
@@ -26,7 +26,7 @@ class TextErrorMachine:
         self,
         text: str,
         page: int = None,
-    ) -> german.error.finding.TextErrors:
+    ) -> germania.error.finding.TextErrors:
         result = []
         todo = utila.methods(self, starts='check_')
         for method in todo:
@@ -74,8 +74,8 @@ class PhysicMachine(TextErrorMachine):
     def check_physical_spaces(self, text: str) -> list:
         result = []
         for match in self.MISSING_SPACE_BEFORE_UNIT.finditer(text):
-            error = german.error.finding.TextError(
-                state=german.error.finding.TextErrorType.RULE,
+            error = germania.error.finding.TextError(
+                state=germania.error.finding.TextErrorType.RULE,
                 better=match['value'] + ' ' + match['unit'],
                 location=self.location(match),
                 raw=match[1],

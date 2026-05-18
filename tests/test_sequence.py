@@ -9,10 +9,10 @@
 
 import konrad
 
-import german
+import germania
 import tests.test_words_split
 
-SENTENCE = german.sentence_tokenize(tests.test_words_split.SENTENCE)[0]
+SENTENCE = germania.sentence_tokenize(tests.test_words_split.SENTENCE)[0]
 
 
 def test_sequence_match_double_pattern():
@@ -22,12 +22,12 @@ def test_sequence_match_double_pattern():
             konrad.Mark.BRACKET_OPEN,
             'siehe',
             'Abb.',
-            german.WordType.NUMBER,
+            germania.WordType.NUMBER,
             konrad.Mark.BRACKET_CLOSE,
         ),
         '(siehe Abb. 1)',  # duplicated pattern
     ]
-    searched = german.searches(expected, SENTENCE)
+    searched = germania.searches(expected, SENTENCE)
     collected = [(31, 36)]
     assert searched == collected
 
@@ -36,7 +36,7 @@ def test_sequence_match_simple_pattern_tokens_complex():
     expected = [
         '(siehe Abb. 1000)',
     ]
-    searched = german.searches(expected, SENTENCE)
+    searched = germania.searches(expected, SENTENCE)
     collected = [(31, 36)]
     assert searched == collected
 
@@ -45,7 +45,7 @@ def test_sequence_match_simple_pattern_not_complex():
     expected = [
         '(siehe Abb. 1000)',
     ]
-    searched = german.searches(expected, SENTENCE, tokens_complex=False)
+    searched = germania.searches(expected, SENTENCE, tokens_complex=False)
     assert not searched
 
 
@@ -58,6 +58,6 @@ def test_search_braket_sequence():
         '[RNB12, S. 62ff]',
     )
     sentence = 'Zum Arbeitsschutzproblm [EB03].'
-    searched = german.searches(pattern, sentence, compare_content=False)
+    searched = germania.searches(pattern, sentence, compare_content=False)
     expected = [(2, 6)]
     assert expected == searched

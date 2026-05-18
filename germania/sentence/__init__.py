@@ -14,7 +14,7 @@ import knlp
 import konrad
 import utila
 
-import german
+import germania
 
 Sentences = utila.Strings
 
@@ -48,7 +48,7 @@ def sentence_tokenize(
     >>> sentence_tokenize('Manfred sagt: "Ich bin König, wer bist du?"')
     ['Manfred sagt:', '"Ich bin König, wer bist du?"']
     """
-    import german.sentence.escape  # pylint:disable=W0621
+    import germania.sentence.escape  # pylint:disable=W0621
     text = utila.normalize_text(
         text,
         merge_divis=merge_divis,
@@ -56,12 +56,12 @@ def sentence_tokenize(
         normalize_spaces=normalize_spaces,
     )
     # TODO: REMOVE LATER
-    text = german.text_magic(text)
+    text = germania.text_magic(text)
     language = language_select(text)
-    text = german.sentence.escape.escapes(text)
+    text = germania.sentence.escape.escapes(text)
     # tokenize sentence
     tokenized = knlp.sent_tokenize(text, language=language)
-    tokenized = [german.sentence.escape.unescape(item) for item in tokenized]
+    tokenized = [germania.sentence.escape.unescape(item) for item in tokenized]
     result = balance_sentence(tokenized)
     result = double_colon_error(result)
     return result
@@ -69,7 +69,7 @@ def sentence_tokenize(
 
 @utila.cacheme
 def language_select(text: str) -> str:
-    if german.iseng(text):
+    if germania.iseng(text):
         return 'science_english'
     return 'science'
 
@@ -310,7 +310,7 @@ def sentence_select(text: str, tokens: list, ratio_min: float = 0.5) -> str:  # 
     """
     if isinstance(tokens, str):
         tokens = tokens.split()
-    lang = german.lang(text)
+    lang = germania.lang(text)
     expected = ' '.join(konrad.mark2str(item, lang=lang) for item in tokens)
     # determine all possible starts and ends
     start, end = tokens[0], tokens[-1]

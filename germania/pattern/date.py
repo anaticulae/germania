@@ -9,10 +9,10 @@
 
 import utila
 
-import german.utils.month
+import germania.utils.month
 
 YEARS = utila.compiles(r'\b(19|20)\d{2}\b')
-MONTH_REGEX = german.utils.month.MONTH_REGEX
+MONTH_REGEX = germania.utils.month.MONTH_REGEX
 
 
 @utila.cacheme
@@ -130,7 +130,7 @@ def dates_month_year(raw: str, verbose: bool = True, sort: bool = True):
     result = []
     for item in MONTH_YEAR.finditer(raw):
         month, year, day = item[1], item[2], 0
-        month = german.utils.month.month(month)
+        month = germania.utils.month.month(month)
         parsed = (year, month, day)
         if verbose:
             parsed = (parsed, item[0])

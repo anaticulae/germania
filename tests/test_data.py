@@ -7,9 +7,9 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import german_data
+import germania_data
 
 
 def test_load_data():
-    assert german_data.NOPERSON
-    assert 'DIN' in german_data.NOPERSON
+    assert germania_data.NOPERSON
+    assert 'DIN' in germania_data.NOPERSON

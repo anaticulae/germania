@@ -12,10 +12,10 @@ import re
 import sdata
 import utila
 
-import german
+import germania
 
 
-class TextMachine(german.TextErrorMachine):
+class TextMachine(germania.TextErrorMachine):
 
     MISSING_PAGENUMBER = utila.compiles(r"""
         (
@@ -64,8 +64,8 @@ class TextMachine(german.TextErrorMachine):
             before = text[max(0, start - lookback):start]
             if name_before(before):
                 continue
-            error = german.TextError(
-                state=german.TextErrorType.MISSING,
+            error = germania.TextError(
+                state=germania.TextErrorType.MISSING,
                 location=self.location(match),
                 raw=match[0].strip(),
             )

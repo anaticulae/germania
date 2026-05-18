@@ -11,7 +11,7 @@ import iamraw
 import pytest
 import utila
 
-import german
+import germania
 
 NOPERSONS = utila.splitlines("""\
 Duden. Rechtschreibung
@@ -24,7 +24,7 @@ Duden
     [pytest.param(item, id=item) for item in NOPERSONS],
 )
 def test_noperson(raw):
-    assert not german.isperson(raw)
+    assert not germania.isperson(raw)
 
 
 @pytest.mark.parametrize(
@@ -32,6 +32,6 @@ def test_noperson(raw):
     [pytest.param(item, id=item) for item in NOPERSONS],
 )
 def test_authors(raw):
-    parsed = german.authors(raw)
-    decided = german.authors_decide(parsed)
+    parsed = germania.authors(raw)
+    decided = germania.authors_decide(parsed)
     assert isinstance(decided[0], iamraw.NoPerson)

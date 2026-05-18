@@ -7,22 +7,21 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import os
-
 import utila
 
-import german_data
+import germania.improve.abbreviation
+import germania.improve.highnote
+import germania.improve.href
+
+TODO = (
+    germania.improve.abbreviation.abbreviation_magic,
+    germania.improve.highnote.highnote_magic,
+    germania.improve.href.href_magic,
+)
 
 
-def load_dict(path) -> utila.UpperCasedSet:
-    assert os.path.exists(path), str(path)
-    loaded = utila.file_read(path).splitlines()
-    result = utila.UpperCasedSet(loaded)
-    return result
-
-
-def load_data(path: str):
-    if not os.path.exists(path):
-        root = os.path.join(german_data.ROOT, 'german_data')
-        path = os.path.join(root, path)
-    return load_dict(path)
+@utila.cacheme
+def text_magic(text: str) -> str:
+    for pattern in TODO:
+        text = pattern(text)
+    return text

@@ -7,14 +7,14 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import german.sentence
-import german.word
+import germania.sentence
+import germania.word
 
 
-def words_fromstr(text: str) -> german.word.Words:
+def words_fromstr(text: str) -> germania.word.Words:
     result = []
-    for sentence_ in german.sentence.sentence_tokenize(text):
-        for word_ in german.word.word_tokenize(
+    for sentence_ in germania.sentence.sentence_tokenize(text):
+        for word_ in germania.word.word_tokenize(
                 sentence_,
                 validate_sentences=False,
         ):

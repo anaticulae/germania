@@ -7,5 +7,5 @@
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
 
-include german_data/*.dict
-graft german_data/nltk_data
+include germania_data/*.dict
+graft germania_data/nltk_data

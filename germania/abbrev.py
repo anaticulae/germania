@@ -10,26 +10,26 @@
 import sdata
 import utila
 
-import german
+import germania
 
 
 def find_abbrev(abbrev: str, words: list) -> str:
     """\
     >>> find_abbrev('MNU', 'Steuergebiete zugunsten multinationaler Unternehmen'.split())
     'multinationaler Unternehmen'
-    >>> import german
-    >>> find_abbrev('MNU', german.words_fromstr('Steuergebiete zugunsten multinationaler Unternehmens(MNU) ende'))
+    >>> import germania
+    >>> find_abbrev('MNU', germania.words_fromstr('Steuergebiete zugunsten multinationaler Unternehmens(MNU) ende'))
     'multinationaler Unternehmens'
     """
     lookup = sdata.abbrev(abbrev)
     if lookup is None:
         return None
-    lookup = [german.word_normalize(item) for item in lookup]
+    lookup = [germania.word_normalize(item) for item in lookup]
     normalized = [
-        german.word_normalize(item) if isinstance(item, str) else item
+        germania.word_normalize(item) if isinstance(item, str) else item
         for item in words
     ]
-    detected = german.searches(
+    detected = germania.searches(
         patterns=lookup,
         sentence=normalized,
         tokens_complex=False,

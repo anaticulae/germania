@@ -10,7 +10,7 @@
 import konrad
 import pytest
 
-import german
+import germania
 
 MIXED = """\
 James Grimmelmann (2008) bezeichnet die Offenbarung privater
@@ -56,5 +56,5 @@ des Évangiles en Terre Sainte“ mémoire collective zu den Lieux de mémoire""
     pytest.param(FRENCH, konrad.Language.FRENCH, id='french'),
 ])
 def test_language(source, expected):
-    result = german.lang(source)
+    result = germania.lang(source)
     assert result.language == expected, str(result)

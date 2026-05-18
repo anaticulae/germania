@@ -13,7 +13,7 @@ import konrad
 import konrad.mark
 import utila
 
-import german
+import germania
 
 DOUBLE_SIMPLE = (
     konrad.Mark.QUOTATION_MARK,
@@ -41,7 +41,7 @@ SINGLE_ENG = (
 def extract_quotes(items: str, lang='science') -> list:  # pylint:disable=W0613
     assert isinstance(items, str), type(items)
     # prepare token
-    tokens = german.word_tokenize(
+    tokens = germania.word_tokenize(
         items,
         lang=lang,
         validate_sentences=False,

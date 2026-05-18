@@ -9,39 +9,39 @@
 
 import konrad
 
-import german
+import germania
 import tests.test_sentence_split
 
 
 def test_quotation_extract():
-    sentences = german.sentence_tokenize(tests.test_sentence_split.STANDARD)
+    sentences = germania.sentence_tokenize(tests.test_sentence_split.STANDARD)
     expected = [
         (0, 3),
         (9, 14),
     ]
-    first_quotes = german.extract_quotes(sentences[0])
+    first_quotes = germania.extract_quotes(sentences[0])
     assert first_quotes == expected
     expected = [
         (4, 7),
     ]
-    second_quotes = german.extract_quotes(sentences[1])
+    second_quotes = germania.extract_quotes(sentences[1])
     assert second_quotes == expected
 
 
 def test_quotation_raw():
-    sentences = german.sentence_tokenize(tests.test_sentence_split.STANDARD)
+    sentences = germania.sentence_tokenize(tests.test_sentence_split.STANDARD)
     expected = [
         (0, 3),
         (9, 14),
     ]
-    splitted = german.word_tokenize(sentences[0])
-    raw = german.raw_quotation(splitted, expected)
+    splitted = germania.word_tokenize(sentences[0])
+    raw = germania.raw_quotation(splitted, expected)
     assert len(raw) == 2
     expected = [
         (4, 7),
     ]
-    splitted = german.word_tokenize(sentences[1])
-    raw = german.raw_quotation(splitted, expected)
+    splitted = germania.word_tokenize(sentences[1])
+    raw = germania.raw_quotation(splitted, expected)
     assert len(raw) == 1
 
 
@@ -62,14 +62,14 @@ davon betroffen.
 
 
 def test_parse_long_quote():
-    extracted = german.extract_quotes(QUOTE_IN_TEXT)
+    extracted = germania.extract_quotes(QUOTE_IN_TEXT)
     # TODO: INVESTIGATE WHAT IS THE RIGHT ONE
     expected = [(29, 64)]
     assert extracted == expected
 
-    splitted = german.word_tokenize(QUOTE_IN_TEXT, validate_sentences=False)
+    splitted = germania.word_tokenize(QUOTE_IN_TEXT, validate_sentences=False)
 
-    raw = german.raw_quotation(splitted, extracted)
+    raw = germania.raw_quotation(splitted, extracted)
     assert len(raw) == 1
 
 
@@ -83,5 +83,5 @@ Content”12.
 
 
 def test_parse_quote_english():
-    extracted = german.extract_quotes(ENGLISH, lang=konrad.ENGLISH)
+    extracted = germania.extract_quotes(ENGLISH, lang=konrad.ENGLISH)
     assert extracted == [(9, 49)]

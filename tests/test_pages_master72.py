@@ -11,20 +11,20 @@ import os
 
 import utila
 
-import german
+import germania
 import tests
 
 
 def test_text_seventytwo_extract_sentences():
     expected = firstpage_sentences()
     raw = ' '.join(expected)
-    splitted = german.sentence_tokenize(raw)
+    splitted = germania.sentence_tokenize(raw)
     tests.assert_length(splitted, len(expected))
     assert splitted == expected
 
 
 SEVENTYTWO_FIRSTPAGE = os.path.join(
-    german.ROOT,
+    germania.ROOT,
     'tests/text/seventytwo_firstpage.txt',
 )
 

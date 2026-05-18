@@ -60,7 +60,7 @@ import configo
 import iamraw
 import utila
 
-import german
+import germania
 
 
 @utila.cacheme
@@ -165,7 +165,7 @@ def splitand(raw: str):
     >>> splitand('Bundesministerium der Justiz und für Verbraucherschutz')
     ['Bundesministerium der Justiz und für Verbraucherschutz']
     """
-    if any(german.isperson(name) for name in raw.split()):
+    if any(germania.isperson(name) for name in raw.split()):
         raw = raw.replace(' and ', '&')
         raw = raw.replace(' und ', '&')
     return raw.split('&')
@@ -175,7 +175,7 @@ def judge(parsed: list):
     if len(parsed) == 1:
         return iamraw.NoPerson(raw=parsed[0])  # pylint:disable=E1101
     raw = ' '.join(parsed)
-    noperson = german.magic.datums()[1]
+    noperson = germania.magic.datums()[1]
     if any(item for item in parsed if item in noperson):
         return iamraw.NoPerson(raw=raw)
     if not person_simple(parsed):
@@ -210,7 +210,7 @@ def person_simple(parsed: list, names_max: int = 4) -> bool:
     """
     if len(parsed) > names_max:
         return False
-    if any(german.isperson(name) for name in parsed):
+    if any(germania.isperson(name) for name in parsed):
         return True
     if all(VALID_NAME.match(item) for item in parsed):
         # ensure that author contains `.` to fit in short `X. Name` pattern

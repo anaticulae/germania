@@ -14,7 +14,7 @@ import nltk.data
 import nltk_data
 import utila
 
-import german_data
+import germania_data
 import science_text.improve
 import science_text.train
 
@@ -22,7 +22,7 @@ import science_text.train
 def setup_nltk():
     utila.log(f'NLTK: {nltk.data.path}\n')
     nltk.data.path.append(os.path.join(nltk_data.ROOT, 'nltk_data'))  # yapf:disable
-    nltk.data.path.append(os.path.join(german_data.ROOT, 'german_data/nltk_data'))  # yapf:disable
+    nltk.data.path.append(os.path.join(germania_data.ROOT, 'germania_data/nltk_data'))  # yapf:disable
     utila.log(f'NLTK: {nltk.data.path}\n')
 
 
@@ -36,5 +36,5 @@ def train():
     science_text.improve.setup(root)
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     train()

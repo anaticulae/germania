@@ -10,7 +10,7 @@
 import iamraw
 import pytest
 
-import german
+import germania
 
 
 def test_comma_and():
@@ -21,14 +21,14 @@ def test_comma_and():
            'CAMPAGNOLI, R. R., '
            'PINHEIRO, W. M., '
            '& PESSOA, L. ')
-    parsed = german.authors(raw)
+    parsed = germania.authors(raw)
     assert len(parsed) == 7
 
 
 def test_authors_decide():
     raw = 'BOBEK H., FESL M.'
-    authors = german.authors(raw)
-    decided = german.authors_decide(authors)
+    authors = germania.authors(raw)
+    decided = germania.authors_decide(authors)
     assert all(isinstance(item, iamraw.Person) for item in decided)
 
 
@@ -46,7 +46,7 @@ Batra, Anil; Bilke-Hentsch, Oliver (Hg.)
     ),
 ])
 def test_author_parser(raw, expected):
-    parsed = german.authors(raw)
+    parsed = germania.authors(raw)
     assert parsed == expected
 
 
@@ -57,6 +57,6 @@ S. 2269–2283
 
 @pytest.mark.parametrize('raw', NO_AUTHORS)
 def test_no_author(raw):
-    parsed = german.authors(raw)
-    authors = german.authors_decide(parsed)
+    parsed = germania.authors(raw)
+    authors = germania.authors_decide(parsed)
     assert all((isinstance(item, iamraw.NoPerson) for item in authors))

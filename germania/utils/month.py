@@ -11,8 +11,8 @@
 
 Determine number of month:
 
->>> import german
->>> german.month('may')
+>>> import germania
+>>> germania.month('may')
 5
 """
 
