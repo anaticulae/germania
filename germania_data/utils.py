@@ -9,8 +9,9 @@
 
 import os
 
-import germania_data
 import utila
+
+import germania_data
 
 
 def load_dict(path) -> utila.UpperCasedSet:

@@ -16,7 +16,7 @@ sentences into words.
 
 import os
 
-import nltk_data
+import ltk_data
 
 from germania.abbrev import find_abbrev
 from germania.error.finding import TextError

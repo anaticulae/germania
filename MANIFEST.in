@@ -8,4 +8,4 @@
 #==============================================================================
 
 include germania_data/*.dict
-graft germania_data/nltk_data
+graft germania_data/ltk_data

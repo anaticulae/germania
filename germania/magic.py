@@ -27,12 +27,13 @@ False
 import enum
 import re
 
-import germania_data
 import knlp
 import konrad
-import nltk_data.lookup
+import ltk_data.lookup
 import sdata
 import utila
+
+import germania_data
 
 
 class WordType(enum.Enum):
@@ -212,9 +213,9 @@ def datums():
     stopwords = set(knlp.STOPWORDS) - utila.splititems('der de da')
     names = (
         germania_data.NAMES |
-        nltk_data.lookup.NAME_MALE |
-        nltk_data.lookup.NAME_FEMALE |
-        nltk_data.lookup.NAME_FAMILY
+        ltk_data.lookup.NAME_MALE |
+        ltk_data.lookup.NAME_FEMALE |
+        ltk_data.lookup.NAME_FAMILY
     )
     noperson = (
         germania_data.NOPERSON |

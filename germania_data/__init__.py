@@ -9,17 +9,17 @@
 
 import os
 
+import ltk_data
+
 from germania_data.utils import load_data
 from germania_data.utils import load_dict
 
-import nltk_data
-
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-NLTK_DATA = os.path.join(ROOT, 'germania_data/nltk_data')
+NLTK_DATA = os.path.join(ROOT, 'germania_data/ltk_data')
 # ensure that path exists, this is required to run data generator later
 os.makedirs(NLTK_DATA, exist_ok=True)
 # TODO: REPLACE WITH KNLP
-nltk_data.add_nltk_path(NLTK_DATA)
+ltk_data.add_nltk_path(NLTK_DATA)
 
 # TODO: INTRODUCE LAZY LOADING
 NAMES = load_data('names.dict')

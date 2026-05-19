@@ -12,12 +12,12 @@ import os
 import pickle  # nosec
 import sys
 
-import germania_data
 import hugedata
 import konrad
 import nltk.tokenize.punkt
 import utila
 
+import germania_data
 import science_text.config
 
 
@@ -73,8 +73,8 @@ def setup(root, source=SOURCES):
     dumped = utila.file_read_binary(tmp)
     root = os.path.join(root, 'germania_data')
     dests = [
-        os.path.join(root, 'nltk_data/tokenizers/punkt/science.pickle'),
-        os.path.join(root, 'nltk_data/tokenizers/punkt/PY3/science.pickle'),
+        os.path.join(root, 'ltk_data/tokenizers/punkt/science.pickle'),
+        os.path.join(root, 'ltk_data/tokenizers/punkt/PY3/science.pickle'),
     ]
     for dest in dests:
         parent = utila.path_parent(dest)

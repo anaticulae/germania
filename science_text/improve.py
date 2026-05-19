@@ -30,7 +30,7 @@ def setup(root):
 
 
 def science_english_write(dumped, root):
-    base = os.path.join(root, 'germania_data/nltk_data/tokenizers/punkt/')
+    base = os.path.join(root, 'germania_data/ltk_data/tokenizers/punkt/')
     base = os.path.abspath(base)
     dests = [
         os.path.join(base, 'science_english.pickle'),
