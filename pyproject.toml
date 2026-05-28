@@ -1,0 +1,91 @@
+[build-system]
+requires = [
+    "setuptools>=82.0.1",
+    "wheel>=0.47.0",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "germania"
+version = "1.30.0"
+description = ""
+requires-python = ">=3.12"
+authors = [
+    { name = "Helmut Konrad Schewe", email = "helmutus@outlook.com" },
+]
+dependencies = [
+    "utilo>=2.107.4,<3.0.0",
+    "konradus>=1.0.1<2.0.0",
+    "iamraw>=4.91.4<5.0.0",
+    "configos>=1.0.4<2.0.0",
+    "nltk>=3.9.4<4.0.0",
+    "ltk_data>=1.0.2<2.0.0",
+    "sdatum>=1.0.0<2.0.0",
+]
+keywords = []
+classifiers = [
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+]
+license = "MIT"
+license-files = [
+    "LICENSE",
+]
+
+[project.readme]
+file = "README"
+content-type = "text/markdown"
+
+[project.optional-dependencies]
+dev = [
+    "utilotest>=1.0.1,<2.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/anaticulae/germania"
+Repository = "https://github.com/anaticulae/germania"
+
+[tool.semantic_release]
+version_toml = [
+    "pyproject.toml:project.version",
+]
+
+[tool.semantic_release.changelog]
+mode = "init"
+output_format = "md"
+
+[tool.semantic_release.changelog.default_templates]
+changelog_file = "CHANGELOG"
+
+[tool.semantic_release.commit_parser_options]
+patch_tags = [
+    "fix",
+    "perf",
+    "build",
+    "chore",
+    "ci",
+    "docs",
+    "style",
+    "refactor",
+    "test",
+    "deps",
+]
+
+[tool.setuptools.packages.find]
+where = [
+    ".",
+]
+include = [
+    "germania",
+    "germania.error",
+    "germania.improve",
+    "germania.pattern",
+    "germania.sentence",
+    "germania.utils",
+    "germania_data",
+    "science_text",
+]
+exclude = [
+    "tests*",
+]
