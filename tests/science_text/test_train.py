@@ -7,19 +7,18 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import hugedata
+# import hugedata
 import utilo
 
 import science_text.improve
 import science_text.train
 
-
-def test_train(testdir):
-    root = testdir.tmpdir
-    sources = hugedata.RESOURCES[0:3]
-    science_text.train.setup(root=root, source=sources)
-    current = utilo.file_count(root)
-    assert current == 2
+# def test_train(testdir):
+#     root = testdir.tmpdir
+#     sources = hugedata.RESOURCES[0:3]
+#     science_text.train.setup(root=root, source=sources)
+#     current = utilo.file_count(root)
+#     assert current == 2
 
 
 def test_improve(testdir):

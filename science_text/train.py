@@ -12,7 +12,7 @@ import os
 import pickle  # nosec
 import sys
 
-import hugedata
+# import hugedata
 import konradus
 import nltk.tokenize.punkt
 import utilo
@@ -61,10 +61,11 @@ def train(src: str, dest: str, verbose: bool = False):
     utilo.file_replace_binary(dest, dumped)
 
 
-SOURCES = hugedata.RESOURCES
+# SOURCES = hugedata.RESOURCES
+SOURCES = []
 
 
-def setup(root, source=SOURCES):
+def setup(root, source=SOURCES):  # pylint:disable=W0102
     verbose = 'verbose' in sys.argv or '--verbose' in sys.argv
 
     tmp = utilo.tmpfile(germania_data.ROOT)
