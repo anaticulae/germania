@@ -18,7 +18,7 @@ Do not change anything if both operation are used.
 
 """
 
-import utila
+import utilo
 
 import germania.utils.month
 
@@ -28,7 +28,7 @@ def escapes(text: str):
     >>> escapes('')
     ''
     """
-    todo = utila.methods(utila.load_module(__file__), starts='ex_')
+    todo = utilo.methods(utilo.load_module(__file__), starts='ex_')
     for method in todo:
         text = method(text)
     return text
@@ -39,13 +39,13 @@ def unescape(text: str):
     >>> unescape('')
     ''
     """
-    todo = utila.methods(utila.load_module(__file__), starts='un_')
+    todo = utilo.methods(utilo.load_module(__file__), starts='un_')
     for method in todo:
         text = method(text)
     return text
 
 
-DATE = utila.compiles(r"""
+DATE = utilo.compiles(r"""
     \d{1,2}
     [ ]{0,5}
     \.
@@ -53,7 +53,7 @@ DATE = utila.compiles(r"""
     %s
 """ % germania.utils.month.MONTH_REGEX)
 
-UN_DATE = utila.compiles(r"""
+UN_DATE = utilo.compiles(r"""
     \<\<\<DATE\:(.+?)\>\>\>
 """)
 

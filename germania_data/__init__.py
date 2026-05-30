@@ -10,7 +10,6 @@
 import os
 
 import ltk_data
-
 from germania_data.utils import load_data
 from germania_data.utils import load_dict
 

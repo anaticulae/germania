@@ -9,11 +9,11 @@
 
 import iamraw
 import pytest
-import utila
+import utilo
 
 import germania
 
-NOPERSONS = utila.splitlines("""\
+NOPERSONS = utilo.splitlines("""\
 Duden. Rechtschreibung
 Duden
 """)

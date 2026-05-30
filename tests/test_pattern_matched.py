@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import konrad
+import konradus
 
 import germania
 
@@ -27,7 +27,9 @@ Norm ISO 11898 2003. Road vehicles - Controller area network(CAN)
 
 """.split('\n\n')
 
-EXPECTED = [germania.WordType.PERSON, konrad.Mark.COLON, germania.WordType.YEAR]
+EXPECTED = [
+    germania.WordType.PERSON, konradus.Mark.COLON, germania.WordType.YEAR
+]
 
 
 def test_pattern_matched():

@@ -7,15 +7,15 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
+import utilo
 
 import germania.utils.month
 
-YEARS = utila.compiles(r'\b(19|20)\d{2}\b')
+YEARS = utilo.compiles(r'\b(19|20)\d{2}\b')
 MONTH_REGEX = germania.utils.month.MONTH_REGEX
 
 
-@utila.cacheme
+@utilo.cacheme
 def years(raw: str, min_=1950, max_=2025, verbose: bool = False):
     """Extract sorted list of years out of `raw` text.
 
@@ -36,7 +36,7 @@ def years(raw: str, min_=1950, max_=2025, verbose: bool = False):
     return result
 
 
-DATES = utila.compiles(r"""
+DATES = utilo.compiles(r"""
     (
         \d{4}|
         \d{1,2})\.(\d{1,2})\.(\d{4}|
@@ -78,8 +78,8 @@ def dates_master(
     return result
 
 
-@utila.rename(min_year='year_min', max_year='year_max')
-@utila.cacheme
+@utilo.rename(min_year='year_min', max_year='year_max')
+@utilo.cacheme
 def dates(
     raw: str,
     year_min=1950,
@@ -119,7 +119,7 @@ def dates(
     return result
 
 
-MONTH_YEAR = utila.compiles(MONTH_REGEX + r'[ ]{0,3}(\d{2,4})')
+MONTH_YEAR = utilo.compiles(MONTH_REGEX + r'[ ]{0,3}(\d{2,4})')
 
 
 def dates_month_year(raw: str, verbose: bool = True, sort: bool = True):

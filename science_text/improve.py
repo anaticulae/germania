@@ -12,7 +12,7 @@ import os
 import pickle  # nosec
 
 import nltk
-import utila
+import utilo
 
 import science_text.config
 
@@ -37,10 +37,10 @@ def science_english_write(dumped, root):
         os.path.join(base, 'PY3/science_english.pickle'),
     ]
     for dest in dests:
-        parent = utila.path_parent(dest)
+        parent = utilo.path_parent(dest)
         os.makedirs(parent, exist_ok=True)
-        utila.log(dest)
-        utila.file_replace_binary(dest, dumped)
+        utilo.log(dest)
+        utilo.file_replace_binary(dest, dumped)
 
 
 if __name__ == "__main__":  # pragma: no cover

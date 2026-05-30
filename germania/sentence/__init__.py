@@ -9,17 +9,17 @@
 
 import difflib
 
-import configo
+import configos
 import knlp
-import konrad
-import utila
+import konradus
+import utilo
 
 import germania
 
-Sentences = utila.Strings
+Sentences = utilo.Strings
 
 
-@utila.cacheme
+@utilo.cacheme
 def sentence_tokenize(
     text: str,
     *,
@@ -49,7 +49,7 @@ def sentence_tokenize(
     ['Manfred sagt:', '"Ich bin König, wer bist du?"']
     """
     import germania.sentence.escape  # pylint:disable=W0621
-    text = utila.normalize_text(
+    text = utilo.normalize_text(
         text,
         merge_divis=merge_divis,
         normalize_newline=normalize_newline,
@@ -67,7 +67,7 @@ def sentence_tokenize(
     return result
 
 
-@utila.cacheme
+@utilo.cacheme
 def language_select(text: str) -> str:
     if germania.iseng(text):
         return 'science_english'
@@ -97,7 +97,7 @@ def balance_sentence(sentences: list) -> list:
         index for index, item in enumerate(sentences) if quotation_count(item)
     ]
     # Determine groups of unbalanced sentences.
-    grouped = utila.groupby_diff(unbalenced)
+    grouped = utilo.groupby_diff(unbalenced)
 
     def merge_group(group):
         if len(group) == 1:
@@ -122,7 +122,7 @@ def balance_sentence(sentences: list) -> list:
 PAIR = '() []'.split()
 
 
-@utila.cacheme
+@utilo.cacheme
 def isunbalanced(sentence: str) -> bool:
     """\
     >>> isunbalanced('I am ( unbalanced')
@@ -160,13 +160,13 @@ def open_quotation_mark(tokens: list) -> int:
 
 QUOTATION_CLOSE_SIGNS = '"”“'  # TODO: REPLACE WITH KONRAD
 
-SENTENCE_LENGTH_MIN = configo.HV_INT_PLUS(default=4)
+SENTENCE_LENGTH_MIN = configos.HV_INT_PLUS(default=4)
 
-SENTENCE_DOTS_MAX = configo.HV_PERCENT_PLUS(default=4.0)
+SENTENCE_DOTS_MAX = configos.HV_PERCENT_PLUS(default=4.0)
 
 
-@utila.rename(min_length='length_min')
-@utila.cacheme
+@utilo.rename(min_length='length_min')
+@utilo.cacheme
 def is_sentence(
     sentence: str,
     length_min: int = SENTENCE_LENGTH_MIN,
@@ -207,7 +207,7 @@ def is_sentence_closed(token: list) -> bool:  # pylint:disable=R0911
     assert isinstance(token, (list, tuple)), type(token)
     last = token[-1].strip()
     last_char = last[-1]
-    if last_char in konrad.SIGN:
+    if last_char in konradus.SIGN:
         # ... hello?
         return True
     if len(last) == 1:
@@ -219,7 +219,7 @@ def is_sentence_closed(token: list) -> bool:  # pylint:disable=R0911
         before_last_char = last[-2]
         if last_char in QUOTATION_CLOSE_SIGNS:
             # ... hello."
-            if before_last_char in konrad.SIGN:
+            if before_last_char in konradus.SIGN:
                 return True
     if magic_ending(token):
         return True
@@ -228,7 +228,7 @@ def is_sentence_closed(token: list) -> bool:  # pylint:disable=R0911
     return False
 
 
-HIGHNOTE_MAGIC_PATTERN = utila.compiles(r"""
+HIGHNOTE_MAGIC_PATTERN = utilo.compiles(r"""
         [\.\?\!\:]                  # sentence end sign
         ["''“‘]{0,1}                # optinal quotation sign
         \{\{hn\:\d{1,4}\:nh\}\}     # highnote at the end
@@ -268,7 +268,7 @@ def quotation_ending(token) -> bool:
     return False
 
 
-@utila.cacheme
+@utilo.cacheme
 def split_token(text: str, normalize: bool = True):
     # replace text division -
     text = text.replace('-\n', '')
@@ -278,14 +278,14 @@ def split_token(text: str, normalize: bool = True):
     if normalize:
         tokens = [token for token in tokens if token]
     tokens = [split_special_chars(item) for item in tokens]
-    tokens = utila.flat(tokens)
+    tokens = utilo.flat(tokens)
     return tokens
 
 
 SPECIAL = ['„', '“', '‘', '‚']
 
 
-@utila.cacheme
+@utilo.cacheme
 def split_special_chars(token):
     """\
     >>> split_special_chars('„‚privat‘')
@@ -311,16 +311,16 @@ def sentence_select(text: str, tokens: list, ratio_min: float = 0.5) -> str:  # 
     if isinstance(tokens, str):
         tokens = tokens.split()
     lang = germania.lang(text)
-    expected = ' '.join(konrad.mark2str(item, lang=lang) for item in tokens)
+    expected = ' '.join(konradus.mark2str(item, lang=lang) for item in tokens)
     # determine all possible starts and ends
     start, end = tokens[0], tokens[-1]
-    starts = utila.findindex(text, konrad.mark2str(start, lang=lang))
-    ends = utila.findindex(text, konrad.mark2str(end, lang=lang))
+    starts = utilo.findindex(text, konradus.mark2str(start, lang=lang))
+    ends = utilo.findindex(text, konradus.mark2str(end, lang=lang))
     if not start or not end:
         return None
     best = ''
     mostequal = 0.0
-    for first, second in utila.starmap((starts, ends)):
+    for first, second in utilo.starmap((starts, ends)):
         if second < first:
             continue
         sentence = text[first:second + 1]

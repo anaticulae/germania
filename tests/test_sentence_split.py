@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import konrad
+import konradus
 import pytest
 
 import germania
@@ -245,7 +245,7 @@ def test_split_sentence_quotation_highnumber():
 
 def test_split_word_quotation_highnumber():
     splitted = germania.word_tokenize(VALID_SENTENCE)
-    assert splitted[0] == konrad.Mark.QUOTATION_MARK_DOUBLE_OPEN
+    assert splitted[0] == konradus.Mark.QUOTATION_MARK_DOUBLE_OPEN
     assert splitted[-1] == '16'
 
 
@@ -338,9 +338,9 @@ def test_split_highnote_magic_pattern():
 
 EXPECTED = [
     '{{hn:143:nh}}',
-    konrad.Mark.FULLSTOP,
-    konrad.Mark.FULLSTOP,
-    konrad.Mark.FULLSTOP,
+    konradus.Mark.FULLSTOP,
+    konradus.Mark.FULLSTOP,
+    konradus.Mark.FULLSTOP,
     '{{hn:145:nh}}',
 ]
 

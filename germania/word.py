@@ -7,8 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import konrad
-import utila
+import konradus
+import utilo
 
 import germania
 
@@ -19,7 +19,7 @@ def word_tokenize(
     items: str,
     validate_sentences: bool = True,
     token_normalize: bool = False,
-    lang: konrad.Language = None,
+    lang: konradus.Language = None,
 ) -> Words:
     """\
     >>> word_tokenize('•Wie gestaltet sich die Anreise der Kunden?')
@@ -47,14 +47,14 @@ def word_tokenize(
             handle_whitespace(result, current)
             continue
         try:
-            special = konrad.matches(char, lang=lang)
+            special = konradus.matches(char, lang=lang)
         except KeyError:
             # append normal text char or number
             current.append(char)
         else:
             handle_token(result, items, current, index, char, special)
     if current:
-        if items[-1] in konrad.SIGN or not validate_sentences:
+        if items[-1] in konradus.SIGN or not validate_sentences:
             result.append(''.join(current))
             current = []
     assert not current or validate_sentences, current
@@ -85,7 +85,7 @@ def word_normalize(item: str, lang: str = 'ger') -> str:
 
 def handle_whitespace(result, current):
     if len(current) == 1:
-        if utila.isnumber(current[0]):
+        if utilo.isnumber(current[0]):
             # number and space '5 '
             result.append(current[0])
             current.clear()
@@ -113,7 +113,7 @@ def handle_token(result, items, current, index, token, special):
     if len(current) >= 2:
         result.append(''.join(current))
         current.clear()
-    if len(current) == 1 and utila.isnumber(current[0]):
+    if len(current) == 1 and utilo.isnumber(current[0]):
         # Number SpecialChar 4. 2,
         result.append(current[0])
         result.append(special)
@@ -125,17 +125,17 @@ def handle_token(result, items, current, index, token, special):
 
 def merge_numbers(result, source) -> list:
     """\
-    >>> merge_numbers(['Ich', '134', konrad.Mark.FULLSTOP, '456', 'kg'], 'Ich 134.456 kg')
+    >>> merge_numbers(['Ich', '134', konradus.Mark.FULLSTOP, '456', 'kg'], 'Ich 134.456 kg')
     ['Ich', '134.456', 'kg']
     """
     if len(result) <= 2:
         return result
     merged = result[:2]
     for item in result[2:]:
-        if not utila.isnumber(item):
+        if not utilo.isnumber(item):
             merged.append(item)
             continue
-        if merged[-1] == konrad.Mark.FULLSTOP and utila.isnumber(merged[-2]):
+        if merged[-1] == konradus.Mark.FULLSTOP and utilo.isnumber(merged[-2]):
             together = f'{merged[-2]}.{item}'
             if together not in source:
                 merged.append(item)
@@ -148,20 +148,20 @@ def merge_numbers(result, source) -> list:
 
 def merge_reference(result, source) -> list:
     """\
-    >>> merge_reference(['Punkt', '3.2', konrad.Mark.FULLSTOP, 'Helm'], 'Punkt 3.2. Helm')
+    >>> merge_reference(['Punkt', '3.2', konradus.Mark.FULLSTOP, 'Helm'], 'Punkt 3.2. Helm')
     ['Punkt', '3.2.', 'Helm']
     """
     if len(result) <= 1:
         return result
     merged = result[:1]
     for item in result[1:]:
-        if item != konrad.Mark.FULLSTOP and not utila.isnumber(item):
+        if item != konradus.Mark.FULLSTOP and not utilo.isnumber(item):
             merged.append(item)
             continue
         if not germania.isreference(merged[-1]):
             merged.append(item)
             continue
-        if item == konrad.Mark.FULLSTOP:
+        if item == konradus.Mark.FULLSTOP:
             together = f'{merged[-1]}.'
         else:
             together = f'{merged[-1]}{item}'
@@ -198,11 +198,11 @@ class MergeAutomata:
         if len(self.buffer) < len(self.pattern):
             return None
         for current, expected in zip(self.buffer, self.pattern):
-            if isinstance(expected, (str, konrad.Mark)):
+            if isinstance(expected, (str, konradus.Mark)):
                 if current != expected:
                     return False
                 continue
-            if isinstance(current, konrad.Mark):
+            if isinstance(current, konradus.Mark):
                 return False
             if not expected.match(current):
                 return False
@@ -219,15 +219,15 @@ class MergeAutomata:
 def merge_highnote(items) -> list:
     highnote = MergeAutomata(
         pattern=(
-            konrad.Mark.BRACKET_ELEPHANT_OPEN,
-            konrad.Mark.BRACKET_ELEPHANT_OPEN,
+            konradus.Mark.BRACKET_ELEPHANT_OPEN,
+            konradus.Mark.BRACKET_ELEPHANT_OPEN,
             'hn',
-            konrad.Mark.COLON,
-            utila.compiles(r'\d{1,4}'),
-            konrad.Mark.COLON,
+            konradus.Mark.COLON,
+            utilo.compiles(r'\d{1,4}'),
+            konradus.Mark.COLON,
             'nh',
-            konrad.Mark.BRACKET_ELEPHANT_CLOSE,
-            konrad.Mark.BRACKET_ELEPHANT_CLOSE,
+            konradus.Mark.BRACKET_ELEPHANT_CLOSE,
+            konradus.Mark.BRACKET_ELEPHANT_CLOSE,
         ),
         replace=lambda x: '{{hn:%s:nh}}' % x[4],
     )
@@ -237,7 +237,7 @@ def merge_highnote(items) -> list:
     return result
 
 
-UNPLUG_NUMBERS = utila.compiles(r'(\d{1,10})')
+UNPLUG_NUMBERS = utilo.compiles(r'(\d{1,10})')
 
 
 def unplug_numbers(result):
@@ -249,8 +249,8 @@ def unplug_numbers(result):
         UNPLUG_NUMBERS.split(item) if isinstance(item, str) else item
         for item in result
     ]
-    result = utila.flat(result, append=True)  # pylint:disable=unexpected-keyword-arg
-    result = utila.notempty(result)  # pylint:disable=E1101
+    result = utilo.flat(result, append=True)  # pylint:disable=unexpected-keyword-arg
+    result = utilo.notempty(result)  # pylint:disable=E1101
     return result
 
 
@@ -269,7 +269,7 @@ def dot_pattern(current, char) -> bool:
         if current[0] not in ')]':
             return True
     if len(current) == 3 and char == '.' and current[1] == '.':
-        if utila.isnumber(current[0]) and utila.isnumber(current[2]):
+        if utilo.isnumber(current[0]) and utilo.isnumber(current[2]):
             # 3.2
             return False
         return True
@@ -293,21 +293,21 @@ def dotable_shortcut_pattern(current, char) -> bool:
     if char != '.':
         return False
     current = ''.join(current).lower() + char
-    return current in konrad.ABBREVIATION_LOWER
+    return current in konradus.ABBREVIATION_LOWER
 
 
 MARKS = (
-    konrad.Mark.QUOTATION_MARK,
-    konrad.Mark.QUOTATION_MARK_DOUBLE_CLOSE,
-    konrad.Mark.QUOTATION_MARK_DOUBLE_OPEN,
-    konrad.Mark.QUOTATION_MARK_SINGLE_CLOSE,
-    konrad.Mark.QUOTATION_MARK_SINGLE_OPEN,
+    konradus.Mark.QUOTATION_MARK,
+    konradus.Mark.QUOTATION_MARK_DOUBLE_CLOSE,
+    konradus.Mark.QUOTATION_MARK_DOUBLE_OPEN,
+    konradus.Mark.QUOTATION_MARK_SINGLE_CLOSE,
+    konradus.Mark.QUOTATION_MARK_SINGLE_OPEN,
 )
 
 
 def contain_quotation_marks(items) -> bool:
     """\
-    >>> contain_quotation_marks(['Helm', 'Schelm', 1334, konrad.Mark.QUOTATION_MARK])
+    >>> contain_quotation_marks(['Helm', 'Schelm', 1334, konradus.Mark.QUOTATION_MARK])
     True
     >>> contain_quotation_marks((123, 'Helm'))
     False
@@ -315,9 +315,9 @@ def contain_quotation_marks(items) -> bool:
     return any(item in MARKS for item in items)
 
 
-@utila.cacheme
+@utilo.cacheme
 def stemmer_load(lang: str = 'ger'):  # pylint:disable=W0613
     import nltk.stem
-    lang = konrad.complexlang(lang)
+    lang = konradus.complexlang(lang)
     result = nltk.stem.SnowballStemmer(language=lang)
     return result

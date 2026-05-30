@@ -9,14 +9,14 @@
 
 import re
 
-import utila
+import utilo
 
 PATTERN = r"""
 [\.\w\-\_]+@[\w\.\-\_]+
 """
 
 
-@utila.cacheme
+@utilo.cacheme
 def mails(raw: str) -> list:
     """\
     >>> mails('This is email:1helmut.k.fahrendholz@mailbox.tu-berlin.de end.')
@@ -24,6 +24,6 @@ def mails(raw: str) -> list:
     """
     result = []
     for item in re.finditer(PATTERN, raw, flags=re.VERBOSE):
-        matched = utila.extract_match(item)
+        matched = utilo.extract_match(item)
         result.append(matched)
     return result

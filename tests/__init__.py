@@ -7,12 +7,12 @@
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
 
-import utila
+import utilo
 
 
 def assert_length(sentences, count):
     if len(sentences) == count:
         return
     for sentence in sentences:
-        utila.log(sentence, end='\n\n')
+        utilo.log(sentence, end='\n\n')
     assert len(sentences) == count

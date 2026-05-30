@@ -9,35 +9,35 @@
 
 import contextlib
 
-import konrad
-import konrad.mark
-import utila
+import konradus
+import konradus.mark
+import utilo
 
 import germania
 
 DOUBLE_SIMPLE = (
-    konrad.Mark.QUOTATION_MARK,
-    konrad.Mark.QUOTATION_MARK,
+    konradus.Mark.QUOTATION_MARK,
+    konradus.Mark.QUOTATION_MARK,
 )
 DOUBLE_GER = (
-    konrad.Mark.QUOTATION_MARK_DOUBLE_OPEN,
-    konrad.Mark.QUOTATION_MARK_DOUBLE_CLOSE,
+    konradus.Mark.QUOTATION_MARK_DOUBLE_OPEN,
+    konradus.Mark.QUOTATION_MARK_DOUBLE_CLOSE,
 )
 DOUBLE_ENG = (
-    konrad.Mark.EN_QUOTATION_MARK_DOUBLE_OPEN,
-    konrad.Mark.EN_QUOTATION_MARK_DOUBLE_CLOSE,
+    konradus.Mark.EN_QUOTATION_MARK_DOUBLE_OPEN,
+    konradus.Mark.EN_QUOTATION_MARK_DOUBLE_CLOSE,
 )
 SINGLE_GER = (
-    konrad.Mark.QUOTATION_MARK_SINGLE_OPEN,
-    konrad.Mark.QUOTATION_MARK_SINGLE_CLOSE,
+    konradus.Mark.QUOTATION_MARK_SINGLE_OPEN,
+    konradus.Mark.QUOTATION_MARK_SINGLE_CLOSE,
 )
 SINGLE_ENG = (
-    konrad.Mark.EN_QUOTATION_MARK_SINGLE_OPEN,
-    konrad.Mark.EN_QUOTATION_MARK_SINGLE_CLOSE,
+    konradus.Mark.EN_QUOTATION_MARK_SINGLE_OPEN,
+    konradus.Mark.EN_QUOTATION_MARK_SINGLE_CLOSE,
 )
 
 
-@utila.cacheme
+@utilo.cacheme
 def extract_quotes(items: str, lang='science') -> list:  # pylint:disable=W0613
     assert isinstance(items, str), type(items)
     # prepare token
@@ -46,12 +46,12 @@ def extract_quotes(items: str, lang='science') -> list:  # pylint:disable=W0613
         lang=lang,
         validate_sentences=False,
     )
-    tokens = [konrad.matchesmore(word, lang=lang) for word in tokens]
+    tokens = [konradus.matchesmore(word, lang=lang) for word in tokens]
     # start parsing
     result = []
     for signs in (
-            DOUBLE_ENG if lang == konrad.ENGLISH else DOUBLE_GER,
-            SINGLE_ENG if lang == konrad.ENGLISH else SINGLE_GER,
+            DOUBLE_ENG if lang == konradus.ENGLISH else DOUBLE_GER,
+            SINGLE_ENG if lang == konradus.ENGLISH else SINGLE_GER,
             DOUBLE_SIMPLE,
     ):
         parsed = parse_quotation(tokens, *signs)
@@ -63,8 +63,8 @@ def extract_quotes(items: str, lang='science') -> list:  # pylint:disable=W0613
 
 def parse_quotation(
     tokens,
-    start_tag=konrad.Mark.QUOTATION_MARK_DOUBLE_OPEN,
-    end_tag=konrad.Mark.QUOTATION_MARK_DOUBLE_CLOSE,
+    start_tag=konradus.Mark.QUOTATION_MARK_DOUBLE_OPEN,
+    end_tag=konradus.Mark.QUOTATION_MARK_DOUBLE_CLOSE,
 ):
     result = []
     start, end = None, None
@@ -85,10 +85,10 @@ def parse_quotation(
     return result
 
 
-REVERSED = {value: key for key, value in konrad.mark.MATCH.items()}
+REVERSED = {value: key for key, value in konradus.mark.MATCH.items()}
 
 
-@utila.cacheme
+@utilo.cacheme
 def mark2str(item) -> str:
     with contextlib.suppress(KeyError):
         item = REVERSED[item]
@@ -99,7 +99,7 @@ def raw_quotation(tokens, indexes) -> list:
     result = []
     for start, end in indexes:
         if end > len(tokens):
-            utila.error(f'outranges quotation: {start} {end}')
+            utilo.error(f'outranges quotation: {start} {end}')
         # do not out range tokens
         end = min(end, len(tokens))
         collected = [mark2str(tokens[index]) for index in range(start, end)]

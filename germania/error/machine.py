@@ -10,7 +10,7 @@
 import contextlib
 
 import iamraw
-import utila
+import utilo
 
 import germania.error.finding
 
@@ -28,12 +28,12 @@ class TextErrorMachine:
         page: int = None,
     ) -> germania.error.finding.TextErrors:
         result = []
-        todo = utila.methods(self, starts='check_')
+        todo = utilo.methods(self, starts='check_')
         for method in todo:
             detected = method(text)
             if not detected:
                 continue
-            if not utila.iterable(detected):
+            if not utilo.iterable(detected):
                 result.append(detected)
                 detected.debug_method = method.__name__
                 continue
@@ -63,7 +63,7 @@ class PhysicMachine(TextErrorMachine):
     [TextError(...state=<TextErrorType.RULE...>, location=RangedLocation(page=10, char=13, char_end=19), raw='200kg', better='200 kg', debug_method='check_physical_spaces')]
     """
 
-    MISSING_SPACE_BEFORE_UNIT = utila.compiles(r"""
+    MISSING_SPACE_BEFORE_UNIT = utilo.compiles(r"""
         \W
         (
             (?P<value>\d+((\.|\,)\d+){0,1})

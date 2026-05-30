@@ -9,7 +9,7 @@
 
 import os
 
-import utila
+import utilo
 
 import germania
 import tests
@@ -32,8 +32,8 @@ SEVENTYTWO_FIRSTPAGE = os.path.join(
 def firstpage_sentences():
     assert os.path.exists(SEVENTYTWO_FIRSTPAGE), SEVENTYTWO_FIRSTPAGE
 
-    content = utila.file_read(SEVENTYTWO_FIRSTPAGE)
-    splitted = content.split(utila.NEWLINE * 2)
+    content = utilo.file_read(SEVENTYTWO_FIRSTPAGE)
+    splitted = content.split(utilo.NEWLINE * 2)
 
-    sentences = [item.replace(utila.NEWLINE, ' ').strip() for item in splitted]
+    sentences = [item.replace(utilo.NEWLINE, ' ').strip() for item in splitted]
     return sentences

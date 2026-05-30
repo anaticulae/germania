@@ -12,8 +12,8 @@ import operator
 import re
 import typing
 
-import konrad
-import utila
+import konradus
+import utilo
 
 import germania
 
@@ -100,7 +100,7 @@ def searches(
         verbose(bool): add raw data to detected result
     Returns:
         List of findings.
-    >>> searches([utila.compiles(r'\{\{hn\:\d{1,4}\:nh\}\}')],
+    >>> searches([utilo.compiles(r'\{\{hn\:\d{1,4}\:nh\}\}')],
     ... 'Treiber charakterisiert.{{hn:7:nh}}', verbose=True)
     ([(3, 4)], [['{{hn:7:nh}}']])
     >>> searches(sentence=['muss', 'gerad', 'wirtschaft', 'schwach', 'unternehm', 'neu', 'und'],
@@ -124,7 +124,7 @@ def searches(
         if matches:
             result.extend(matches)
     # TODO: SORT RESULT?
-    result = utila.unique(result)
+    result = utilo.unique(result)
     if overlapping_remove:
         result = overlapping_merge(result, connected_merge=neighbours_merge)
     if verbose:
@@ -239,8 +239,8 @@ def token_plain(items: list) -> str:
     >>> token_plain('A. 5 .)'.split())
     'A.5.)'
     """
-    if utila.iterable(items):
-        items = [konrad.mark2str(item) for item in items]
+    if utilo.iterable(items):
+        items = [konradus.mark2str(item) for item in items]
         raw = ' '.join(items)
     else:
         raw = items

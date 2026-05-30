@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import konrad
+import konradus
 
 import germania
 import tests
@@ -41,12 +41,12 @@ def test_words_split():
     expected = [
         'Verkehr',
         'geprägt',
-        konrad.Mark.BRACKET_OPEN,
+        konradus.Mark.BRACKET_OPEN,
         'siehe',
         'Abb.',
         '1',
-        konrad.Mark.BRACKET_CLOSE,
-        konrad.Mark.FULLSTOP,
+        konradus.Mark.BRACKET_CLOSE,
+        konradus.Mark.FULLSTOP,
     ]
     current = splitted[-8:]
     assert current == expected

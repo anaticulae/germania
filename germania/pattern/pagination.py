@@ -15,7 +15,7 @@ Regression test to avoid parsing `bis 14` as `S 14`
 
 import contextlib
 
-import utila
+import utilo
 
 PAGES_INTRO = r'(S\.?|Seite|p{1,2}\.?|page)'
 PAGES = r"""
@@ -25,7 +25,7 @@ PAGES = r"""
     )
 """
 
-PAGENUMBERS = utila.compiles(r"""
+PAGENUMBERS = utilo.compiles(r"""
     \b
     %s
     [ ]{0,4}
@@ -33,7 +33,7 @@ PAGENUMBERS = utila.compiles(r"""
 """ % (PAGES_INTRO, PAGES))
 
 
-@utila.cacheme
+@utilo.cacheme
 def pagenumbers(raw: str, verbose: bool = False):
     """Extract single pages and page ranges out of `raw` text.
 
@@ -67,7 +67,7 @@ def pagenumbers(raw: str, verbose: bool = False):
     return result
 
 
-PATTERN = utila.compiles(r"""
+PATTERN = utilo.compiles(r"""
 (
      %s
      [ ]{0,3}
@@ -76,7 +76,7 @@ PATTERN = utila.compiles(r"""
 """ % (PAGES_INTRO, PAGES))
 
 
-@utila.cacheme
+@utilo.cacheme
 def page_single(raw: str):
     """\
     >>> page_single('IEEE Joint, 2004, S. 113-117')
@@ -93,7 +93,7 @@ def page_single(raw: str):
     matched = PATTERN.search(raw)
     if not matched:
         return None
-    raw = utila.extract_match(matched)
+    raw = utilo.extract_match(matched)
     with contextlib.suppress(TypeError):
         return raw, (int(matched['page']),)
     with contextlib.suppress(TypeError):
@@ -101,7 +101,7 @@ def page_single(raw: str):
     return None
 
 
-COMPLEX = utila.compiles(r"""
+COMPLEX = utilo.compiles(r"""
 (
     (\,){0,1}[ ]{0,3}
     (
@@ -111,7 +111,7 @@ COMPLEX = utila.compiles(r"""
 """)
 
 
-@utila.cacheme
+@utilo.cacheme
 def pages_complex(raw: str):
     """\
     >>> pages_complex('Germaniques 53, H. 2, 93-122.')
@@ -126,7 +126,7 @@ def pages_complex(raw: str):
     matched = COMPLEX.search(raw)
     if not matched:
         return None
-    raw = utila.extract_match(matched)
+    raw = utilo.extract_match(matched)
     with contextlib.suppress(TypeError):
         start = int(matched['pstart'])
         end = int(matched['pend'])

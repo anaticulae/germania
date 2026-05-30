@@ -9,10 +9,10 @@
 
 import re
 
-import utila
+import utilo
 
 
-@utila.cacheme
+@utilo.cacheme
 def href_magic(text: str) -> str:
     """\
     >>> href_magic('4. url: https : / / www . apache . org / licenses/LICENS')
@@ -22,7 +22,7 @@ def href_magic(text: str) -> str:
     return result
 
 
-@utila.cacheme
+@utilo.cacheme
 def link_fink(text: str) -> str:
     """\
     >>> link_fink('url: http : / / www . bitkom . org / files / documents / BITKOM _ Leitfaden')
@@ -37,7 +37,7 @@ def link_fink(text: str) -> str:
     return text
 
 
-IS_HTTP = utila.compiles(r'\bhttp')
+IS_HTTP = utilo.compiles(r'\bhttp')
 
 SPACE_PATTERN = (
     ('. org', '.org'),

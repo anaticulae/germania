@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import konrad
+import konradus
 
 import germania
 import tests.test_words_split
@@ -19,11 +19,11 @@ def test_sequence_match_double_pattern():
     """Validate multiple pattern and avoid duplicated results."""
     expected = [
         (
-            konrad.Mark.BRACKET_OPEN,
+            konradus.Mark.BRACKET_OPEN,
             'siehe',
             'Abb.',
             germania.WordType.NUMBER,
-            konrad.Mark.BRACKET_CLOSE,
+            konradus.Mark.BRACKET_CLOSE,
         ),
         '(siehe Abb. 1)',  # duplicated pattern
     ]

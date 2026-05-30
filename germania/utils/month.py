@@ -18,7 +18,7 @@ Determine number of month:
 
 import contextlib
 
-import utila
+import utilo
 
 MONTH_RAW = """\
 JANUARY
@@ -78,14 +78,14 @@ DEC
 """
 
 GROUPS = [
-    utila.splitlines(month, unique=False, lowers=False) for month in
-    utila.splitlines(MONTH_RAW, pattern='\n\n', unique=False, lowers=False)
+    utilo.splitlines(month, unique=False, lowers=False) for month in
+    utilo.splitlines(MONTH_RAW, pattern='\n\n', unique=False, lowers=False)
 ]
-MONTH_REGEX = '(' + '|'.join(utila.flat(GROUPS)) + ')'
-MONTH = utila.flat(GROUPS)
+MONTH_REGEX = '(' + '|'.join(utilo.flat(GROUPS)) + ')'
+MONTH = utilo.flat(GROUPS)
 
 
-@utila.cacheme
+@utilo.cacheme
 def month(item: str):
     """\
     >>> month('marz')

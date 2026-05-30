@@ -9,15 +9,15 @@
 
 import os
 
-import utila
+import utilo
 
 import germania_data
 
 
-def load_dict(path) -> utila.UpperCasedSet:
+def load_dict(path) -> utilo.UpperCasedSet:
     assert os.path.exists(path), str(path)
-    loaded = utila.file_read(path).splitlines()
-    result = utila.UpperCasedSet(loaded)
+    loaded = utilo.file_read(path).splitlines()
+    result = utilo.UpperCasedSet(loaded)
     return result
 
 

@@ -12,7 +12,7 @@ import germania
 
 def matched(content: str, pattern: list) -> bool:
     """Split `content` and check to match `pattern`. Pattern is defined
-    `germania.WordType` and or `konrad.Mark`."""
+    `germania.WordType` and or `konradus.Mark`."""
     # TODO: VERY SIMPLE
     tokens = germania.word_tokenize(content, validate_sentences=False)
 

@@ -15,8 +15,8 @@ Use nltk to determine language where sentence is written in.
 import collections
 import contextlib
 
-import konrad
-import utila
+import konradus
+import utilo
 
 LanguageResult = collections.namedtuple(
     'LanguageResult',
@@ -26,12 +26,12 @@ LanguageResult = collections.namedtuple(
 
 def determine(text: str) -> LanguageResult:
     if isinstance(text, list):
-        text = konrad.remove_marks(text)
+        text = konradus.remove_marks(text)
     if not isinstance(text, str):
         text = ' '.join(text)
     cat = textcat()
     detected = cat.guess_language(text)
-    language = konrad.Language.UNKNOWN
+    language = konradus.Language.UNKNOWN
     with contextlib.suppress(KeyError):
         language = MAPPING[detected]
     return LanguageResult(language=language, probability=1.0)
@@ -48,7 +48,7 @@ def isfre(tokens: str) -> bool:
     >>> isfre('Toujour suis Luis.'.split())
     True
     """
-    return determine(tokens).language == konrad.Language.FRENCH
+    return determine(tokens).language == konradus.Language.FRENCH
 
 
 def iseng(tokens: str) -> bool:
@@ -58,7 +58,7 @@ def iseng(tokens: str) -> bool:
     >>> iseng('i like fish')
     True
     """
-    return determine(tokens).language == konrad.Language.ENGLISH
+    return determine(tokens).language == konradus.Language.ENGLISH
 
 
 def isger(tokens: str) -> bool:
@@ -66,18 +66,18 @@ def isger(tokens: str) -> bool:
     >>> isger('Kartoffelsalat')
     True
     """
-    return determine(tokens).language == konrad.Language.GERMAN
+    return determine(tokens).language == konradus.Language.GERMAN
 
 
 MAPPING = {
-    'deu': konrad.Language.GERMAN,
-    'eng': konrad.Language.ENGLISH,
-    # 'es': konrad.Language.SPANISH,
-    'fra': konrad.Language.FRENCH,
+    'deu': konradus.Language.GERMAN,
+    'eng': konradus.Language.ENGLISH,
+    # 'es': konradus.Language.SPANISH,
+    'fra': konradus.Language.FRENCH,
 }
 
 
-@utila.cacheme
+@utilo.cacheme
 def textcat():
     import nltk.classify.textcat
     result = nltk.classify.textcat.TextCat()

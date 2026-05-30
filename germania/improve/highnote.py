@@ -9,10 +9,10 @@
 
 import re
 
-import utila
+import utilo
 
 
-@utila.cacheme
+@utilo.cacheme
 def highnote_magic(text: str) -> str:
     """\
     >>> highnote_magic('ohnehin unmöglich.89 So')

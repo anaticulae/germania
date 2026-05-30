@@ -56,14 +56,14 @@ TODO: HOW TO IMPROVE THIS SITUATION?
 
 import re
 
-import configo
+import configos
 import iamraw
-import utila
+import utilo
 
 import germania
 
 
-@utila.cacheme
+@utilo.cacheme
 def authors(raw: str, verbose: bool = False):
     """\
     >>> authors('M. Baccar,')
@@ -107,10 +107,10 @@ def authors_decide(parsed: list, raw: str = None) -> iamraw.Persons:
     return result
 
 
-NAME_COUNT_MAX = configo.HV_INT_PLUS(default=7)
+NAME_COUNT_MAX = configos.HV_INT_PLUS(default=7)
 
 
-@utila.cacheme
+@utilo.cacheme
 def simple(raw: str, extern: str = ';', intern: str = ','):
     """\
     >>> simple('Becker, W.; Ulrich, P.')
@@ -125,7 +125,7 @@ def simple(raw: str, extern: str = ';', intern: str = ','):
     return result
 
 
-@utila.cacheme
+@utilo.cacheme
 def freeand(raw: str):
     """\
     >>> freeand('Beirness, D. & Vogel-Sprott, M.')
@@ -157,7 +157,7 @@ def freeand(raw: str):
     return result
 
 
-@utila.cacheme
+@utilo.cacheme
 def splitand(raw: str):
     """\
     >>> splitand('ADM Arbeitskreis Deutscher Markt und Sozialforschungsinstitute e.V.')
@@ -180,7 +180,7 @@ def judge(parsed: list):
         return iamraw.NoPerson(raw=raw)
     if not person_simple(parsed):
         return iamraw.NoPerson(raw=raw)  # pylint:disable=E1101
-    if any(utila.parse_ints(name) for name in parsed):
+    if any(utilo.parse_ints(name) for name in parsed):
         return iamraw.NoPerson(raw=raw)
     name, firstname = decide_name(parsed)
     result = iamraw.Person(
@@ -194,7 +194,7 @@ def judge(parsed: list):
 VALID_NAME = re.compile(r'(\w\.|\w{4,})')
 
 
-@utila.rename(max_names='names_max')
+@utilo.rename(max_names='names_max')
 def person_simple(parsed: list, names_max: int = 4) -> bool:
     """\
     >>> person_simple('K. Fahrendholz'.split())
@@ -222,7 +222,7 @@ def decide_name(names: list) -> tuple:
     # TODO: NOT VERY SMART
     name = names[0]
     if '.' in name:
-        name = utila.longest(names)
+        name = utilo.longest(names)
     firstname = ' '.join([item for item in names if item != name])
     return name, firstname
 

@@ -7,8 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import sdata
-import utila
+import sdatum
+import utilo
 
 import germania
 
@@ -21,7 +21,7 @@ def find_abbrev(abbrev: str, words: list) -> str:
     >>> find_abbrev('MNU', germania.words_fromstr('Steuergebiete zugunsten multinationaler Unternehmens(MNU) ende'))
     'multinationaler Unternehmens'
     """
-    lookup = sdata.abbrev(abbrev)
+    lookup = sdatum.abbrev(abbrev)
     if lookup is None:
         return None
     lookup = [germania.word_normalize(item) for item in lookup]
@@ -36,5 +36,5 @@ def find_abbrev(abbrev: str, words: list) -> str:
     )
     if not detected:
         return None
-    result = ' '.join(words[index] for index in utila.rlist(*detected[0]))
+    result = ' '.join(words[index] for index in utilo.rlist(*detected[0]))
     return result

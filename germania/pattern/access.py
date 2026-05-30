@@ -23,7 +23,7 @@ accessed
 
 import contextlib
 
-import utila
+import utilo
 
 import germania.utils.month
 
@@ -55,10 +55,10 @@ PATTERN = [
     SIMPLE % YEARMONTHDAY,
     r'Version\:?[ ]{0,3}(?P<month>\w+)[ ]{0,3}(?P<year>\d{2,4})',
 ]
-PATTERN = [utila.compiles(pattern) for pattern in PATTERN]
+PATTERN = [utilo.compiles(pattern) for pattern in PATTERN]
 
 
-@utila.cacheme
+@utilo.cacheme
 def accessed(text: str, verbose: bool = True):
     """\
     >>> accessed('[Letzter Zugriff: 16.02.15]')
@@ -77,8 +77,8 @@ def accessed(text: str, verbose: bool = True):
     result = []
     for pattern in PATTERN:
         for matched in pattern.finditer(text):
-            raw = utila.extract_match(matched)
-            text = utila.ghost_replace(text, pattern=raw)
+            raw = utilo.extract_match(matched)
+            text = utilo.ghost_replace(text, pattern=raw)
             date = (
                 int(matched['year']),
                 germania.utils.month.month(matched['month']),

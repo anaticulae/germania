@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
+import utilo
 
 import germania.improve.abbreviation
 import germania.improve.highnote
@@ -20,7 +20,7 @@ TODO = (
 )
 
 
-@utila.cacheme
+@utilo.cacheme
 def text_magic(text: str) -> str:
     for pattern in TODO:
         text = pattern(text)

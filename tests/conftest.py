@@ -7,10 +7,10 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
+import utilo
 
 pytest_plugins = ['pytester', 'xdist']  # pylint: disable=invalid-name
 
-PATH = utila.join(utila.baw_root(__file__), 'train.py')
+PATH = utilo.join(utilo.baw_root(__file__), 'train.py')
 
-utila.run(f'python {PATH}')
+utilo.run(f'python {PATH}')

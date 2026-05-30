@@ -7,11 +7,11 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import konrad
-import utila
+import konradus
+import utilo
 
 
-@utila.cacheme
+@utilo.cacheme
 def abbreviation_magic(text: str) -> str:
     """\
     >>> abbreviation_magic('Helmut hier u. a. und mehr.')
@@ -26,6 +26,6 @@ def abbreviation_magic(text: str) -> str:
 
 TEXT_MAGIC = [
     ('. '.join(item.split('.')).strip(), item)
-    for item in list(konrad.ABBREVIATION) + list(konrad.ABBREVIATION_LOWER)
+    for item in list(konradus.ABBREVIATION) + list(konradus.ABBREVIATION_LOWER)
     if item.count('.') > 1
 ]

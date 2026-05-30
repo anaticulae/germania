@@ -28,10 +28,10 @@ import enum
 import re
 
 import knlp
-import konrad
+import konradus
 import ltk_data.lookup
-import sdata
-import utila
+import sdatum
+import utilo
 
 import germania_data
 
@@ -49,7 +49,7 @@ class WordType(enum.Enum):
 WordTypes = list[WordType]
 
 
-@utila.cacheme
+@utilo.cacheme
 def wordtype(item: str) -> WordType:  # pylint:disable=R0911
     """\
     >>> wordtype('1995').name
@@ -58,7 +58,7 @@ def wordtype(item: str) -> WordType:  # pylint:disable=R0911
     try:
         item = item.strip()
     except AttributeError:
-        if isinstance(item, konrad.Mark):
+        if isinstance(item, konradus.Mark):
             return WordType.MARK
         return WordType.UNDEFINED
     item = item.lower()
@@ -73,7 +73,7 @@ def wordtype(item: str) -> WordType:  # pylint:disable=R0911
     return WordType.UNDEFINED
 
 
-@utila.cacheme
+@utilo.cacheme
 def wordtypes(item: str) -> WordTypes:
     """\
     >>> wordtypes('1996')
@@ -82,11 +82,11 @@ def wordtypes(item: str) -> WordTypes:
     try:
         item = item.lower()
     except AttributeError:
-        if isinstance(item, konrad.Mark):
+        if isinstance(item, konradus.Mark):
             return {item}
         return {WordType.UNDEFINED}
     result = {item}
-    if utila.isnumber(item):
+    if utilo.isnumber(item):
         result.add(WordType.NUMBER)
     if isreference(item):
         result.add(WordType.REFERENCE)
@@ -102,7 +102,7 @@ def wordtypes(item: str) -> WordTypes:
 REFERENCE = re.compile(r'(\d+\.?)+')
 
 
-@utila.cacheme
+@utilo.cacheme
 def isreference(item: str) -> bool:
     """\
     >>> isreference('3.2.1.')
@@ -120,7 +120,7 @@ def isreference(item: str) -> bool:
     return REFERENCE.match(item) is not None
 
 
-@utila.cacheme
+@utilo.cacheme
 def isyear(item: str) -> bool:
     """\
     >>> isyear(1995)
@@ -133,12 +133,12 @@ def isyear(item: str) -> bool:
     return 1900 <= item <= 2030
 
 
-ARABIC = utila.compiles(r'(ibn|el)([ ]|\-?)\w{4,}')
+ARABIC = utilo.compiles(r'(ibn|el)([ ]|\-?)\w{4,}')
 
-PREPATTERN = utila.compiles(r'\w\.(\-|[ ])\w\.[ ]{0,3}\w{3,20}')
+PREPATTERN = utilo.compiles(r'\w\.(\-|[ ])\w\.[ ]{0,3}\w{3,20}')
 
 
-@utila.cacheme
+@utilo.cacheme
 def isperson(item: str, length_min: int = 3) -> bool:  # pylint:disable=R0911
     """\
     >>> isperson('Olsen')
@@ -168,12 +168,12 @@ def isperson(item: str, length_min: int = 3) -> bool:  # pylint:disable=R0911
     if PREPATTERN.match(item):
         # TODO: DO NOT CRUMBLE SINGLE AND DOUBLE NAMES?
         return True
-    if sdata.isname(item):
+    if sdatum.isname(item):
         return True
     return False
 
 
-@utila.cacheme
+@utilo.cacheme
 def ispress(press: str, length_min: int = 6) -> bool:
     """\
     >>> ispress('Springer')
@@ -188,12 +188,12 @@ def ispress(press: str, length_min: int = 6) -> bool:
         return True
     if any((item for item in germania_data.PRESS if item in press)):
         return True
-    if sdata.rate_publisher(press):
+    if sdatum.rate_publisher(press):
         return True
     return False
 
 
-@utila.cacheme
+@utilo.cacheme
 def iscity(city: str, length_min: int = 4) -> bool:
     """\
     >>> iscity('Berlino')
@@ -202,15 +202,15 @@ def iscity(city: str, length_min: int = 4) -> bool:
     city = city.strip().upper()
     if len(city) < length_min:
         return False
-    if sdata.rate_city(city):
+    if sdatum.rate_city(city):
         return True
     return False
 
 
-@utila.cacheme
+@utilo.cacheme
 def datums():
     # yapf:disable
-    stopwords = set(knlp.STOPWORDS) - utila.splititems('der de da')
+    stopwords = set(knlp.STOPWORDS) - utilo.splititems('der de da')
     names = (
         germania_data.NAMES |
         ltk_data.lookup.NAME_MALE |

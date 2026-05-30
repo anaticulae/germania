@@ -59,11 +59,11 @@ DOI
 [('doi: 10.1145/2723372.2742797.url', 'doi: 10.1145/2723372.2742797.url')]
 """
 
-import utila
+import utilo
 
 import germania
 
-ISBN = utila.compiles(r"""
+ISBN = utilo.compiles(r"""
 (
     ISBN\s{0,2}\d{1,2}:|
     ISBN\:?|
@@ -86,9 +86,9 @@ def isbn(raw: str, verbose: bool = False) -> list:
     """
     result = []
     for item in ISBN.finditer(raw):
-        extracted = utila.extract_match(item)
+        extracted = utilo.extract_match(item)
         if verbose:
-            item = utila.parse_tuple(
+            item = utilo.parse_tuple(
                 item[2],
                 separator='-',
                 length=None,
@@ -99,7 +99,7 @@ def isbn(raw: str, verbose: bool = False) -> list:
     return result
 
 
-DOI = utila.compiles(r"""
+DOI = utilo.compiles(r"""
 (
     :DOI:`|
     :DOI:|
@@ -121,7 +121,7 @@ DOI = utila.compiles(r"""
 def doi(raw: str, verbose: bool = False) -> list:
     result = []
     for item in DOI.finditer(raw):
-        extracted = utila.extract_match(item)
+        extracted = utilo.extract_match(item)
         if verbose:
             # TODO: VERBOSE IS NOT VERY USEFUL IN THE MORNING, REQUIRE A
             # GOOD DATA STRUCTURE
@@ -130,7 +130,7 @@ def doi(raw: str, verbose: bool = False) -> list:
     return result
 
 
-ISSN = utila.compiles(r"""
+ISSN = utilo.compiles(r"""
 (
     ISSN[:]?
 )
@@ -148,9 +148,9 @@ def issn(raw: str, verbose: bool = False) -> list:
     """
     result = []
     for item in ISSN.finditer(raw):
-        extracted = utila.extract_match(item)
+        extracted = utilo.extract_match(item)
         if verbose:
-            item = utila.parse_tuple(
+            item = utilo.parse_tuple(
                 item[2],
                 separator='-',
                 length=None,
@@ -181,7 +181,7 @@ def references(raw: str, verbose: bool = False) -> list:
     return result
 
 
-VOLUME = utila.compiles(r"""
+VOLUME = utilo.compiles(r"""
 (
     (AUFLAGE|VOL\.)
     [ ]{0,2}
@@ -212,7 +212,7 @@ def volumes(text, verbose: bool = True):
     return result
 
 
-BIBS = utila.compiles(r"""
+BIBS = utilo.compiles(r"""
 (
     Hrsg\.|
     Aufl\.|

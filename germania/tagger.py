@@ -7,10 +7,10 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
+import utilo
 
 
-@utila.cacheme
+@utilo.cacheme
 def tagger():
     # lazy loading nltk
     # TODO: MOVE TO knlp

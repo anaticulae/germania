@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
+import utilo
 
 
 def collect_and_replace(raw: str, pattern: list, verbose: bool = False) -> list:

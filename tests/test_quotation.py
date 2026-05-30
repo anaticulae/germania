@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import konrad
+import konradus
 
 import germania
 import tests.test_sentence_split
@@ -83,5 +83,5 @@ Content”12.
 
 
 def test_parse_quote_english():
-    extracted = germania.extract_quotes(ENGLISH, lang=konrad.ENGLISH)
+    extracted = germania.extract_quotes(ENGLISH, lang=konradus.ENGLISH)
     assert extracted == [(9, 49)]

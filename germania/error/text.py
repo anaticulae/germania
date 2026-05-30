@@ -9,15 +9,15 @@
 
 import re
 
-import sdata
-import utila
+import sdatum
+import utilo
 
 import germania
 
 
 class TextMachine(germania.TextErrorMachine):
 
-    MISSING_PAGENUMBER = utila.compiles(r"""
+    MISSING_PAGENUMBER = utilo.compiles(r"""
         (
             \s|
             [^\w]\.| # u.s.
@@ -87,7 +87,7 @@ def follows_name(text: str) -> bool:
         return True
     for name in text.split()[0:4]:
         name = name.strip(':;, ')
-        if sdata.isname(name):
+        if sdatum.isname(name):
             return True
     return False
 
@@ -102,6 +102,6 @@ def name_before(text: str) -> bool:
         return False
     # select the right one
     name = token[-1].strip(':;, ')
-    if sdata.isname(name):
+    if sdatum.isname(name):
         return True
     return False

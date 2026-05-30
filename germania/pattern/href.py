@@ -7,14 +7,14 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
+import utilo
 
 # TODO: DO NOT CHANGE HYPERLINK
 # TODO: MOVE TO A MORE GENERAL PLACE
 TABLE = str.maketrans({'∼': '~'})
 
 CHARS = r'[\w\d\./\-\_\?\=\&\%\+\~\#]+[\w\d/\?\=\&\%]'
-HYPERLINK = utila.compiles(rf"""
+HYPERLINK = utilo.compiles(rf"""
     (
         (https://|http://|www\.)
         {CHARS}+
@@ -29,7 +29,7 @@ HYPERLINK = utila.compiles(rf"""
 """)
 
 
-@utila.cacheme
+@utilo.cacheme
 def hyperlink(raw: str, position: bool = False, verbose: bool = False):
     r"""\
     >>> hyperlink('Before: http://student.unifr.ch/\nReferenzrahmen2001.pdf after.', position=True)
@@ -59,7 +59,7 @@ def hyperlink(raw: str, position: bool = False, verbose: bool = False):
     return result
 
 
-LOCALLINK = utila.compiles(r"""
+LOCALLINK = utilo.compiles(r"""
     (
         file[:]
         [\/]{2,3}
@@ -109,7 +109,7 @@ def links(raw: str, position: bool = False, verbose: bool = False) -> list:
 
 
 def prepare(item, position: bool = False, verbose: bool = False):
-    matched = utila.extract_match(item)
+    matched = utilo.extract_match(item)
     value = matched
     if position:
         value = (value, item.span()[0])
