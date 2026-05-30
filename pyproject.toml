@@ -21,6 +21,7 @@ dependencies = [
     "nltk>=3.9.4<4.0.0",
     "ltk_data>=1.0.2<2.0.0",
     "sdatum>=1.0.0<2.0.0",
+    "analp>=1.0.0<2.0.0",
 ]
 keywords = []
 classifiers = [
