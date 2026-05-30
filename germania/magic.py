@@ -27,7 +27,7 @@ False
 import enum
 import re
 
-import knlp
+import analp
 import konradus
 import ltk_data.lookup
 import sdatum
@@ -210,7 +210,7 @@ def iscity(city: str, length_min: int = 4) -> bool:
 @utilo.cacheme
 def datums():
     # yapf:disable
-    stopwords = set(knlp.STOPWORDS) - utilo.splititems('der de da')
+    stopwords = set(analp.STOPWORDS) - utilo.splititems('der de da')
     names = (
         germania_data.NAMES |
         ltk_data.lookup.NAME_MALE |

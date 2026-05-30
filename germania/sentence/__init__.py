@@ -9,8 +9,8 @@
 
 import difflib
 
+import analp
 import configos
-import knlp
 import konradus
 import utilo
 
@@ -60,7 +60,7 @@ def sentence_tokenize(
     language = language_select(text)
     text = germania.sentence.escape.escapes(text)
     # tokenize sentence
-    tokenized = knlp.sent_tokenize(text, language=language)
+    tokenized = analp.sent_tokenize(text, language=language)
     tokenized = [germania.sentence.escape.unescape(item) for item in tokenized]
     result = balance_sentence(tokenized)
     result = double_colon_error(result)

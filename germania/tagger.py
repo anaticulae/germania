@@ -13,7 +13,7 @@ import utilo
 @utilo.cacheme
 def tagger():
     # lazy loading nltk
-    # TODO: MOVE TO knlp
+    # TODO: MOVE TO analp
     import nltk.tag.perceptron
     result = nltk.tag.perceptron.PerceptronTagger(load=False)
     result.train([
