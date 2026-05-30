@@ -15,13 +15,13 @@ authors = [
 ]
 dependencies = [
     "utilo>=2.107.4,<3.0.0",
-    "konradus>=1.0.1<2.0.0",
-    "iamraw>=4.91.4<5.0.0",
-    "configos>=1.0.4<2.0.0",
-    "nltk>=3.9.4<4.0.0",
-    "ltk_data>=1.0.2<2.0.0",
-    "sdatum>=1.0.0<2.0.0",
-    "analp>=1.0.0<2.0.0",
+    "konradus>=1.0.1,<2.0.0",
+    "iamraw>=4.91.4,<5.0.0",
+    "configos>=1.0.4,<2.0.0",
+    "nltk>=3.9.4,<4.0.0",
+    "ltk_data>=1.0.2,<2.0.0",
+    "sdatum>=1.0.0,<2.0.0",
+    "analp>=1.0.0,<2.0.0",
 ]
 keywords = []
 classifiers = [
