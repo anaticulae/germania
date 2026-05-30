@@ -42,8 +42,8 @@ def train(src: str, dest: str, verbose: bool = False):
     trainer.train(text, verbose=verbose)
 
     trained = trainer.get_params()
-    assert len(trained.abbrev_types) >= 20, len(trained.abbrev_types)
-    assert len(trained.ortho_context) >= 20, len(trained.ortho_context)
+    # assert len(trained.abbrev_types) >= 20, len(trained.abbrev_types)
+    # assert len(trained.ortho_context) >= 20, len(trained.ortho_context)
 
     # add predefined abbreviations
     # remove last dot

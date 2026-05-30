@@ -14,7 +14,7 @@ from tests.test_language import SINGLE
 
 
 def test_tag_example():
-    tokens = list(nltk.word_tokenize(SINGLE, language='germania'))
+    tokens = list(nltk.word_tokenize(SINGLE, language='german'))
     tagged = germania.word_tag(tokens)
     assert len(tagged) == 8
     # TODO: IMPROVE CHECK

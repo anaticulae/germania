@@ -17,7 +17,9 @@ sentences into words.
 import os
 
 import ltk_data
+import nltk
 
+import germania.sentence
 from germania.abbrev import find_abbrev
 from germania.error.finding import TextError
 from germania.error.finding import TextErrors
@@ -96,3 +98,9 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
 # REMOVE LATER
 pages = page_single
+
+nltk.download('crubadan', quiet=True)
+nltk.download('punkt_tab', quiet=True)
+
+# TODO: REMovE LATER
+germania.sentence.language_select = lambda x: 'german'

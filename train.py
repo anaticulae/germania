@@ -10,8 +10,8 @@
 
 import os
 
-import nltk.data
 import ltk_data
+import nltk.data
 import utilo
 
 import germania_data

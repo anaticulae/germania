@@ -19,12 +19,12 @@ import science_text.config
 
 def setup(root):
     # pylint:disable=W0212
-    science = nltk.load("tokenizers/punkt/{0}.pickle".format('science'))
-    germania = nltk.load("tokenizers/punkt/{0}.pickle".format('germania'))
+    # science = nltk.load("tokenizers/punkt/{0}.pickle".format('science'))
+    # germania = nltk.load("tokenizers/punkt/{0}.pickle".format('germania'))
     tokenizer = nltk.load("tokenizers/punkt/{0}.pickle".format('english'))
     tokenizer._lang_vars = science_text.config.SPunktLanguageVars()
-    tokenizer._params.abbrev_types |= science._params.abbrev_types
-    tokenizer._params.abbrev_types |= germania._params.abbrev_types
+    # tokenizer._params.abbrev_types |= science._params.abbrev_types
+    # tokenizer._params.abbrev_types |= germania._params.abbrev_types
     dumped = pickle.dumps(tokenizer)
     science_english_write(dumped, root)
 

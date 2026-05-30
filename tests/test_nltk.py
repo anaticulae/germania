@@ -13,10 +13,10 @@ from tests.test_language import MIXED
 
 
 def test_tokenize_words():
-    tokens = list(nltk.word_tokenize(MIXED, language='germania'))
+    tokens = list(nltk.word_tokenize(MIXED, language='german'))
     assert len(tokens) == 105
 
 
 def test_tokenize_sentence():
-    sentences = list(nltk.sent_tokenize(MIXED, language='germania'))
+    sentences = list(nltk.sent_tokenize(MIXED, language='german'))
     assert len(sentences) == 4
