@@ -52,7 +52,7 @@ class TextMachine(germania.TextErrorMachine):
         []
 
         run large text test
-        >>> import backbone;check(backbone.text_improved(1024*1024))
+        >>> import textbone;check(textbone.text_improved(1024*1024))
         []
         """
         result = []
