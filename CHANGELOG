@@ -1,880 +1,2622 @@
-# Changelog
+# CHANGELOG
 
-Every noteable change is logged here.
+
+## v1.31.0 (2026-06-02)
+
+### Bug Fixes
+
+- **germania**: Make project run
+  ([`e3b7029`](https://github.com/anaticulae/germania/commit/e3b702929d1c97369b9a8732d81516481fd9ab6b))
+
+- **hugedata**: Disable package
+  ([`39ca07c`](https://github.com/anaticulae/germania/commit/39ca07cd48df90ad5b2f9ad7fef86d0dec9cbb23))
+
+- **imports**: Adjust import
+  ([`6b2470b`](https://github.com/anaticulae/germania/commit/6b2470b31750e124f6b51aa7e30cdac6a1968ec8))
+
+### Chores
+
+- **baw**: Ensure that cov does not decrease
+  ([`aab16fe`](https://github.com/anaticulae/germania/commit/aab16febf90c78dc1c351a660285c65e299c0994))
+
+- **github**: Add .github
+  ([`c7dea3f`](https://github.com/anaticulae/germania/commit/c7dea3fd070d61de1242a41d5b0b20e0116d8069))
+
+- **names**: Adjust package names
+  ([`67e4b5d`](https://github.com/anaticulae/germania/commit/67e4b5d21892c808fa37b5ca7fd385ca60ce569b))
+
+- **project**: Add missing import
+  ([`49af3ea`](https://github.com/anaticulae/germania/commit/49af3eab6a63dca6f3af2efe4fef6fbbb048c7c6))
+
+- **project**: Add modern setup
+  ([`55095d5`](https://github.com/anaticulae/germania/commit/55095d5b64a34964348ad13ec5f8b9e3fb7a554b))
+
+- **project**: Add modern setup
+  ([`4613492`](https://github.com/anaticulae/germania/commit/4613492bc148fb9b483d827546188d285c3dfbc0))
+
+- **project**: Enable backbone
+  ([`5352f9e`](https://github.com/anaticulae/germania/commit/5352f9ee71556fa81305e8027cac253bdf732bdf))
+
+- **pyproject**: Adjust requirements
+  ([`ea90f63`](https://github.com/anaticulae/germania/commit/ea90f63c4dfea39ef3d702b700ce05e86141e940))
+
+- **pyproject**: Fix bug with unexpected utilo-splitbehavior
+  ([`7885363`](https://github.com/anaticulae/germania/commit/78853636b65b69bc668f8f517811b31ecb616f02))
+
+- **setup**: Remove outdated setup
+  ([`60a3eeb`](https://github.com/anaticulae/germania/commit/60a3eeb5b4625e74d0625753c13beb23ba2b91e9))
+
+### Code Style
+
+- **baw**: Add missing copyright header
+  ([`f1e387b`](https://github.com/anaticulae/germania/commit/f1e387be0c9d73e04828afbcb84cafed26a75925))
+
+### Features
+
+- **pattern**: Move code from sections_ref
+  ([`4f52263`](https://github.com/anaticulae/germania/commit/4f52263e5845956e62e2f52b5c4e2e55d75dd408))
+
+### Refactoring
+
+- **rename**: Adjust package names
+  ([`72bc06b`](https://github.com/anaticulae/germania/commit/72bc06bd59a25b4a34d47f8cde63b76616fdfa55))
+
+- **train**: Increase test ability
+  ([`bddf21a`](https://github.com/anaticulae/germania/commit/bddf21a71ae1736479651fdf012da8da4e7fbfaf))
+
+### Testing
+
+- **cov**: Skip unreachable test code
+  ([`3019b5f`](https://github.com/anaticulae/germania/commit/3019b5f1595cbef5b62d41cc65da36c8ab9088f7))
+
+- **science**: Increase test coverage
+  ([`63a2855`](https://github.com/anaticulae/germania/commit/63a285502710f34bd606a4c3b13ddbae86e0073c))
+
+- **train**: Verify improver
+  ([`778248e`](https://github.com/anaticulae/germania/commit/778248e8e0bde7c92048eb12aa0605ba62bbc308))
+
+- **word**: Increase test cov
+  ([`b70737c`](https://github.com/anaticulae/germania/commit/b70737c56711011af0bef4a3e427edff995564ed))
+
 
 ## v1.30.0 (2023-02-03)
 
-### Feature
+### Features
 
-* add references parser (3803d97aa2a7)
-* extend DOI interface (e712398dba3b)
-* add method to run pattern extractor (73cfd6cb8e90)
-* extend ISSN interface (3c13a4b8bb68)
-* extend ISBN parser interface (caab9abe2f51)
+- **book**: Add references parser
+  ([`3803d97`](https://github.com/anaticulae/germania/commit/3803d97aa2a72d5a2402d18de55a2f2a3ac1dcdd))
+
+- **book**: Extend DOI interface
+  ([`e712398`](https://github.com/anaticulae/germania/commit/e712398dba3ba405d9bf40ba691a393d085e2e54))
+
+- **book**: Extend ISSN interface
+  ([`3c13a4b`](https://github.com/anaticulae/germania/commit/3c13a4b8bb68c70019358c49d0e0de8087f87a69))
+
+- **pattern**: Extend ISBN parser interface
+  ([`caab9ab`](https://github.com/anaticulae/germania/commit/caab9abe2f511aff0dd319427366496d91e3f825))
+
+- **utils**: Add method to run pattern extractor
+  ([`73cfd6c`](https://github.com/anaticulae/germania/commit/73cfd6cb8e905a4ff5e8a62065578bc6c0ae7726))
+
+### Refactoring
+
+- **book**: Clarify regex pattern
+  ([`7ac71a8`](https://github.com/anaticulae/germania/commit/7ac71a83c0f1e8102f8ace23a7a27a68f96e783f))
+
+### Testing
+
+- **book**: Extend test cov
+  ([`e0b264e`](https://github.com/anaticulae/germania/commit/e0b264ebbfe9b41df1b2aad1feb717f31f458896))
+
 
 ## v1.29.0 (2023-02-03)
 
-### Feature
+### Chores
 
-* make pattern case insensitive (c7057366ade7)
+- **Jenkins**: Add cov step
+  ([`8089c30`](https://github.com/anaticulae/germania/commit/8089c30f1a5b9782dd8f58549f3a48179bd7a06e))
 
-### Chore
+- **Jenkins**: Upgrade Jenkinsfile
+  ([`098eeda`](https://github.com/anaticulae/germania/commit/098eedafbde82e571e77f0fda96829a882e136ee))
 
-* add cov step (8089c30f1a5b)
-* upgrade requirements.txt (8f87c0d2c58f)
-* upgrade pipe library (a2fc5cfb1778)
-* upgrade Jenkinsfile (098eedafbde8)
+- **Jenkins**: Upgrade pipe library
+  ([`a2fc5cf`](https://github.com/anaticulae/germania/commit/a2fc5cfb177886f271322148dc332dadee9cfa12))
+
+- **requirements**: Upgrade requirements.txt
+  ([`8f87c0d`](https://github.com/anaticulae/germania/commit/8f87c0d2c58fc85feaaa5a87337c044f815d263a))
+
+### Features
+
+- **page**: Make pattern case insensitive
+  ([`c705736`](https://github.com/anaticulae/germania/commit/c7057366ade79f26ca18231ec1d4271883cb788b))
+
+### Refactoring
+
+- **page**: Clarify pattern
+  ([`e865c30`](https://github.com/anaticulae/germania/commit/e865c3018f645b23d767f01011cfc904f42f05d6))
+
+- **page**: Compile pattern
+  ([`f808dd9`](https://github.com/anaticulae/germania/commit/f808dd9e1837dd8a6b85e3146c1cb549cbe0e8f2))
+
+- **page**: Improve naming
+  ([`ddc59b4`](https://github.com/anaticulae/germania/commit/ddc59b4df13982757f83965eb8ecaba437405619))
+
+- **page**: Make pattern more equal
+  ([`89630b0`](https://github.com/anaticulae/germania/commit/89630b008b5a6db39b331de6cb00c6898ebb8772))
+
+- **page**: Reduce complexity
+  ([`c977f7f`](https://github.com/anaticulae/germania/commit/c977f7f03c14205e4c7e8957e510e993b084df3a))
+
+- **page**: Rename method
+  ([`a25a201`](https://github.com/anaticulae/germania/commit/a25a201d60d5de752aec83d7922b3438167b8702))
+
+- **page**: Simplify pattern
+  ([`ff0e159`](https://github.com/anaticulae/germania/commit/ff0e159aee6b010eeea915f2f26e77c7d8a7dfac))
+
+- **page**: Unite pattern
+  ([`ae7befa`](https://github.com/anaticulae/germania/commit/ae7befa38babbd82b14e377e1360ab124cb4ab3b))
+
+- **pagination**: Reuse regex pattern
+  ([`b013263`](https://github.com/anaticulae/germania/commit/b013263deec63fae54e0a33448c52423e44e06cf))
+
+### Testing
+
+- **page**: Extend test cov
+  ([`b0ffc33`](https://github.com/anaticulae/germania/commit/b0ffc33307a30263dc9a442a23fb6a69f15e9e09))
+
+- **page**: Increase test cov
+  ([`dbd1a83`](https://github.com/anaticulae/germania/commit/dbd1a8304bfc90ab3da5a5ca2a7c79889ea46d22))
+
 
 ## v1.28.1 (2023-01-04)
 
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`745bea1`](https://github.com/anaticulae/germania/commit/745bea1d0ab534b063f7ac44715dccf4053ee434))
+
+- **setup**: Ensure that data are trained
+  ([`c601e46`](https://github.com/anaticulae/germania/commit/c601e469f68ce0681de0db667de3ed4976cdba4c))
+
 ### Documentation
 
-* happy New Year! (ecb2f74d60f2)
+- **copyright**: Happy New Year!
+  ([`ecb2f74`](https://github.com/anaticulae/germania/commit/ecb2f74d60f212f7e27164787802d99f5d88d9b5))
 
-### Chore
-
-* upgrade requirements.txt (745bea1d0ab5)
-* ensure that data are trained (c601e469f68c)
 
 ## v1.28.0 (2022-12-30)
 
-### Feature
+### Chores
 
-* make train runnable (608b3a156b07)
+- **Jenkins**: Upgrade pipeline
+  ([`8bd04a4`](https://github.com/anaticulae/germania/commit/8bd04a4d751819bcb70b0c1a9b64e7723d2a5b62))
 
-### Chore
+- **requirements**: Upgrade requirements.txt
+  ([`0ca3959`](https://github.com/anaticulae/germania/commit/0ca395984692d72380495d9f5b066b7090459fb5))
 
-* ensure that model is trained (acacf0ffb9c9)
-* add install task (6990b80a92ff)
-* use utila quick (561200196a7f)
-* upgrade pipeline (8bd04a4d7518)
-* upgrade requirements.txt (0ca395984692)
+- **setup**: Add install task
+  ([`6990b80`](https://github.com/anaticulae/germania/commit/6990b80a92ff99a8c4498b53dcba28952f5ed76c))
+
+- **setup**: Use utila quick
+  ([`5612001`](https://github.com/anaticulae/germania/commit/561200196a7f1b7c44ae49b2a0e43a5554700ee5))
+
+- **test**: Ensure that model is trained
+  ([`acacf0f`](https://github.com/anaticulae/germania/commit/acacf0ffb9c93fb1e4d5d9b8706fb5e1e80d1ea5))
+
+### Features
+
+- **train**: Make train runnable
+  ([`608b3a1`](https://github.com/anaticulae/germania/commit/608b3a156b073b4a9820135f1970f9088123d50c))
+
+### Refactoring
+
+- **train**: Make train reusable
+  ([`18827e4`](https://github.com/anaticulae/germania/commit/18827e478a0cc79a343535ac20088aab652fa646))
+
 
 ## v1.27.1 (2022-11-10)
 
-### Fix
+### Bug Fixes
 
-* fix side effects when parsing locals (a77847f14fe8)
+- **href**: Fix side effects when parsing locals
+  ([`a77847f`](https://github.com/anaticulae/germania/commit/a77847f14fe88f2067596269316ef13f1069ca3f))
 
-### Chore
+### Chores
 
-* upgrade environment (37be3ea47652)
-* convert nightly to all (8748108f86b9)
-* upgrade requirements.txt (7010b0a26279)
-* do not run in privileged mode (66c3a2f84dfd)
+- **Jenkins**: Convert nightly to all
+  ([`8748108`](https://github.com/anaticulae/germania/commit/8748108f86b985b4db4b00ae96f1b29d74f39f2d))
+
+- **Jenkins**: Upgrade environment
+  ([`37be3ea`](https://github.com/anaticulae/germania/commit/37be3ea476523db69b789de8ba8ed20289272aad))
+
+- **Jenkinsfile**: Do not run in privileged mode
+  ([`66c3a2f`](https://github.com/anaticulae/germania/commit/66c3a2f84dfd430f194d9910fc367cb88b434636))
+
+- **requirements**: Upgrade requirements.txt
+  ([`7010b0a`](https://github.com/anaticulae/germania/commit/7010b0a26279628d9b7fb03240ce0f11849de995))
+
+### Refactoring
+
+- **replace**: Automated replacement
+  ([`8a68881`](https://github.com/anaticulae/germania/commit/8a6888116030a5f6167231e4bbeeb754ac1bc95f))
+
 
 ## v1.27.0 (2022-09-27)
 
-### Feature
+### Bug Fixes
 
-* train science text (e8f03a310565)
+- **data**: Ensure that data package exists
+  ([`0ee2fcc`](https://github.com/anaticulae/germania/commit/0ee2fccd3b6677f89ae2fe6e26d1185784cfecb5))
 
-### Fix
+### Chores
 
-* ensure that data package exists (0ee2fccd3b66)
+- **ci**: Add Jenkinsfile
+  ([`e186590`](https://github.com/anaticulae/germania/commit/e186590751e2a8cae8d18a890ea0300580dc7717))
 
-### Chore
+- **Jenkinsfile**: Use separate training step
+  ([`3d7592e`](https://github.com/anaticulae/germania/commit/3d7592eb9859052f6ee304ef13e36cc070bd390e))
 
-* use separate training step (3d7592eb9859)
-* add train module to generate tokenizer (0e4a69f483f5)
-* upgrade requirements.txt (e28cae825d92)
-* add Jenkinsfile (e186590751e2)
-* upgrade requirements.txt (ae980af96c0c)
+- **requirements**: Upgrade requirements.txt
+  ([`e28cae8`](https://github.com/anaticulae/germania/commit/e28cae825d929d110330ab8134219399521a583f))
 
-## v1.26.3
+- **requirements**: Upgrade requirements.txt
+  ([`ae980af`](https://github.com/anaticulae/germania/commit/ae980af96c0c19912cc8e92177894d4f6383b9e4))
 
-### Fix
+- **setup**: Add train module to generate tokenizer
+  ([`0e4a69f`](https://github.com/anaticulae/germania/commit/0e4a69f483f5048c7491e8240b0c56d02ec064c5))
 
-* insert language parameter (8b7ef9edf68b)
-* do not fail on regex mark match (02fdfd3bb86e)
+### Code Style
 
-## v1.26.2
+- **changelog**: Adjust for release tool
+  ([`da95ab6`](https://github.com/anaticulae/germania/commit/da95ab606e442270ebabff9602b6450d9cf0a782))
 
-### Feature
+### Features
 
-* compile pattern (4fdc52a49bda)
+- **setup**: Train science text
+  ([`e8f03a3`](https://github.com/anaticulae/germania/commit/e8f03a310565c86964b8e054bedd1870e588c517))
 
-## v1.26.1
+### Refactoring
 
-### Fix
+- **improve**: Clarify code
+  ([`5636cfc`](https://github.com/anaticulae/germania/commit/5636cfc121929bc421c0ef2fce4c900f8f809861))
 
-* do not search patterns by type (1cdbbe9db8b1)
+- **improve**: Clarify training step
+  ([`1f66149`](https://github.com/anaticulae/germania/commit/1f661492f0002417600ecb5a497bb069ba131135))
+
+
+## v1.26.3 (2022-07-15)
+
+### Bug Fixes
+
+- **word**: Do not fail on regex mark match
+  ([`02fdfd3`](https://github.com/anaticulae/germania/commit/02fdfd3bb86ec34e8e1c94695467d21f4b731cab))
+
+- **word**: Insert language parameter
+  ([`8b7ef9e`](https://github.com/anaticulae/germania/commit/8b7ef9edf68b2dac089ca5599232c72ed90d2eb5))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`c537f1a`](https://github.com/anaticulae/germania/commit/c537f1a61439cb9c4651b4cfeee84bc792035fda))
+
+
+## v1.26.2 (2022-07-06)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`18725d2`](https://github.com/anaticulae/germania/commit/18725d2277ca78a3b996cbf05464df39db7db951))
+
+### Features
+
+- **work**: Compile pattern
+  ([`4fdc52a`](https://github.com/anaticulae/germania/commit/4fdc52a49bda1ada565b5e8a60867be460c0f6ec))
+
+### Testing
+
+- **word**: Verify percent sign parsing
+  ([`c9e3e32`](https://github.com/anaticulae/germania/commit/c9e3e32e0e9943cddd7d8eb8d89289bbca5fa82b))
+
+
+## v1.26.1 (2022-07-04)
+
+### Bug Fixes
+
+- **abbrev**: Do not search patterns by type
+  ([`1cdbbe9`](https://github.com/anaticulae/germania/commit/1cdbbe9db8b15788a9d39a29b8083e68de624320))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`3313f1f`](https://github.com/anaticulae/germania/commit/3313f1fc387fcbf3718add55931771047756b7da))
 
 ### Documentation
 
-* extend interface documentation (a41bcaf4a839)
+- **sentence**: Extend interface documentation
+  ([`a41bcaf`](https://github.com/anaticulae/germania/commit/a41bcaf4a8397d93cffadcc033ba4b87f5113f35))
 
-## v1.26.0
+### Testing
 
-### Feature
+- **sequence**: Increase test coverage
+  ([`adf0842`](https://github.com/anaticulae/germania/commit/adf08429d95a35f2c9f5395d6bef7a3605c4496b))
 
-* add parameter to normalize after tokenize (d9a14501b981)
-* add verbose flag, make data static (f86ccebce80f)
 
-### Fix
+## v1.26.0 (2022-07-03)
 
-* skip too short ngram (18786de7670c)
+### Bug Fixes
 
-### Documentation
+- **sequence**: Skip too short ngram
+  ([`18786de`](https://github.com/anaticulae/germania/commit/18786de7670cca79bbb4fc1a32bf7f7f2dd13c7a))
 
-* extend interface documentation (cc4075023afc)
+### Chores
 
-## v1.25.0
+- **requirements**: Upgrade requirements.txt
+  ([`8e8c24d`](https://github.com/anaticulae/germania/commit/8e8c24deac75fee125f04d72a6caf4bd3b4b490a))
 
-### Feature
+### Code Style
 
-* add method to compute ngram (05e5a159e9d2)
-
-## v1.24.0
-
-### Feature
-
-* add method to find abbreviation (548fa06ad415)
-* add ability to stem multiple token in one invocation (b2aa76fa73b7)
-
-## v1.23.1
-
-### Fix
-
-* adjust pagenumber skip at the start of a sentence (fac1aaafedf1)
-* extend hyperlink parser (5e8b53387790)
-
-## v1.23.0
-
-### Feature
-
-* add English page pattern (3a70e5833532)
-* add method to convert token to plain text (600c77bf491b)
-
-### Fix
-
-* do not treat name as page number error (4151260e0afc)
-* do not detect abbreviation as page error (41359d537bd7)
-
-## v1.22.0
-
-### Feature
-
-* use escape to improve extraction (4cf49d9e8355)
-* extend month pattern (191f865b8eaa)
-* add method to automate escaping (a701a2358ccf)
-* add method to escape dates (50b52a98d195)
-
-### Fix
-
-* just revert in finding, not on global text (e21762050d18)
-
-## v1.21.5
-
-### Feature
-
-* allow white space before highnote pattern (1d126eb1bd6f)
-
-## v1.21.4
-
-### Fix
-
-* adjust sentence end checker (cf7eae9ce9e9)
-
-## v1.21.3
-
-### Feature
-
-* compile pattern (0f137c5180ae)
-
-## v1.21.2
-
-### Feature
-
-* extend pattern (298a9e13d734)
-
-## v1.21.1
-
-### Feature
-
-* extend access pattern (468fc246ab09)
-
-## v1.21.0
-
-### Feature
-
-* add method to stem word (e09846f6b3d5)
-
-## v1.20.0
-
-### Feature
-
-* add method to parse hyper links and local links (656b541b4445)
-* add method to parse local links (b03070c2a49e)
-
-## v1.19.2
-
-### Fix
-
-* make automata thread safe (502f57508e26)
-
-## v1.19.1
-
-### Fix
-
-* do not use internal API (7cf0e5899a8b)
-* improve sequence merger (e6768eb5fb47)
-
-## v1.19.0
-
-### Feature
-
-* add regex pattern matcher (f4184d590821)
+- **sequence**: Fix spelling error
+  ([`5a48991`](https://github.com/anaticulae/germania/commit/5a48991e4fa0d905d3983d651505c9bef22a1dff))
 
 ### Documentation
 
-* extend interface documentation (f9fc176ec89f)
+- **word**: Extend interface documentation
+  ([`cc40750`](https://github.com/anaticulae/germania/commit/cc4075023afc1c74e60209a13054826bacda6d34))
 
-## v1.18.0
+### Features
 
-### Feature
+- **ngram**: Add verbose flag, make data static
+  ([`f86cceb`](https://github.com/anaticulae/germania/commit/f86ccebce80f945c6ba8039796ea1034af8b760b))
 
-* add magic pattern generator (3e735443e092)
-* align highnote magic pattern to sentence before (e7392c155af1)
+- **word**: Add parameter to normalize after tokenize
+  ([`d9a1450`](https://github.com/anaticulae/germania/commit/d9a14501b981c2032ea4df4a4a808832f64b3baf))
 
-## v1.17.3
 
-### Fix
+## v1.25.0 (2022-07-01)
 
-* make href magic more strict (f66726e0499e)
+### Chores
 
-## v1.17.2
+- **requirements**: Upgrade requirements.txt
+  ([`43ae4f8`](https://github.com/anaticulae/germania/commit/43ae4f8c2de157295e0f2693a6afb16573f58443))
 
-## v1.17.1
+### Features
 
-### Feature
+- **sequence**: Add method to compute ngram
+  ([`05e5a15`](https://github.com/anaticulae/germania/commit/05e5a159e9d26f62e51fc13001323c3c2c7f45e5))
 
-* lazy load data (9419de499c81)
 
-## v1.17.0
+## v1.24.0 (2022-06-30)
 
-### Feature
+### Chores
 
-* add double colon improver (882982fa7502)
-* use double colon as sentence end (dde74b275c60)
-* add shebang (fa48e30ce4d9)
+- **requirements**: Upgrade requirements.txt
+  ([`1dfcc33`](https://github.com/anaticulae/germania/commit/1dfcc332f3a49cb2d0074995230f70c5431bb878))
 
-## v1.16.2
+### Features
 
-### Feature
+- **abbrev**: Add method to find abbreviation
+  ([`548fa06`](https://github.com/anaticulae/germania/commit/548fa06ad41529ca0c08666e9add15ea88498930))
 
-* sort date by occurrence (86574882d6c9)
-* add option to sort result (64458cdbe6d2)
+- **word**: Add ability to stem multiple token in one invocation
+  ([`b2aa76f`](https://github.com/anaticulae/germania/commit/b2aa76fa73b78902fe47eddfe2c6a7c610feced6))
 
-## v1.16.1
 
-### Feature
+## v1.23.1 (2022-06-29)
 
-* do not detect names as missing page number (922c94251014)
+### Bug Fixes
 
-## v1.16.0
+- **href**: Extend hyperlink parser
+  ([`5e8b533`](https://github.com/anaticulae/germania/commit/5e8b53387790152bc048a9c166d2fcadca184a56))
 
-### Feature
+- **text**: Adjust pagenumber skip at the start of a sentence
+  ([`fac1aaa`](https://github.com/anaticulae/germania/commit/fac1aaafedf150692b79fbde1aeae5ca355afcba))
 
-* add machine to detect text errors (e363a3838cb7)
-* add error detected method name (52b9260006a5)
-* add machine to ease error defining (f539d3e4e2b3)
-* add enum to present writing error (d9e91a191b2d)
+### Chores
 
-## v1.15.0
+- **requirements**: Upgrade requirements.txt
+  ([`7c9c9d1`](https://github.com/anaticulae/germania/commit/7c9c9d1213266946a31428bdbb0095f767809852))
 
-### Feature
+### Testing
 
-* add method to select parser by guessed language (d070c7542127)
-* add method to train improved English tokeniser (3751a6f9b29c)
-* limit possible name length (f5f33a4333cf)
+- **error**: Run large incomplete page test
+  ([`3882d47`](https://github.com/anaticulae/germania/commit/3882d4762f3d89e658d6ae089b7691b5d5ce1e38))
 
-### Fix
 
-* skip None extraction (3b935f1dade6)
+## v1.23.0 (2022-06-29)
+
+### Bug Fixes
+
+- **text**: Do not detect abbreviation as page error
+  ([`41359d5`](https://github.com/anaticulae/germania/commit/41359d537bd78021f986a242f6a09873ab228e37))
+
+- **text**: Do not treat name as page number error
+  ([`4151260`](https://github.com/anaticulae/germania/commit/4151260e0afc8e2f3890569fb7755917b8a3d0b4))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`7809eb7`](https://github.com/anaticulae/germania/commit/7809eb72c92d15faa1c829ee03e8364afce66787))
+
+### Features
+
+- **sequence**: Add method to convert token to plain text
+  ([`600c77b`](https://github.com/anaticulae/germania/commit/600c77bf491bcd81113e506e685b527940b7e99b))
+
+- **text**: Add English page pattern
+  ([`3a70e58`](https://github.com/anaticulae/germania/commit/3a70e583353292111989c566407244195f5c8e75))
+
+
+## v1.22.0 (2022-06-26)
+
+### Bug Fixes
+
+- **escape**: Just revert in finding, not on global text
+  ([`e217620`](https://github.com/anaticulae/germania/commit/e21762050d1883de03e09d4a088179e99d8eb84a))
+
+### Features
+
+- **escape**: Add method to automate escaping
+  ([`a701a23`](https://github.com/anaticulae/germania/commit/a701a2358ccf9ef583809df8dfd7c1e008edd73f))
+
+- **escape**: Add method to escape dates
+  ([`50b52a9`](https://github.com/anaticulae/germania/commit/50b52a98d19543b32037060a002cd712aafefd78))
+
+- **escape**: Extend month pattern
+  ([`191f865`](https://github.com/anaticulae/germania/commit/191f865b8eaabe3794cfaa7db7af9a6e120588a5))
+
+- **sentence**: Use escape to improve extraction
+  ([`4cf49d9`](https://github.com/anaticulae/germania/commit/4cf49d9e8355691aaf13d7aa4a646c9b70ecd2a6))
+
+### Refactoring
+
+- **sentence**: Move into separate package
+  ([`6fd01f2`](https://github.com/anaticulae/germania/commit/6fd01f241284f06a0659c63ce77c09db2488fa21))
+
+### Testing
+
+- **escape**: Verify escaping
+  ([`311af7e`](https://github.com/anaticulae/germania/commit/311af7e120f62789016ea94675373b9339a826ed))
+
+
+## v1.21.5 (2022-06-26)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`1fd5b87`](https://github.com/anaticulae/germania/commit/1fd5b872a8de163eb7e38b581881babf6670a098))
+
+### Features
+
+- **text**: Allow white space before highnote pattern
+  ([`1d126eb`](https://github.com/anaticulae/germania/commit/1d126eb1bd6f604fd69a02af3e1c32097125e416))
+
+
+## v1.21.4 (2022-06-10)
+
+### Bug Fixes
+
+- **sentence**: Adjust sentence end checker
+  ([`cf7eae9`](https://github.com/anaticulae/germania/commit/cf7eae9ce9e9038cbfe1d28541f3e85e835db8b9))
+
+
+## v1.21.3 (2022-06-10)
+
+### Code Style
+
+- **date**: Format regex
+  ([`3fe48fa`](https://github.com/anaticulae/germania/commit/3fe48fa09f9ddca5b604a8e1a47983bc15d0ecfb))
+
+### Features
+
+- **magic**: Compile pattern
+  ([`0f137c5`](https://github.com/anaticulae/germania/commit/0f137c5180ae8f5a447d9d73476bad3693de934f))
+
+### Refactoring
+
+- **access**: Compile pattern
+  ([`57c7c92`](https://github.com/anaticulae/germania/commit/57c7c921234c3ccd32e618c27f7eadb5cde5b6e5))
+
+- **access**: Unite pattern
+  ([`f0d9c5c`](https://github.com/anaticulae/germania/commit/f0d9c5c3e75c719ae0ed57abb8f31af8747f6341))
+
+- **author**: Rename parameter
+  ([`0928449`](https://github.com/anaticulae/germania/commit/0928449c046524452c909970b467d5eea911446a))
+
+- **date**: Adjust parameter name
+  ([`1eb56ec`](https://github.com/anaticulae/germania/commit/1eb56ec02a6a5fe7f8bee05d08e0ec8b2affd3fa))
+
+- **date**: Replace with utila code
+  ([`9ed4b95`](https://github.com/anaticulae/germania/commit/9ed4b95691e9c6e3fd3a00aa6d8671d23c7f5f3a))
+
+- **sentence**: Rename parameter
+  ([`b89bf77`](https://github.com/anaticulae/germania/commit/b89bf77861d0e87a02853838642218d1df3ac2cd))
+
+- **word**: Load stemmer only once
+  ([`36b3c47`](https://github.com/anaticulae/germania/commit/36b3c47028126f31d660cc24bffd2c2d991c754d))
+
+
+## v1.21.2 (2022-06-08)
+
+### Features
+
+- **access**: Extend pattern
+  ([`298a9e1`](https://github.com/anaticulae/germania/commit/298a9e13d7340ca22326876e54100371d72edbe1))
+
+### Refactoring
+
+- **access**: Replace with utila code
+  ([`b97603d`](https://github.com/anaticulae/germania/commit/b97603d87ec8fa013edeeab0aa5587271bcb7585))
+
+- **replace**: Replace with utila code
+  ([`adcdb50`](https://github.com/anaticulae/germania/commit/adcdb50ecdb519a6bdc5e942944e3ade25a8005e))
+
+
+## v1.21.1 (2022-06-08)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`ef591fe`](https://github.com/anaticulae/germania/commit/ef591fef785b7829f631ef5f4cb9136645a506ba))
+
+### Features
+
+- **access**: Extend access pattern
+  ([`468fc24`](https://github.com/anaticulae/germania/commit/468fc246ab0931f34899b8bfd036e1f5e44d3cb8))
+
+
+## v1.21.0 (2022-05-11)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`5ad0bed`](https://github.com/anaticulae/germania/commit/5ad0bedef3eea85f9e2a6c275c1e84d46846ec98))
+
+### Features
+
+- **word**: Add method to stem word
+  ([`e09846f`](https://github.com/anaticulae/germania/commit/e09846f6b3d5bcddcd8c621900d2507d7e8fae89))
+
+
+## v1.20.0 (2022-04-20)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`55c1677`](https://github.com/anaticulae/germania/commit/55c16779416831916321664d40769eabc41501e1))
+
+### Code Style
+
+- **docs**: Adjust headline
+  ([`545d102`](https://github.com/anaticulae/germania/commit/545d102345f3d2b8b98b000955779a7bbc3c4216))
+
+### Features
+
+- **href**: Add method to parse hyper links and local links
+  ([`656b541`](https://github.com/anaticulae/germania/commit/656b541b4445ee4022e44f1ba0e57c11f956441c))
+
+- **href**: Add method to parse local links
+  ([`b03070c`](https://github.com/anaticulae/germania/commit/b03070c2a49e0a104005fed1d5c0105b771f0a5e))
+
+### Refactoring
+
+- **href**: Compile pattern
+  ([`479e9f9`](https://github.com/anaticulae/germania/commit/479e9f98ed223c744c4ad97dea873174017a40e1))
+
+- **href**: Unit equal code
+  ([`1021e8c`](https://github.com/anaticulae/germania/commit/1021e8cb7cc746922a351506ffe2d6aededc2645))
+
+- **machine**: Replace with utila code
+  ([`68ebedf`](https://github.com/anaticulae/germania/commit/68ebedf39d4ece4c0fc31d61bd22d2d32565ae03))
+
+
+## v1.19.2 (2022-03-28)
+
+### Bug Fixes
+
+- **word**: Make automata thread safe
+  ([`502f575`](https://github.com/anaticulae/germania/commit/502f57508e265c81ce93b4f9f20098f626b45a54))
+
+
+## v1.19.1 (2022-03-08)
+
+### Bug Fixes
+
+- **quotation**: Do not use internal API
+  ([`7cf0e58`](https://github.com/anaticulae/germania/commit/7cf0e5899a8b0758bfa43daf4ab6e4a841c80652))
+
+- **sequence**: Improve sequence merger
+  ([`e6768eb`](https://github.com/anaticulae/germania/commit/e6768eb5fb47a473a9f5ce6cfada30a7d1ce99b9))
+
+
+## v1.19.0 (2022-03-05)
 
 ### Documentation
 
-* adjust modules path (95b1d0342db4)
-* Happy New Year! (305ea5498962)
+- **sequence**: Extend interface documentation
+  ([`f9fc176`](https://github.com/anaticulae/germania/commit/f9fc176ec89f1f0c445c240c0d99d7104812d697))
 
-## v1.14.1
+### Features
 
-### Fix
+- **sequence**: Add regex pattern matcher
+  ([`f4184d5`](https://github.com/anaticulae/germania/commit/f4184d590821b3ff158202b4029e25d5028db7f2))
 
-* make href pattern more strict (31e3434c03f7)
+### Refactoring
 
-## v1.14.0
+- **sequence**: Clarify naming
+  ([`5719330`](https://github.com/anaticulae/germania/commit/5719330e10f52c5558b26086459ad5567cb06db8))
 
-### Feature
 
-* add parameter to merge directed neighbours (2ef68dd508ca)
-* add verbose option return token sequence also (4e917852c7ed)
+## v1.18.0 (2022-03-05)
 
-### Fix
+### Chores
 
-* merge connected neighbors (bb8e60dcfe7b)
+- **requirements**: Upgrade requirements.txt
+  ([`23ac25f`](https://github.com/anaticulae/germania/commit/23ac25f3f6963af17615c6d59515a9bd402ef170))
 
-## v1.13.2
+### Features
 
-### Feature
+- **text**: Align highnote magic pattern to sentence before
+  ([`e7392c1`](https://github.com/anaticulae/germania/commit/e7392c155af18233cab00874a4fb84775b64095c))
 
-* improve nltk path insertion (6776c4b37440)
-* lazy loader tagger (078d12b0e201)
+- **word**: Add magic pattern generator
+  ([`3e73544`](https://github.com/anaticulae/germania/commit/3e735443e092b0606afd1ce2d10b076f9b08c57a))
 
-## v1.13.1
+### Refactoring
 
-### Feature
+- **sentence**: Reduce complexity
+  ([`5333703`](https://github.com/anaticulae/germania/commit/5333703a5d780eee836ed9671c45747b093d0d66))
 
-* change return type (ddae175cb47e)
+### Testing
 
-## v1.13.0
+- **refactor**: Improve test style
+  ([`f2181e4`](https://github.com/anaticulae/germania/commit/f2181e4914852be20766df8dc4997580c13c7aba))
 
-### Feature
 
-* add dates master to process all dates pattern (61996ef80367)
-* add month year pattern (b3927d5e111b)
-* extend month list (866c57cc5524)
-* simplify pattern, remove chars separately (56a0d4310e66)
-* add reversed date pattern (bece191e2541)
-* increase max year (2a6448efed39)
-* add verbose flag (d4eb3edf08a3)
-* add more access (ae5dc330e906)
-* extend access pattern (23668bcb398a)
+## v1.17.3 (2022-02-24)
 
-### Fix
+### Bug Fixes
 
-* flip raw and data (048a405cca68)
-* add possible white spaces (9594105fd07c)
+- **href**: Make href magic more strict
+  ([`f66726e`](https://github.com/anaticulae/germania/commit/f66726e0499eb1b075a31b66fc5c531750a794fe))
 
-## v1.12.1
+### Testing
 
-### Fix
+- **abbr**: Add regression to split dot at line end correctly
+  ([`e162db8`](https://github.com/anaticulae/germania/commit/e162db8eca32c391533c74463b56a9709e306585))
 
-* improve issn parser (5079aefa79e8)
 
-## v1.12.0
+## v1.17.2 (2022-02-24)
 
-### Feature
+### Chores
 
-* add method to determine isbn, issn and doi (040b0fe0fdfa)
+- **requirements**: Upgrade requirements.txt
+  ([`894f843`](https://github.com/anaticulae/germania/commit/894f843267ad456bc83cebb3947b53759d6d0547))
 
-## v1.11.0
+### Refactoring
 
-### Feature
+- **pagination**: Clarify code
+  ([`7df03d7`](https://github.com/anaticulae/germania/commit/7df03d73813951a24a3751011c947fcec48a1e57))
 
-* unite magic improver (452ec0321b7e)
-* add methods to improve abbreviation and highnote (e9cd6a50bdd1)
-* add method to improve links (273e49bed21f)
-* use more caching to reduce lookup time (3d1ade3263d8)
+- **pagination**: Compile pattern
+  ([`32b4af7`](https://github.com/anaticulae/germania/commit/32b4af71451b482992848f37306b4d3de811a78d))
 
-### Fix
 
-* load nltk on first lookup (cfe0170d8175)
+## v1.17.1 (2022-02-16)
 
-## v1.10.2
+### Chores
 
-## v1.10.1
+- **requirements**: Upgrade requirements.txt
+  ([`6c098c7`](https://github.com/anaticulae/germania/commit/6c098c76b5d09202a26140d7b23e4564a8c32e7a))
 
-### Feature
+### Features
 
-* merge neighbored unbalanced sentences (bf68bdf904de)
-* improve splitting high note at sentence end (a0b07c5b9392)
+- **magic**: Lazy load data
+  ([`9419de4`](https://github.com/anaticulae/germania/commit/9419de499c81744eb275f236a37e6e777e1c9f0d))
 
-## v1.10.0
 
-### Feature
+## v1.17.0 (2022-02-12)
 
-* add minimal matching ratio (4616c025acb1)
-* add str as possible input (2093fe22e4d6)
+### Chores
 
-## v1.9.2
+- **requirements**: Upgrade requirements.txt
+  ([`8d8eb5b`](https://github.com/anaticulae/germania/commit/8d8eb5beb8c770e07041119af5f7fb526282472a))
 
-### Feature
+### Code Style
 
-* improve text extraction quality (5fd562535463)
+- **changelog**: Cleanup changelog
+  ([`a0147a2`](https://github.com/anaticulae/germania/commit/a0147a2dec091d0002ecfc85cfd835c58d948c59))
 
-## v1.9.1
+- **docs**: Format docs
+  ([`5a9e49f`](https://github.com/anaticulae/germania/commit/5a9e49f27e722405de0de75fc3080187b69b54f2))
 
-### Feature
+### Features
 
-* add verbose flag (a3e37903800a)
+- **improve**: Add shebang
+  ([`fa48e30`](https://github.com/anaticulae/germania/commit/fa48e30ce4d939725726309d71a55378db7abe9a))
 
-## v1.9.0
+- **sentence**: Add double colon improver
+  ([`882982f`](https://github.com/anaticulae/germania/commit/882982fa750268dde176bf7ef93dfd34781d4555))
 
-### Feature
+- **text**: Use double colon as sentence end
+  ([`dde74b2`](https://github.com/anaticulae/germania/commit/dde74b275c609a235b77a1566354ab45d7019a24))
 
-* merge NoPerson's to a single NoPerson (fc2329026c25)
+### Refactoring
 
-## v1.8.0
+- **sentence**: Simplify code
+  ([`ba12f2c`](https://github.com/anaticulae/germania/commit/ba12f2c1e22f31008b598791e518727ca294a581))
 
-### Feature
+- **sentence**: Simplify code
+  ([`15e34f5`](https://github.com/anaticulae/germania/commit/15e34f55f83a75dc814f4c7491b2b1194c47bed1))
 
-* add verbose flag (eef89bedab71)
-* make author immutable (232f07225cf5)
-* add verbose flag to return parsed content (72ecf4889e97)
-* add verbose flag to return parsed raw (871fdc0ba332)
-* add double dot name pattern (b541768d5453)
-* enable dutch authors (cafc2bfb3ca0)
+### Testing
 
-### Fix
+- **adjust**: Adjust unit tests after using colon
+  ([`f65656f`](https://github.com/anaticulae/germania/commit/f65656f8ae43a51a9e4be5e86d3ee1932cc3cf85))
 
-* improve pagination pattern (b112f6a7343a)
-* remove dutch names from NoPerson list (f7931d452372)
+- **sentence**: Split sentence by double colon
+  ([`1d9f1ad`](https://github.com/anaticulae/germania/commit/1d9f1ada99a2875ffea5d1729f37a0e4daf7a005))
 
-## v1.7.1
+- **sentences**: Add missing spaces
+  ([`3c7a6eb`](https://github.com/anaticulae/germania/commit/3c7a6eb407b7bde43d77ee47cfdfefac0fd43367))
 
-### Fix
+- **sentences**: Increase debugging information
+  ([`fe63768`](https://github.com/anaticulae/germania/commit/fe637689fb00ad86569907e532812536737f1106))
 
-* increase no author list (adc154a64bb7)
 
-## v1.7.0
+## v1.16.2 (2022-02-11)
 
-### Feature
+### Chores
 
-* add city decider (4ac0116cc199)
-* use magic person list (7a3a6d103607)
-* use magic publisher (ead1f7146c87)
-* make checker more strict (febe03ae6ccd)
-* add special sign to name detector (2ad47d2d64ae)
+- **requirements**: Upgrade requirements.txt
+  ([`4dd6775`](https://github.com/anaticulae/germania/commit/4dd6775052f91fa2edc79051dbdde4d3437afabf))
 
-### Fix
+### Features
 
-* extend NoPerson parser (33a3036a302a)
+- **date**: Sort date by occurrence
+  ([`8657488`](https://github.com/anaticulae/germania/commit/86574882d6c9c50f11fe6e224d4287ced9954b60))
 
-## v1.6.1
+- **dates**: Add option to sort result
+  ([`64458cd`](https://github.com/anaticulae/germania/commit/64458cdbe6d207dd01951231480c123d113035bd))
 
-### Feature
 
-* return None if matching front or end is not possible (01fa0712c6e8)
-* convert marks by language (4d2061d7b8cf)
+## v1.16.1 (2022-02-03)
 
-## v1.6.0
+### Chores
 
-### Feature
+- **requirements**: Upgrade requirements.txt
+  ([`fffc581`](https://github.com/anaticulae/germania/commit/fffc5814c4eb7777a6579a5ecc5af58578e0110d))
 
-* add method select sentence by token (ca13b29959cf)
-* add famous person (839583ebc048)
+### Features
 
-## v1.5.11
+- **text**: Do not detect names as missing page number
+  ([`922c942`](https://github.com/anaticulae/germania/commit/922c94251014b18a819643a97c105dbc2b08820b))
 
-### Feature
+### Testing
 
-* improve person checker (26a8354e4589)
+- **text**: Add regression test
+  ([`c437d1a`](https://github.com/anaticulae/germania/commit/c437d1abcf0c6251f47fceee3549adb12b8116dc))
 
-### Fix
 
-* do not split non person authors (9de511ed3fdd)
+## v1.16.0 (2022-02-03)
 
-## v1.5.10
+### Chores
 
-### Feature
+- **requirements**: Upgrade requirements.txt
+  ([`8371655`](https://github.com/anaticulae/germania/commit/83716558ba004126d1c48bc7de032f4a96f5d887))
 
-* add germania `and` (482985daa8a3)
+### Features
+
+- **error**: Add enum to present writing error
+  ([`d9e91a1`](https://github.com/anaticulae/germania/commit/d9e91a191b2d7a8c1d0aaafb9cef83d3e5e28af7))
+
+- **error**: Add error detected method name
+  ([`52b9260`](https://github.com/anaticulae/germania/commit/52b9260006a5f6438df02fb4c025c2c832f0ea51))
+
+- **error**: Add machine to detect text errors
+  ([`e363a38`](https://github.com/anaticulae/germania/commit/e363a3838cb7dab08b40be57bfcfd35d6427157a))
+
+- **error**: Add machine to ease error defining
+  ([`f539d3e`](https://github.com/anaticulae/germania/commit/f539d3e4e2b3e233be3e89365e5a72e5b0ba68b0))
+
+### Testing
+
+- **machine**: Increase test coverage
+  ([`1ed1801`](https://github.com/anaticulae/germania/commit/1ed18014ccecd41ab41f2e3e897cb8288427986c))
+
+- **machine**: Verify empty machine
+  ([`7144199`](https://github.com/anaticulae/germania/commit/714419963f0de38f627fdaa0a6d9384bddad2fe3))
+
+- **move**: Move tests from words
+  ([`99ff0b0`](https://github.com/anaticulae/germania/commit/99ff0b03e2d9e6b435713f297b7c1d376e690c88))
+
+
+## v1.15.0 (2022-01-16)
+
+### Bug Fixes
+
+- **author**: Skip None extraction
+  ([`3b935f1`](https://github.com/anaticulae/germania/commit/3b935f1dade6c88befc93cf3ee64521cf8b36385))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`a3bd9bb`](https://github.com/anaticulae/germania/commit/a3bd9bb59c424552a51fcec004dcc45e3615008e))
+
+### Code Style
+
+- **changelog**: Remove space
+  ([`4ce4368`](https://github.com/anaticulae/germania/commit/4ce4368cc277e7f26fc3f7764add9795183e775e))
 
 ### Documentation
 
-* move doc tests to header (a352f72bfcea)
+- **copyright**: Happy New Year!
+  ([`305ea54`](https://github.com/anaticulae/germania/commit/305ea549896298f6a1c0ac996741855cdd8b19c8))
 
-## v1.5.9
+- **fix**: Adjust modules path
+  ([`95b1d03`](https://github.com/anaticulae/germania/commit/95b1d0342db408a1e93c55689de97bd8fbcc4ecb))
 
-### Feature
+### Features
 
-* parse simple quotation marks (94848853cf9f)
+- **author**: Limit possible name length
+  ([`f5f33a4`](https://github.com/anaticulae/germania/commit/f5f33a4333cf6f05475f6d09c6da84b61bcc35cc))
 
-### Fix
+- **sentence**: Add method to select parser by guessed language
+  ([`d070c75`](https://github.com/anaticulae/germania/commit/d070c75421276d7da245b5245fedb417440b78ce))
 
-* do not out range quotation merger (6b8231aea846)
+- **train**: Add method to train improved English tokeniser
+  ([`3751a6f`](https://github.com/anaticulae/germania/commit/3751a6f9b29c31b4773bcf6e5858a4278bef7657))
 
-## v1.5.8
 
-### Feature
+## v1.14.1 (2021-12-07)
 
-* use modern nltk token splitter (18ab7dd05320)
+### Bug Fixes
 
-## v1.5.7
+- **href**: Make href pattern more strict
+  ([`31e3434`](https://github.com/anaticulae/germania/commit/31e3434c03f783aacee25a2933e6c7c0638b6342))
 
-## v1.5.6
+### Chores
 
-### Feature
+- **requirements**: Upgrade requirements.txt
+  ([`910b5bd`](https://github.com/anaticulae/germania/commit/910b5bd5835748779a9ec61c4b79d1d0c0de4da3))
 
-* make quotation parser language dependent (fdb4f4a0d54a)
+### Testing
 
-### Fix
+- **href**: Do not parse part of sentence as hyperlink
+  ([`106a77f`](https://github.com/anaticulae/germania/commit/106a77f3ab0197e660275d3268eb662e3cb5b244))
 
-* remove marks from language test (11280f4cde1c)
 
-## v1.5.3
+## v1.14.0 (2021-11-16)
 
-### Feature
+### Bug Fixes
 
-* extend no person list (33ddf1c75051)
+- **sequence**: Merge connected neighbors
+  ([`bb8e60d`](https://github.com/anaticulae/germania/commit/bb8e60dcfe7b7636f45b9d784702e7f1886da06f))
 
-## v1.5.2
+### Chores
 
-### Feature
+- **project**: Move project config
+  ([`75d4a21`](https://github.com/anaticulae/germania/commit/75d4a21efa2afb11d748f0b17a0392be4e787579))
 
-* extend hyperlink pattern (317ff03c3ec6)
+- **requirements**: Upgrade requirements.txt
+  ([`4a9eae8`](https://github.com/anaticulae/germania/commit/4a9eae8c091ca642d6c0a1704f4645ff852e239d))
 
-## v1.5.1
+### Features
 
-### Feature
+- **sequence**: Add parameter to merge directed neighbours
+  ([`2ef68dd`](https://github.com/anaticulae/germania/commit/2ef68dd508ca02c1a77c0b88680118cfeff3518a))
 
-* use family name to verify authors (c1e6867a6b47)
+- **sequence**: Add verbose option return token sequence also
+  ([`4e91785`](https://github.com/anaticulae/germania/commit/4e917852c7ed1f3089b65c271d0af81b9f21a178))
 
-## v1.5.0
+### Refactoring
 
-### Feature
+- **sequence**: Clarify naming
+  ([`1efb510`](https://github.com/anaticulae/germania/commit/1efb51016b2e40f9293fe06a4f05ea51b42072d0))
 
-* add MONTH_REGEX (cd749de8c544)
-* add month detector to public API (e63336122227)
-* add month list (1b37f147694e)
-* add improved month pattern (df34f5b82598)
 
-## v1.4.0
+## v1.13.2 (2021-10-25)
 
-### Feature
+### Chores
 
-* extend month detector pattern (9bf6f026ff1e)
-* use modern similar approach (1665b96be71c)
-* add day-month-year pattern (dc524813e9f0)
-* extend pattern (db01ecc41792)
+- **requirements**: Upgrade requirements.txt
+  ([`bbd62db`](https://github.com/anaticulae/germania/commit/bbd62db216361279b241b52a6b579fbf2e21472a))
 
-## v1.3.2
+### Features
 
-### Feature
+- **data**: Improve nltk path insertion
+  ([`6776c4b`](https://github.com/anaticulae/germania/commit/6776c4b3744013cf201304e6b15d289b226b27f7))
 
-* add a new university (bfe8f237a2a6)
+- **tagger**: Lazy loader tagger
+  ([`078d12b`](https://github.com/anaticulae/germania/commit/078d12b0e201e8fc3da976698e0b41f7be7ca8aa))
 
-### Fix
+### Refactoring
 
-* word bounding is not required (09f45801cb43)
+- **language**: Use improved cache
+  ([`2403eaa`](https://github.com/anaticulae/germania/commit/2403eaa9a27d7934d37abb8d6ae6f42b059b2300))
 
-## v1.3.1
 
-### Feature
+## v1.13.1 (2021-10-23)
 
-* use no-person detector to invalidate parsed authors (e15ed9a77138)
+### Chores
 
-## v1.3.0
+- **requirements**: Upgrade requirements.txt
+  ([`714ea08`](https://github.com/anaticulae/germania/commit/714ea0853bc96550e3e1c594b7af812ec6f1bfcf))
 
-### Feature
+### Features
 
-* use negative person list (3f9615e2c97d)
-* use lower cased set (ce28827d83d0)
-* add dict of institution (2940f142fe30)
-* add dict with no person names (95fa42199944)
+- **access**: Change return type
+  ([`ddae175`](https://github.com/anaticulae/germania/commit/ddae175cb47e44fcb12df2792e67b41d98990161))
 
-## v1.2.5
 
-### Feature
+## v1.13.0 (2021-10-22)
 
-* moves pages code (981082204320)
-* move accessed pattern (58006876503b)
+### Bug Fixes
 
-## v1.2.4
+- **access**: Flip raw and data
+  ([`048a405`](https://github.com/anaticulae/germania/commit/048a405cca6875af31633b5c837fd10a1ea08667))
 
-### Feature
+- **book**: Add possible white spaces
+  ([`9594105`](https://github.com/anaticulae/germania/commit/9594105fd07cc8026450e3b3db357105b9917338))
 
-* add option to remove overlapping extraction (03b8940b35d2)
-* extend hyperlink pattern (77645c2ed574)
+### Chores
 
-## v1.2.3
+- **requirements**: Upgrade requirements.txt
+  ([`43170f7`](https://github.com/anaticulae/germania/commit/43170f74cbc6f09cd57e1a1e28aa85c63a13e110))
 
-### Fix
+### Features
 
-* write trained data to local repository (971a3e8510ca)
+- **access**: Add more access
+  ([`ae5dc33`](https://github.com/anaticulae/germania/commit/ae5dc330e9064efb9b9c75ce96152511e29c69b7))
 
-## v1.2.1
+- **access**: Add verbose flag
+  ([`d4eb3ed`](https://github.com/anaticulae/germania/commit/d4eb3edf08a3d81cd8ace65d972ebe0ce0f37d20))
 
-### Fix
+- **access**: Extend access pattern
+  ([`23668bc`](https://github.com/anaticulae/germania/commit/23668bcb398a16878b332a84f8ff1d5773da683a))
 
-* merge divis followed by upper case char correctly (02f7e253b6bf)
+- **access**: Simplify pattern, remove chars separately
+  ([`56a0d43`](https://github.com/anaticulae/germania/commit/56a0d4310e66c03eff07c19cc53415184d18c584))
 
-## v1.2.0
+- **date**: Add dates master to process all dates pattern
+  ([`61996ef`](https://github.com/anaticulae/germania/commit/61996ef80367bc8165d7ff0bb37cfe445e721ea9))
 
-### Feature
+- **date**: Add month year pattern
+  ([`b3927d5`](https://github.com/anaticulae/germania/commit/b3927d5e111b45a2b1bbd368b2ad8117b6c98aa4))
 
-* enable tokens as language input (d55c52e9636d)
+- **date**: Add reversed date pattern
+  ([`bece191`](https://github.com/anaticulae/germania/commit/bece191e2541cf085f64cf90eae8115b828700ef))
 
-## v1.1.0
+- **date**: Increase max year
+  ([`2a6448e`](https://github.com/anaticulae/germania/commit/2a6448efed3981dffaee284cd820885dd40cc518))
 
-### Feature
+- **month**: Extend month list
+  ([`866c57c`](https://github.com/anaticulae/germania/commit/866c57cc552449e3982201d058ff179ed8742680))
 
-* add option to normalize sentence input (fdb28b7e6492)
-* add predefined abbreviations (d1ead47f5d99)
+### Refactoring
 
-## v1.0.0
+- **access**: Reduce complexity
+  ([`977d95f`](https://github.com/anaticulae/germania/commit/977d95f4bf5c85d5b6ca0f60f08d3dd0a5922bbe))
 
-### Feature
+- **access**: Remove duplication
+  ([`f71e500`](https://github.com/anaticulae/germania/commit/f71e500d1867d0131822c560eff4b394303fa0f9))
 
-* enable quotation signs to sentence parser (ea19db44ebda)
-* use science punkt tokeniser (0d6b38453cbe)
-* add additional verbose flag (1c57755602dc)
-* log number of training data (40a544681eed)
-* prepare input text to improve parsing result (300aedf293bd)
-* use improved test data (3ad2fb6c1aa0)
-* add verbose logging to science text trainer (55442fe5eafd)
-* add option to modify punkt regex (461104d36a2b)
-* make train runnable by console (f83e04e04113)
-* use more training data (23e8cce335d2)
-* train science with hugedata (ea5dcf7baa76)
-* add word tagger interface (03d15e57b61b)
-* use crubadan approach to determine language (8145eb26d5eb)
-* add science train package to improve train tokeniser (c90411c76420)
-* use nltk data name table to improve name lookup (7aa2f231ad92)
+- **access**: Replace with utila code
+  ([`e8ec6be`](https://github.com/anaticulae/germania/commit/e8ec6be46d774620a41b415d2aee30d292bcd0c6))
 
-### Fix
+- **access**: Simplify access pattern
+  ([`d94a09e`](https://github.com/anaticulae/germania/commit/d94a09e837151484ef0f34e8a4ceb4e0fd68eb38))
 
-* move science parser to germania_data (ba6dd67e8bd7)
+- **date**: Move date to access pattern
+  ([`5597027`](https://github.com/anaticulae/germania/commit/55970271b9787eff6ae582158b0d2b2b91d71a69))
+
+- **date**: Move regex to const
+  ([`6b197ac`](https://github.com/anaticulae/germania/commit/6b197ac334330577092e781e052a3ded8514ac36))
+
+- **month**: Change month pattern to upper case
+  ([`fea7e23`](https://github.com/anaticulae/germania/commit/fea7e2361673eb97845a1303d378f342d72c5957))
+
+- **month**: Replace with utila code
+  ([`cdd7178`](https://github.com/anaticulae/germania/commit/cdd717824a311d094c4ae8a9bd426c7cc0477f48))
+
+
+## v1.12.1 (2021-10-21)
+
+### Bug Fixes
+
+- **book**: Improve issn parser
+  ([`5079aef`](https://github.com/anaticulae/germania/commit/5079aefa79e8a448ad167c6b93f97fa9889d9f8d))
+
+
+## v1.12.0 (2021-10-21)
+
+### Features
+
+- **book**: Add method to determine isbn, issn and doi
+  ([`040b0fe`](https://github.com/anaticulae/germania/commit/040b0fe0fdfa5a15b5e56524c355ecab3c1f946c))
+
+### Refactoring
+
+- **access**: Move constant
+  ([`5ccab9d`](https://github.com/anaticulae/germania/commit/5ccab9df43a27ec995b3da78d7bd54dc052b0610))
+
+
+## v1.11.0 (2021-10-21)
+
+### Bug Fixes
+
+- **lang**: Load nltk on first lookup
+  ([`cfe0170`](https://github.com/anaticulae/germania/commit/cfe0170d81751f29f6dd7015a5f45701a1978aaf))
+
+### Chores
+
+- **requirements**: Add configo
+  ([`d3fc951`](https://github.com/anaticulae/germania/commit/d3fc9510b3786e192be7dadd91b0257866b0bfce))
+
+- **requirements**: Upgrade requirements.txt
+  ([`e14f9f3`](https://github.com/anaticulae/germania/commit/e14f9f39b26f1f505b89d997f6e8b9c319d9e913))
+
+### Features
+
+- **cache**: Use more caching to reduce lookup time
+  ([`3d1ade3`](https://github.com/anaticulae/germania/commit/3d1ade3263d8bb0f6430c0a06387f6e43e40ba91))
+
+- **improve**: Add method to improve links
+  ([`273e49b`](https://github.com/anaticulae/germania/commit/273e49bed21fc90340663925c774c4df46169033))
+
+- **improve**: Add methods to improve abbreviation and highnote
+  ([`e9cd6a5`](https://github.com/anaticulae/germania/commit/e9cd6a50bdd1d8e254faeb27bccf0c48630f7d31))
+
+- **improve**: Unite magic improver
+  ([`452ec03`](https://github.com/anaticulae/germania/commit/452ec0321b7e952645061046f66a0acfe44c9d11))
+
+### Refactoring
+
+- **sentence**: Introduce real holy values
+  ([`088982e`](https://github.com/anaticulae/germania/commit/088982ec5e45ecd2ed57d534692d220bb64e1ae6))
+
+
+## v1.10.2 (2021-09-27)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`f5a6e21`](https://github.com/anaticulae/germania/commit/f5a6e21c79b6d774aa416c8b6d2c8589df57ef72))
+
+### Testing
+
+- **word**: Verify list start dot splitter
+  ([`28fd088`](https://github.com/anaticulae/germania/commit/28fd088a3e43eb60fb57b547d344958d1316758e))
+
+
+## v1.10.1 (2021-09-27)
+
+### Code Style
+
+- **remove**: Remove outdated comment
+  ([`51dcd86`](https://github.com/anaticulae/germania/commit/51dcd86967f5558ededc9d944f76c8e8eee670a6))
+
+### Features
+
+- **sentence**: Improve splitting high note at sentence end
+  ([`a0b07c5`](https://github.com/anaticulae/germania/commit/a0b07c5b9392931ad245379e3bed584f4bbc39da))
+
+- **sentence**: Merge neighbored unbalanced sentences
+  ([`bf68bdf`](https://github.com/anaticulae/germania/commit/bf68bdf904deefdc5fc97bcc746b2690485774fe))
+
+
+## v1.10.0 (2021-09-26)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`0531d5b`](https://github.com/anaticulae/germania/commit/0531d5b009022abe8ff77fe7a2daf70867e886af))
+
+### Features
+
+- **sentence**: Add minimal matching ratio
+  ([`4616c02`](https://github.com/anaticulae/germania/commit/4616c025acb118cf7f4d9fc0e423c2a822f4ca08))
+
+- **sentence**: Add str as possible input
+  ([`2093fe2`](https://github.com/anaticulae/germania/commit/2093fe22e4d6b4c42d947919ed1661bb8181af32))
+
+### Testing
+
+- **sentence**: Add test to verify sentence select
+  ([`2a0078b`](https://github.com/anaticulae/germania/commit/2a0078b57795e883bd8606e9d16107fb8155ca0c))
+
+
+## v1.9.2 (2021-09-07)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`9258103`](https://github.com/anaticulae/germania/commit/92581038ef9dda9031d9ad8919059cee7398e7ab))
+
+### Features
+
+- **sentence**: Improve text extraction quality
+  ([`5fd5625`](https://github.com/anaticulae/germania/commit/5fd562535463181093bfe3ac25ccadd0a90cce89))
+
+
+## v1.9.1 (2021-08-02)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`1cbbe3d`](https://github.com/anaticulae/germania/commit/1cbbe3dfe19c63512bc60a7b38d0527f45ceb1e0))
+
+### Features
+
+- **href**: Add verbose flag
+  ([`a3e3790`](https://github.com/anaticulae/germania/commit/a3e37903800a04c805ff01ecc45c31fd504a9baa))
+
+
+## v1.9.0 (2021-07-28)
+
+### Features
+
+- **author**: Merge NoPerson's to a single NoPerson
+  ([`fc23290`](https://github.com/anaticulae/germania/commit/fc2329026c25e207b6f7f13d6ddfcf4c6f2ac1ee))
+
+
+## v1.8.0 (2021-07-24)
+
+### Bug Fixes
+
+- **magic**: Remove dutch names from NoPerson list
+  ([`f7931d4`](https://github.com/anaticulae/germania/commit/f7931d4523720f155305e837da9561a745430472))
+
+- **page**: Improve pagination pattern
+  ([`b112f6a`](https://github.com/anaticulae/germania/commit/b112f6a7343a33d60153ff9d69ec0416ecac6650))
+
+### Features
+
+- **author**: Add verbose flag
+  ([`eef89be`](https://github.com/anaticulae/germania/commit/eef89bedab713331697a696e89bd20c53cc0fac1))
+
+- **author**: Enable dutch authors
+  ([`cafc2bf`](https://github.com/anaticulae/germania/commit/cafc2bfb3ca0438efae663511fe67aca9d97df79))
+
+- **author**: Make author immutable
+  ([`232f072`](https://github.com/anaticulae/germania/commit/232f07225cf5bd1bce08023013aee79c16e8419e))
+
+- **date**: Add verbose flag to return parsed raw
+  ([`871fdc0`](https://github.com/anaticulae/germania/commit/871fdc0ba332363564e8501fd06ac8e382b2a464))
+
+- **magic**: Add double dot name pattern
+  ([`b541768`](https://github.com/anaticulae/germania/commit/b541768d545385080a2109cacd1f2e1d183f62dc))
+
+- **pagination**: Add verbose flag to return parsed content
+  ([`72ecf48`](https://github.com/anaticulae/germania/commit/72ecf4889e97ed4aff9ebd346b194f1c6aeb8ba1))
+
+### Refactoring
+
+- **author**: Clarify code
+  ([`c37ea92`](https://github.com/anaticulae/germania/commit/c37ea920916da2a4ef8b6144fb70578aea3f6e52))
+
+### Testing
+
+- **factor**: Format code
+  ([`44d416a`](https://github.com/anaticulae/germania/commit/44d416a389a31a19a38abdc2095dc456e5a1b7f8))
+
+
+## v1.7.1 (2021-07-11)
+
+### Bug Fixes
+
+- **author**: Increase no author list
+  ([`adc154a`](https://github.com/anaticulae/germania/commit/adc154a64bb735fafdfff9b6e01b35a9202d6435))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`a87de46`](https://github.com/anaticulae/germania/commit/a87de460c26960b9504974869bf2d456a05b5901))
+
+
+## v1.7.0 (2021-07-08)
+
+### Bug Fixes
+
+- **person**: Extend NoPerson parser
+  ([`33a3036`](https://github.com/anaticulae/germania/commit/33a3036a302ac117985af2fb6d4b294a76455c5e))
+
+### Chores
+
+- **requirements**: Add sdata package
+  ([`d1cfefc`](https://github.com/anaticulae/germania/commit/d1cfefc5f5a746000257a80e77b473d960f0aba7))
+
+- **requirements**: Upgrade requirements.txt
+  ([`62fbf5b`](https://github.com/anaticulae/germania/commit/62fbf5bdb7a32fc154b540d91939214f7a65a27f))
+
+### Features
+
+- **author**: Add special sign to name detector
+  ([`2ad47d2`](https://github.com/anaticulae/germania/commit/2ad47d2d64ae6ecd67644c63bb59bc7662e32fab))
+
+- **magic**: Add city decider
+  ([`4ac0116`](https://github.com/anaticulae/germania/commit/4ac0116cc1996fcd9c43159e394a5e71406de3be))
+
+- **magic**: Make checker more strict
+  ([`febe03a`](https://github.com/anaticulae/germania/commit/febe03ae6ccdc030e8a3ae770a0538ec442c80a4))
+
+- **magic**: Use magic person list
+  ([`7a3a6d1`](https://github.com/anaticulae/germania/commit/7a3a6d103607428f7ae64052ebc3850b0056fe24))
+
+- **magic**: Use magic publisher
+  ([`ead1f71`](https://github.com/anaticulae/germania/commit/ead1f7146c87bc680c5133e06869062b28d1b61d))
+
+### Refactoring
+
+- **replace**: Replace with utila code
+  ([`9a9bd96`](https://github.com/anaticulae/germania/commit/9a9bd9611147aa372dd03f186ef4e81c5a98455e))
+
+- **test**: Move doc tests to header
+  ([`cd28ead`](https://github.com/anaticulae/germania/commit/cd28eadb23536769300ef0f338317f0886d053ba))
+
+
+## v1.6.1 (2021-07-02)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`4381441`](https://github.com/anaticulae/germania/commit/438144183c145a4d4544dc6bbdbd67e35ff83344))
+
+### Features
+
+- **sentence**: Convert marks by language
+  ([`4d2061d`](https://github.com/anaticulae/germania/commit/4d2061d7b8cf12753bb018e97007c58d9cc0aae7))
+
+- **sentence**: Return None if matching front or end is not possible
+  ([`01fa071`](https://github.com/anaticulae/germania/commit/01fa0712c6e82d0a0ce449f8e5e1fb8ad21c3f98))
+
+
+## v1.6.0 (2021-06-29)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`6931caa`](https://github.com/anaticulae/germania/commit/6931caa021e74ffae206ede8b686efd5116e2b52))
+
+### Features
+
+- **names**: Add famous person
+  ([`839583e`](https://github.com/anaticulae/germania/commit/839583ebc048d8893a192257da0120c1e2970541))
+
+- **sentence**: Add method select sentence by token
+  ([`ca13b29`](https://github.com/anaticulae/germania/commit/ca13b29959cfea1f21c46303b43bb455c037eccf))
+
+
+## v1.5.11 (2021-06-28)
+
+### Bug Fixes
+
+- **author**: Do not split non person authors
+  ([`9de511e`](https://github.com/anaticulae/germania/commit/9de511ed3fdd472e7deb6fb7d20993844dc40e08))
+
+### Features
+
+- **magic**: Improve person checker
+  ([`26a8354`](https://github.com/anaticulae/germania/commit/26a8354e45893e3d8485f2a842ad68f1c363b72f))
+
+
+## v1.5.10 (2021-06-25)
 
 ### Documentation
 
-* replace outdated module documentation (9c49f2bddd7c)
-* improve interface documentation (8c737905d492)
+- **authors**: Move doc tests to header
+  ([`a352f72`](https://github.com/anaticulae/germania/commit/a352f72bfceae91d5a58672b44dee19a8cc806c3))
 
-## v0.13.9
+### Features
 
-### Feature
+- **author**: Add german `and`
+  ([`482985d`](https://github.com/anaticulae/germania/commit/482985daa8a32dba88c26199aea67bc1fc864f0d))
 
-* improve press and names check (8643b30cfa2a)
-* extend press list (bf060a4b64f4)
-* extend magic names (e0c9bd076dd6)
-* add Arabic pattern (798bbc2c8e6c)
 
-## v0.13.8
+## v1.5.9 (2021-06-18)
 
-### Fix
+### Bug Fixes
 
-* harden author extractor (f464ca7787ce)
+- **quotation**: Do not out range quotation merger
+  ([`6b8231a`](https://github.com/anaticulae/germania/commit/6b8231aea846d939d1e09a26ee2ad0f03228222d))
 
-## v0.13.7
+### Features
 
-### Feature
+- **quotation**: Parse simple quotation marks
+  ([`9484885`](https://github.com/anaticulae/germania/commit/94848853cf9f9ab59fd9f1af29aa0a6e092c0a2c))
 
-* add simple rule to judge persons (b15f3d50f471)
+### Refactoring
 
-## v0.13.6
+- **quotation**: Simplify quotation parser
+  ([`987d1a3`](https://github.com/anaticulae/germania/commit/987d1a358d42beee6d3a0ef5edb47ff3bfbc66d4))
 
-### Feature
 
-* names, names, names (5e7650bf890b)
+## v1.5.8 (2021-06-14)
 
-## v0.13.5
+### Chores
 
-### Feature
+- **requirements**: Upgrade requirements.txt
+  ([`9fc8dbe`](https://github.com/anaticulae/germania/commit/9fc8dbee2014171d466b8718cd3ff450b44e0491))
 
-* improve author name first name selector (a914cd3b593a)
-* extend names dict (39c87425042c)
+### Code Style
+
+- **resources**: Add missing copyright header
+  ([`dc80352`](https://github.com/anaticulae/germania/commit/dc803527a0d5497adcf652b0231e8334f79e2b6e))
+
+### Features
+
+- **quotation**: Use modern nltk token splitter
+  ([`18ab7dd`](https://github.com/anaticulae/germania/commit/18ab7dd053201361dedd1101f3eb33e43e4721e8))
+
+
+## v1.5.7 (2021-06-13)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`db3294e`](https://github.com/anaticulae/germania/commit/db3294e4201cf2eeb39a525ed998736820a1f4f4))
+
+
+## v1.5.6 (2021-06-13)
+
+### Bug Fixes
+
+- **language**: Remove marks from language test
+  ([`11280f4`](https://github.com/anaticulae/germania/commit/11280f4cde1c4fcea0b7803fcbd72b1bc6dc5b40))
+
+### Chores
+
+- **requirements**: Makes requirements more strict
+  ([`de28da1`](https://github.com/anaticulae/germania/commit/de28da1b3331f650886bb7f39c68c409eb95a0be))
+
+- **requirements**: Upgrade requirements.txt
+  ([`d917649`](https://github.com/anaticulae/germania/commit/d9176490d326ac41a02669c05061f532c77f2f1d))
+
+### Code Style
+
+- **format**: Format code
+  ([`a2d91ac`](https://github.com/anaticulae/germania/commit/a2d91ac1b11191aaf88720c06fe46dc277b88ace))
+
+### Features
+
+- **quotation**: Make quotation parser language dependent
+  ([`fdb4f4a`](https://github.com/anaticulae/germania/commit/fdb4f4a0d54a0a9f7550ebef0cac293d8179abcf))
+
+
+## v1.5.5 (2021-05-22)
+
+### Chores
+
+- **requirements**: Make requirements less strict
+  ([`2913367`](https://github.com/anaticulae/germania/commit/291336721e37a7ffb94b0ab625867a650b975d53))
+
+
+## v1.5.4 (2021-05-22)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`c00a96d`](https://github.com/anaticulae/germania/commit/c00a96d6439cca247ca5dc09ea73273bc4841858))
+
+
+## v1.5.3 (2021-05-17)
+
+### Features
+
+- **noperson**: Extend no person list
+  ([`33ddf1c`](https://github.com/anaticulae/germania/commit/33ddf1c750512a862ccca0f1d7f4c936631347ae))
+
+
+## v1.5.2 (2021-05-14)
+
+### Features
+
+- **hyperlink**: Extend hyperlink pattern
+  ([`317ff03`](https://github.com/anaticulae/germania/commit/317ff03c3ec66a7ef7047a789b5d2987ab295a83))
+
+
+## v1.5.1 (2021-05-14)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`9ecd28a`](https://github.com/anaticulae/germania/commit/9ecd28a388d6370237732f249aab5d2807ca9cc4))
+
+### Features
+
+- **author**: Use family name to verify authors
+  ([`c1e6867`](https://github.com/anaticulae/germania/commit/c1e6867a6b4755a89ca78f87caec81ba85117cd1))
+
+
+## v1.5.0 (2021-05-12)
+
+### Chores
+
+- **setup**: Cleanup setup file
+  ([`590aa4d`](https://github.com/anaticulae/germania/commit/590aa4da3cac02c30446354c72b9ecde297aa9eb))
+
+### Features
+
+- **API**: Add month list
+  ([`1b37f14`](https://github.com/anaticulae/germania/commit/1b37f147694e2be911f065497f6f1f75855037c9))
+
+- **API**: Add MONTH_REGEX
+  ([`cd749de`](https://github.com/anaticulae/germania/commit/cd749de8c5443f1ee514f04573355e31d8d00f50))
+
+- **month**: Add month detector to public API
+  ([`e633361`](https://github.com/anaticulae/germania/commit/e63336122227fdb0f419fce91f68e393323194f6))
+
+- **utils**: Add improved month pattern
+  ([`df34f5b`](https://github.com/anaticulae/germania/commit/df34f5b82598e554bde3dee82dcbab8c724d8691))
+
+### Refactoring
+
+- **replace**: Replace with improved month pattern
+  ([`0ee6c35`](https://github.com/anaticulae/germania/commit/0ee6c35b5342ed9eae83ec18349a60ffe571e984))
+
+
+## v1.4.0 (2021-05-10)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`8275937`](https://github.com/anaticulae/germania/commit/827593740022695d3c3b317d47b5df375a5573f6))
+
+### Features
+
+- **access**: Add day-month-year pattern
+  ([`dc52481`](https://github.com/anaticulae/germania/commit/dc524813e9f08dbfdcc17381c3df7aac6f35ad3f))
+
+- **access**: Extend month detector pattern
+  ([`9bf6f02`](https://github.com/anaticulae/germania/commit/9bf6f026ff1e3088e5d32a5aabf35953a6392d84))
+
+- **access**: Extend pattern
+  ([`db01ecc`](https://github.com/anaticulae/germania/commit/db01ecc417920b66ee4b3c4abb113f12fc93d332))
+
+- **headlines**: Use modern similar approach
+  ([`1665b96`](https://github.com/anaticulae/germania/commit/1665b96be71cde35707d4a53da49a191aa05a556))
+
+### Refactoring
+
+- **access**: Use more specific pattern first
+  ([`293d94c`](https://github.com/anaticulae/germania/commit/293d94cf2f7920c64af293d877d28d5ea6e94544))
+
+- **replace**: Replace with utila code
+  ([`0e05d2a`](https://github.com/anaticulae/germania/commit/0e05d2a712f630d1725866a0bad509e57a18c8b8))
+
+
+## v1.3.2 (2021-04-30)
+
+### Bug Fixes
+
+- **href**: Word bounding is not required
+  ([`09f4580`](https://github.com/anaticulae/germania/commit/09f45801cb43047dfbb0352ccc257675a8bc6927))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`5f4fca6`](https://github.com/anaticulae/germania/commit/5f4fca662186ce457ec73ac4ff17576fa74fca8a))
+
+### Features
+
+- **institution**: Add a new university
+  ([`bfe8f23`](https://github.com/anaticulae/germania/commit/bfe8f237a2a6e3360caa57aa3645f99d1fe675a9))
+
+
+## v1.3.1 (2021-04-27)
+
+### Features
+
+- **author**: Use no-person detector to invalidate parsed authors
+  ([`e15ed9a`](https://github.com/anaticulae/germania/commit/e15ed9a771382525a1a1481b8c6c61eeee5f09a2))
+
+
+## v1.3.0 (2021-04-27)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`2684acf`](https://github.com/anaticulae/germania/commit/2684acf11a721b234914eed03d9d5a94364e0f22))
+
+### Features
+
+- **data**: Add dict of institution
+  ([`2940f14`](https://github.com/anaticulae/germania/commit/2940f142fe3025240411b13f9562d5d8d60404eb))
+
+- **data**: Add dict with no person names
+  ([`95fa421`](https://github.com/anaticulae/germania/commit/95fa42199944ffb3bb6517896abdeebf4140c2a0))
+
+- **magic**: Use negative person list
+  ([`3f9615e`](https://github.com/anaticulae/germania/commit/3f9615e2c97d759f5e6d5b0b68f81185a58fd56d))
+
+- **utils**: Use lower cased set
+  ([`ce28827`](https://github.com/anaticulae/germania/commit/ce28827d83d041ce1554ec02142feb208866b441))
+
+### Refactoring
+
+- **magic**: Clarify code
+  ([`fe118cd`](https://github.com/anaticulae/germania/commit/fe118cd3b0825f022bb9b9f744579344cc37084b))
+
+### Testing
+
+- **data**: Verify loading no person dict
+  ([`684632d`](https://github.com/anaticulae/germania/commit/684632d152e8ad9bdc3b1f2230bda63bc566e733))
+
+
+## v1.2.5 (2021-04-26)
+
+### Code Style
+
+- **imports**: Organize imports
+  ([`bcf9add`](https://github.com/anaticulae/germania/commit/bcf9add990d086d24d38f43938038f3543bb26b2))
+
+### Features
+
+- **pagination**: Moves pages code
+  ([`9810822`](https://github.com/anaticulae/germania/commit/981082204320a8932517b2f1ec7bf2755f48f478))
+
+- **pattern**: Move accessed pattern
+  ([`5800687`](https://github.com/anaticulae/germania/commit/58006876503be6a18866a436cea77fadc9593b84))
+
+### Refactoring
+
+- **page**: Simplify pagination pattern
+  ([`3a1e75b`](https://github.com/anaticulae/germania/commit/3a1e75b8c487e3c6264bdf0029f2f6671ff87ded))
+
+
+## v1.2.4 (2021-04-26)
+
+### Features
+
+- **href**: Extend hyperlink pattern
+  ([`77645c2`](https://github.com/anaticulae/germania/commit/77645c2ed574a1e0e84403613014966829c060c5))
+
+- **sequence**: Add option to remove overlapping extraction
+  ([`03b8940`](https://github.com/anaticulae/germania/commit/03b8940b35d277be7c4a5c86386dbfda3839fb33))
+
+### Testing
+
+- **pattern**: Refactor hyperlink unit test
+  ([`5b5f3ec`](https://github.com/anaticulae/germania/commit/5b5f3ecab8c2f6612572980cf0b883248fc7ec95))
+
+
+## v1.2.3 (2021-03-16)
+
+### Bug Fixes
+
+- **train**: Write trained data to local repository
+  ([`971a3e8`](https://github.com/anaticulae/germania/commit/971a3e8510ca24a801810805bc33c1344b8c75b2))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`a8b18bc`](https://github.com/anaticulae/germania/commit/a8b18bc6b87e96f386851b9dc6d22a2afb8e7537))
+
+
+## v1.2.2 (2021-03-16)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`0cca1ca`](https://github.com/anaticulae/germania/commit/0cca1cacc7b89494edac55bb18f8910adea6b774))
+
+
+## v1.2.1 (2021-03-14)
+
+### Bug Fixes
+
+- **sentence**: Merge divis followed by upper case char correctly
+  ([`02f7e25`](https://github.com/anaticulae/germania/commit/02f7e253b6bf7dcf3d7b86f2318ddf8054495792))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`0f2d0e2`](https://github.com/anaticulae/germania/commit/0f2d0e2079e9df694f19ac3a240764d7bde9f560))
+
+
+## v1.2.0 (2021-03-11)
+
+### Features
+
+- **lang**: Enable tokens as language input
+  ([`d55c52e`](https://github.com/anaticulae/germania/commit/d55c52e9636d8807471ed93e4153f7632b253000))
+
+### Testing
+
+- **enable**: Enable tests
+  ([`2a6e800`](https://github.com/anaticulae/germania/commit/2a6e8002dfbb6e298d9f6175b16a24d34fbe8e32))
+
+
+## v1.1.0 (2021-03-10)
+
+### Features
+
+- **sentence**: Add option to normalize sentence input
+  ([`fdb28b7`](https://github.com/anaticulae/germania/commit/fdb28b7e649207cd05db9579b645b258a7021f83))
+
+- **train**: Add predefined abbreviations
+  ([`d1ead47`](https://github.com/anaticulae/germania/commit/d1ead47f5d990d4c7fc36eab6cc3589042564eff))
+
+
+## v1.0.0 (2021-03-09)
+
+### Bug Fixes
+
+- **science**: Move science parser to german_data
+  ([`ba6dd67`](https://github.com/anaticulae/germania/commit/ba6dd67e8bd714ee674f9f20619ae77bd5fc0621))
+
+### Chores
+
+- **gitignore**: Skip compiled files
+  ([`99ebf55`](https://github.com/anaticulae/germania/commit/99ebf551eb3e80bbf0222332d8653131cdf6300b))
+
+- **requirements**: Add hugedata to determine science tokeniser
+  ([`05d9177`](https://github.com/anaticulae/germania/commit/05d9177a64f09cd605b8663a57fe86dc306340a6))
+
+- **requirements**: Add knlp package
+  ([`9cfb96f`](https://github.com/anaticulae/germania/commit/9cfb96f158d0b93c6ec723c3c9a326df213a348b))
+
+- **requirements**: Add nltk data
+  ([`0442a73`](https://github.com/anaticulae/germania/commit/0442a73dd932c5cd2bd7e1d0174bd11f62198aa4))
+
+- **requirements**: Add nltk package
+  ([`a67328d`](https://github.com/anaticulae/germania/commit/a67328ddd86ca8af8f3a34ed48d7e79bc8fce00b))
+
+- **requirements**: Install utilatest
+  ([`8bec774`](https://github.com/anaticulae/germania/commit/8bec774f51acc2a07bc36e971eea5e178d461633))
+
+- **requirements**: Upgrade requirements.txt
+  ([`a1184c2`](https://github.com/anaticulae/germania/commit/a1184c240d251041dc27d6ee5989275d7d9a4cac))
+
+- **requirements**: Upgrade requirements.txt
+  ([`4121be6`](https://github.com/anaticulae/germania/commit/4121be6c66e6059e2d753ba89e29e6152750d5d1))
+
+- **setup**: Add science_train to project setup
+  ([`2c85c15`](https://github.com/anaticulae/germania/commit/2c85c156a22475d9a15c339d368251bfa8675066))
+
+- **setup**: Add separate data package
+  ([`15fc621`](https://github.com/anaticulae/germania/commit/15fc6211105b08d91101af2aa764f3c9a2046e84))
+
+- **setup**: Setup nltk data path
+  ([`f2b5dff`](https://github.com/anaticulae/germania/commit/f2b5dffc8ab426ceb6beb95f9398784e1615d0cb))
+
+### Code Style
+
+- **format**: Format code
+  ([`bd30148`](https://github.com/anaticulae/germania/commit/bd30148c0a5d1e21d809ce111ba605af7bd0c444))
+
+- **gitignore**: Add missing copyright header
+  ([`7982721`](https://github.com/anaticulae/germania/commit/7982721fc9737e0bf1193d1201dc7d62a1178198))
+
+- **header**: Add missing copyright header
+  ([`79d06c3`](https://github.com/anaticulae/germania/commit/79d06c3730533948025bcc3fe52d0e1db155ef42))
 
 ### Documentation
 
-* extend interface documentation (0e2ac7c1025e)
-* Happy New Year! (1257cdc22067)
+- **language**: Replace outdated module documentation
+  ([`9c49f2b`](https://github.com/anaticulae/germania/commit/9c49f2bddd7cd2ef215544da1818b840bb28d4dd))
 
-## v0.13.4
+- **sentence**: Improve interface documentation
+  ([`8c73790`](https://github.com/anaticulae/germania/commit/8c737905d4927c75329980e7a0eac02f5be7c640))
 
-### Feature
+### Features
 
-* add sentence prepare method (62a9e2306d30)
+- **language**: Use crubadan approach to determine language
+  ([`8145eb2`](https://github.com/anaticulae/germania/commit/8145eb26d5eb9334b93cad4879f0f31ec9876244))
 
-## v0.13.2
+- **magic**: Use nltk data name table to improve name lookup
+  ([`7aa2f23`](https://github.com/anaticulae/germania/commit/7aa2f231ad927f50d08fd29999e5662d4a85d1df))
 
-### Feature
+- **science**: Add science train package to improve train tokeniser
+  ([`c90411c`](https://github.com/anaticulae/germania/commit/c90411c76420cfc269212912069526707bce2853))
 
-* add option to compare word type instead of word type and content (58124e3f6b9b)
+- **science**: Enable quotation signs to sentence parser
+  ([`ea19db4`](https://github.com/anaticulae/germania/commit/ea19db44ebdaa92d3b7e251e359e3c2f2d7150fc))
 
-## v0.13.1
+- **science**: Train science with hugedata
+  ([`ea5dcf7`](https://github.com/anaticulae/germania/commit/ea5dcf7baa767e53a62117c0b20b277e9394fb5d))
 
-### Feature
+- **sentence**: Prepare input text to improve parsing result
+  ([`300aedf`](https://github.com/anaticulae/germania/commit/300aedf293bde11adea40ee424a289d4659db73f))
 
-* split word number connections (30e6d7150bba)
+- **sentence**: Use science punkt tokeniser
+  ([`0d6b384`](https://github.com/anaticulae/germania/commit/0d6b38453cbe8be9f8c26878a1b4f88eedd8f7f3))
 
-## v0.13.0
+- **tagger**: Add word tagger interface
+  ([`03d15e5`](https://github.com/anaticulae/germania/commit/03d15e57b61b5812d14eb19d8469a6f7e6f018bd))
 
-### Feature
+- **train**: Add additional verbose flag
+  ([`1c57755`](https://github.com/anaticulae/germania/commit/1c57755602dc963a74e12b47fb862a080554db21))
 
-* extend names list (9527bb3c705c)
-* add method to parse and decide if item is author (adc2c5f6c53d)
-* use extended author from detector package (62a1484c864d)
-* extend public API (f1ae79d5cc9d)
-* clarify method name (aeb3679a0aaa)
+- **train**: Add option to modify punkt regex
+  ([`461104d`](https://github.com/anaticulae/germania/commit/461104d36a2bad0d78bffca74464fcf562df41de))
 
-## v0.12.0
+- **train**: Add verbose logging to science text trainer
+  ([`55442fe`](https://github.com/anaticulae/germania/commit/55442fe5eafd72cb8120de644b085e84b16d0b28))
 
-### Feature
+- **train**: Log number of training data
+  ([`40a5446`](https://github.com/anaticulae/germania/commit/40a544681eeda880aca205b011b7bce9990875b4))
 
-* reduce overlapping findings (792ea2aaaca2)
-* use cache to improve word type determination (2c2a7dece6d7)
+- **train**: Make train runnable by console
+  ([`f83e04e`](https://github.com/anaticulae/germania/commit/f83e04e041136d56f585a9cf915b5a3117d10808))
 
-## v0.11.5
+- **train**: Use improved test data
+  ([`3ad2fb6`](https://github.com/anaticulae/germania/commit/3ad2fb6c1aa0184df6976b811ef1690e1a2b1316))
 
-## v0.11.4
+- **train**: Use more training data
+  ([`23e8cce`](https://github.com/anaticulae/germania/commit/23e8cce335d2ae0fb84f507c6542d208719c333c))
 
-### Feature
+### Refactoring
 
-* add and validate table shortcut splitting (9699477a3a59)
+- **interface**: Adjust to nltk naming
+  ([`28deca7`](https://github.com/anaticulae/germania/commit/28deca7edad31994589409b6e9e538a4d95218c4))
 
-## v0.11.3
+### Testing
 
-### Feature
+- **magic**: Add test that nltk data is used
+  ([`7f1b9e4`](https://github.com/anaticulae/germania/commit/7f1b9e430dfa33198411d7c8a0863e9e4b01840e))
 
-* merge references together (69465a77bf43)
-* add reference type detector (528c9df8be1f)
-* merge unbalanced sentences together (79e715db10ee)
+- **nltk**: Add nltk playground
+  ([`e7d97b5`](https://github.com/anaticulae/germania/commit/e7d97b541726c8ae7feaa26a31e189cbcf0edd0f))
 
-## v0.11.2
+- **train**: Ensure that training produces valid data
+  ([`37910ab`](https://github.com/anaticulae/germania/commit/37910abc0b456d89c612b6d4786d40e65c6da574))
 
-### Fix
 
-* improve numbers parser (91a0d5724a37)
+## v0.13.9 (2021-02-05)
 
-## v0.11.1
+### Code Style
 
-### Fix
+- **docs**: Extend interface documentation
+  ([`98d39d8`](https://github.com/anaticulae/germania/commit/98d39d89ca8eda46751d9ba0f4413924ca60ce9a))
 
-* support single number (2330f7d31315)
+### Features
 
-## v0.11.0
+- **magic**: Extend magic names
+  ([`e0c9bd0`](https://github.com/anaticulae/germania/commit/e0c9bd076dd6c312eaa7966bc31cd11d21d2440e))
 
-### Feature
+- **magic**: Improve press and names check
+  ([`8643b30`](https://github.com/anaticulae/germania/commit/8643b30cfa2a50c129f20e757a8cbddf34738775))
 
-* add method to match sequences in text (8242eef64d7c)
-* add method to extract multiple token types (acd6acfd928a)
-* extend words splitter (8f0bb57200de)
+- **person**: Add Arabic pattern
+  ([`798bbc2`](https://github.com/anaticulae/germania/commit/798bbc2c8e6c6f44eb792d80f5e79fc239d5597b))
 
-## v0.10.0
+- **press**: Extend press list
+  ([`bf060a4`](https://github.com/anaticulae/germania/commit/bf060a4b64f452628aba3e4a78d3c084182f78c8))
 
-### Feature
+### Refactoring
 
-* do not end sentence on roman number (53949f88fd0f)
-* add position flag and detect more special chars as link (89b234499b1f)
+- **magic**: Ease extending names check
+  ([`4a10679`](https://github.com/anaticulae/germania/commit/4a10679ba7df33b61575418069771dd3c327f194))
 
-### Fix
 
-* extend hyperlink parser (b6113d19c427)
+## v0.13.8 (2021-01-31)
 
-## v0.9.2
+### Bug Fixes
 
-## v0.9.0
+- **author**: Harden author extractor
+  ([`31936fa`](https://github.com/anaticulae/germania/commit/31936fad3e4b620f8c13e63a9e1386ae692e341e))
 
-### Feature
 
-* add authors to extract list of authors (8dfc93770b12)
-* add hyphen as possible page range separator (2da41473205d)
-* add method to determine if token is a headline (54f559f4f60f)
+## v0.13.7 (2021-01-31)
 
-## v0.8.0
+### Chores
 
-### Feature
+- **requirements**: Upgrade requirements.txt
+  ([`964489c`](https://github.com/anaticulae/germania/commit/964489ced05c93cf7e73cd2a88de773f3ebd1c97))
 
-* add method mails to parse list of emails (69cdd1223aa3)
+### Features
 
-## v0.7.1
+- **author**: Add simple rule to judge persons
+  ([`b15f3d5`](https://github.com/anaticulae/germania/commit/b15f3d50f4719e0a76b0badbd415fd5b98f747f9))
 
-## v0.7.0
+### Testing
 
-### Feature
+- **author**: Extend unit tests
+  ([`b5e07ec`](https://github.com/anaticulae/germania/commit/b5e07eca30083a03086a6e0aafa0f0b0d1482b5e))
 
-* extend sentence closed validator (f6a6f7364ede)
 
-## v0.6.9
+## v0.13.6 (2021-01-20)
 
-## v0.6.0
+### Features
 
-### Feature
+- **names**: Names, names, names
+  ([`5e7650b`](https://github.com/anaticulae/germania/commit/5e7650bf890b614641ab501ad5d1aece8da512c2))
 
-* move pattern to parse hyper links (4639f08557af)
-* move dates and page numbers code from section project (37944be089fd)
 
-## v0.5.4
+## v0.13.5 (2021-01-20)
 
-## v0.5.0
+### Chores
 
-### Feature
+- **requirements**: Upgrade requirements.txt
+  ([`589b0e5`](https://github.com/anaticulae/germania/commit/589b0e508b516c98ae770bc5205b2df778260325))
 
-* add method to validate pattern (ff6dac9a20fb)
-* add very simple approach to detect type of word (8b9d2d5a324e)
-* add language quick check methods (3d9e251dcc2b)
-* extend sentence end checker (34a9d6e4658f)
+### Code Style
 
-## v0.4.1
-
-### Feature
-
-* merge quotation close tag and number to sentence before (3c82a994346a)
-
-## v0.4.0
-
-### Feature
-
-* add quotation parser (07eeedb40b14)
-* extend text parser (be632112adb9)
-* make word splitter language dependent (7b184133dda4)
-
-### Fix
-
-* no `result` value if using normalize=false (d42516291fc2)
-
-## v0.3.16
-
-### Feature
-
-* add option to split_token (ab853947b6f5)
-
-## v0.3.15
-
-## v0.3.5
-
-### Fix
-
-* fix index error when single quotation character occurs (d1671d4d28bd)
-
-## v0.3.4
-
-### Fix
-
-* ensure to parse last word in invalid sentences (37dfe4106519)
-
-## v0.3.1
-
-### Feature
-
-* extend public API (ca1bcd07676c)
-
-## v0.3.0
-
-### Feature
-
-* move modern text, sentence and words parser (51c05f985813)
-* add first draft to detect French (3df4a7bd292c)
-
-### Fix
-
-* fix probability of English extraction (9e81cfd7baec)
-* remove probability logging (9047817f51ab)
+- **typo**: Fix typo
+  ([`00c57d4`](https://github.com/anaticulae/germania/commit/00c57d421c2cb76b4b2732630f74fc49f60c8845))
 
 ### Documentation
 
-* add general purpose of this package (819f3a14262d)
-* remove non existing doc link (a8484ab63dcb)
+- **copyright**: Happy New Year!
+  ([`1257cdc`](https://github.com/anaticulae/germania/commit/1257cdc2206718376005cff8dbc0efd7723e0d03))
 
-## v0.2.1
+- **language**: Extend interface documentation
+  ([`0e2ac7c`](https://github.com/anaticulae/germania/commit/0e2ac7c1025eaa4980e0668e2abef2542060918b))
 
-### Fix
+### Features
 
-* rename interface and extend support datatype (b7d552b0196b)
+- **author**: Improve author name first name selector
+  ([`a914cd3`](https://github.com/anaticulae/germania/commit/a914cd3b593aa84b864f4681b2ee8eb81f33fa10))
 
-## v0.2.0
+- **names**: Extend names dict
+  ([`39c8742`](https://github.com/anaticulae/germania/commit/39c87425042cc463d9023fe65977af13c0e6e6b7))
 
-### Feature
 
-* add likelihood of passed language (3c1ebfa8c6b7)
+## v0.13.4 (2021-01-04)
 
-## v0.1.0
+### Chores
 
-### Feature
+- **requirements**: Do not release so often
+  ([`8204b5b`](https://github.com/anaticulae/germania/commit/8204b5bba32492cb7b283ef50854ae30dfac6a6f))
 
-* move code from words project (d65ff33371a3)
+### Features
 
-## v0.0.0 Initial release
+- **sequence**: Add sentence prepare method
+  ([`62a9e23`](https://github.com/anaticulae/germania/commit/62a9e2306d30fa37637ddb4d60af4f1a1ca3ba01))
+
+
+## v0.13.3 (2020-12-09)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`cf93cb7`](https://github.com/anaticulae/germania/commit/cf93cb716296572eb6c8ba4b4ccdd5cb0d99ab18))
+
+### Refactoring
+
+- **sequence**: Clarify interface
+  ([`0beedce`](https://github.com/anaticulae/germania/commit/0beedce908d56f2ce5e2ad5608108ab4ab26cd67))
+
+
+## v0.13.2 (2020-12-09)
+
+### Features
+
+- **searches**: Add option to compare word type instead of word type and content
+  ([`58124e3`](https://github.com/anaticulae/germania/commit/58124e3f6b9ba9429eae83c723e4a64d760d1207))
+
+### Refactoring
+
+- **word**: Simplify code
+  ([`f986f99`](https://github.com/anaticulae/germania/commit/f986f990a93c9d8e193ece54d049ba5c04449e93))
+
+
+## v0.13.1 (2020-12-09)
+
+### Features
+
+- **words**: Split word number connections
+  ([`30e6d71`](https://github.com/anaticulae/germania/commit/30e6d7150bba535c969fa75b0d99f7d56de6e89f))
+
+### Refactoring
+
+- **word**: Improve quotation mark check
+  ([`9ab4609`](https://github.com/anaticulae/germania/commit/9ab46096bb46d0bd8587ca5a3ac126f0d5a4cff9))
+
+### Testing
+
+- **move**: Move test from detector project
+  ([`ae61ee3`](https://github.com/anaticulae/germania/commit/ae61ee3d91af090baffc8e5e3153c081e30604d7))
+
+- **word**: Extend test coverage
+  ([`2eeab34`](https://github.com/anaticulae/germania/commit/2eeab34eebea0832c80510e57a6900e4cdfb7eaa))
+
+
+## v0.13.0 (2020-12-07)
+
+### Chores
+
+- **requirements**: Add iamraw package
+  ([`5664320`](https://github.com/anaticulae/germania/commit/5664320b202590275522cf156142557d17f67669))
+
+### Features
+
+- **API**: Extend public API
+  ([`f1ae79d`](https://github.com/anaticulae/germania/commit/f1ae79d5cc9d7802c1905e3106f2be9e0b389826))
+
+- **author**: Add method to parse and decide if item is author
+  ([`adc2c5f`](https://github.com/anaticulae/germania/commit/adc2c5f6c53d5e4bb7cb66d9d86fa1c50315a332))
+
+- **author**: Use extended author from detector package
+  ([`62a1484`](https://github.com/anaticulae/germania/commit/62a1484c864d3262b934a016f2e38e9ea0b7d76d))
+
+- **magic**: Clarify method name
+  ([`aeb3679`](https://github.com/anaticulae/germania/commit/aeb3679a0aaae98d5443f144c5d9bb2c8a6e6136))
+
+- **names**: Extend names list
+  ([`9527bb3`](https://github.com/anaticulae/germania/commit/9527bb3c705cd6f264d478d8a628f96a5d3e6abb))
+
+
+## v0.12.1 (2020-12-04)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`94c5b5f`](https://github.com/anaticulae/germania/commit/94c5b5f83c2742610c6dfb140c95b841623873de))
+
+
+## v0.12.0 (2020-12-04)
+
+### Features
+
+- **magic**: Use cache to improve word type determination
+  ([`2c2a7de`](https://github.com/anaticulae/germania/commit/2c2a7dece6d7f8d0fa3ad2af109df3101d0152b4))
+
+- **sentence**: Reduce overlapping findings
+  ([`792ea2a`](https://github.com/anaticulae/germania/commit/792ea2aaaca2bee1713f1eccef4946528640a766))
+
+
+## v0.11.5 (2020-11-30)
+
+### Refactoring
+
+- **remove**: Remove word printing
+  ([`db697bb`](https://github.com/anaticulae/germania/commit/db697bb851f2fe6cd0bced331da8f4a449c07e34))
+
+
+## v0.11.4 (2020-11-30)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`040d2b0`](https://github.com/anaticulae/germania/commit/040d2b05057da5ab10ff9f85498a42076d2268c0))
+
+### Code Style
+
+- **remove**: Remove print statement
+  ([`978a7ab`](https://github.com/anaticulae/germania/commit/978a7ab4c788789c2d443870b3a3e101d1b3008e))
+
+### Features
+
+- **sentence**: Add and validate table shortcut splitting
+  ([`9699477`](https://github.com/anaticulae/germania/commit/9699477a3a5985c83a8917d2169850c7eb2a377d))
+
+### Refactoring
+
+- **remove**: Remove outdated patch
+  ([`9d70f82`](https://github.com/anaticulae/germania/commit/9d70f8260f138de11d80ac7d943c130cdff41bc8))
+
+- **sentence**: Improve variable name
+  ([`bfe4efe`](https://github.com/anaticulae/germania/commit/bfe4efecb61c4a34443eddd5ca62918319905aa9))
+
+
+## v0.11.3 (2020-11-27)
+
+### Features
+
+- **magic**: Add reference type detector
+  ([`528c9df`](https://github.com/anaticulae/germania/commit/528c9df8be1f98cb481822156f9abd8253e9b5b1))
+
+- **reference**: Merge references together
+  ([`69465a7`](https://github.com/anaticulae/germania/commit/69465a77bf43251b3798e82ca0aafd3cf61b0bf4))
+
+- **sentence**: Merge unbalanced sentences together
+  ([`79e715d`](https://github.com/anaticulae/germania/commit/79e715db10ee609772e5435eb4ccb49388575a41))
+
+### Refactoring
+
+- **headlines**: Sort accepted headlines
+  ([`f330ecb`](https://github.com/anaticulae/germania/commit/f330ecbce699a14a6c9f8431ed89bdc317080aa9))
+
+- **word**: Rename to avoid black lintings
+  ([`532af68`](https://github.com/anaticulae/germania/commit/532af68ed202be1fecd8563a7c6fa11cbea5c9be))
+
+- **word**: Split tokeniser in separate methods
+  ([`b9c15e9`](https://github.com/anaticulae/germania/commit/b9c15e972914a7ca5635a6eb8cec19f47979e7b3))
+
+### Testing
+
+- **headlines**: Extend test coverage
+  ([`d24c6f1`](https://github.com/anaticulae/germania/commit/d24c6f16aff9b167e576551e09b57a7e29b15da9))
+
+
+## v0.11.2 (2020-11-26)
+
+### Bug Fixes
+
+- **words**: Improve numbers parser
+  ([`91a0d57`](https://github.com/anaticulae/germania/commit/91a0d5724a372272e6ad99c333fe6386563353f9))
+
+
+## v0.11.1 (2020-11-26)
+
+### Bug Fixes
+
+- **german**: Support single number
+  ([`2330f7d`](https://github.com/anaticulae/germania/commit/2330f7d31315d2da25e2b237e3abe16307bb787c))
+
+
+## v0.11.0 (2020-11-26)
+
+### Code Style
+
+- **imports**: Organize imports
+  ([`0f1d868`](https://github.com/anaticulae/germania/commit/0f1d8683ecbfcace25ed9386ac8527cf5c4ca956))
+
+### Features
+
+- **magic**: Add method to extract multiple token types
+  ([`acd6acf`](https://github.com/anaticulae/germania/commit/acd6acfd928a81c1a6d2bdedffbda12a820c2cec))
+
+- **sequence**: Add method to match sequences in text
+  ([`8242eef`](https://github.com/anaticulae/germania/commit/8242eef64d7c4e7a0756dcd9e0295f59c30a1542))
+
+- **words**: Extend words splitter
+  ([`8f0bb57`](https://github.com/anaticulae/germania/commit/8f0bb57200de6d2a4e7ba283303f852f896a3b31))
+
+### Testing
+
+- **words**: Add more words split tests
+  ([`03d25e5`](https://github.com/anaticulae/germania/commit/03d25e572b68f123f53df6a7b283e1e35e7db60b))
+
+
+## v0.10.0 (2020-11-25)
+
+### Bug Fixes
+
+- **hyperlink**: Extend hyperlink parser
+  ([`b6113d1`](https://github.com/anaticulae/germania/commit/b6113d19c427c241d1fb3cee6ecc5f09bfc9e86d))
+
+### Features
+
+- **href**: Add position flag and detect more special chars as link
+  ([`89b2344`](https://github.com/anaticulae/germania/commit/89b234499b1f119b0664c458f6b59f63a0813189))
+
+- **sentence**: Do not end sentence on roman number
+  ([`53949f8`](https://github.com/anaticulae/germania/commit/53949f88fd0f73606c6a54cff5d7061e7f4deb7d))
+
+
+## v0.9.2 (2020-11-19)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`e46a5f3`](https://github.com/anaticulae/germania/commit/e46a5f37ff99204b9a8b5a71b88d904197d20da9))
+
+
+## v0.9.1 (2020-10-28)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`b610732`](https://github.com/anaticulae/germania/commit/b6107325915f4d678ef6ec1d0ce30daaeaeefe4a))
+
+
+## v0.9.0 (2020-10-08)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`f253bd2`](https://github.com/anaticulae/germania/commit/f253bd21c1d8b36b94111c65f0390ba55d34ddee))
+
+### Features
+
+- **headlines**: Add method to determine if token is a headline
+  ([`54f559f`](https://github.com/anaticulae/germania/commit/54f559f4f60f839a74eee0d8ae677ce9a09ba4fa))
+
+- **patten**: Add authors to extract list of authors
+  ([`8dfc937`](https://github.com/anaticulae/germania/commit/8dfc93770b127614a1d01032420df2f1dda99dd1))
+
+- **pattern**: Add hyphen as possible page range separator
+  ([`2da4147`](https://github.com/anaticulae/germania/commit/2da41473205df1e5acf22e80d84ddc722cc4030a))
+
+### Refactoring
+
+- **replace**: Replace with utila code
+  ([`b752cef`](https://github.com/anaticulae/germania/commit/b752cefa9e372e2befc73bc9f094f90fa579ca05))
+
+
+## v0.8.6 (2020-09-26)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`43258f4`](https://github.com/anaticulae/germania/commit/43258f438e41cac60976b82a7ea4fb589a47dad2))
+
+
+## v0.8.5 (2020-09-14)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`abab12f`](https://github.com/anaticulae/germania/commit/abab12f52a816931c9c8ee91439282e3d21759b0))
+
+
+## v0.8.4 (2020-09-09)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`1ae0e70`](https://github.com/anaticulae/germania/commit/1ae0e7040323baaddd850fca6b5b99f4a9307e65))
+
+
+## v0.8.3 (2020-08-28)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`ea2a5b9`](https://github.com/anaticulae/germania/commit/ea2a5b9cec1bf345f8a9600ecd829d7b0542598f))
+
+
+## v0.8.2 (2020-07-29)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`27a4a02`](https://github.com/anaticulae/germania/commit/27a4a02eb76dcfa80dbc7addaf2fa7b9ad83fc96))
+
+
+## v0.8.1 (2020-07-27)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`5059c0a`](https://github.com/anaticulae/germania/commit/5059c0ade8846fe61aa7a64c03e3e3237b649c8c))
+
+
+## v0.8.0 (2020-07-22)
+
+### Features
+
+- **mail**: Add method mails to parse list of emails
+  ([`69cdd12`](https://github.com/anaticulae/germania/commit/69cdd1223aa3a001c5ba42963300697449e6d70a))
+
+
+## v0.7.1 (2020-07-16)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`84941eb`](https://github.com/anaticulae/germania/commit/84941ebd98cf9316655d1a2d714f2b4577f6b07c))
+
+
+## v0.7.0 (2020-07-07)
+
+### Features
+
+- **sentence**: Extend sentence closed validator
+  ([`f6a6f73`](https://github.com/anaticulae/germania/commit/f6a6f7364edee4ea022b9c752b21fb5250ac5f8b))
+
+
+## v0.6.9 (2020-07-02)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`c6d0ca2`](https://github.com/anaticulae/germania/commit/c6d0ca281558890a1ef480a20afc2abf6f725087))
+
+
+## v0.6.8 (2020-07-01)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`c15f1f0`](https://github.com/anaticulae/germania/commit/c15f1f0f8573bde21e60cf6e3260c896ce32adad))
+
+
+## v0.6.7 (2020-06-30)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`c7bc625`](https://github.com/anaticulae/germania/commit/c7bc62508a50e125d0db68359b0f2a090d1c1b90))
+
+
+## v0.6.6 (2020-06-29)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`31b54c8`](https://github.com/anaticulae/germania/commit/31b54c84a6e2d9d668b1fc9cda8b3fc68ae0f787))
+
+
+## v0.6.5 (2020-06-21)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`5da61d2`](https://github.com/anaticulae/germania/commit/5da61d291b75c7ddec466458515d5291851df2b4))
+
+
+## v0.6.4 (2020-06-18)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`fabc3fe`](https://github.com/anaticulae/germania/commit/fabc3fe407818886b07e306295ac91e0ad6a5a4f))
+
+
+## v0.6.3 (2020-06-18)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`60803e6`](https://github.com/anaticulae/germania/commit/60803e6f9ee6661f678d08bff36251c996a09a80))
+
+
+## v0.6.2 (2020-06-17)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`a47da00`](https://github.com/anaticulae/germania/commit/a47da00001c1fc7e5d00a6324ef368cf514e515d))
+
+
+## v0.6.1 (2020-06-17)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`f3a76df`](https://github.com/anaticulae/germania/commit/f3a76dfee5f49da1e99b048f55e5c39063b8f24d))
+
+
+## v0.6.0 (2020-06-13)
+
+### Features
+
+- **move**: Move dates and page numbers code from section project
+  ([`37944be`](https://github.com/anaticulae/germania/commit/37944be089fdd4acdb5162f711081f17b20d82ca))
+
+- **move**: Move pattern to parse hyper links
+  ([`4639f08`](https://github.com/anaticulae/germania/commit/4639f08557afe1da1e0f2b857ca9ed6f75065231))
+
+### Refactoring
+
+- **pattern**: Create separate pattern package
+  ([`f7f83d6`](https://github.com/anaticulae/germania/commit/f7f83d6579428f3af1ad44364b4802ec9c57f8a1))
+
+
+## v0.5.4 (2020-06-11)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`ab58f98`](https://github.com/anaticulae/germania/commit/ab58f9828b32294475c416ce4f19ce417bd65ebc))
+
+
+## v0.5.3 (2020-06-07)
+
+### Refactoring
+
+- **remove**: Remove unnecessary printing
+  ([`1f7e6fe`](https://github.com/anaticulae/germania/commit/1f7e6feb2a36c5313b1bc052faa944e5c2f7d76b))
+
+
+## v0.5.2 (2020-06-06)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`5d6632e`](https://github.com/anaticulae/germania/commit/5d6632eeb87a103e6227685353f4145a202769e2))
+
+
+## v0.5.1 (2020-06-06)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`3b6b216`](https://github.com/anaticulae/germania/commit/3b6b2161a0ce3c64fa8a48a14d01bc191933aa3e))
+
+
+## v0.5.0 (2020-06-05)
+
+### Features
+
+- **languages**: Add language quick check methods
+  ([`3d9e251`](https://github.com/anaticulae/germania/commit/3d9e251dcc2b0ece44b95abc3a5497f8cba14686))
+
+- **magic**: Add very simple approach to detect type of word
+  ([`8b9d2d5`](https://github.com/anaticulae/germania/commit/8b9d2d5a324edf118dfc4e7f7cc6a6649b52deeb))
+
+- **pattern**: Add method to validate pattern
+  ([`ff6dac9`](https://github.com/anaticulae/germania/commit/ff6dac9a20fb7622363258236624690af00bdeb8))
+
+- **sentence**: Extend sentence end checker
+  ([`34a9d6e`](https://github.com/anaticulae/germania/commit/34a9d6e4658f123a406706a8d22438eee05d3bb2))
+
+
+## v0.4.1 (2020-06-03)
+
+### Features
+
+- **sentence**: Merge quotation close tag and number to sentence before
+  ([`3c82a99`](https://github.com/anaticulae/germania/commit/3c82a994346abebf7e7de87627503e183de96743))
+
+
+## v0.4.0 (2020-06-03)
+
+### Bug Fixes
+
+- **sentence**: No `result` value if using normalize=false
+  ([`d425162`](https://github.com/anaticulae/germania/commit/d42516291fc2c1ab2d17e3578cafeb93a9b406bf))
+
+### Features
+
+- **quotation**: Add quotation parser
+  ([`07eeedb`](https://github.com/anaticulae/germania/commit/07eeedb40b140655f0e69e9519b2c82c78869d50))
+
+- **sentence**: Extend text parser
+  ([`be63211`](https://github.com/anaticulae/germania/commit/be632112adb9a3fa86c7e51d96615dd025612de8))
+
+- **word**: Make word splitter language dependent
+  ([`7b18413`](https://github.com/anaticulae/germania/commit/7b184133dda423146917fe1c3f17aeea49b673c1))
+
+### Refactoring
+
+- **fix**: Fix spelling error
+  ([`73b2f2a`](https://github.com/anaticulae/germania/commit/73b2f2af812fcdc6cd09156dacc566e4680cffbf))
+
+- **test**: Move tests and test file
+  ([`50c131c`](https://github.com/anaticulae/germania/commit/50c131cfb335bcde5a2d36f2b9d2ab560d87d097))
+
+- **test**: Simplify unit tests
+  ([`a427a47`](https://github.com/anaticulae/germania/commit/a427a47126013e25520c0c2267498eac45728924))
+
+### Testing
+
+- **quotation**: Add long quotation test
+  ([`e5456a5`](https://github.com/anaticulae/germania/commit/e5456a53554a3c2f39829c2693f1a1ec0ed035f1))
+
+- **sentence**: Extend sentence splitter
+  ([`d19365c`](https://github.com/anaticulae/germania/commit/d19365cc98e1ab70ae700225751789e51ec53989))
+
+
+## v0.3.16 (2020-06-01)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`9ae94ac`](https://github.com/anaticulae/germania/commit/9ae94ac84b3f0d5c82eea7475c39c84bce097d7b))
+
+### Features
+
+- **sentence**: Add option to split_token
+  ([`ab85394`](https://github.com/anaticulae/germania/commit/ab853947b6f526fd80ac4e9f09cff40ef570f31d))
+
+
+## v0.3.15 (2020-05-29)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`3eb88f3`](https://github.com/anaticulae/germania/commit/3eb88f33e88b3074e85e3934c988f46841ee03e6))
+
+
+## v0.3.14 (2020-05-29)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`e4278ae`](https://github.com/anaticulae/germania/commit/e4278aee91c484127b7e6daf9cd49f49bea39319))
+
+
+## v0.3.13 (2020-05-28)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`1a03e53`](https://github.com/anaticulae/germania/commit/1a03e538e9f9312f23e95440cc0f89a207dde4c5))
+
+
+## v0.3.12 (2020-05-26)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`fbbebfc`](https://github.com/anaticulae/germania/commit/fbbebfc7da9494cfb7d8cca2ec840960781880fb))
+
+
+## v0.3.11 (2020-05-23)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`5662fe9`](https://github.com/anaticulae/germania/commit/5662fe912cafa72d9c41a5ca342a092bdb57eb95))
+
+
+## v0.3.10 (2020-05-23)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`1174ba7`](https://github.com/anaticulae/germania/commit/1174ba72a55fe4b02318b7ce830ea9bb9b6efd5c))
+
+
+## v0.3.9 (2020-05-18)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`7d4d8c4`](https://github.com/anaticulae/germania/commit/7d4d8c4351461e48624104e81c62f972f3ef13ed))
+
+
+## v0.3.8 (2020-05-17)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`c95f074`](https://github.com/anaticulae/germania/commit/c95f074621b7e2a8d174ad805b218aa93bd04a81))
+
+
+## v0.3.7 (2020-05-17)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`f36b68e`](https://github.com/anaticulae/germania/commit/f36b68e8b1a5f58093113921caef9b44b535715f))
+
+
+## v0.3.6 (2020-05-17)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`242822f`](https://github.com/anaticulae/germania/commit/242822f64c594531312dd66a5badd2c06774bc31))
+
+
+## v0.3.5 (2020-05-16)
+
+### Bug Fixes
+
+- **sentence**: Fix index error when single quotation character occurs
+  ([`d1671d4`](https://github.com/anaticulae/germania/commit/d1671d4d28bdbda51bd598125f73befbda11db88))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`e1ae708`](https://github.com/anaticulae/germania/commit/e1ae708a9c7b958508c31340d790b39f5fd48a13))
+
+
+## v0.3.4 (2020-05-08)
+
+### Bug Fixes
+
+- **word**: Ensure to parse last word in invalid sentences
+  ([`37dfe41`](https://github.com/anaticulae/germania/commit/37dfe41065193f02a2cb3e6639f0261bee9be044))
+
+
+## v0.3.3 (2020-05-07)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`7889140`](https://github.com/anaticulae/germania/commit/78891407cd67e8ce531cbddfbb469a9c1067edaf))
+
+
+## v0.3.2 (2020-05-07)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`1b6cecc`](https://github.com/anaticulae/germania/commit/1b6cecceab81772e300b84cdb420c1397a5fd688))
+
+
+## v0.3.1 (2020-04-30)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`9b8d7ff`](https://github.com/anaticulae/germania/commit/9b8d7ffa2bdb27b36ee0e764f86df44bd96e5d0c))
+
+### Features
+
+- **API**: Extend public API
+  ([`ca1bcd0`](https://github.com/anaticulae/germania/commit/ca1bcd07676c11f58d3bbd344a679c811ce55d6e))
+
+
+## v0.3.0 (2020-04-29)
+
+### Bug Fixes
+
+- **language**: Fix probability of English extraction
+  ([`9e81cfd`](https://github.com/anaticulae/germania/commit/9e81cfd7baecd64efae105de7c168499c2878ca4))
+
+- **language**: Remove probability logging
+  ([`9047817`](https://github.com/anaticulae/germania/commit/9047817f51ab64fa7fe1dfec1efc5926791327b3))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`48464be`](https://github.com/anaticulae/germania/commit/48464be8e6e4f875b66b4912cdcab4f537b7e2cd))
+
+### Documentation
+
+- **fix**: Remove non existing doc link
+  ([`a8484ab`](https://github.com/anaticulae/germania/commit/a8484ab63dcb38152eea777debd8e8d89729506d))
+
+- **general**: Add general purpose of this package
+  ([`819f3a1`](https://github.com/anaticulae/germania/commit/819f3a14262df97af787051afaf8e4ffe481a59e))
+
+### Features
+
+- **lang**: Add first draft to detect French
+  ([`3df4a7b`](https://github.com/anaticulae/germania/commit/3df4a7bd292c99f0efb1b22ff34cb4e144b32ebe))
+
+- **parser**: Move modern text, sentence and words parser
+  ([`51c05f9`](https://github.com/anaticulae/germania/commit/51c05f985813e07d0bdecaa8de540aa389fa7bfb))
+
+### Refactoring
+
+- **parser**: Rename text parser
+  ([`3542c67`](https://github.com/anaticulae/germania/commit/3542c67e2269be43c46efd03ee3251db2ff4ab05))
+
+### Testing
+
+- **quotation**: Move test to verify quotation splitting
+  ([`95e3510`](https://github.com/anaticulae/germania/commit/95e3510a0d7de6cc947567ec0d630eee5fdb6cad))
+
+- **words**: Add test to verify split words
+  ([`ef447dc`](https://github.com/anaticulae/germania/commit/ef447dcd68c1664d4db8cf62cee6b0edb9068bf0))
+
+- **words**: Move words split tests from `words` package
+  ([`e78f9ea`](https://github.com/anaticulae/germania/commit/e78f9eac244a5659c769be9c83fd8ec079c0daa3))
+
+
+## v0.2.3 (2020-04-22)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`036a2c8`](https://github.com/anaticulae/germania/commit/036a2c84fab6d1e169e0480258002ea03d515f16))
+
+
+## v0.2.2 (2020-04-20)
+
+### Chores
+
+- **requirements**: Add DUDEN package
+  ([`ce3f7c4`](https://github.com/anaticulae/germania/commit/ce3f7c4846bd62922814183636ad806b4dc32365))
+
+### Refactoring
+
+- **replace**: With with DUDEN code
+  ([`ac9bd6c`](https://github.com/anaticulae/germania/commit/ac9bd6c207f2912a930a894524d8f17b3d1a0190))
+
+
+## v0.2.1 (2020-04-19)
+
+### Bug Fixes
+
+- **interface**: Rename interface and extend support datatype
+  ([`b7d552b`](https://github.com/anaticulae/germania/commit/b7d552b0196b3540a0f80d4be8720cc2464eb625))
+
+
+## v0.2.0 (2020-04-19)
+
+### Chores
+
+- **requirements**: Add dependency to utila
+  ([`b698a24`](https://github.com/anaticulae/germania/commit/b698a2491177e16884e348fa6ec5bc04b322afb5))
+
+### Code Style
+
+- **test**: Add copyright header
+  ([`6c4f36f`](https://github.com/anaticulae/germania/commit/6c4f36fbcb003f934a9f7ee4cb877e6cb76800c5))
+
+### Features
+
+- **language**: Add likelihood of passed language
+  ([`3c1ebfa`](https://github.com/anaticulae/germania/commit/3c1ebfa8c6b71dd3dc90afba6e6c0973dc037073))
+
+
+## v0.1.0 (2020-03-23)
+
+### Features
+
+- **text**: Move code from words project
+  ([`d65ff33`](https://github.com/anaticulae/germania/commit/d65ff33371a39a498c3da55b81ec4bcb79a3aba1))
+
+
+## v0.0.0 (2020-03-23)
+
+- Initial Release
