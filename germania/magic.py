@@ -36,7 +36,7 @@ import utilo
 import germania_data
 
 
-class WordType(enum.Enum):
+class WordType(str, enum.Enum):
     MARK = enum.auto()
     PERSON = enum.auto()
     NUMBER = enum.auto()
@@ -76,8 +76,8 @@ def wordtype(item: str) -> WordType:  # pylint:disable=R0911
 @utilo.cacheme
 def wordtypes(item: str) -> WordTypes:
     """\
-    >>> wordtypes('1996')
-    {<WordType.NUMBER: 3>, <WordType.YEAR: 5>, '1996'}
+    >>> sorted(wordtypes('1996'))
+    ['1996', <WordType.NUMBER: '3'>, <WordType.YEAR: '5'>]
     """
     try:
         item = item.lower()
