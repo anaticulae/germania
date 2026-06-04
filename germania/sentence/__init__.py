@@ -38,7 +38,7 @@ def sentence_tokenize(
         list of splitted sentences
 
     # >>> sentence_tokenize('Dies ist der 1. Satz. Dies ist ein zweiter Satz!')
-    # ['Dies ist der 1. Satz.', 'Dies ist ein zweiter Satz!']
+    ['Dies ist der 1. Satz.', 'Dies ist ein zweiter Satz!']
     >>> sentence_tokenize('Dieser Satz ent-\nhält eine Trennung.', merge_divis=True)
     ['Dieser Satz enthält eine Trennung.']
     >>> sentence_tokenize('Das  sind   eindeutig zu   viele Trennungen.', normalize_spaces=True)
@@ -47,7 +47,7 @@ def sentence_tokenize(
     ['Der Stadtteil Berlin-Neuköln liegt im Süden von Berlin.']
 
     # >>> sentence_tokenize('Manfred sagt: "Ich bin König, wer bist du?"')
-    # ['Manfred sagt:', '"Ich bin König, wer bist du?"']
+    ['Manfred sagt:', '"Ich bin König, wer bist du?"']
     """
     import germania.sentence.escape  # pylint:disable=W0621
     text = utilo.normalize_text(
