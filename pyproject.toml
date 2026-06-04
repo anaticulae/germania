@@ -40,8 +40,8 @@ content-type = "text/markdown"
 
 [project.optional-dependencies]
 dev = [
-    "utilotest>=1.0.1,<2.0.0",
-    "textbone>=1.0.0,<2.0.0",
+    "utilotest>=1.0.4,<2.0.0",
+    "textbone>=1.0.1,<2.0.0",
 ]
 
 [project.urls]
