@@ -1,6 +1,41 @@
 # CHANGELOG
 
 
+## v1.32.0 (2026-06-04)
+
+### Bug Fixes
+
+- **train**: Enable verification
+  ([`1835e43`](https://github.com/anaticulae/germania/commit/1835e43108f3db888829f7c5f01a388a1db647b9))
+
+### Chores
+
+- **github**: Run tests on every branch
+  ([`692c62b`](https://github.com/anaticulae/germania/commit/692c62bcbbaf051cca0f7dd48e9983f75190ef6d))
+
+- **test**: Download missing package
+  ([`8bddc3c`](https://github.com/anaticulae/germania/commit/8bddc3c9c94e02b1549e4946fe7792a51190e878))
+
+### Features
+
+- **language**: Make default language german
+  ([`cdd8871`](https://github.com/anaticulae/germania/commit/cdd8871dec4843ecb8fe0c74d90e7734fc6b0756))
+
+- **magic**: Make enum sortable with string
+  ([`7aaa5e6`](https://github.com/anaticulae/germania/commit/7aaa5e6bc32a0124db3c02c04bd05511b9392072))
+
+- **train**: Use hugedata to train
+  ([`1cc5936`](https://github.com/anaticulae/germania/commit/1cc5936eb59bbfe4aa01a0ac137cbacf481a7704))
+
+### Testing
+
+- **docs**: Disable till it works
+  ([`2c30721`](https://github.com/anaticulae/germania/commit/2c307215c499e43fecedc552503739e0a31e9909))
+
+- **skip**: Make it run
+  ([`a85667a`](https://github.com/anaticulae/germania/commit/a85667a4472da6a97fecd385d8e52cec89daafd0))
+
+
 ## v1.31.0 (2026-06-02)
 
 ### Bug Fixes

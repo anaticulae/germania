@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "germania"
-version = "1.31.0"
+version = "1.32.0"
 description = ""
 requires-python = ">=3.12"
 authors = [
