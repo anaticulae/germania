@@ -12,7 +12,7 @@ import os
 import pickle  # nosec
 import sys
 
-# import hugedata
+import hugedata
 import konradus
 import nltk.tokenize.punkt
 import utilo
@@ -42,8 +42,8 @@ def train(src: str, dest: str, verbose: bool = False):
     trainer.train(text, verbose=verbose)
 
     trained = trainer.get_params()
-    # assert len(trained.abbrev_types) >= 20, len(trained.abbrev_types)
-    # assert len(trained.ortho_context) >= 20, len(trained.ortho_context)
+    assert len(trained.abbrev_types) >= 20, len(trained.abbrev_types)
+    assert len(trained.ortho_context) >= 20, len(trained.ortho_context)
 
     # add predefined abbreviations
     # remove last dot
@@ -61,8 +61,7 @@ def train(src: str, dest: str, verbose: bool = False):
     utilo.file_replace_binary(dest, dumped)
 
 
-# SOURCES = hugedata.RESOURCES
-SOURCES = []
+SOURCES = hugedata.RESOURCES
 
 
 def setup(root, source=SOURCES):  # pylint:disable=W0102
