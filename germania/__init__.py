@@ -19,7 +19,6 @@ import os
 
 import analp
 import ltk_data
-import nltk
 
 import germania.sentence
 from germania.abbrev import find_abbrev
@@ -100,9 +99,6 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
 # REMOVE LATER
 pages = page_single
-
-nltk.download('crubadan', quiet=True)
-nltk.download('punkt_tab', quiet=True)
 
 # TODO: REMovE LATER
 germania.sentence.language_select = lambda x: 'german'
