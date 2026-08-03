@@ -16,6 +16,7 @@ sentences into words.
 
 import os
 
+import analp
 import ltk_data
 import nltk
 
