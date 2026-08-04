@@ -1,6 +1,33 @@
 # CHANGELOG
 
 
+## v1.32.1 (2026-08-04)
+
+### Bug Fixes
+
+- **test**: Run fewer
+  ([`b21aa74`](https://github.com/anaticulae/germania/commit/b21aa742939dcbdc584c20456d9a980e32c4fa8c))
+
+### Chores
+
+- **make**: Do not release twice
+  ([`cc00374`](https://github.com/anaticulae/germania/commit/cc00374eac13cfb1c8cd6d4a51d4f2eea7a6c8e1))
+
+- **pyproject**: Remove nltk
+  ([`cfee38c`](https://github.com/anaticulae/germania/commit/cfee38c0acffd8321c2de220e9183cfc11c5efc4))
+
+- **pyproject**: Sort requirements
+  ([`f046cf8`](https://github.com/anaticulae/germania/commit/f046cf8e522f600e2870d9e9d1b7e58477a48db3))
+
+- **requirements**: Upgrade pyproject.toml
+  ([`8686c27`](https://github.com/anaticulae/germania/commit/8686c274ea3399b6ab3669df20d366f82a232feb))
+
+### Code Style
+
+- **make**: Format make file
+  ([`784901f`](https://github.com/anaticulae/germania/commit/784901ffbe3e08a84ce7fbf782edba6277b51cd8))
+
+
 ## v1.32.0 (2026-06-04)
 
 ### Bug Fixes
