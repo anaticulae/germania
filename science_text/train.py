@@ -73,8 +73,8 @@ def setup(root, source=SOURCES):  # pylint:disable=W0102
     dumped = utilo.file_read_binary(tmp)
     root = os.path.join(root, 'germania_data')
     dests = [
-        os.path.join(root, 'ltk_data/tokenizers/punkt/science.pickle'),
-        os.path.join(root, 'ltk_data/tokenizers/punkt/PY3/science.pickle'),
+        os.path.join(root, 'nltk_data/tokenizers/punkt/science.pickle'),
+        os.path.join(root, 'nltk_data/tokenizers/punkt/PY3/science.pickle'),
     ]
     for dest in dests:
         parent = utilo.path_parent(dest)

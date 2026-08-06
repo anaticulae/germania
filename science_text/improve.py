@@ -20,7 +20,7 @@ import science_text.config
 def setup(root):
     # pylint:disable=W0212
     # science = nltk.load("tokenizers/punkt/{0}.pickle".format('science'))
-    # germania = nltk.load("tokenizers/punkt/{0}.pickle".format('germania'))
+    # germania = nltk.load("tokenizers/punkt/{0}.pickle".format('german'))
     tokenizer = nltk.load("tokenizers/punkt/{0}.pickle".format('english'))
     tokenizer._lang_vars = science_text.config.SPunktLanguageVars()
     # tokenizer._params.abbrev_types |= science._params.abbrev_types
@@ -30,7 +30,7 @@ def setup(root):
 
 
 def science_english_write(dumped, root):
-    base = os.path.join(root, 'germania_data/ltk_data/tokenizers/punkt/')
+    base = os.path.join(root, 'germania_data/nltk_data/tokenizers/punkt/')
     base = os.path.abspath(base)
     dests = [
         os.path.join(base, 'science_english.pickle'),
