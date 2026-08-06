@@ -36,5 +36,10 @@ def find_abbrev(abbrev: str, words: list) -> str:
     )
     if not detected:
         return None
-    result = ' '.join(words[index] for index in utilo.rlist(*detected[0]))
+    try:
+        result = ' '.join(words[index] for index in utilo.rlist(*detected[0]))
+    except TypeError:
+        # TODO: REMOVE LATER
+        utilo.error(f'TypeError: find_abbrev {detected}')
+        result = ' '.join(str(words[index]) for index in utilo.rlist(*detected[0])) # yapf:disable
     return result
