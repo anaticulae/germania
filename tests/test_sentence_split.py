@@ -140,7 +140,6 @@ the single char.
 """
 
 
-@pytest.mark.xfail(reason='make it run')
 def test_sentence_split_single_quotation_in_text():
     sentences = germania.sentence_tokenize(SINGLE_QUOTATION_IN_TEXT)
     # dont't know the right result
@@ -229,7 +228,6 @@ unternehmensübergreifenden Wertschöpfungsnetzwerken.
 """
 
 
-@pytest.mark.xfail(reason='make it run')
 def test_split_sentence_with_long_citation():
     splitted = germania.sentence_tokenize(VERY_LONG)
     tests.assert_length(splitted, 6)
