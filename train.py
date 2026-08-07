@@ -22,7 +22,7 @@ import science_text.train
 def setup_nltk():
     utilo.log(f'NLTK: {nltk.data.path}\n')
     nltk.data.path.append(os.path.join(ltk_data.ROOT, 'ltk_data'))  # yapf:disable
-    nltk.data.path.append(os.path.join(germania_data.ROOT, 'germania_data/ltk_data'))  # yapf:disable
+    nltk.data.path.append(os.path.join(germania_data.ROOT, 'germania_data/nltk_data'))  # yapf:disable
     utilo.log(f'NLTK: {nltk.data.path}\n')
 
 

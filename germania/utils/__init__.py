@@ -7,8 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utilo
-
 
 def collect_and_replace(raw: str, pattern: list, verbose: bool = False) -> list:
     """Collect due list of pattern and avoids parsing items twice."""

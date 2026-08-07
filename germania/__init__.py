@@ -14,8 +14,10 @@ The `germania` package is a wrapper for external tooling which have some
 sentences into words.
 """
 
+import importlib.metadata
 import os
 
+import analp
 import ltk_data
 import nltk
 
@@ -92,7 +94,7 @@ from germania.word import word_tokenize
 split_words = word_tokenize  # pylint:disable=C0103
 split_sentences = sentence_tokenize  # pylint:disable=C0103
 
-__version__ = '1.30.0'
+__version__ = importlib.metadata.version('germania')
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
