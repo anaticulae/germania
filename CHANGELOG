@@ -1,6 +1,44 @@
 # CHANGELOG
 
 
+## v1.32.2 (2026-08-07)
+
+### Bug Fixes
+
+- **abbrev**: Convert to str if required
+  ([`1ea8ed4`](https://github.com/anaticulae/germania/commit/1ea8ed40ca024bf0c325859134a6686435597c2a))
+
+- **manifest**: Revert after making invalid renaming
+  ([`0f33527`](https://github.com/anaticulae/germania/commit/0f33527cc91c2241d41b544ae23bc973e3dd5255))
+
+### Chores
+
+- **pyproject**: Import analp
+  ([`5a3134c`](https://github.com/anaticulae/germania/commit/5a3134c045cf2aced03b3fdfa423e4386745f78f))
+
+- **pyproject**: Release with every commit
+  ([`12bc673`](https://github.com/anaticulae/germania/commit/12bc673351bcdb6be6baa02319559f27fcc964ce))
+
+- **requirements**: Upgrade pyproject.toml
+  ([`5c35b2a`](https://github.com/anaticulae/germania/commit/5c35b2ab0df80483d5f88b657ac00dfa108453e1))
+
+- **test**: Add option to run test manually
+  ([`366914b`](https://github.com/anaticulae/germania/commit/366914b183fb4e231333f779e730c78737d1ec0f))
+
+- **version**: Use dynamic version
+  ([`a732813`](https://github.com/anaticulae/germania/commit/a7328130bb7d727211517e066222adb9d858bd06))
+
+### Code Style
+
+- **imports**: Remove unused
+  ([`bd690c0`](https://github.com/anaticulae/germania/commit/bd690c0a9c7477d9dbcdcebda98b1c5fcc45bd9c))
+
+### Testing
+
+- **sentence**: Enable xfailed
+  ([`514b13d`](https://github.com/anaticulae/germania/commit/514b13d6341285c4b64c769e9d5d7806b6ffe01d))
+
+
 ## v1.32.1 (2026-08-04)
 
 ### Bug Fixes
