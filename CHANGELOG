@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v1.33.0 (2026-10-05)
+
+### Chores
+
+- **requirements**: Upgrade pyproject.toml
+  ([`edc0c08`](https://github.com/anaticulae/germania/commit/edc0c088fcf301c60963854b6b8a5c430bc5d7f0))
+
+### Features
+
+- **nltk**: Download is handled by analp
+  ([`93985b1`](https://github.com/anaticulae/germania/commit/93985b1cb39f798c98e4e539b4f883bf83fd533c))
+
+
 ## v1.32.2 (2026-08-07)
 
 ### Bug Fixes
