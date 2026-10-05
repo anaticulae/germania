@@ -29,7 +29,7 @@ import re
 
 import analp
 import konradus
-import ltk_data.lookup
+import ltk_data
 import sdatum
 import utilo
 
@@ -213,9 +213,9 @@ def datums():
     stopwords = set(analp.STOPWORDS) - utilo.splititems('der de da')
     names = (
         germania_data.NAMES |
-        ltk_data.lookup.NAME_MALE |
-        ltk_data.lookup.NAME_FEMALE |
-        ltk_data.lookup.NAME_FAMILY
+        ltk_data.NAME_MALE |
+        ltk_data.NAME_FEMALE |
+        ltk_data.NAME_FAMILY
     )
     noperson = (
         germania_data.NOPERSON |
