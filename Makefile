@@ -45,7 +45,7 @@ docker-lint: docker-build
 docker-release: docker-build
 	@if git describe --exact-match --tags HEAD >/dev/null 2>&1; then \
 		echo "Current commit is already tagged. Skipping release."; \
-	else  \
+	else \
 		docker run \
 			-v $(CURDIR):/var/workdir \
 			-e GH_TOKEN \
