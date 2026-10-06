@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v1.33.1 (2026-10-06)
+
+### Chores
+
+- **requirements**: Upgrade pyproject.toml
+  ([`cf34bc6`](https://github.com/anaticulae/germania/commit/cf34bc6d064f90debd0f9bfc62660cb9f28c884a))
+
+### Code Style
+
+- **make**: Format code
+  ([`6ec66d9`](https://github.com/anaticulae/germania/commit/6ec66d9c0263479ae4f0fba96700c8820e52d063))
+
+
 ## v1.33.0 (2026-10-05)
 
 ### Chores
